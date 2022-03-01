@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - china-production
+      - main
 
 jobs:
   build:
