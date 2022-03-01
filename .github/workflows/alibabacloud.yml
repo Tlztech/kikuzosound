@@ -11,9 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: ssh key generate
-      run: echo "$KIKUZUSOUND_CN_SSH_PRIVATE_KEY" > key && chmod 600 key
+      run: echo "$KIKUZUSOUND_XYZ_SSH_PRIVATE_KEY" > key && chmod 600 key
       env:
-        KIKUZUSOUND_CN_SSH_PRIVATE_KEY: ${{ secrets.KIKUZUSOUND_CN_SSH_PRIVATE_KEY }}
+        KIKUZUSOUND_XYZ_SSH_PRIVATE_KEY: ${{ secrets.KIKUZUSOUND_XYZ_SSH_PRIVATE_KEY }}
     - name: Secrets replace DB user and PW
       run: |
         sed -i'.bak' 's/${PRODUCTION_DB_USER}/${{ secrets.PRODUCTION_DB_USER }}/g' ./3sportal_ld/.env.production; 
