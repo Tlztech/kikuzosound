@@ -1,0 +1,48 @@
+.organism-quizMultipleExplanation-wrapper {
+  margin-bottom: 16px;
+}
+
+.organism-quizMultipleExplanation-wrapper
+  .organism-quizMultipleExplanation-container {
+  padding: 16px;
+  border-radius: 6px;
+  border: 2px solid #ffcc12;
+  position: relative;
+}
+
+.organism-quizMultipleExplanation-wrapper .organism-multipleExplain-title {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.organism-quizMultipleExplanation-wrapper .organism-quizOption-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.organism-quizMultipleExplanation-wrapper .audio-label-molecules {
+  margin: 8px 0;
+}
+
+.organism-quizMultipleExplanation-wrapper .molecules-quizOptionButtons-wrapper {
+  background-color: #ffffff;
+}
+
+.organism-quizMultipleExplanation-wrapper .atoms-Button-quiz-options {
+  border: 1px solid #000000;
+}
+
+.organism-quizMultipleExplanation-wrapper .molecules-rightAnswer-container {
+  margin: 24px 0;
+}
+
+.organism-quizMultipleExplanation-wrapper .organism-sound-video-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+}

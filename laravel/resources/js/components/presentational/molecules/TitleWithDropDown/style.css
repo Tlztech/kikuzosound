@@ -1,0 +1,86 @@
+.molecules-TitleWithDropDown-wrapper {
+  position: relative;
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.molecules-TitleWithDropDown-wrapper .molecules-TitleBoxIcon-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  width: 72px;
+  position: relative;
+  height: 24px;
+  margin-top: 1px;
+  padding: 0px 8px 1px 0px;
+  overflow: hidden;
+}
+
+.molecules-TitleWithDropDown-wrapper .atoms-p {
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 12px;
+}
+
+.molecules-TitleWithDropDown-wrapper .molecules-title {
+  display: inline;
+  color: #4d565c;
+  padding: 4px 8px;
+  font-weight: normal;
+  font-size: 10px;
+  overflow: hidden;
+}
+
+.molecules-TitleWithDropDown-wrapper .molecules-expandmore {
+  margin-left: 20px;
+  position: absolute;
+  right: 0;
+  top: 3px;
+  font-size: 1rem;
+}
+
+.molecules-TitleWithDropDown-wrapper .molecules-dropdown-container {
+  position: absolute;
+  left: 40%;
+  background-color: #ffffff;
+  max-height: 58vh;
+  overflow-y: auto;
+  max-width: 220px;
+  min-width: 90px;
+  width: auto;
+  top: 42px;
+  z-index: 2;
+  border-radius: 5px;
+  box-shadow: 1px 0px 5px 0px rgb(134, 130, 130);
+  padding: 6px;
+}
+
+.molecules-TitleWithDropDown-wrapper .molecules-dropdown-container::after {
+  width: 25px;
+  height: 25px;
+  content: "";
+  border-top: 22px solid #ffffff;
+  position: absolute;
+  top: -2px;
+  right: 20%;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.molecules-TitleWithDropDown-wrapper .molecules-dropdown-list {
+  padding: 6px 6px;
+  text-align: left;
+  margin: 0;
+  display: block;
+}
+
+@media only screen and (max-width: 1280px) {
+  .molecules-TitleWithDropDown-wrapper .molecules-dropdown-container {
+    left: 35%;
+  }
+}

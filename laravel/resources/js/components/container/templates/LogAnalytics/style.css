@@ -1,0 +1,61 @@
+.template-logAnalytics-wrapper {
+  position: relative;
+  background-color: #ffffff;
+  padding: 16px 22px;
+  margin: 2%;
+  height: 87vh;
+  max-height: 90%;
+  overflow-y: scroll;
+}
+
+.template-logAnalytics-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.template-logAnalytics-wrapper .template-logAnalytics-main_dropdown_wrapper{
+  display:flex;
+}
+
+.template-logAnalytics-wrapper .template-dropdown-graph-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.template-logAnalytics-wrapper .template-dropdown-filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-flow: row wrap;
+  gap: 8px;
+}
+
+.template-logAnalytics-wrapper .template-datePicker {
+  display: flex;
+  margin: 8px 0px;
+}
+
+.template-logAnalytics-wrapper .organisms-datePicker-wrapper .organisms-dropdown-container {
+  right: 0px;
+}
+
+.template-logAnalytics-wrapper .template-logAnalytics-csv{
+    text-align: right;
+    margin: 10px;
+}
+
+@media (max-width: 1280px) {
+  .template-logAnalytics-wrapper
+    .molecules-LogAnalyticsIconContainer
+    .atoms-Image {
+    width: 24px;
+    height: 24px;
+  }
+
+  .template-logAnalytics-wrapper .molecules-TitleWithDropDown-wrapper .atoms-p,
+  .template-logAnalytics-wrapper .molecules-dateWithLabel-wrapper .atoms-p{
+    margin-right: 8px;
+    font-size: 9px;
+  }
+}

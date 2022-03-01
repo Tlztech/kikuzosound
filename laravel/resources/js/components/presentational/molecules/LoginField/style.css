@@ -1,0 +1,22 @@
+.molecules-LoginField-wrapper {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.molecules-LoginField-wrapper .atoms-input {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #e4e4e4;
+}
+
+.molecules-LoginField-wrapper .atoms-label {
+  margin-top: 6px;
+  letter-spacing: 0.56px;
+}
+
+::placeholder {
+  font-size: 14px;
+}

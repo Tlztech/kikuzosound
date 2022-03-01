@@ -1,0 +1,13 @@
+.molecules-DropdownLabel-wrapper {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 8fr 1fr;
+  gap: 10px;
+}
+
+.molecules-DropdownLabel-wrapper .atoms-label {
+  margin: 0;
+}

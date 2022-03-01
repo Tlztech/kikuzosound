@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - prod4
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: ssh key generate
+      run: echo "$SYSTEM4TR_SSH_PRIVATE_KEY" > key && chmod 600 key
+      env:
+        SYSTEM4TR_SSH_PRIVATE_KEY: ${{ secrets.SYSTEM4TR_SSH_PRIVATE_KEY }}
+    - name: Making tar for Deploy
+      run: bash ./prepare_production4.sh production4
+    - name: Deploying
+      run: bash ./exec_deploy_production4.sh key

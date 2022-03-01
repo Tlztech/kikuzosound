@@ -1,0 +1,32 @@
+.molecules-ExamResultRankCorrectRateTable-wrapper {
+  box-shadow: 0px 5px 10px #00000017;
+  padding: 24px 40px;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+.molecules-ExamResultRankCorrectRateTable-wrapper .table thead th{
+  border-top: none;
+  border-bottom: 1px solid #efefef;
+}
+
+.molecules-ExamResultRankCorrectRateTable-wrapper .table td{
+  border-top: none;
+  border-bottom: 1px solid #efefef;
+  font-family: normal;
+  font-size: 14px;
+  min-width: 100px;
+  padding-right: 0;
+}
+
+.molecules-ExamResultRankCorrectRateTable-wrapper .table .molecules-id-col {
+  min-width: 50px;
+}
+
+.molecules-ExamResultRankCorrectRateTable-wrapper .examResultTableHeader {
+  background-color: #ffffff !important;
+}
+
+.molecules-ExamResultRankCorrectRateTable-wrapper .table tr:nth-child(2n+1) {
+  background-color: #f6f8fa;
+}

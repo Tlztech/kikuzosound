@@ -1,0 +1,120 @@
+.molecules-logAnalyticsDropdown-Wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.molecules-logAnalyticsDropdown-Wrapper .grid-box {
+  display: grid;
+  grid-template-columns: repeat(2, 30%);
+  margin-bottom: 20px;
+
+}
+
+.molecules-logAnalyticsDropdown-Wrapper .atoms-Select {
+  padding-right: 30px;
+}
+
+.molecules-logAnalyticsDropdown-Wrapper .grid-box .atoms-label {
+  margin-top: 0.5rem;
+  font-size: 15px;
+}
+
+.molecules-logAnalyticsDropdown-Wrapper .molecules-user-dropdown {
+  justify-content: center;
+}
+
+.molecules-logAnalyticsDropdown-Wrapper .molecules-type-dropdown {
+  justify-content: center;
+}
+
+.molecules-logAnalyticsDropdown-Wrapper .molecules-exam-dropdown {
+  grid-template-columns: 45% 55%;
+}
+
+.molecules-logAnalyticsDropdown-Wrapper .grid-box label {
+  text-align: center !important;
+}
+.molecules-logAnalyticsDropdown-Wrapper .molecules-exam-dropdown .dropdown-box {
+  padding-right: 8px;
+  min-width: 170px;
+}
+.molecules-logAnalyticsDropdown-Wrapper .molecules-type-dropdown .dropdown-box {
+  min-width: 170px;
+}
+.molecules-logAnalyticsDropdown-Wrapper .molecules-user-dropdown .dropdown-box {
+  min-width: 170px;
+}
+
+@media (max-width: 596px) {
+  .molecules-logAnalyticsDropdown-Wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .molecules-logAnalyticsDropdown-Wrapper .molecules-user-dropdown {
+    justify-content: flex-start;
+  }
+  .molecules-logAnalyticsDropdown-Wrapper .molecules-exam-dropdown {
+    display: grid;
+    grid-template-columns: repeat(2, 30%);
+  }
+  .molecules-logAnalyticsDropdown-Wrapper .molecules-type-dropdown {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 876px) {
+.molecules-logAnalyticsDropdown-Wrapper .atoms-Select {
+  padding-right: 20px;
+}
+
+  .molecules-logAnalyticsDropdown-Wrapper
+    .molecules-type-dropdown
+    .dropdown-box,
+  .molecules-logAnalyticsDropdown-Wrapper
+    .molecules-user-dropdown
+    .dropdown-box,
+  .molecules-logAnalyticsDropdown-Wrapper
+    .molecules-exam-dropdown
+    .dropdown-box {
+    min-width: 180px;
+  }
+
+  .molecules-logAnalyticsDropdown-Wrapper {
+    display: flex;
+    flex-direction: column;
+    transform: translateX(10%);
+  }
+  .molecules-logAnalyticsDropdown-Wrapper .molecules-user-dropdown {
+    justify-content: flex-start;
+  }
+
+  .molecules-logAnalyticsDropdown-Wrapper .molecules-type-dropdown {
+    justify-content: flex-start;
+  }
+  .molecules-logAnalyticsDropdown-Wrapper .molecules-exam-dropdown {
+    display: grid;
+    grid-template-columns: repeat(2, 30%);
+  }
+
+  .molecules-logAnalyticsDropdown-Wrapper
+    .molecules-exam-dropdown
+    .dropdown-box {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 496px) {
+  .molecules-logAnalyticsDropdown-Wrapper {
+    font-size: 12px;
+  }
+
+  .molecules-logAnalyticsDropdown-Wrapper
+    .molecules-type-dropdown
+    .dropdown-box,
+  .molecules-logAnalyticsDropdown-Wrapper
+    .molecules-user-dropdown
+    .dropdown-box,
+  .molecules-logAnalyticsDropdown-Wrapper
+    .molecules-exam-dropdown
+    .dropdown-box {
+    min-width: 140px;
+  }
+}

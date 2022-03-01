@@ -1,0 +1,43 @@
+.molecules-LearningTimeRankingTable-wrapper {
+  box-shadow: 0px 5px 10px #00000017;
+  padding: 24px 40px;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+.molecules-LearningTimeRankingTable-wrapper .table thead th{
+  border-top: none;
+  border-bottom: 1px solid #efefef;
+  white-space: nowrap;
+}
+
+.molecules-LearningTimeRankingTable-wrapper .table td{
+  border-top: none;
+  border-bottom: 1px solid #efefef;
+  font-size: 14px;
+  font-family: normal;
+  min-width: 100px;
+  padding-right: 0;
+}
+
+.molecules-LearningTimeRankingTable-wrapper .table .molecules-id-col {
+  min-width: 50px;
+}
+
+.molecules-LearningTimeRankingTable-wrapper .learningRankHeader {
+  background-color: #fff !important;
+}
+
+.molecules-LearningTimeRankingTable-wrapper .table tr:nth-child(2n+1) {
+  background-color: #f6f8fa;
+}
+
+.molecules-LearningTimeRankingTable-wrapper thead tr th:first-child,
+.molecules-LearningTimeRankingTable-wrapper tbody tr td:first-child {
+  width: 10%;
+}
+
+.molecules-LearningTimeRankingTable-wrapper thead tr th,
+.molecules-LearningTimeRankingTable-wrapper tbody tr td{
+  width: 22.5%;
+}

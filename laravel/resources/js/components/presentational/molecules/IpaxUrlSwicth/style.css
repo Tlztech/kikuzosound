@@ -1,0 +1,19 @@
+.molecules-modal-bodyWrapper{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.molecules-modal-bodyWrapper .molecules-label-copyURL{
+    margin-left: 20px;
+}
+.molecules-modal-bodyWrapper .molecules-input-moodleURL{
+    width: 80% !important;
+}
+.molecules-modal-bodyWrapper .molecules-label-copyURLTitle{
+    font-size: 20px;
+    padding-left: 10px;
+}
+.molecules-modal-bodyWrapper .MuiSvgIcon-root.molecules-icon-link {
+    color: #ffff;
+    border-radius: 50%;
+    background-color: #39b0f2;
+}

@@ -1,0 +1,52 @@
+.organism-examAnalyticsTable-wrapper {
+  padding: 24px 40px;
+  box-shadow: 0px 5px 10px #00000017;
+  border-radius: 8px;
+  opacity: 1;
+  margin-bottom: 24px;
+}
+
+.organism-examAnalyticsTable-wrapper tbody {
+  display: block;
+  height: 40vh;
+  overflow-x: auto;
+  overflow-y: overlay;
+}
+
+.organism-examAnalyticsTable-wrapper td,
+.organism-examAnalyticsTable-wrapper th {
+  text-align: left;
+  word-wrap: break-word;
+  width: auto;
+  border-top: none;
+  border-bottom: 1px solid #efefef;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 14px 5px;
+}
+
+.organism-examAnalyticsTable-wrapper .table {
+  min-width: 800px;
+}
+
+.organism-examAnalyticsTable-wrapper thead,
+.organism-examAnalyticsTable-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.organism-examAnalyticsTable-wrapper .no-data {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+}
+
+@media (max-width: 1200px) {
+  .organism-examAnalyticsTable-wrapper td,
+  .organism-examAnalyticsTable-wrapper th {
+    font-size: 8px;
+  }
+}

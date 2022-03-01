@@ -1,0 +1,95 @@
+.organism-add-xray-library-container .organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-add-xray-library-container .organism-modal-image {
+  width: 16px;
+}
+
+.organism-add-xray-library-container .organism-add-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-add-xray-library-container .organism-add-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-add-xray-library-container .labelstyle {
+  font-weight: bold;
+}
+
+.organism-add-xray-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 25%;
+}
+
+.organism-add-xray-library-container .atoms-input {
+  width: 68%;
+}
+
+.organism-add-xray-library-container .MuiDropzoneArea-root {
+  width: 91% !important;
+  margin-left: 0.5em !important;
+}
+
+.organism-add-xray-library-container .xray-add-modal-item {
+  width: 100%;
+  font-weight: bold;
+}
+
+.organism-add-xray-library-container .teast {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.organism-add-xray-library-container .select-style {
+  margin-left: 8px;
+  width: 300px;
+  height: 38px;
+}
+
+.organism-add-xray-library-container .px-no {
+  width: 35px;
+}
+
+.organism-add-xray-library-container .select-second {
+  padding-left: 240px;
+}
+
+.organism-add-xray-library-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-add-xray-library-container .select-item {
+  margin-left: 27%;
+}
+
+.organism-add-xray-library-container .select2-container {
+  min-width: 120px;
+  margin-right: 12px;
+}
+
+.organism-add-xray-library-container .MuiDropzonePreviewList-image {
+  height: auto !important;
+  margin-left: 0.6em;
+  margin-top: 0.5em;
+  min-width: 259px;
+}
+
+.organism-add-xray-library-container .MuiTypography-h5{
+  font-size: 14px;
+}
+
+.organism-add-xray-library-container .file-select {
+  width: 68%;
+  margin-left: 16px;
+}

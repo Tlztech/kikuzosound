@@ -1,0 +1,276 @@
+
+.main_wrapper.ausculaide{
+    /* overflow-y: hidden;
+    overflow-x: hidden; */
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.panel-content .imgsss{
+    /*width: 700px;*/
+    width: 100%;
+    height: 129%;/* 394px; */
+    /*max-height: 421px;*/
+    /*max-width: 810px;*/
+    z-index: 1;
+}
+
+.main.ausculaide {
+    width: 99.9%;
+    height: 100% !important;
+    /* top: -135px; */
+    overflow: hidden;
+}
+
+.btn-points {
+    height: 28px !important;
+    width: 70px !important;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 8px;
+    font-size: 16px;
+    color : black;
+    font-weight: 400;
+}
+
+.btn-point-active {
+    background-color: #47B8E8;
+    border-color: #47B8E8;
+    color: #fff;
+}
+
+.btn-points:disabled {
+    background-color: whitesmoke;
+    color: darkgray;
+}
+
+.content {
+    width: 100%;
+    height: 440px;
+}
+
+.top-content {
+    width: 720px;
+
+}
+
+
+.learning-list {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 520px;
+}
+
+.pathosis-learning {
+    position: static;
+    top: 0px;
+    padding-left: 0;
+}
+
+.learning-list .pathosis-list-wrapper {
+    height: auto;
+}
+
+.case-learning {
+    position: static;
+    left: 120px;
+    top: 20px;
+    height: auto;
+    margin-top: 20px;
+}
+
+
+.explanation {
+    width: 95%;/*734px;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.left-pane {
+    /*top: 10px;*/
+    display: none !important;
+    width: 100%;
+    left: 0;
+}
+
+.left-panel-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-panel-content {
+    top: 265px;
+}
+
+#image-view-panel {
+    width: 720px;
+    height: 480px;
+}
+
+#image-view-panel img {
+    left: 0;
+    right: 0;
+    top: 80px;
+    width: 704px;
+    height: 396px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#btn-image-viewer-panel-close {
+    left: 10px;
+}
+
+#video-view-panel  {
+    width: 720px;
+    height: 480px;
+}
+
+#video-view-panel-body  {
+    left: 40px;
+    top: 80px;
+    width: 640px;
+    height: 360px;
+}
+
+.bodymap-frame {
+    right: auto !important;
+    left: 0px !important;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    top: 0px;
+    width: 500px;
+    height: 400px;
+}
+
+.bodymap-frame.type-respiratory {
+    left: 0;
+    right: 0;
+    top: 650px;
+}
+/*modal*/
+.modal-dialog {
+    max-width: 690px !important;
+}
+
+.modal-content{
+    top: -5px;
+}
+
+.footer{
+    /* top: 90px; */
+    background-color: transparent;
+    height: 50px;
+    width: 100%;
+}
+
+.section1{
+    display: none;
+}
+
+#bodymap-cardiac .bodymap-front{
+    top: -0.7em;
+    background-size: contain;
+    background-position: center; 
+    width: 500px;
+    height: 400px;
+    padding-top: unset;
+}
+/* #stethoscope{
+    width: 40px;
+    height: 50px;
+} */
+
+#btn-case-top {
+    width: 45px;
+    height: 45px;
+    top: -6px;
+    bottom: 1em;
+    left: 5px;
+    background: transparent url(../img/reload_icon.png) center no-repeat;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 8px;
+}
+
+.explanation-inner .scroll-view{
+    font-size: 25px;
+    height: 74px;
+    line-height: 35px;
+    margin-top: 25px;
+}
+
+.balloon{
+    top: 133px;
+    height: 160px;
+    left: 0;
+    width: 100%;
+}
+
+.explanation-inner{
+    overflow-y: scroll;
+    display: table;
+}
+
+#center{
+    width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.panel {
+    display: none;
+}
+
+.offline-btn-switch{
+    clear: both;
+    position: absolute;
+    z-index: 1;
+    outline: none;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+@media only screen and (max-width: 520px)  {
+    .offline_switch_wrapper .switch.btn-xs {
+        min-width: 53px !important;
+        min-height: 20px !important;
+        
+    }
+    .sound_conts_open .offline_switch_wrapper{
+        bottom: 68px !important;
+        right: -30px;
+    }
+    .offline_switch_wrapper label.btn-xs{
+        font-size: .600rem !important;
+    }
+
+    .offline_switch_wrapper .btn-xs{
+        padding: .35rem .4rem .25rem .4rem !important;
+    }
+
+    .btn-points {
+        height: 35px !important;
+    }
+    /* #bodymap-cardiac .bodymap-front{
+        background-size: 60% 80%;
+    }
+    #stethoscope{
+        width: 32px;
+        height: 32px;
+    } */
+    /* .bodymap-frame {
+        height: 300px;
+    } */
+    /* .bodymap-frame .loading-wrapper {
+        width: 60%;
+    }
+    footer{
+        top: 0px;
+    } */
+}

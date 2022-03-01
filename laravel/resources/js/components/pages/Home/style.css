@@ -1,0 +1,8 @@
+.page-home-wrapper ::-webkit-scrollbar{
+  width: 0; 
+  background: transparent;
+}
+
+.page-home-wrapper{
+  overflow-x:hidden;
+}

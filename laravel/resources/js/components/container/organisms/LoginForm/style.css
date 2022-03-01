@@ -1,0 +1,37 @@
+.organism-LoginForm-wrapper {
+  display: grid;
+  margin: 50px auto;
+  width: 400px;
+}
+
+.organism-LoginForm-wrapper .login-failed-error-message {
+  color: red !important;
+}
+
+.molecules-LoginButton-wrapper .atoms-button {
+  width: 100%;
+  background-color: #39b0f2;
+  border-radius: 5px;
+}
+
+.molecules-LoginButton-wrapper {
+  width: 35%;
+  margin: auto;
+}
+
+.organism-LoginForm-wrapper .atoms-p {
+  text-align: center;
+  margin-top: 12px;
+  letter-spacing: 0.47px;
+  color: #a4c2da;
+}
+
+.organism-LoginForm-wrapper .atoms-p:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 740px) {
+  .organism-LoginForm-wrapper {
+    width: auto;
+  }
+}

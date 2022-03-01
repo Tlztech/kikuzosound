@@ -1,0 +1,15 @@
+.molecules-quizExplainWithImage-wrapper .molecules-quizExplain-image-wrapper {
+  background-color: #EEEEEE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.molecules-quizExplainWithImage-wrapper .atoms-label {
+  font-size: 14px;
+}
+
+.molecules-quizExplainWithImage-wrapper .atoms-Image {
+  width: 50%;
+}

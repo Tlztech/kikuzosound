@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - china-production
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: ssh key generate
+      run: echo "$KIKUZUSOUND_CN_SSH_PRIVATE_KEY" > key && chmod 600 key
+      env:
+        KIKUZUSOUND_CN_SSH_PRIVATE_KEY: ${{ secrets.KIKUZUSOUND_CN_SSH_PRIVATE_KEY }}
+    - name: Secrets replace DB user and PW
+      run: |
+        sed -i'.bak' 's/${PRODUCTION_DB_USER}/${{ secrets.PRODUCTION_DB_USER }}/g' ./3sportal_ld/.env.production; 
+        sed -i'.bak' 's/${PRODUCTION_DB_USER}/${{ secrets.PRODUCTION_DB_USER }}/g' ./laravel/.env.production; 
+        sed -i'.bak' 's/${PRODUCTION_DB_PASSWORD}/${{ secrets.PRODUCTION_DB_PASSWORD }}/g' ./3sportal_ld/.env.production;
+        sed -i'.bak' 's/${PRODUCTION_DB_PASSWORD}/${{ secrets.PRODUCTION_DB_PASSWORD }}/g' ./laravel/.env.production;
+    - name: check file
+      run: ls -al
+    - name: Making tar for Deploy
+      run: bash ./prepare_alibaba_production.sh production
+    - name: Deploying
+      run: bash ./exec_deploy_alibaba_production.sh key

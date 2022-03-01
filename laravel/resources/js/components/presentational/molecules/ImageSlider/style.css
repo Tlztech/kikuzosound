@@ -1,0 +1,42 @@
+.molecules-imageSlider-container .molecules-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 240px;
+}
+
+.molecules-imageSlider-container .atoms-Image {
+  margin: 0 8px;
+  width: 200px;
+}
+
+.molecules-imageSlider-container .molecules-circle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.molecules-imageSlider-container .MuiSvgIcon-root {
+  fill: #dfdddd;
+  background-color: #777777;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.molecules-imageSlider-container .molecules-unselected-image-circle {
+  background-color: #afaeae;
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  border-radius: 100%;
+}
+
+.molecules-imageSlider-container .molecules-selected-image-circle {
+  background-color: #1f1f1f;
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  border-radius: 100%;
+}

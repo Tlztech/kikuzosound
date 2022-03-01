@@ -1,0 +1,11 @@
+.molecules-LogAnalyticsIconContainer {
+  display: flex;
+}
+
+.molecules-LogAnalyticsIconContainer .atoms-Image {
+  width: 30px;
+  height: 30px;
+  margin: 0 8px;
+  cursor: pointer;
+  margin-bottom: 2px;
+}

@@ -1,0 +1,23 @@
+.molecules-inputwithlabel-wrapper {
+  display: flex;
+}
+
+.molecules-inputwithlabel-wrapper .atoms-label {
+  text-align: left;
+  font-weight: bold;
+}
+.molecules-inputwithlabel-wrapper .atoms-input {
+  width: 300px;
+  margin-left: 15px;
+}
+.justify-left-inputwithlabel {
+  float: left;
+}
+.justify-right-inputwithlabel {
+  float: right;
+}
+@media (max-width: 740px) {
+  .molecules-inputwithlabel-wrapper .atoms-input {
+    margin: 0px;
+  }
+}

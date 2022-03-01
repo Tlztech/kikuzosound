@@ -1,0 +1,270 @@
+@extends('layouts.app')
+
+@section('title', '聴診音ライブラリ')
+
+@section('breadcrumb')
+{!! Breadcrumbs::render('contents') !!}
+@endsection
+
+@section('content')
+
+<div id="container">
+  <div class="container_inner clearfix">
+
+    <!----------------------------------- .contents --------------------------------- -->
+    <div class="contents">
+      <div class="contents_title clearfix"><h2>聴診音ライブラリ</h2><span class="title_line"></span></div>
+      <!-- .contents_search -->
+      <form action="{{route('contents')}}" method="get">
+        <div class="contents_search">
+         <div class="search_box">
+            <p class="search_box_inner clearfix">
+              <input type="hidden" name="filter" value="{{Input::get('filter','')}}" />
+              <input class="search_keyword" placeholder="キーワードで探す" type="text" name="keyword" value="{{ Input::get('keyword','')}}"/>
+              <button class="search_btn"></button>
+            </p>
+          </div>
+          <!-- /.search_box -->
+
+          <!-- .select_tag -->
+          <ul class="select_tag pc_none">
+            <li><a href="{{route('contents')}}" class="{{Input::get('filter') == '' ? 'active' : '' }}">ALL</a></li>
+            <li><a href="?filter=2" class="{{Input::get('filter') == 2 ? 'active' : '' }}">心音</a></li>
+            <li><a href="?filter=1" class="{{Input::get('filter') == 1 ? 'active' : '' }}">肺音</a></li>
+            <li><a href="?filter=3" class="{{Input::get('filter') == 3 ? 'active' : '' }}">腸音</a></li>
+            <li><a href="?filter=9" class="{{Input::get('filter') == 9 ? 'active' : '' }}">その他</a></li>
+          </ul>
+          <!-- /.select_tag -->
+
+          <!-- .total_result -->
+          <div class="total_result clearfix">
+            <!-- .total_number -->
+            <p class="total_number">Total:{{$stetho_sounds->total()}}件</p>
+            <!-- /.total_number -->
+            <!-- .select_sort -->
+            <p class="select_sort">
+              <select name="sort">
+                <option value="desc" {{ Input::get('sort') != 'asc' ? 'selected' : '' }}>新着順</option>
+                <option value="asc" {{ Input::get('sort') == 'asc' ? 'selected' : '' }}>古い順</option>
+              </select>
+            </p>
+            <script type="text/javascript">
+            ;(function($) {
+              'use strict';
+              $('select[name=sort]').on('change', function(e) {
+                var sort = $(this).val();
+                $(this).closest('form').submit();
+              });
+            })(jQuery);
+            </script>
+            <!-- /.select_sort -->
+          </div>
+          <!-- /.total_result -->
+        </div>
+      </form>
+      <!-- /.contents_search -->
+
+      <!-- .sound_list -->
+      <ul class="sound_list accordion">
+
+        <!--------------------------------------------------------- -->
+        @forelse($stetho_sounds as $sound)
+        <?php $type_strings = [ 1 => '肺音', 2 => '心音', 3 => '腸音', 9 => 'その他' ]; ?>
+        <!-- .sound_box -->
+        <li class="sound_box">
+          <!-- TODO:1:肺音、2:心音、3:腸音、9:その他 -->
+          <p class="tag"><span>{{$type_strings[$sound->type]}}</span></p>
+          <div class="sound_box_inner">
+
+            <!-- .sound_title -->
+            <div class="sound_accordion_open sound_title accordion_active">
+              <p class="name" title="{{ $sound->title }}">{{$sound->title}}</p>
+            </div>
+            <!-- /.sound_title -->
+            <!-- .audio -->
+            <div class="audio">
+              <div class="audiojsZ">
+                <audio src="{{ $sound->sound_path.'?_='.date('YmdHis', strtotime($sound->updated_at)) }}"></audio>
+                <div class="play-pauseZ">
+                  <span class="line"></span>
+                  <p class="playZ"></p>
+                  <p class="pauseZ"></p>
+                  <p class="loadingZ"></p>
+                  <p class="errorZ"></p>
+                </div>
+                <div class="scrubberZ">
+                  <div class="progressZ"></div>
+                  <div class="loadedZ"></div>
+                </div>
+                <div class="timeZ">
+                  <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+                </div>
+                <div class="error-messageZ"></div>
+              </div>
+            </div>
+            <!-- /.audio -->
+
+            <!-- .sound_conts -->
+            <div class="sound_conts accordion_conts">
+              <div class="sound_conts_inner">
+                <p class="sound_conts_inner_title">{{ $sound->title }}</p>
+                <p class="text">{{$sound->description}}</p>
+                <!-- .img_slide -->
+                @if($sound->images->count())
+                <div class="img_slide">
+                  <div class="img_slide_inner">
+                    <ul class="bxslider">
+                      @foreach($sound->images as $image)
+                        <li><img src="{{ $image->image_path.'?_='.date('YmdHis', strtotime($image->updated_at)) }}" style="cursor: pointer;"/>
+                        <p hidden="" id="sl_image_title">{{$image->title}}</p>
+                        </li>
+                        <!-- TODO: 画面説明　-->
+                      @endforeach
+                    </ul>
+                  </div>
+                  <p class="img_slider_text" @if(!$sound->images->first()->title) hidden @endif id="image_title">{{$sound->images->first()->title}}</p>
+                </div>
+                @endif
+                <!-- /.img_slide -->
+                <!-- .table_desc -->
+                <?php $is_normal_strings = [ 1 => '正常音', 0 => '異常音']; ?>
+                <?php $conversion_type_strings = [ 0 => '採取オリジナル', 1 => '加工音', 2 => '人工音' ]; ?>
+                <div class="desc_table">
+                  <dl><dt>聴診音名：</dt><dd>{{ $sound->title }}</dd></dl>
+                  <dl><dt>聴診音種別：</dt><dd>{{$is_normal_strings[$sound->is_normal]}}</dd></dl>
+                  <dl><dt>代表疾患：</dt><dd>{{$sound->disease}}</dd></dl>
+                  <dl><dt>聴診部位：</dt><dd>{{$sound->area}}</dd></dl>
+                </div>
+                <!-- /.table_desc -->
+              </div>
+              <!-- .sound_conts_inner -->
+            </div>
+            <!-- /.sound_conts -->
+          </div>
+          <!-- /.sound_box_inner -->
+        </li>
+        <!-- /.sound_box -->
+        @empty
+          <li class="sound_box">
+            <div class="sound_box_inner">
+              <p class="sound_box_empty_msg">{{ INPUT::get('keyword') ?: '検索条件' }}に一致するコンテンツは見つかりませんでした。</p>
+            </div>
+          </li>
+
+        @endforelse
+
+      </ul>
+      <!-- /.sound_list -->
+
+      <!-- .pager -->
+      <div class="pager">
+        <div class="pager_inner">
+          {!! (new App\Http\Paginators\PagingPaginator(
+                $stetho_sounds->appends([
+                  'keyword'=>Input::get('keyword',''),
+                  'filter'=>Input::get('filter',''),
+                  'sort'=>Input::get('sort','')
+                ])
+            ))->render()
+          !!}
+        </div>
+      </div>
+      <!-- /.pager -->
+
+    </div>
+    <!-- /.contents -->
+
+    <!----------------------------------- /.contents --------------------------------- -->
+
+
+
+    <!----------------------------------- .side_column --------------------------------- -->
+    <div class="side_column">
+
+      <!-- .side_box contents_list -->
+      <div class="side_box mB20 sp_none">
+        <h3 class="side_title">聴診音ライブラリ</h3>
+        <!-- .contents_list -->
+        <ul class="contents_list">
+          <li><a href="{{route('contents')}}" class="{{Input::get('filter') == '' ? 'active' : '' }}">ALL</a></li>
+          <li><a href="?filter=2" class="{{Input::get('filter') == 2 ? 'active' : '' }}">心音</a></li>
+          <li><a href="?filter=1" class="{{Input::get('filter') == 1 ? 'active' : '' }}">肺音</a></li>
+          <li><a href="?filter=3" class="{{Input::get('filter') == 3 ? 'active' : '' }}">腸音</a></li>
+          <li><a href="?filter=9" class="{{Input::get('filter') == 9 ? 'active' : '' }}">その他</a></li>
+        </ul>
+        <!-- /.contents_list -->
+      </div>
+      <!-- /.side_box -->
+      <!-- 聴診スピーカーについて -->
+      @include('layouts.whatspeaker')
+      <!-- スポンサーリンク -->
+      @include('layouts.advertisement')
+    </div>
+    <!----------------------------------- /.side_column --------------------------------- -->
+
+  </div>
+  <!-- /#container_inner -->
+</div>
+<!-- /#container -->
+
+
+<div id="overlay"></div><!-- /#overlay -->
+
+</div>
+
+<script type="text/javascript" src="/js/jquery.sss_portal.audio.js?v=1.1.7"></script>
+<script type="text/javascript">
+audiojs.events.ready(function() {
+  var audios = document.getElementsByTagName('audio');
+  if (audios.length > 0) {
+    var a1 = audiojs.create(audios, {
+      css: false,
+      createPlayer: {
+        markup: false,
+        playPauseClass: 'play-pauseZ',
+        scrubberClass: 'scrubberZ',
+        progressClass: 'progressZ',
+        loaderClass: 'loadedZ',
+        timeClass: 'timeZ',
+        durationClass: 'durationZ',
+        playedClass: 'playedZ',
+        errorMessageClass: 'error-messageZ',
+        playingClass: 'playingZ',
+        loadingClass: 'loadingZ',
+        errorClass: 'errorZ'
+      }
+    });
+  }
+
+  $({}).sss_portal.audio({
+    audioJsObj: a1
+  });
+});
+</script>
+<script type="text/javascript" src="/js/jquery.imagebox.js?v=1.1.6.20170323"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.sound_box img').imagebox();
+});
+</script>
+<script type="text/javascript">
+(function($){
+  $('.sound_box .playZ').logger({
+    url: '/log',
+    data: function(elm) {
+      var $sound_box = $(elm).closest('.sound_box');
+      var data = {
+        screen_code: 'HOME',
+        event_code: 'PLAY',
+        body: {
+          id: $sound_box.data('id'),
+          type: $.trim($sound_box.find('.tag').text()),
+          title: $sound_box.find('.sound_title .name').attr('title')
+        }
+      };
+      return data;
+    }
+  });
+})(jQuery);
+</script>
+@endsection

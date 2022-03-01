@@ -1,0 +1,35 @@
+.template-QuizPacks-wrapper {
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  display: grid;
+}
+
+.template-QuizPacks-wrapper .molecules-SearchInput-wrapper {
+  position: relative;
+}
+
+.template-QuizPacks-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.template-QuizPacks-wrapper .QuizPacks-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 44px;
+}
+
+.template-QuizPacks-wrapper .SearchWithDownloadOption {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.template-QuizPacks-wrapper .molecules-DownloadOptions-wrapper {
+  margin-left: 30px;
+}

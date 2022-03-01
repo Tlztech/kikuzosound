@@ -1,0 +1,115 @@
+.organism-edit-ucg-library-container .organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-edit-ucg-library-container .modal-body {
+  padding: 32px;
+}
+
+.organism-edit-ucg-library-container .file-select {
+  width: 70% !important;
+  margin-left: 15px;
+}
+
+.organism-edit-ucg-library-container audio {
+  width: 72%;
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-edit-ucg-library-container video {
+  width: 200px;
+  margin: 20px;
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-edit-ucg-library-container .organism-modal-image {
+  width: 16px;
+}
+
+.organism-edit-ucg-library-container .organism-edit-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-edit-ucg-library-container .organism-edit-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-edit-ucg-library-container .atoms-label {
+  font-size: 16px;
+}
+
+.organism-edit-ucg-library-container .labelstyle {
+  font-weight: bold;
+  margin-right: 0px !important;
+}
+
+.organism-edit-ucg-library-container textarea.form-control {
+  height: auto !important;
+}
+
+.organism-edit-ucg-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-input {
+  width: 70%;
+  height: 41px;
+}
+
+.organism-edit-ucg-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 25%;
+}
+
+.organism-edit-ucg-library-container .chooseStyle {
+  width: 92%;
+  height: 41px;
+  padding: 4px;
+  border-radius: 3px;
+  padding-left: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.organism-edit-ucg-library-container .icon-img {
+  position: relative;
+  width: 177px;
+  height: 100px;
+  margin: 10px 0;
+}
+
+.ucg-edit-modal-item {
+  width: 100%;
+  font-weight: bold;
+}
+
+.organism-edit-ucg-library-container .error {
+  color: rgb(194, 68, 68);
+}
+
+.organism-edit-ucg-library-container .select-item {
+  margin-left: 24%;
+}
+
+.organism-edit-ucg-library-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-edit-ucg-library-container img {
+  height: auto;
+}
+
+.organism-edit-ucg-library-container .file-select {
+  width: 93%
+}

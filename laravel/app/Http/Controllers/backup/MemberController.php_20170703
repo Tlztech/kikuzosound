@@ -1,0 +1,285 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Input;
+//use DB;
+use Validator;
+use Closure;
+//use Cookie;
+use Config;
+use Session;
+use Log;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use App\Http\Requests\MemberLoginRequest;
+use App\Account;
+use App\Product;
+use App\AccountsProduct;
+use App\StethoSound;        //★home呼び出し用
+
+//DS自動ログイン用の固定値（アカウント、製造番号など）
+//define('USER_DS_SP', 'test');     //自動ログイン用の第一三共特別アカウント★テスト
+//define('USER_DS_SP', 'USER_DS_SP');     //自動ログイン用の第一三共特別アカウント
+define('USER_DS_SP', 'daiichisankyo.co.jp-1001');     //自動ログイン用の第一三共特別アカウント
+define('PASSWORD_DS_SP', '141-1000-t8w0sj');     //自動ログイン用の第一三共特別アカウント
+define('PRODUCT_NO_DS_SP', '141');     //第一三共特別アカウントの製造番号
+//define('PRODUCT_NO_DS1', '21');     //★仮にtestアカウントの製造番号（21-23）の1つめ
+define('LOGIN_AUTO_RETURN_URL', env('TMN_URL') . '');     //自動ログイン後の戻り先＝テレメディカネット（.envに記述）
+
+class MemberController extends Controller {
+
+    function __construct() {
+        date_default_timezone_set('Asia/Tokyo');
+    }
+
+    /**
+     * ログイン認証
+     * @param $user		ユーザーアカウント
+     * @param $password	パスワード
+     * @param $product_no	製造番号
+     *
+     */
+    //    public function member_login_chk($request, $user, $password, $product_no) {
+    public function member_login_chk($user, $password, $product_no) {
+
+        // 現在日時
+        $now = Carbon::now();
+
+        $account_user = $user;    //通常は入力されたユーザー名でログイン
+
+        $msg = '';
+        $msg .= 'user=[' . $user . ']<br>';
+        $msg .= 'password=[' . $password . ']<br>';
+
+        $auth = 0;  // 0:NG 1:OK
+
+        $account = Account::where('user', $account_user)->first();       //ユーザーアカウントでアカウントデータを取得
+        if ($account) {
+            //ユーザーアカウントOK
+            $account_id = $account->id;
+            $password_hash = $account->password;
+            $account_auth = $account->auth;        //重複の可否（0=非許可,1=許可）
+            $msg .= 'account_id=[' . $account_id . ']<br>';
+            $msg .= 'password_verify=[' . password_verify($password, $password_hash) . '], password_hash=[' . $password_hash . ']<br>';
+            $msg .= 'account_auth=[' . $account_auth . ']<br>';
+            if (password_verify($password, $password_hash)) {
+                //パスワードOK
+                //ユーザーアカウントとパスワードの認証はOK
+                $int_product_no = intval($product_no);      //製造番号
+                $product = Product::where('product_no', $product_no)->first();
+                if ($product) {
+                    $product_id = $product->id;      //製品ID
+//$account_auth = 1;        //★テスト　重複の可否（0=非許可,1=許可）
+                    if ($account_auth === 1) {
+                        //重複許可なら
+                        //認証OK（重複チェックは行わない）
+                        $auth = 1;  // 0:NG 1:OK
+                    } else {
+                        //重複チェック
+                        //$valid_time = 12;   //有効時間（単位：時間）
+                        $ap1 = \App\AccountsProduct::where('account_id', $account_id)->where('product_id', $product_id)->first();
+                        if ($ap1) {
+                            $dt_now = new Carbon(Carbon::now());
+                            //$valid_time = 12;
+                            $valid_time = env('MEMBER_3SP_LOGIN_VALID_TIME');
+                            $session_lifetime = $valid_time * 60;       //時間を分に変換
+                            $login_at = $ap1->login_at;      //最終ログイン日時
+                            $dt_login_at = Carbon::parse($login_at);
+                            $dt_valid = $dt_login_at->addMinute($session_lifetime);
+                            //$dt_valid = $dt_login_at->addHour($valid_time);
+
+                            $msg .= 'now=[' . $dt_now . ']<br>';
+                            $msg .= 'login_at=[' . $login_at . ']<br>';
+                            $msg .= 'valid=[' . $dt_valid . ']<br>';
+
+                            if ($login_at === null) {       //最終ログイン日時がNULL
+                                //認証OK
+                                $auth = 1;  // 0:NG 1:OK                            
+                            } elseif ($dt_now > $dt_valid) {      //最終ログイン日時から指定時間（12時間）以上経過していれば、
+                                //認証OK
+                                $auth = 1;  // 0:NG 1:OK
+                            } else {
+                                $auth = 0;  // 0:NG 1:OK                            
+                            }
+                            //        if ($login_at + 12h < now()) {
+                        }
+                    }
+                }
+            }
+        }
+
+        $msg .= 'auth=[' . $auth . ']<br>';
+
+        if ($auth === 0) {
+            //NG
+            $msg_err = $msg;
+        } else {
+            $msg_err = '';
+            //ログイン成功
+            //cookie か sessionにUSERを保存して
+            $valid_time = env('MEMBER_3SP_LOGIN_VALID_TIME');       //有効時間（単位：時間）
+            if (!is_numeric($valid_time)) {
+                $valid_time = 12;       //指定が無ければデフォルト値12時間
+            }
+            $minutes = intval(60 * $valid_time);        //時間を分に変換
+            Config::set('session.lifetime', $minutes);      //Session有効時間（分）を設定
+            
+            Session::forget('MEMBER_3SP_USER');
+            Session::forget('MEMBER_3SP_LOGIN_AT');
+            Session::forget('MEMBER_3SP_PRODUCT_ID');
+
+            //DB の login_at を更新
+            AccountsProduct::where('product_id', $product_id)->update(['login_at' => $now]);
+
+            Session::put('MEMBER_3SP_USER', $user);
+            Session::put('MEMBER_3SP_LOGIN_AT', $now);
+            Session::put('MEMBER_3SP_PRODUCT_ID', $product_id);
+        }
+
+        return $msg_err;
+//        return $auth;
+    }
+
+    /**
+     * ログインコードで認証する（ログイン画面を表示しない）
+     *
+     */
+    //public function getMemberLoginCode($hash) {
+    public function getMemberLoginCode($code) {
+
+        $msg_err = '';
+
+        //★ここでデコード処理
+        //$code = str_replace('/', '／', $hash);        //TMN側での処理
+        $hash = str_replace('／', '/', $code);      //元のhash値に戻す
+        $today = date("Ymd");
+        $text = 'USER_DS_SP,' . date("Ymd");        //認証文字列（同日は有効）
+        //$hash =  password_hash($code, PASSWORD_DEFAULT);
+        if (password_verify($text, $hash)) {
+            //if ($login_code === $code) {
+            $user = USER_DS_SP;
+            $password = PASSWORD_DS_SP;
+            $product_no = PRODUCT_NO_DS_SP;
+            //$product_no = 1;
+        } else {
+            $user = '';
+            $password = '';
+            $product_no = 0;
+        }
+
+        $msg_err = MemberController::member_login_chk($user, $password, $product_no);       //認証
+        // もし自動ログインで第一三共アカウントなら
+        if ($msg_err !== '') {        //認証NG 
+            $msg = '認証情報を入力してください。<br>';
+            //$msg .= 'login_code=' . $login_code . '<br>';
+            $msg_err .= 'code=' . $code . '<br>';
+            $msg_err .= 'hash=' . $hash . '<br>';
+            $view = 'member_login';    // NGならログイン画面へ
+            return view($view, compact('msg', 'msg_err'));
+        } else {
+            // 自動ログインOK
+            if ($user === USER_DS_SP) {     //第一三共なら
+                // ログイン画面を表示せずテレメディカネットにリダイレクト
+                //              header('Location: ' . LOGIN_AUTO_RETURN_URL);
+                //              exit;
+                $view = 'member_jump';    // ★jump画面へ
+                return view($view, compact('msg', 'msg_err'));
+            } else {
+                //3SPのホーム画面へ
+                // 新着の聴診音
+                $stetho_sounds = StethoSound::publicNewAll()->orderBy('created_at', 'desc')->get();
+                return view('home', compact('stetho_sounds'));
+            }
+        }
+        exit;
+    }
+
+    /**
+     * ログイン画面を表示する
+     *
+     */
+    public function getMemberLogin() {
+
+        $msg = '';
+        $msg_err = '';
+        $login_user = Session::get('MEMBER_3SP_USER');
+        if ($login_user == '') {
+            $msg = '';
+        } else {
+            $msg_err = '★' . $login_user . '★でログインしています';
+        }
+
+        $view = 'member_login';    // ログイン画面
+        return view($view, compact('msg', 'msg_err'));
+    }
+
+    //public function postMemberLogin(MemberLoginRequest $request, Closure $next) {
+    public function postMemberLogin(MemberLoginRequest $request) {
+
+        $msg_err = '';
+
+        //入力されたリクエスト値を取得
+        $user = $request->input('user');
+        $password = $request->input('password');
+        $product_no = $request->input('product_no');
+
+        // ★認証処理
+        $msg_err = MemberController::member_login_chk($user, $password, $product_no);
+//        $auth = MemberController::member_login_chk($user, $password, $product_no);
+
+        $login_user = $request->session()->get('MEMBER_3SP_USER');
+
+        if ($msg_err != '') {    // NGなら
+//        if ($auth === 0) {    // NGなら
+            $msg = 'ログインに失敗しました。';
+            $view = 'member_login';    // NGならログイン画面へ
+            return view($view, compact('msg', 'msg_err'));
+//            return view($view, compact('user', 'password', 'product_no', 'msg'));
+        } else {
+            //3SPのホーム画面へ
+            // 新着の聴診音
+            $stetho_sounds = StethoSound::publicNewAll()->orderBy('created_at', 'desc')->get();
+            return view('home', compact('stetho_sounds'));
+//            return $next($request);   //★ページ遷移を継承　エラーになるため調査中★
+//            ★リダイレクトだとSessionが保存されない？
+//            $url = route('home');
+//            header('Location: '.$url);
+//            exit;
+        }
+//        return view($view, compact('msg',, 'msg_err'));
+    }
+
+    /**
+     * ログアウト
+     *
+     */
+    //    public function getLogout(Request $request) {
+    public function getMemberLogout() {
+
+        $msg = '';
+        $msg_err = '';
+
+        //認証関連のsessionを取得
+        $login_user = Session::get('MEMBER_3SP_USER');
+        $product_id = Session::get('MEMBER_3SP_PRODUCT_ID');
+
+        //login_userが空でも以下のクリア処理は実行する
+        //対象product_idのログイン日時をクリア
+        AccountsProduct::where('product_id', $product_id)->update(['login_at' => NULL]);
+
+        //認証関連のsessionをクリア
+        Session::forget('MEMBER_3SP_USER');
+        Session::forget('MEMBER_3SP_LOGIN_AT');
+        Session::forget('MEMBER_3SP_PRODUCT_ID');
+
+        if ($login_user == '') {
+            $msg = 'ログインしていません。';
+        } else {
+            $msg_err = $login_user . 'をログアウトしました。';
+        }
+        $view = 'member_login';    // ログイン画面を表示
+        return view($view, compact('msg', 'msg_err'));
+    }
+
+}

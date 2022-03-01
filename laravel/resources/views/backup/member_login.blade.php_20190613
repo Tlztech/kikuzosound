@@ -1,0 +1,85 @@
+@extends('layouts.app')
+
+@section('title', 'ログイン')
+
+@section('breadcrumb')
+@endsection
+
+@section('content')
+<!-- メインコンテンツ（左） -->
+<div id="container">
+    <!-- ログインフォーム -->
+    <div class="container_inner clearfix">
+        <div class="contents_box sp_mTB20 mTB20 t_center">
+            <form action="member_login" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="contents_box_inner">
+                    <h2 class="title_m mTB20" style="text-align: center;">認証情報を入力</h2>
+                </div>
+                <ul class="contact_form">
+                    <li>
+                        <label for="" class="">
+                            <p class="input_name must">ユーザID</p>
+                            <input name="user" type="text" maxlength="50" value="{{ old('user') }}"/>
+                            @if($errors->has('user'))
+                            <p style="color:red;font-size:12px;font-weight:bold;margin:0 0 1em 1em;">{{ $errors->first('user') }}</p>
+                            @endif
+                        </label>
+                    </li>
+                    <li>
+                        <label for="" class="">
+                            <p class="input_name must">パスワード</p>
+                            <input name="password" type="password" maxlength="50" value="{{ old('password') }}"/>
+                            @if($errors->has('password'))
+                            <p style="color:red;font-size:12px;font-weight:bold;margin:0 0 1em 1em;">{{ $errors->first('password') }}</p>
+                            @endif
+                        </label>
+                    </li>
+                    <li>
+                        <label for="" class="">
+                            <p class="input_name must">シリアル番号</p>
+                            <input name="product_no" type="text" maxlength="20" value="{{ old('product_no') }}"/>
+                            @if($errors->has('product_no'))
+                            <p style="color:red;font-size:12px;font-weight:bold;margin:0 0 1em 1em;">{{ $errors->first('product_no') }}</p>
+                            @endif
+                            <p class="mB10 t_left">
+                                ※「シリアル番号」は製品の裏面に記載されている8桁<br/>
+                            </p>
+                        </label>
+                    </li>
+                </ul>
+                <div class="contents_box_inner pTB20">
+                    <div class="msg_area">
+                        <span class="msg">{{ $msg }}</span><br>
+                        @if(env('APP_DEBUG'))
+                            <span class="msg_err">{!! $msg_err !!}</span><br>
+                        @endif
+                    </div>
+                    <p class="contact_submit mB20">
+                        <input class="submit_btn"  style="cursor:pointer;" type="submit" value="ログイン"></input>
+                    </p>
+                </div>
+            </form>
+
+            <div class="vest">
+                <div class="vest_title">「認証情報」をまだご登録でない方はこちら</div>
+                <div class="vest_text">
+                    <p>本サイトのコンテンツご利用にはご購入頂いた「聴くゾウ」の登録が必要となります。下記「登録のページへ」から登録をお願い致します。</p>
+                </div>
+                <div class="contents_box_inner pTB20">
+                    <p class="contact_submit mB20 sp_none">
+                        <a class="submit_btn" href="{{route('register')}}" style="cursor:pointer;margin-bottom:0px;">登録のページへ</a>
+                    </p>
+
+                    <p class="contact_submit mB20 pc_none" style="text-align:center;">
+                        <a class="submit_btn" href="{{route('register')}}" style="cursor:pointer;width: 240px;">登録のページへ</a>
+                    </p>
+                </div>
+                <div class="vest_text">
+                    <p>※「聴くゾウ」のご購入等につきましてサイト下部の「お問合わせ」からお問合わせください。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

@@ -1,0 +1,200 @@
+.enable-wrapper {
+  padding-left: 32px;
+  padding-right: 3px;
+}
+
+.organism-ExamManageAdd-modal-container .atoms-checkbox {
+  margin-left: 15px;
+}
+
+.organism-ExamManageAdd-modal-container .modal-dialog {
+  max-width: 60%;
+}
+
+.organism-ExamManageAdd-modal-container .textInput-wrapper {
+  margin-top: 30px;
+}
+
+.organism-ExamManageAdd-modal-container .textInput-wrapper form div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.organism-ExamManageAdd-modal-container .textInput-wrapper .inputStyle {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  outline: none !important;
+  height: 40px !important;
+}
+
+.organism-ExamManageAdd-modal-container .textInput-wrapper .radioStyle {
+  padding-right: 3px;
+}
+.organism-ExamManageAdd-modal-container .textInput-wrapper .form-item {
+  position: relative;
+  grid-template-columns: 22% 78% !important;
+}
+.organism-ExamManageAdd-modal-container .textInput-wrapper .icon-wrapper {
+  grid-template-columns: 50% 50% !important;
+}
+
+.organism-ExamManageAdd-modal-container .inputStyle .background {
+  background: black;
+}
+
+.organism-ExamManageAdd-modal-container .textInput-wrapper .labelStyle {
+  text-align: right;
+  padding-right: 10px;
+  margin-bottom: 0px !important;
+  font-weight: bold;
+  color: #333333;
+}
+
+.organism-ExamManageAdd-modal-container .textInput-wrapper .radioStyle {
+  padding-left: 5px;
+  padding-right: 15px !important;
+  margin-bottom: 0px !important;
+}
+.organism-ExamManageAdd-modal-container-col {
+  margin: 0px 0px 0px 15px;
+  padding: 0px;
+  text-align: left;
+}
+
+.organism-ExamManageAdd-modal-container-col .atoms-input {
+  width: 60%;
+  margin-left: 15px;
+}
+
+.organism-ExamManageAdd-modal-container-col .atoms-label {
+  width: 25%;
+  margin-left: 0px;
+  font-size: 14px;
+  min-width: 70px;
+}
+
+.organism-ExamManageAdd-modal-container-col.examTitle
+  .molecules-inputwithlabel-wrapper {
+  margin-left: 15px;
+}
+
+.organism-ExamManageAdd-modal-container-col .molecules-inputwithlabel-wrapper {
+  float: left;
+  display: block;
+}
+
+.organism-add-modal-footer {
+  margin: auto;
+}
+
+.organism-ExamManageAdd-modal-container .add-button {
+  display: flex !important;
+  justify-content: center;
+  margin: 20px 0px;
+}
+
+.organism-ExamManageAdd-modal-container .error,
+.organism-ExamManageAdd-modal-container .dropzone-error {
+  color: rgb(194, 68, 68);
+  margin-left: 100%;
+  width: max-content;
+}
+
+.organism-ExamManageAdd-modal-container span.atoms-span.center-error {
+  display: flex;
+  justify-content: center;
+  color: rgb(194, 68, 68);
+}
+
+.organism-ExamManageAdd-modal-container input[type="checkbox"] {
+  display: inline-block;
+  font-size: 10px;
+  width: 13px;
+}
+
+.organism-ExamManageAdd-modal-container .organism-add-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-ExamManageAdd-modal-container .organism-cancel-modal-button {
+  margin-left: 10px;
+}
+
+.MuiDropzoneArea-root {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+@media (max-width: 1048px) {
+  .organism-ExamManageAdd-modal-container .labelstyle {
+    word-wrap: break-word;
+    text-align: right;
+  }
+}
+
+@media (max-width: 740px) {
+  .organism-ExamManageAdd-modal-container .modal-dialog {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    text-align: center;
+  }
+  .organism-ExamManageAdd-modal-container-col .atoms-label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .organism-ExamManageAdd-modal-container .input-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .organism-ExamManageAdd-modal-container-col.examTitle {
+    margin-left: 0;
+  }
+
+  .organism-ExamManageAdd-modal-container-col
+    .molecules-inputwithlabel-wrapper {
+    display: grid !important;
+    grid-template-columns: minmax(60px, auto) auto;
+    align-items: baseline;
+  }
+
+  .organism-ExamManageAdd-modal-container-col
+    .molecules-inputwithlabel-wrapper
+    .atoms-input {
+    width: 80%;
+    min-width: 100px;
+  }
+}
+
+.organism-ExamManageAdd-modal-container .MuiDropzoneArea-icon {
+  position: absolute;
+  top: 60%;
+  left: 47.5%;
+  width: 37px;
+  height: 25px;
+}
+
+.organism-ExamManageAdd-modal-container .MuiDropzoneArea-textContainer {
+  white-space: pre-wrap;
+}
+
+.organism-ExamManageAdd-modal-container .MuiTypography-h5 {
+  font-size: 14px;
+}
+
+.organism-ExamManageAdd-modal-container .checkbox-flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

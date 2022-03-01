@@ -1,0 +1,219 @@
+.enable-wrapper {
+  padding-left: 32px;
+  padding-right: 3px;
+}
+
+.organism-edit-modal-container .atoms-checkbox {
+  margin-left: 15px;
+}
+
+.organism-edit-modal-container .modal-dialog {
+  max-width: 60%;
+}
+
+.organism-edit-modal-container .textInput-wrapper form div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.organism-edit-modal-container .textInput-wrapper .inputStyle {
+  width: 100%;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  outline: none !important;
+  height: 40px !important;
+}
+
+.organism-edit-modal-container .textInput-wrapper .radioStyle {
+  padding-right: 3px;
+}
+.organism-edit-modal-container .textInput-wrapper .form-item {
+  grid-template-columns: 22% 78% !important;
+  position: relative;
+}
+.organism-edit-modal-container .textInput-wrapper .icon-wrapper {
+  grid-template-columns: 50% 50% !important;
+}
+
+.organism-edit-modal-container .inputStyle .background {
+  background: black;
+}
+.organism-edit-modal-container .textInput-wrapper .labelStyle {
+  text-align: right;
+  padding-right: 20px;
+  margin-bottom: 0px !important;
+  font-weight: bold;
+  word-wrap: break-word;
+}
+.organism-edit-modal-container .textInput-wrapper .radioStyle {
+  padding-left: 5px;
+  padding-right: 15px !important;
+  margin-bottom: 0px !important;
+}
+.organism-edit-modal-container-col {
+  margin: 0px 0px 0px 15px;
+  padding: 0px;
+  text-align: left;
+}
+
+.organism-edit-modal-container-col .atoms-input {
+  width: 60%;
+  margin-left: 15px;
+}
+
+.organism-edit-modal-container-col .atoms-label {
+  width: 35%;
+  margin-left: 0px;
+  font-size: 14px;
+  min-width: 70px;
+}
+
+.organism-edit-modal-container-col.examTitle .molecules-inputwithlabel-wrapper {
+  margin-left: 15px;
+}
+
+.organism-edit-modal-container-col .molecules-inputwithlabel-wrapper {
+  float: left;
+  display: block;
+}
+
+.organism-edit-modal-footer {
+  margin: auto;
+}
+
+.organism-edit-modal-container .edit-button {
+  display: flex !important;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0px;
+}
+
+.organism-edit-modal-container .error {
+  color: rgb(194, 68, 68);
+}
+
+.organism-edit-modal-container .icon-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.organism-edit-modal-container .icon-img {
+  height: auto;
+  width: 50%;
+}
+
+.organism-edit-modal-container .MuiDropzonePreviewList-image {
+  height: auto;
+}
+
+@media (max-width: 740px) {
+  .organism-edit-modal-container .modal-dialog {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+  }
+  .organism-edit-modal-container-col .atoms-label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .organism-edit-modal-container .input-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .organism-edit-modal-container-col.examTitle {
+    margin-left: 0;
+  }
+
+  .organism-edit-modal-container-col .molecules-inputwithlabel-wrapper {
+    display: grid !important;
+    grid-template-columns: minmax(60px, auto) auto;
+    align-items: baseline;
+  }
+
+  .organism-edit-modal-container-col
+    .molecules-inputwithlabel-wrapper
+    .atoms-input {
+    width: 80%;
+    min-width: 100px;
+  }
+}
+
+.organism-edit-modal-container input[type="checkbox"] {
+  display: inline-block;
+  font-size: 10px;
+  width: 13px;
+}
+
+.organism-edit-modal-container .organism-edit-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-edit-modal-container .organism-cancel-modal-button {
+  margin-top: 0px !important;
+}
+
+.organism-edit-modal-container .error,
+.organism-edit-modal-container.dropzone-error {
+  color: rgb(194, 68, 68);
+  margin-left: 100%;
+  width: max-content;
+}
+
+.organism-edit-modal-container span.atoms-span.center-error {
+  display: flex;
+  justify-content: center;
+  color: rgb(194, 68, 68);
+}
+
+.organism-edit-modal-container .MuiDropzoneArea-icon {
+  position: absolute;
+  top: 60%;
+  left: 47.5%;
+  width: 37px;
+  height: 25px;
+}
+
+.organism-edit-modal-container .MuiDropzoneArea-textContainer {
+  width: min-content;
+}
+
+.organism-edit-modal-container .MuiTypography-h5 {
+  font-size: 14px;
+}
+
+.organism-edit-modal-container select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  /* appearance: none; */
+}
+
+.organism-edit-modal-container .select-arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  right: 2%;
+  pointer-events: none;
+}
+
+.organism-edit-modal-container .checkbox-flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

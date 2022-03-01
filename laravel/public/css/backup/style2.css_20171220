@@ -1,0 +1,258 @@
+.side_column .contents_list li .active{
+  background-color: #FEF5D3;
+}
+.sound_list .sound_title p {
+  text-decoration: none;
+  display: block;
+  float: left;
+  width: 184px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+.sound_list .sound_box_empty_msg {
+  font-size:   14px;
+  font-weight: bold;
+  color: #666;
+  margin-left: 10px;
+  line-height: 60px;
+}
+.youtube_contents {
+  margin-top: 50px;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  width: 100%;
+  /* 高さと幅の比を16:9に固定。9/16*100=56.25 */
+  padding-top: 56.25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.youtube_contents .sp_none {
+  width: 100%;
+  height: 100%;
+  max-width: 854px;
+  max-height: 480px;
+  position: absolute;
+  /* absoluteでmargin:autoを有効にするにはtop, left, right, bottom全てに値を指定する必要がある */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.youtube_contents .pc_none {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.gs_pager {
+  overflow: hidden;
+}
+
+.gs_pager ul {
+  list-style: none;
+  position: relative;
+  left: 50%;
+  float: left;
+}
+
+.gs_pager ul li {
+  margin: 0 1px;
+  position: relative;
+  left: -50%;
+  float: left;
+}
+
+.gs_pager ul li span,
+.gs_pager ul li a {
+  display: block;
+  font-size: 16px;
+  padding: 0.6em 1em;
+  border-radius: 6px;
+}
+
+.gs_pager ul li.active span {
+  background: #FFCC12;
+  color: #fff;
+}
+
+.gs_pager ul li a {
+  background: #ffffff;
+  color: #000;
+  text-decoration: none;
+}
+
+.gs_pager ul li a:hover {
+  background: #FFCC12;
+  color: #FFF;
+}
+
+.side_column .side_advertisement {
+  /* 広告の幅300pxが仕様なのでmarginを引く */
+  width: calc(300px - 8px - 8px);
+  background: #fff;
+  padding: 0px 8px 8px 8px;
+  border: 1px solid #00b9e4;
+  border-radius: 8px;
+}
+.side_column .side_advertisement_text {
+  text-align: center;
+  margin-top: 8px;
+  border: 1px solid #00b9e4;
+  margin-left: auto;
+  margin-right: auto;
+}
+.side_column .side_advertisement_text img {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.side_column .side_advertisement_text p {
+  width: 140px;
+  letter-spacing: 2px;
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 14px;
+  float: left;
+}
+.about {
+  background: #fff;
+  border: 1px solid #CCCCCC;
+  border-radius: 8px;
+  max-width: 720px;
+  margin: 20px 0;
+}
+.about_title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 40px;
+}
+.about_text {
+  font-size: 16px;
+  font-weight: medium;
+  padding:40px 40px 40px 40px;
+}
+.little_title{
+  font-size: 18px;
+  font-weight: bold;
+}
+.news_title {
+  padding-bottom: 25px;
+  background-image: url(../img/news_line_blue.png);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+.news_list {
+  margin: auto;
+  max-width: 600px;
+  /*コンテンツリスト*/
+}
+.news_list li {
+  border-bottom: 1px dotted #ccc;
+  background-image: url(../img/icon_bluesquare.png);
+  background-position: top 24px left 10px;
+  background-repeat: no-repeat;
+  padding: 10px 1em 10px 40px;
+  display: block;
+  /*height: 60px;*/
+  color: #333;
+  line-height: 2;
+}
+.news_list li .first{
+  border-bottom: 1px dotted #ccc;
+  background-image: url(../img/icon_bluesquare.png);
+  background-position: center left 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  display: block;
+  /*height: 60px;*/
+  color: #333;
+  line-height: 60px;
+}
+.news_list {
+  font-size: 16px;
+}
+.news_list time {
+  font-size: 16px;
+  font-weight: bold;
+}
+.news_list span {
+  font-size: 16px;
+}
+
+.vest {
+  background: #fff;
+  border: 1px solid #CCCCCC;
+  border-radius: 8px;
+  max-width: 854px;
+  min-width: 300px;
+  margin: 20px auto;
+}
+.vest p {
+  margin:0px 0px 10px;
+}
+.vest_title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 40px;
+}
+.vest_text {
+  font-size: 16px;
+  font-weight: medium;
+  padding:40px 40px 40px 40px;
+}
+/* 横並び */
+.c_container {
+  width:auto;
+  margin: 0 auto;
+  padding: 0;
+  overflow:hidden;
+  position:relative;
+}
+
+.oneline {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.oneline ul {
+  margin: 0px auto;
+  padding: 0px;
+  position: relative;
+  left: 50%;
+  float: left;
+  list-style: none outside none;
+}
+.oneline ul li {
+  position: relative;
+  padding: 0px;
+  left: -50%;
+  float: left;
+}
+
+.mat1, .mat2{
+  display: block;
+  margin: 0px auto 0px;
+  padding: 0px 20px 0px 20px;
+  width: 300px;
+  height:auto;
+  border-radius: none;
+  box-shadow: none;
+  border: none;
+  overflow:hidden;
+  position:relative;
+  background-color: #ffffff;
+  text-align: center;
+}

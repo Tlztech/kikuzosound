@@ -1,0 +1,57 @@
+.menus {
+  background-color: rgba(243, 240, 240, 0.781);
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  width: 100%;
+}
+
+/* sidebar toggle */
+
+/* .main-div-side-full {
+  display: grid;
+  grid-template-columns: 15% 85%;
+}
+
+.main-div-side-half {
+  display: grid;
+  grid-template-columns: 0% 100%;
+} */
+
+.table-responsive {
+  margin-top: -20px;
+}
+
+.table th {
+  font-size: 0.76em !important;
+}
+/* sidebar toggle end */
+
+/* @media (max-width: 740px) {
+  .content {
+    display: block;
+  }
+  .main-div-side-half {
+    grid-template-columns: 6% 94%;
+  }
+  .main-div-side-full {
+    grid-template-columns: 70% 100%;
+  }
+  .main-div-side-full {
+    overflow-x: hidden;
+  }
+  .main-div-side-full .siderbar-header {
+    height: 120px;
+    padding-top: 55px !important;
+  }
+  .main-div-side-full .content,
+  .main-div-side-full .molecules-top-nav {
+    opacity: 0.3;
+  }
+} */
+
+.page-home-wrapper .menus .main .molecules-top-nav-false {
+  width: 100vw;
+}

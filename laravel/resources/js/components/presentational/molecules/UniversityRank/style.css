@@ -1,0 +1,9 @@
+.molecules-UniversityRank-wrapper tbody {
+    height: 150px;
+}
+.molecules-UniversityRank-wrapper tbody td{
+    border:1px solid #dee2e6;
+}
+.molecules-UniversityRank-wrapper thead th{
+    border:none;
+}

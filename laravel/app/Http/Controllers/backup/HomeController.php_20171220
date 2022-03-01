@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\StethoSound;
+use App\Lib\IniFile;    /* telemedica 20170615 */
+
+// ホーム画面のコントローラ
+class HomeController extends Controller
+{
+  /**
+   * Show the application dashboard.
+   *
+   * @return \Illuminate\Http\Response
+   */
+
+  /* telemedica 20170615 */
+  /* iniファイルを読み取り、設定 */
+  private $adIni;
+
+  // telemedica 20170615
+  public function __construct()
+  {
+    /* iniファイルを読み取り、設定 */
+    $this->adIni = new IniFile();
+  }
+
+  public function index()
+  {
+    // 広告の有効(表示)・無効(非表示)
+    $params['init_disp'] = $this->adIni->getConfig('init_disp','advertorial','false');
+
+    // 広告の有効(表示)・無効(非表示)の判断
+    if($params['init_disp'] === 'true') {
+      // 広告のタイトル
+      $params['init_title'] = $this->adIni->getConfig('init_title','advertorial','false');
+
+      // 聴診音のID1。カンマで複数個の記述可能
+      $init_id1 = $this->adIni->getConfig('init_id1','advertorial','false');
+      $ids1 = explode(",",$init_id1);
+
+      // 聴診音のID2。カンマで複数個の記述可能
+      $init_id2 = $this->adIni->getConfig('init_id2','advertorial','false');
+      $ids2 = explode(",",$init_id2);
+
+      $params['init_subtitle1'] = $this->adIni->getConfig('init_subtitle1','advertorial','false');
+      $params['init_text1'] = $this->adIni->getConfig('init_text1','advertorial','false');
+      $params['init_subtitle2'] = $this->adIni->getConfig('init_subtitle2','advertorial','false');
+      $params['init_text2'] = $this->adIni->getConfig('init_text2','advertorial','false');
+      $params['init_img1'] = $this->adIni->getConfig('init_img1','advertorial','false');
+      $params['init_alt1'] = $this->adIni->getConfig('init_alt1','advertorial','false');
+      $params['init_img2'] = $this->adIni->getConfig('init_img2','advertorial','false');
+      $params['init_alt2'] = $this->adIni->getConfig('init_alt2','advertorial','false');
+    }
+
+    // 音源トータル数(公開数)の取得
+    $data = StethoSound::PublicAll()->get();
+    $params['count_public'] =count($data);
+
+    // 新着の聴診音
+    $stetho_sounds = StethoSound::publicNewAll()->orderBy('created_at','desc')->get();
+
+    // 広告の有効(表示)・無効(非表示)の判断
+    if($params['init_disp'] === 'true') {
+      // 聴診音の順番はこのorderByによる
+      $ad_sounds1 = StethoSound::SelectID($ids1)->orderBy('created_at','asc')->get();
+      $ad_sounds2 = StethoSound::SelectID($ids2)->orderBy('created_at','asc')->get();
+    }
+
+    return view('home', compact('stetho_sounds','ad_sounds1','ad_sounds2','params'));
+  }
+}

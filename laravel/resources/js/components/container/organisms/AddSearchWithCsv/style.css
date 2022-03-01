@@ -1,0 +1,17 @@
+.organism-AddSearchWithCsv-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 44px;
+}
+
+.organism-AddSearchWithCsv-wrapper .organism-SearchWithDownloadOption {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.organism-AddSearchWithCsv-wrapper .download-image {
+  width: 32px !important;
+  height: 32px;
+}

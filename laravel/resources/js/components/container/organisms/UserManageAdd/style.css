@@ -1,0 +1,30 @@
+.organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-modal-image {
+  width: 16px;
+}
+
+.organism-add-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-add-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-modal-image {
+  font-size: 20px;
+}
+
+.organism-add-user-modal-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 25%;
+}

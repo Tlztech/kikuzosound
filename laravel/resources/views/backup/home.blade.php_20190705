@@ -1,0 +1,1176 @@
+@extends('layouts.app')
+
+@section('title', 'Home')
+
+@section('content')
+
+<!-- メイン聴診音ライブラリ（左） -->
+  <div id="container">
+    <div class="container_inner clearfix">
+
+    <!--*********************************** .contents ***********************************-->
+    <div class="contents">
+      <!-- .home_mainvisual -->
+      <div class="home_mainvisual">
+        <img src="img/mainvisual.jpg" alt="">
+        <div class="search_box">
+          <form action="{{route('contents')}}" method="get">
+            <p class="search_box_inner clearfix">
+              <input class="search_keyword" placeholder="聴診音を探す" type="text" name="keyword" />
+              <button class="search_btn"></button>
+            </p>
+          </form>
+        </div>
+        <!-- /.search_keyword -->
+      </div>
+      <!-- /.home_mainvisual -->
+      <?php $message = $params['message']; // 0:ログインお気に入りあり 1:ログインお気に入りなし 2:未ログイン ?>
+      <?php $sample_status = $params['sample_status']; // 0:未ログイン 1:ログイン(3sp) 2:ログイン(試聴音) ?>
+      <?php $sample_user = $params['sample_user']; // 暗号化されたメアド ?>
+
+
+      @include('layouts.seminar20190705')
+
+
+      <!-- .home_menu -->
+      <ul class="home_menu">
+        <li><a href="{{route('contents')}}"><img src="img/home_menu_1.png?1.1.2.20190523" alt="コンテンツ"></a></li>
+        <li><a href="{{route('quizpacks')}}"><img src="img/home_menu_2.png" alt="聴診クイズ"></a></li>
+        <li class="last"><a href="{{route('video')}}"><img src="img/home_menu_31.png?20180711" alt="聴診ビデオ"></a></li>
+      </ul>
+      <!-- /.home_menu -->
+
+      @if($message == 2)
+<?php $url = env('APP_URL')."about#achieve"; ?>
+      <div class="offer_mat">
+          <p>１．聴診音を聴く際には、<span style="color:#ff0000;">聴診専用スピーカ</span><a href="{{route('speaker')}}">「聴くゾウ」</a><span style="color:#ff0000;">またはイヤホンをご利用ください</span></p>
+          <p>２．聴くゾウ「採用施設」は<a href="<?= $url ?>">こちら</a></p>
+          <p>３．掲載音源：<?php echo $params['count_public']; ?>件（<a href="{{route('list')}}">音源一覧</a>）</p>
+<?php
+/*
+          <p>ご購入はこちら：<a href="{{route('corporate')}}">法人のお客様</a>　<a href="{{route('private')}}">個人のお客様</a></p>
+*/
+?>
+      </div>
+
+      @endif
+
+
+      <!-- .newsound -->
+      <div class="newsound">
+        <?php $latest = null; //$latest = $stetho_sounds->sortByDesc('updated_at')->first(); ?>
+        <h2 class="sub_title">　<?php echo $params['title']; ?> @if(!is_null($latest))<span style="display:none;">{{ $latest->updated_at->format('Y-m-d') }} 更新</span>@endif</h2>
+
+@if($message == 2)
+@if($sample_status == 0)
+<div class="use_sample_info">
+        <div class="accordion_btn2" style="cursor:pointer;">
+<p style="font-size:1.5em;text-align:center;">聴診会員ライブラリのご利用には登録が必要です</p>
+        </div>
+        <div class="accordion_moreconts">
+<p style="margin:1em 0px 1em 0px;font-size:1em;">登録は下記、聴診会員ライブラリの「<img src="{{{asset('img/play.jpg')}}}" class="use_img">」を押して表示される「聴診会員ライブラリ利用ご登録」から行えます。<br>登録後、再度「<img src="{{{asset('img/play.jpg')}}}" class="use_img">」を押して表示される「ログイン」からご利用下さい。<p>
+
+<p style="font-size:10px;">「聴くゾウ」をご購入した方、サイト利用プランをご利用の方は、現在ご使用している「ユーザIDとパスワード」のご入力(シリアル番号のご入力は必要ありません)で聴診会員ライブラリをご利用頂けます。</p>
+        </div>
+</div>
+
+<div class="reg_mail_info" style="margin-top:10px;">
+<p style="margin-bottom:10px;">
+登録時にメールが届かない場合はメールアドレスを確認頂き、再度ご登録下さい。<br>
+なお、<span style="color:#ff0000;">「迷惑メール」等に入る</span>場合もございますので、届かない場合はご確認下さい。<br>
+</p>
+</div>
+
+<div class="prvideo">
+<ul class="video-ul">
+    <li><a href="#videoBox5" data-vid="video5"><img style="border: 1px solid #ccc;" src="./img/video/heart.png?v20190610"></a><div class="videoTitle">PR【紹介動画】</div><div class="videoAbstract">聴診会員ライブラリに登録して「心音」を無料で聴こう！</div></li>
+    <li><a href="#videoBox6" data-vid="video6"><img style="border: 1px solid #ccc;" src="./img/video/lung.png?v20190610"></a><div class="videoTitle">PR【紹介動画】</div><div class="videoAbstract">聴診会員ライブラリに登録して「肺音」を無料で聴こう！</div></li>
+</ul>
+<div class="videoBoxes">
+    <div id="videoBox5" class="videoWrap">
+        <video id="video5" controls preload="metadata" width="100%" poster="./img/video/heart.png" controlslist="nodownload">
+            <source src="./img/video/heart.mp4?v20190610" type="video/mp4">
+            <p>動画を再生するにはvideoタグをサポートしたブラウザが必要です。</p>
+        </video>
+        <div class="videoCloseWrap"><button class='videoClose'>閉じる</button></div>
+    </div>
+    <div id="videoBox6" class="videoWrap">
+        <video id="video6" controls preload="metadata" width="100%" poster="./img/video/lung.png" controlslist="nodownload">
+            <source src="./img/video/lung.mp4?v20190610" type="video/mp4">
+            <p>動画を再生するにはvideoタグをサポートしたブラウザが必要です。</p>
+        </video>
+        <div class="videoCloseWrap"><button class='videoClose'>閉じる</button></div>
+    </div>
+</div>
+</div>
+
+@endif
+@endif
+
+
+        @if($message == 1)
+        <p class="favo_title">現在、登録はありません</p>
+        @endif
+
+        <!-- .sound_list -->
+<!--
+        <ul class="sound_list mB20 accordion">
+-->
+        <ul class="sound_list accordion">
+
+        <!--*********************************************************-->
+        @foreach($stetho_sounds as $stetho_sound)
+          <!-- .sound_box -->
+          <?php $type_strings = [ 1 => '肺音', 2 => '心音', 3 => '腸音', 9 => 'その他' ]; ?>
+          <li class="sound_box" data-id="{{ $stetho_sound->id }}">
+            <p class="tag">
+              <span>{{$type_strings[$stetho_sound->type]}}</span>
+            </p>
+
+            <p class="sub_description">{{ $stetho_sound->sub_description }}</p>
+
+            <div class="sound_box_inner">
+              <!-- .sound_title -->
+              <div class="sound_accordion_open sound_title accordion_active">
+                <p class="name" title="{{ $stetho_sound->title }}">{{ $stetho_sound->title }}</p>
+              </div>
+              <!-- /.sound_title -->
+              <!-- .audio -->
+              <div class="audio">
+                <div class="audiojsZ">
+<?php
+// 直アクセス禁止対策
+// 未ログインの場合は「仮音源」にして「ページのソース表示」対策をしている
+// 「登録」して認証が通った場合、audio.min.jsで正しいsrcにしている
+
+if($message == 2) { // 2:未ログイン
+
+// 「仮音源」の「5bfcd0b6dd142.mp3」は1秒の無音
+// 「仮音源」の場所はshared/public/tmp
+// 因みにtmpは.htaccessがないので、音源は再生される
+//    $homesrc = "http://local3sp.telemedica.jp/audio/stetho_sounds/8.mp3".'?_='.date('YmdHis', strtotime($stetho_sound->updated_at));
+
+    $domain = env('APP_URL');   // URL
+    $homesrc = $domain."tmp/5bfcd0b6dd142.mp3".'?_='.date('YmdHis', strtotime($stetho_sound->updated_at));
+} else {    // 0:ログインお気に入りあり 1:ログインお気に入りなし
+    $homesrc = $stetho_sound->sound_path.'?_='.date('YmdHis', strtotime($stetho_sound->updated_at));
+}
+
+$dot = explode(".",$stetho_sound->sound_path);  // 音源を.で分割
+$ext = ".".$dot[count($dot)-1]; // 音の拡張子
+?>
+
+<?php
+/*
+                  <audio preload="none" src="{{ asset($stetho_sound->sound_path).'?_='.date('YmdHis', strtotime($stetho_sound->updated_at)) }}"></audio>
+*/
+?>
+                  <audio preload="none" src="<?= $homesrc ?>" data-ext="<?= $ext ?>"></audio>
+                  <div class="play-pauseZ">
+                    <span class="line"></span>
+                    <p class="playZ"></p>
+                    <p class="pauseZ"></p>
+                    <p class="loadingZ"></p>
+                    <p class="errorZ"></p>
+                  </div>
+                  <div class="scrubberZ">
+                    <div class="progressZ"></div>
+                    <div class="loadedZ"></div>
+                  </div>
+                  <div class="timeZ">
+                    <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+                  </div>
+                  <div class="error-messageZ"></div>
+                </div>
+              </div>
+              <!-- /.audio -->
+              <!-- .sound_conts -->
+              <div class="sound_conts accordion_conts">
+                <div class="sound_conts_inner">
+                  <p class="sound_conts_inner_title">{{ $stetho_sound->title }}</p>
+                  <?php // HTMLのタグを出力  ?>
+                  <p class="text">{!! $stetho_sound->description !!}</p>
+                  <!-- .img_slide -->
+                  @if($stetho_sound->images->count())
+                  <div class="img_slide">
+                    <div class="img_slide_inner">
+                      <ul class="bxslider">
+                        @foreach($stetho_sound->images()->get() as $image)
+                        <li>
+                          <img src="{{ $image->image_path.'?_='.date('YmdHis', strtotime($image->updated_at)) }}" style="cursor: pointer;"/>
+                          <p hidden="" id="sl_image_title">{{$image->title}}</p>
+                        </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    <p class="img_slider_text" @if(!$stetho_sound->images->first()->title) hidden @endif id="image_title">{{$stetho_sound->images->first()->title}}</p>
+                  </div>
+                  @endif
+                  <!-- /.img_slide -->
+                  <!-- table -->
+                  <?php $conversion_type_strings = [ 0 => '採取オリジナル ', 1 => '加工音 ', 2 => '人工作音' ]; ?>
+                  <?php $is_normal_strings = [ 1 => '正常音', 0 => '異常音']; ?>
+                  <div class="desc_table">
+                    <dl><dt>聴診音名：</dt><dd>{{ $stetho_sound->title }}　({{ $stetho_sound->id }})</dd></dl>
+                    <dl><dt>聴診音種別：</dt><dd>{{$is_normal_strings[$stetho_sound->is_normal]}}</dd></dl>
+                    <dl><dt>代表疾患：</dt><dd>{{$stetho_sound->disease}}</dd></dl>
+                    <dl><dt>聴診部位：</dt><dd>{{$stetho_sound->area}}</dd></dl>
+                  </div>
+                  <!-- .sound_conts_inner -->
+                </div>
+
+                @if($message == 0)
+                <?php $is_favo_strings = [ 1 => '「お気に入り」から削除', 0 => '「お気に入り」に登録']; ?>
+                <div class="clearfix fav_wrapper">
+                  <button class="FavButton" data-id="{{ $stetho_sound->id }}" data-favo="{{ $stetho_sound->favo }}" data-aid="{{ $params['aid'] }}">{{ $is_favo_strings[$stetho_sound->favo] }}</button>
+                </div>
+                @endif
+
+                <!-- /.sound_conts -->
+
+              </li>
+              <!-- /.sound_box -->
+            @endforeach
+
+            <!--*********************************************************-->
+          </ul>
+          <!-- /.sound_list -->
+
+    <?php /* trial@telemedica.co.jpの場合は表示しない */ ?>
+    <?php $exceptmail = "trial@telemedica.co.jp"; ?>
+@if($sample_status == 2)
+    <?php /* trial@telemedica.co.jpの場合は表示しない */ ?>
+    @if($sample_user == "n89GfPNcyNCjODQeHVK0QK6eizAnRyIto7onfk8lD_4-")
+<p id="use_sample" class="mT20" data-em="<?= $exceptmail ?>" style="display:none;text-align:center;"><a href="{{ route('r-mail-form') }}<?php echo("?edit=".$sample_user); ?>" id="s_edit_link" class="blue_btn">聴診会員ライブラリ利用登録変更</a></p>
+    @else
+<p id="use_sample" class="mT20" data-em="<?= $exceptmail ?>" style="display:block;text-align:center;"><a href="{{ route('r-mail-form') }}<?php echo("?edit=".$sample_user); ?>" id="s_edit_link" class="blue_btn">聴診会員ライブラリ利用登録変更</a></p>
+    @endif
+@else
+<p id="use_sample" class="mT20" data-em="<?= $exceptmail ?>" style="display:none;text-align:center;"><a href="{{ route('r-mail-form') }}<?php echo("?edit=".$sample_user); ?>" id="s_edit_link" class="blue_btn">聴診会員ライブラリ利用登録変更</a></p>
+@endif
+
+          @if($message == 2)
+          <p class="link_red"><a href="{{route('contents')}}">→続きを見る</a></p>
+          @else
+
+          @if($message == 0)
+          <div class="favo_mat" style="padding-top:20px;">
+            <ul>
+              <li>お気に入り数：<?php echo count($params['fid']); ?>件（残り<?php echo $params['fmax'] - count($params['fid']); ?>件）</li>
+              @if(count($params['fid']) == $params['fmax'])
+              <li>新規に登録する為には現在の登録から削除を行って下さい</li>
+              @endif
+            </ul>
+          </div>
+          <div style="margin:20px 0px;"></div>
+          @endif
+
+        @if($message == 1)
+        <div class="accordion_btn2 a_btn">登録方法について</div>
+        <div class="accordion_moreconts">
+          <div class="favo_mat" style="padding-top:20px;">
+            <ul>
+              <li>お気に入りの聴診音をここに登録する事ができます</li>
+              <li>お気に入りの「登録・削除」は何度でも行えます</li>
+              <li>お気に入りは <?php echo $params['fmax']?>件まで登録できます</li>
+              <li>お気に入りは登録された順番に並びます</li>
+            </ul>
+          </div>
+
+          <div class="down_arrow"></div>
+
+          <div class="favo_mat" style="margin-bottom:20px;">
+            <p class="favo_explain">登録方法</p>
+              <ul>
+              <li>「聴くゾウライブラリ」内の登録したい聴診音の「<img src="{{{asset('img/more@2.png')}}}" class="favo_img">」を押します</li>
+              <li>「 <img src="{{{asset('img/f1.png')}}}" class="favo_img"> 」ボタンを押すと、ここに登録されます</li>
+              <li>登録後は「 <img src="{{{asset('img/f2.png')}}}" class="favo_img"> 」ボタンに変わります</li>
+            </ul>
+          </div>
+        </div>
+        @endif
+
+<!-- pharmacy -->
+        @if($message == 0)
+        <h2 class="sub_title" style="margin-top:40px;">　聴診音セット</h2>
+        @else
+        <h2 class="sub_title" style="margin-top:20px;">　聴診音セット</h2>
+        @endif
+
+        @if($message == 1)
+        <div class="accordion_btn2 a_btn" style="margin-bottom:20px;">聴診音セットについて</div>
+        <div class="accordion_moreconts">
+        <div class="favo_mat" style="margin-bottom:30px;padding-top:20px;">
+          <ul>
+            <li>聴診音で主に使用される音源を予め設定致しました</li>
+            <li>下記のセット名(「肺音・断続性ラ音」等)を押下するとセットが表示されます</li>
+            <li>ここから「お気に入り」に登録する事もできます</li>
+          </ul>
+        </div>
+        </div>
+        @endif
+
+<!-- タブ -->
+<ul id="tabMenu" class="table-ul">
+    <li><a href="#tabBox1" style="color:#f9f8ef;font-weight:bold;">コロトコフ音・肺音・心音・腸音</a></li>
+    <li><a href="#tabBox2">肺音・断続性ラ音</a></li>
+    <li><a href="#tabBox3">肺音・連続性ラ音</a></li>
+</ul>
+<div id="tabBoxes">
+<div id="tabBox1" class="tabClass">
+        <!-- .sound_list -->
+        <ul class="sound_list mB20 accordion">
+
+        <!--*********************************************************-->
+        @foreach($p_sounds1 as $p_sound1)
+          <!-- .sound_box -->
+          <?php $type_strings = [ 1 => '肺音', 2 => '心音', 3 => '腸音', 9 => 'その他' ]; ?>
+          <li class="sound_box" data-id="{{ $p_sound1->id }}">
+            <p class="tag">
+              <span>{{$type_strings[$p_sound1->type]}}</span>
+            </p>
+
+            <p class="sub_description">{{ $p_sound1->sub_description }}</p>
+
+            <div class="sound_box_inner">
+              <!-- .sound_title -->
+              <div class="sound_accordion_open sound_title accordion_active">
+                <p class="name" title="{{ $p_sound1->title }}">{{ $p_sound1->title }}</p>
+              </div>
+              <!-- /.sound_title -->
+              <!-- .audio -->
+              <div class="audio">
+                <div class="audiojsZ">
+<?php
+$dot = explode(".",$p_sound1->sound_path);  // 音源を.で分割
+$ext = ".".$dot[count($dot)-1]; // 音の拡張子
+?>
+                  <audio preload="none" src="{{ asset($p_sound1->sound_path).'?_='.date('YmdHis', strtotime($p_sound1->updated_at)) }}" data-ext="<?= $ext ?>"></audio>
+<!--
+                  <audio preload="none" src="{{ asset($p_sound1->sound_path).'?_='.date('YmdHis', strtotime($p_sound1->updated_at)) }}"></audio>
+-->
+                  <div class="play-pauseZ">
+                    <span class="line"></span>
+                    <p class="playZ"></p>
+                    <p class="pauseZ"></p>
+                    <p class="loadingZ"></p>
+                    <p class="errorZ"></p>
+                  </div>
+                  <div class="scrubberZ">
+                    <div class="progressZ"></div>
+                    <div class="loadedZ"></div>
+                  </div>
+                  <div class="timeZ">
+                    <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+                  </div>
+                  <div class="error-messageZ"></div>
+                </div>
+              </div>
+              <!-- /.audio -->
+              <!-- .sound_conts -->
+              <div class="sound_conts accordion_conts">
+                <div class="sound_conts_inner">
+                  <p class="sound_conts_inner_title">{{ $p_sound1->title }}</p>
+                  <?php // HTMLのタグを出力  ?>
+                  <p class="text">{!! $p_sound1->description !!}</p>
+                  <!-- .img_slide -->
+                  @if($p_sound1->images->count())
+                  <div class="img_slide">
+                    <div class="img_slide_inner">
+                      <ul class="bxslider">
+                        @foreach($p_sound1->images()->get() as $image)
+                        <li>
+                          <img src="{{ $image->image_path.'?_='.date('YmdHis', strtotime($image->updated_at)) }}" style="cursor: pointer;"/>
+                          <p hidden="" id="sl_image_title">{{$image->title}}</p>
+                        </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    <p class="img_slider_text" @if(!$p_sound1->images->first()->title) hidden @endif id="image_title">{{$p_sound1->images->first()->title}}</p>
+                  </div>
+                  @endif
+                  <!-- /.img_slide -->
+                  <!-- table -->
+                  <?php $conversion_type_strings = [ 0 => '採取オリジナル ', 1 => '加工音 ', 2 => '人工作音' ]; ?>
+                  <?php $is_normal_strings = [ 1 => '正常音', 0 => '異常音']; ?>
+                  <div class="desc_table">
+                    <dl><dt>聴診音名：</dt><dd>{{ $p_sound1->title }}　({{ $p_sound1->id }})</dd></dl>
+                    <dl><dt>聴診音種別：</dt><dd>{{$is_normal_strings[$p_sound1->is_normal]}}</dd></dl>
+                    <dl><dt>代表疾患：</dt><dd>{{$p_sound1->disease}}</dd></dl>
+                    <dl><dt>聴診部位：</dt><dd>{{$p_sound1->area}}</dd></dl>
+                  </div>
+                  <!-- .sound_conts_inner -->
+                </div>
+
+                <?php $is_favo_strings = [ 1 => '「お気に入り」から削除', 0 => '「お気に入り」に登録']; ?>
+                <div class="clearfix fav_wrapper">
+                  <button class="FavButton" data-id="{{ $p_sound1->id }}" data-favo="{{ $p_sound1->favo }}" data-aid="{{ $params['aid'] }}">{{ $is_favo_strings[$p_sound1->favo] }}</button>
+                </div>
+
+                <!-- /.sound_conts -->
+
+              </li>
+              <!-- /.sound_box -->
+            @endforeach
+
+            <!--*********************************************************-->
+          </ul>
+          <!-- /.sound_list -->
+</div>
+
+<div id="tabBox2" class="tabClass">
+        <!-- .sound_list -->
+        <ul class="sound_list mB20 accordion">
+
+        <!--*********************************************************-->
+        @foreach($p_sounds2 as $p_sound2)
+          <!-- .sound_box -->
+          <?php $type_strings = [ 1 => '肺音', 2 => '心音', 3 => '腸音', 9 => 'その他' ]; ?>
+          <li class="sound_box" data-id="{{ $p_sound2->id }}">
+            <p class="tag">
+              <span>{{$type_strings[$p_sound2->type]}}</span>
+            </p>
+
+            <p class="sub_description">{{ $p_sound2->sub_description }}</p>
+
+            <div class="sound_box_inner">
+              <!-- .sound_title -->
+              <div class="sound_accordion_open sound_title accordion_active">
+                <p class="name" title="{{ $p_sound2->title }}">{{ $p_sound2->title }}</p>
+              </div>
+              <!-- /.sound_title -->
+              <!-- .audio -->
+              <div class="audio">
+                <div class="audiojsZ">
+<?php
+$dot = explode(".",$p_sound2->sound_path);  // 音源を.で分割
+$ext = ".".$dot[count($dot)-1]; // 音の拡張子
+?>
+                  <audio preload="none" src="{{ asset($p_sound2->sound_path).'?_='.date('YmdHis', strtotime($p_sound2->updated_at)) }}" data-ext="<?= $ext ?>"></audio>
+<!--
+                  <audio preload="none" src="{{ asset($p_sound2->sound_path).'?_='.date('YmdHis', strtotime($p_sound2->updated_at)) }}"></audio>
+-->
+                  <div class="play-pauseZ">
+                    <span class="line"></span>
+                    <p class="playZ"></p>
+                    <p class="pauseZ"></p>
+                    <p class="loadingZ"></p>
+                    <p class="errorZ"></p>
+                  </div>
+                  <div class="scrubberZ">
+                    <div class="progressZ"></div>
+                    <div class="loadedZ"></div>
+                  </div>
+                  <div class="timeZ">
+                    <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+                  </div>
+                  <div class="error-messageZ"></div>
+                </div>
+              </div>
+              <!-- /.audio -->
+              <!-- .sound_conts -->
+              <div class="sound_conts accordion_conts">
+                <div class="sound_conts_inner">
+                  <p class="sound_conts_inner_title">{{ $p_sound2->title }}</p>
+                  <?php // HTMLのタグを出力  ?>
+                  <p class="text">{!! $p_sound2->description !!}</p>
+                  <!-- .img_slide -->
+                  @if($p_sound2->images->count())
+                  <div class="img_slide">
+                    <div class="img_slide_inner">
+                      <ul class="bxslider">
+                        @foreach($p_sound2->images()->get() as $image)
+                        <li>
+                          <img src="{{ $image->image_path.'?_='.date('YmdHis', strtotime($image->updated_at)) }}" style="cursor: pointer;"/>
+                          <p hidden="" id="sl_image_title">{{$image->title}}</p>
+                        </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    <p class="img_slider_text" @if(!$p_sound2->images->first()->title) hidden @endif id="image_title">{{$p_sound2->images->first()->title}}</p>
+                  </div>
+                  @endif
+                  <!-- /.img_slide -->
+                  <!-- table -->
+                  <?php $conversion_type_strings = [ 0 => '採取オリジナル ', 1 => '加工音 ', 2 => '人工作音' ]; ?>
+                  <?php $is_normal_strings = [ 1 => '正常音', 0 => '異常音']; ?>
+                  <div class="desc_table">
+                    <dl><dt>聴診音名：</dt><dd>{{ $p_sound2->title }}　({{ $p_sound2->id }})</dd></dl>
+                    <dl><dt>聴診音種別：</dt><dd>{{$is_normal_strings[$p_sound2->is_normal]}}</dd></dl>
+                    <dl><dt>代表疾患：</dt><dd>{{$p_sound2->disease}}</dd></dl>
+                    <dl><dt>聴診部位：</dt><dd>{{$p_sound2->area}}</dd></dl>
+                  </div>
+                  <!-- .sound_conts_inner -->
+                </div>
+
+                <?php $is_favo_strings = [ 1 => '「お気に入り」から削除', 0 => '「お気に入り」に登録']; ?>
+                <div class="clearfix fav_wrapper">
+                  <button class="FavButton" data-id="{{ $p_sound2->id }}" data-favo="{{ $p_sound2->favo }}" data-aid="{{ $params['aid'] }}">{{ $is_favo_strings[$p_sound2->favo] }}</button>
+                </div>
+
+                <!-- /.sound_conts -->
+
+              </li>
+              <!-- /.sound_box -->
+            @endforeach
+
+            <!--*********************************************************-->
+          </ul>
+          <!-- /.sound_list -->
+</div>
+
+<div id="tabBox3" class="tabClass">
+        <!-- .sound_list -->
+        <ul class="sound_list mB20 accordion">
+
+        <!--*********************************************************-->
+        @foreach($p_sounds3 as $p_sound3)
+          <!-- .sound_box -->
+          <?php $type_strings = [ 1 => '肺音', 2 => '心音', 3 => '腸音', 9 => 'その他' ]; ?>
+          <li class="sound_box" data-id="{{ $p_sound3->id }}">
+            <p class="tag">
+              <span>{{$type_strings[$p_sound3->type]}}</span>
+            </p>
+
+            <p class="sub_description">{{ $p_sound3->sub_description }}</p>
+
+            <div class="sound_box_inner">
+              <!-- .sound_title -->
+              <div class="sound_accordion_open sound_title accordion_active">
+                <p class="name" title="{{ $p_sound3->title }}">{{ $p_sound3->title }}</p>
+              </div>
+              <!-- /.sound_title -->
+              <!-- .audio -->
+              <div class="audio">
+                <div class="audiojsZ">
+<?php
+$dot = explode(".",$p_sound3->sound_path);  // 音源を.で分割
+$ext = ".".$dot[count($dot)-1]; // 音の拡張子
+?>
+                  <audio preload="none" src="{{ asset($p_sound3->sound_path).'?_='.date('YmdHis', strtotime($p_sound3->updated_at)) }}" data-ext="<?= $ext ?>"></audio>
+<!--
+                  <audio preload="none" src="{{ asset($p_sound3->sound_path).'?_='.date('YmdHis', strtotime($p_sound3->updated_at)) }}"></audio>
+-->
+                  <div class="play-pauseZ">
+                    <span class="line"></span>
+                    <p class="playZ"></p>
+                    <p class="pauseZ"></p>
+                    <p class="loadingZ"></p>
+                    <p class="errorZ"></p>
+                  </div>
+                  <div class="scrubberZ">
+                    <div class="progressZ"></div>
+                    <div class="loadedZ"></div>
+                  </div>
+                  <div class="timeZ">
+                    <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+                  </div>
+                  <div class="error-messageZ"></div>
+                </div>
+              </div>
+              <!-- /.audio -->
+              <!-- .sound_conts -->
+              <div class="sound_conts accordion_conts">
+                <div class="sound_conts_inner">
+                  <p class="sound_conts_inner_title">{{ $p_sound3->title }}</p>
+                  <?php // HTMLのタグを出力  ?>
+                  <p class="text">{!! $p_sound3->description !!}</p>
+                  <!-- .img_slide -->
+                  @if($p_sound3->images->count())
+                  <div class="img_slide">
+                    <div class="img_slide_inner">
+                      <ul class="bxslider">
+                        @foreach($p_sound3->images()->get() as $image)
+                        <li>
+                          <img src="{{ $image->image_path.'?_='.date('YmdHis', strtotime($image->updated_at)) }}" style="cursor: pointer;"/>
+                          <p hidden="" id="sl_image_title">{{$image->title}}</p>
+                        </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    <p class="img_slider_text" @if(!$p_sound3->images->first()->title) hidden @endif id="image_title">{{$p_sound3->images->first()->title}}</p>
+                  </div>
+                  @endif
+                  <!-- /.img_slide -->
+                  <!-- table -->
+                  <?php $conversion_type_strings = [ 0 => '採取オリジナル ', 1 => '加工音 ', 2 => '人工作音' ]; ?>
+                  <?php $is_normal_strings = [ 1 => '正常音', 0 => '異常音']; ?>
+                  <div class="desc_table">
+                    <dl><dt>聴診音名：</dt><dd>{{ $p_sound3->title }}　({{ $p_sound3->id }})</dd></dl>
+                    <dl><dt>聴診音種別：</dt><dd>{{$is_normal_strings[$p_sound3->is_normal]}}</dd></dl>
+                    <dl><dt>代表疾患：</dt><dd>{{$p_sound3->disease}}</dd></dl>
+                    <dl><dt>聴診部位：</dt><dd>{{$p_sound3->area}}</dd></dl>
+                  </div>
+                  <!-- .sound_conts_inner -->
+                </div>
+
+                <?php $is_favo_strings = [ 1 => '「お気に入り」から削除', 0 => '「お気に入り」に登録']; ?>
+                <div class="clearfix fav_wrapper">
+                  <button class="FavButton" data-id="{{ $p_sound3->id }}" data-favo="{{ $p_sound3->favo }}" data-aid="{{ $params['aid'] }}">{{ $is_favo_strings[$p_sound3->favo] }}</button>
+                </div>
+
+                <!-- /.sound_conts -->
+
+              </li>
+              <!-- /.sound_box -->
+            @endforeach
+
+            <!--*********************************************************-->
+          </ul>
+          <!-- /.sound_list -->
+</div>
+</div>
+
+<!-- タブ -->
+<ul id="tabMenu2" class="table-ul2" style="margin-top:30px;">
+    <li><a href="#tabBox4" style="color:#f9f8ef;font-weight:bold;">心音</a></li>
+    <li><a href="#tabBox5">心雑音</a></li>
+</ul>
+<div id="tabBoxes2">
+<div id="tabBox4" class="tabClass2">
+        <!-- .sound_list -->
+        <ul class="sound_list mB20 accordion">
+
+        <!--*********************************************************-->
+        @foreach($p_sounds4 as $p_sound4)
+          <!-- .sound_box -->
+          <?php $type_strings = [ 1 => '肺音', 2 => '心音', 3 => '腸音', 9 => 'その他' ]; ?>
+          <li class="sound_box" data-id="{{ $p_sound4->id }}">
+            <p class="tag">
+              <span>{{$type_strings[$p_sound4->type]}}</span>
+            </p>
+
+            <p class="sub_description">{{ $p_sound4->sub_description }}</p>
+
+            <div class="sound_box_inner">
+              <!-- .sound_title -->
+              <div class="sound_accordion_open sound_title accordion_active">
+                <p class="name" title="{{ $p_sound4->title }}">{{ $p_sound4->title }}</p>
+              </div>
+              <!-- /.sound_title -->
+              <!-- .audio -->
+              <div class="audio">
+                <div class="audiojsZ">
+<?php
+$dot = explode(".",$p_sound4->sound_path);  // 音源を.で分割
+$ext = ".".$dot[count($dot)-1]; // 音の拡張子
+?>
+                  <audio preload="none" src="{{ asset($p_sound4->sound_path).'?_='.date('YmdHis', strtotime($p_sound4->updated_at)) }}" data-ext="<?= $ext ?>"></audio>
+<!--
+                  <audio preload="none" src="{{ asset($p_sound4->sound_path).'?_='.date('YmdHis', strtotime($p_sound4->updated_at)) }}"></audio>
+-->
+                  <div class="play-pauseZ">
+                    <span class="line"></span>
+                    <p class="playZ"></p>
+                    <p class="pauseZ"></p>
+                    <p class="loadingZ"></p>
+                    <p class="errorZ"></p>
+                  </div>
+                  <div class="scrubberZ">
+                    <div class="progressZ"></div>
+                    <div class="loadedZ"></div>
+                  </div>
+                  <div class="timeZ">
+                    <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+                  </div>
+                  <div class="error-messageZ"></div>
+                </div>
+              </div>
+              <!-- /.audio -->
+              <!-- .sound_conts -->
+              <div class="sound_conts accordion_conts">
+                <div class="sound_conts_inner">
+                  <p class="sound_conts_inner_title">{{ $p_sound4->title }}</p>
+                  <?php // HTMLのタグを出力  ?>
+                  <p class="text">{!! $p_sound4->description !!}</p>
+                  <!-- .img_slide -->
+                  @if($p_sound4->images->count())
+                  <div class="img_slide">
+                    <div class="img_slide_inner">
+                      <ul class="bxslider">
+                        @foreach($p_sound4->images()->get() as $image)
+                        <li>
+                          <img src="{{ $image->image_path.'?_='.date('YmdHis', strtotime($image->updated_at)) }}" style="cursor: pointer;"/>
+                          <p hidden="" id="sl_image_title">{{$image->title}}</p>
+                        </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    <p class="img_slider_text" @if(!$p_sound4->images->first()->title) hidden @endif id="image_title">{{$p_sound4->images->first()->title}}</p>
+                  </div>
+                  @endif
+                  <!-- /.img_slide -->
+                  <!-- table -->
+                  <?php $conversion_type_strings = [ 0 => '採取オリジナル ', 1 => '加工音 ', 2 => '人工作音' ]; ?>
+                  <?php $is_normal_strings = [ 1 => '正常音', 0 => '異常音']; ?>
+                  <div class="desc_table">
+                    <dl><dt>聴診音名：</dt><dd>{{ $p_sound4->title }}　({{ $p_sound4->id }})</dd></dl>
+                    <dl><dt>聴診音種別：</dt><dd>{{$is_normal_strings[$p_sound4->is_normal]}}</dd></dl>
+                    <dl><dt>代表疾患：</dt><dd>{{$p_sound4->disease}}</dd></dl>
+                    <dl><dt>聴診部位：</dt><dd>{{$p_sound4->area}}</dd></dl>
+                  </div>
+                  <!-- .sound_conts_inner -->
+                </div>
+
+                <?php $is_favo_strings = [ 1 => '「お気に入り」から削除', 0 => '「お気に入り」に登録']; ?>
+                <div class="clearfix fav_wrapper">
+                  <button class="FavButton" data-id="{{ $p_sound4->id }}" data-favo="{{ $p_sound4->favo }}" data-aid="{{ $params['aid'] }}">{{ $is_favo_strings[$p_sound4->favo] }}</button>
+                </div>
+
+                <!-- /.sound_conts -->
+
+              </li>
+              <!-- /.sound_box -->
+            @endforeach
+
+            <!--*********************************************************-->
+          </ul>
+          <!-- /.sound_list -->
+</div>
+
+<div id="tabBox5" class="tabClass2">
+        <!-- .sound_list -->
+        <ul class="sound_list mB20 accordion">
+
+        <!--*********************************************************-->
+        @foreach($p_sounds5 as $p_sound5)
+          <!-- .sound_box -->
+          <?php $type_strings = [ 1 => '肺音', 2 => '心音', 3 => '腸音', 9 => 'その他' ]; ?>
+          <li class="sound_box" data-id="{{ $p_sound5->id }}">
+            <p class="tag">
+              <span>{{$type_strings[$p_sound5->type]}}</span>
+            </p>
+
+            <p class="sub_description">{{ $p_sound5->sub_description }}</p>
+
+            <div class="sound_box_inner">
+              <!-- .sound_title -->
+              <div class="sound_accordion_open sound_title accordion_active">
+                <p class="name" title="{{ $p_sound5->title }}">{{ $p_sound5->title }}</p>
+              </div>
+              <!-- /.sound_title -->
+              <!-- .audio -->
+              <div class="audio">
+                <div class="audiojsZ">
+<?php
+$dot = explode(".",$p_sound5->sound_path);  // 音源を.で分割
+$ext = ".".$dot[count($dot)-1]; // 音の拡張子
+?>
+                  <audio preload="none" src="{{ asset($p_sound5->sound_path).'?_='.date('YmdHis', strtotime($p_sound5->updated_at)) }}" data-ext="<?= $ext ?>"></audio>
+<!--
+                  <audio preload="none" src="{{ asset($p_sound5->sound_path).'?_='.date('YmdHis', strtotime($p_sound5->updated_at)) }}"></audio>
+-->
+                  <div class="play-pauseZ">
+                    <span class="line"></span>
+                    <p class="playZ"></p>
+                    <p class="pauseZ"></p>
+                    <p class="loadingZ"></p>
+                    <p class="errorZ"></p>
+                  </div>
+                  <div class="scrubberZ">
+                    <div class="progressZ"></div>
+                    <div class="loadedZ"></div>
+                  </div>
+                  <div class="timeZ">
+                    <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+                  </div>
+                  <div class="error-messageZ"></div>
+                </div>
+              </div>
+              <!-- /.audio -->
+              <!-- .sound_conts -->
+              <div class="sound_conts accordion_conts">
+                <div class="sound_conts_inner">
+                  <p class="sound_conts_inner_title">{{ $p_sound5->title }}</p>
+                  <?php // HTMLのタグを出力  ?>
+                  <p class="text">{!! $p_sound5->description !!}</p>
+                  <!-- .img_slide -->
+                  @if($p_sound5->images->count())
+                  <div class="img_slide">
+                    <div class="img_slide_inner">
+                      <ul class="bxslider">
+                        @foreach($p_sound5->images()->get() as $image)
+                        <li>
+                          <img src="{{ $image->image_path.'?_='.date('YmdHis', strtotime($image->updated_at)) }}" style="cursor: pointer;"/>
+                          <p hidden="" id="sl_image_title">{{$image->title}}</p>
+                        </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    <p class="img_slider_text" @if(!$p_sound5->images->first()->title) hidden @endif id="image_title">{{$p_sound5->images->first()->title}}</p>
+                  </div>
+                  @endif
+                  <!-- /.img_slide -->
+                  <!-- table -->
+                  <?php $conversion_type_strings = [ 0 => '採取オリジナル ', 1 => '加工音 ', 2 => '人工作音' ]; ?>
+                  <?php $is_normal_strings = [ 1 => '正常音', 0 => '異常音']; ?>
+                  <div class="desc_table">
+                    <dl><dt>聴診音名：</dt><dd>{{ $p_sound5->title }}　({{ $p_sound5->id }})</dd></dl>
+                    <dl><dt>聴診音種別：</dt><dd>{{$is_normal_strings[$p_sound5->is_normal]}}</dd></dl>
+                    <dl><dt>代表疾患：</dt><dd>{{$p_sound5->disease}}</dd></dl>
+                    <dl><dt>聴診部位：</dt><dd>{{$p_sound5->area}}</dd></dl>
+                  </div>
+                  <!-- .sound_conts_inner -->
+                </div>
+
+                <?php $is_favo_strings = [ 1 => '「お気に入り」から削除', 0 => '「お気に入り」に登録']; ?>
+                <div class="clearfix fav_wrapper">
+                  <button class="FavButton" data-id="{{ $p_sound5->id }}" data-favo="{{ $p_sound5->favo }}" data-aid="{{ $params['aid'] }}">{{ $is_favo_strings[$p_sound5->favo] }}</button>
+                </div>
+
+                <!-- /.sound_conts -->
+
+              </li>
+              <!-- /.sound_box -->
+            @endforeach
+
+            <!--*********************************************************-->
+          </ul>
+          <!-- /.sound_list -->
+</div>
+</div>
+<!-- pharmacy -->
+
+        @if($message == 0)
+        <hr style="margin:40px 0px 10px;">
+        <div class="accordion_btn2 a_btn2" style="margin-bottom:10px;">お気に入りの登録方法</div>
+        <div class="accordion_moreconts">
+          <div class="favo_mat" style="padding-top:20px;">
+            <ul>
+              <li>お気に入りの聴診音をここに登録する事ができます</li>
+              <li>お気に入りの「登録・削除」は何度でも行えます</li>
+              <li>お気に入りは <?php echo $params['fmax']?>件まで登録できます</li>
+              <li>お気に入りは登録された順番に並びます</li>
+            </ul>
+          </div>
+
+          <div class="down_arrow"></div>
+
+          <div class="favo_mat" style="margin-bottom:20px;">
+            <p class="favo_explain">登録方法</p>
+              <ul>
+              <li>「聴くゾウライブラリ」内の登録したい聴診音の「<img src="{{{asset('img/more@2.png')}}}" class="favo_img">」を押します</li>
+              <li>「 <img src="{{{asset('img/f1.png')}}}" class="favo_img"> 」ボタンを押すと、ここに登録されます</li>
+              <li>登録後は「 <img src="{{{asset('img/f2.png')}}}" class="favo_img"> 」ボタンに変わります</li>
+            </ul>
+          </div>
+        </div>
+        @endif
+
+        @if($message == 0)
+        <div class="accordion_btn2 a_btn2" style="margin-bottom:20px;">聴診音セットについて</div>
+        <div class="accordion_moreconts">
+        <div class="favo_mat" style="margin-bottom:30px;padding-top:20px;">
+          <ul>
+            <li>聴診音で主に使用される音源を予め設定致しました</li>
+            <li>上記のセット名(「肺音・断続性ラ音」等)を押下するとセットが表示されます</li>
+            <li>ここから「お気に入り」に登録する事もできます</li>
+          </ul>
+        </div>
+        </div>
+        @endif
+
+<?php $fomax = $params['fomax']; //お気に入りオリジナルが0の場合、非表示 ?>
+@if($fomax != 0)
+        @if($message == 0)
+        <div class="favo_mat" style="margin-bottom:20px;margin-top:60px;">
+          <p class="favo_explain">【便利機能】別に保存</p>
+          <ul>
+            <li>下記「お気に入りを別に保存」で、登録した「お気に入り」を別途 <?php echo $fomax ?>個、保存できます</li>
+            <li>別に保存すると「保存名の付いたボタン」が作成されます</li>
+            <li>作成された「保存名の付いたボタン」を押すと、別に保存した「お気に入り」を表示します</li>
+          </ul>
+        </div>
+        @endif
+
+          <?php $sfpid_c = count($sfpids); ?>
+          @if($sfpid_c != 0)
+          <div class="f_container">
+            <p class="favo_explain">別に保存したお気に入り</p>
+
+            <?php $i=0; ?>
+            <?php define("COLUMN",3); ?>
+            @foreach($sfpids as $sfpid)
+            @if(($i % COLUMN) == 0)
+            <div class="f_oneline">
+              <ul>
+            @endif
+                <li>
+                  <div class="f_mat1">
+                    <button class="InitSetButton" data-set="0" data-aid="{{ $params['aid'] }}" data-fpid="{{ $sfpid->id }}" data-register="{{ count($params['fid']) }}">{{ $sfpid->title }}</button>
+                  </div>
+                </li>
+            @if($i == (COLUMN-1))
+              </ul>
+            </div>
+            @endif
+            <?php if($i == (COLUMN-1)){$i=0;}else{$i++;} ?>
+            @endforeach
+
+            @if(($i % COLUMN) != 0)
+              </ul>
+            </div>
+            @endif
+
+          </div>
+          @endif
+
+          @if($sfpid_c != $fomax && $message == 0)
+          <div class="f_container">
+            <p class="favo_explain">お気に入りを別に保存</p>
+            <div class="f_oneline">
+              <ul>
+                <li>
+                  <div class="f_mat1">
+                    <input name="b_title" id="b_title" type="text" maxlength="20" value="{{ old('b_title') }}" placeholder="保存名(10文字まで)"/>
+                  </div>
+                </li>
+                <li>
+                  <div class="f_mat1">
+                    <button class="OriginalSetButton" id="OriginalSetButton" data-aid="{{ $params['aid'] }}" data-setfpid="{{ $params['fpid'] }}">別に保存</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div id="b_title_error"></div>
+          </div>
+          @endif
+
+          <?php $sfpid_c = count($sfpids); ?>
+          @if($sfpid_c != 0)
+          <div class="f_container">
+            <p class="favo_explain">別に保存の削除</p>
+
+            <?php $i=0; ?>
+            @foreach($sfpids as $sfpid)
+            @if(($i % COLUMN) == 0)
+            <div class="f_oneline">
+              <ul>
+            @endif
+                <li>
+                  <div class="f_mat1">
+                    <button class="DeleteSetButton" data-aid="{{ $params['aid'] }}" data-fpid="{{ $sfpid->id }}">{{ $sfpid->title }}</button>
+                  </div>
+                </li>
+            @if($i == (COLUMN-1))
+              </ul>
+            </div>
+            @endif
+            <?php if($i == (COLUMN-1)){$i=0;}else{$i++;} ?>
+            @endforeach
+
+            @if(($i % COLUMN) != 0)
+              </ul>
+            </div>
+            @endif
+          </div>
+          @endif
+
+
+          <?php $fr = env('FAVORITE_REC'); //お勧めセット。当面、非採用 ?>
+          @if($fr != 0)
+          <div class="f_container">
+            <p class="favo_explain">お勧めセット</p>
+            <div class="f_oneline">
+              <ul>
+                <li>
+                  <div class="f_mat1">
+                    <button class="InitSetButton" data-set="1" data-aid="{{ $params['aid'] }}" data-fpid="{{ $params['fpid'] }}" data-register="{{ count($params['fid']) }}">正常心音心基部</button>
+                  </div>
+                </li>
+                <li>
+                  <div class="f_mat1">
+                    <button class="InitSetButton" data-set="2" data-aid="{{ $params['aid'] }}" data-fpid="{{ $params['fpid'] }}" data-register="{{ count($params['fid']) }}">正常心音心尖部</button>
+                  </div>
+                </li>
+                <li>
+                  <div class="f_mat1">
+                    <button class="InitSetButton" data-set="3" data-aid="{{ $params['aid'] }}" data-fpid="{{ $params['fpid'] }}" data-register="{{ count($params['fid']) }}">正常呼吸音</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="f_oneline">
+              <ul>
+                <li>
+                  <div class="f_mat1">
+                    <button class="InitSetButton" data-set="3" data-aid="{{ $params['aid'] }}" data-fpid="{{ $params['fpid'] }}" data-register="{{ count($params['fid']) }}">笛声音wheezes</button>
+                  </div>
+                </li>
+                <li>
+                  <div class="f_mat1">
+                    <button class="InitSetButton" data-set="2" data-aid="{{ $params['aid'] }}" data-fpid="{{ $params['fpid'] }}" data-register="{{ count($params['fid']) }}">正常グル音</button>
+                  </div>
+                </li>
+                <li>
+                  <div class="f_mat2">
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          @endif
+
+@endif
+          @endif
+        </div>
+        <!-- /.newsound -->
+        <!-- .use -->
+        @if($message == 2)
+        <div class="use_mat">
+          <div class="use_title">「聴診会員ライブラリ」の操作方法</div>
+          <ul>
+            <li>「 <img src="{{{asset('img/play.jpg')}}}" class="use_img"> 」を押すと聴診音が再生されます</li>
+            <li>「<img src="{{{asset('img/more@2.png')}}}" class="use_img">」を押すと「詳細情報」が表示されます</li>
+            <li>「詳細情報」内で「 <img src="{{{asset('img/movel.jpg')}}}" class="use_img"> 」「 <img src="{{{asset('img/mover.jpg')}}}" class="use_img"> 」を押すとスライドが切り替わります</li>
+            <li>「詳細情報」内でスライドを押すと拡大表示されます</li>
+          </ul>
+        </div>
+<p style="text-align:center;">無料で使える「<a href="pdf/trial_20190520.pdf" target="_blank">聴診会員ライブラリ</a>」！</p><br>
+        @endif
+        <!-- /.use -->
+      </div>
+      <!--*********************************** /.contents ***********************************-->
+
+
+      <!--*********************************** .side_column ***********************************-->
+      <div class="side_column">
+        <!-- 推薦文 -->
+        @include('layouts.recommend')
+        <!-- ニューズレター -->
+        @include('layouts.newsletter')
+        <!-- デモ機貸出し -->
+        @if($message == 2)
+        @include('layouts.provisional')
+        @endif
+        <!-- 川崎ブランド取得 -->
+        @include('layouts.kawasaki_brand')
+        <!-- ダイジェスト -->
+        @include('layouts.digest')
+<?php
+ if($params['init_disp'] === 'true') {
+?>
+        <!-- 聴診音付き広告 -->
+        @include('layouts.advertorial')
+<?php
+ }
+?>
+        <!-- お知らせ -->
+        @include('layouts.news')
+<?php /*
+        <!-- ケンツメディコ聴診器 -->
+        @include('layouts.kms')
+        <!-- 聴診スピーカーについて -->
+        @include('layouts.whatspeaker')
+*/ ?>
+        <!-- スポンサーリンク -->
+        @include('layouts.advertisement')
+
+      </div>
+      <!--*********************************** /.side_column ***********************************-->
+
+    </div>
+    <!-- /#container_inner -->
+  </div>
+  <!-- /#container -->
+</div>
+
+<script type="text/javascript" src="/js/jquery.sss_portal.audio.js?v=1.2.0.20190610"></script>
+<script type="text/javascript">
+audiojs.events.ready(function() {
+/****************************************************************/
+/* 試聴音登録 */
+//return false;   // 聴診音を準備させない(要は音を出させない)
+// ここで制御せず「jquery.sss_portal.audio.js」で制御に変更
+/****************************************************************/
+  var audios = document.getElementsByTagName('audio');
+  if (audios.length > 0) {
+    var a1 = audiojs.create(audios, {
+      css: false,
+      createPlayer: {
+        markup: false,
+        playPauseClass: 'play-pauseZ',
+        scrubberClass: 'scrubberZ',
+        progressClass: 'progressZ',
+        loaderClass: 'loadedZ',
+        timeClass: 'timeZ',
+        durationClass: 'durationZ',
+        playedClass: 'playedZ',
+        errorMessageClass: 'error-messageZ',
+        playingClass: 'playingZ',
+        loadingClass: 'loadingZ',
+        errorClass: 'errorZ'
+      }
+    });
+  }
+
+  $({}).sss_portal.audio({
+    audioJsObj: a1
+  });
+});
+</script>
+<script type="text/javascript" src="/js/jquery.imagebox.js?v=1.1.7"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.sound_box img').imagebox();
+
+  $(".tag").each( function() {  // タグ
+    var part = $(this).text();  // 心音　肺音　腸音　その他
+
+    if(part.indexOf('肺音') !== -1) {
+      imgurl = "url(../img/tag-pulm.png)"; // タグのイメージ
+      $(this).css('background-image',imgurl);  // イメージ変更
+    } else if(part.indexOf('腸音') !== -1) {
+      imgurl = "url(../img/tag-bowel.png)"; // タグのイメージ
+      $(this).css('background-image',imgurl);  // イメージ変更
+    } else if(part.indexOf('その他') !== -1) {
+      imgurl = "url(../img/tag-etc.png)"; // タグのイメージ
+      $(this).css('background-image',imgurl);  // イメージ変更
+    }
+  });
+
+  $(".FavButton").each( function() {  // タグ
+    var favo = $(this).data('favo'); // お気に入り状態
+
+    if(favo == 1) { // お気に入りに登録されている場合
+      $(this).css('background','#eeeeee');
+      $(this).css('border-color','#eeeeee');
+      $(this).css('color','#000000');
+      $(this).css('background-image','url(../img/no-delete.png)');
+      $(this).css('background-repeat','no-repeat');
+      $(this).css('background-position','8% 46%');
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+(function($){
+  $('.sound_box .playZ').logger({
+    url: '/log',
+    data: function(elm) {
+      var $sound_box = $(elm).closest('.sound_box');
+      var data = {
+        screen_code: 'HOME',
+        event_code: 'PLAY',
+        body: {
+          stetho_sound: {
+            id: $sound_box.data('id'),
+            type: $.trim($sound_box.find('.tag').text()),
+            title: $sound_box.find('.sound_title .name').attr('title')
+          }
+        }
+      };
+      return data;
+    }
+  });
+})(jQuery);
+$(window).on('load',function () {
+    $("#tabBox2").hide();
+    $("#tabBox3").hide();
+    $("#tabBox5").hide();
+
+    $(".accordion_moreconts").show();
+});
+</script>
+@endsection

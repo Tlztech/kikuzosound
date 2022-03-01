@@ -1,0 +1,9 @@
+.template-QuizResults-wrapper {
+  padding: 12px;
+  background-color: #47b8e8;
+  word-break: break-all;
+}
+
+.template-QuizResults-wrapper .organism-quizTitle {
+  color: #ffffff;
+}

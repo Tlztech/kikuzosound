@@ -1,0 +1,10 @@
+.table th {
+  font-size: small;
+  /* min-width: 200px; */
+}
+
+.table td {
+  font-size: small;
+  /* width: fit-content; */
+  word-break: break-all;
+}

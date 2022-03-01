@@ -1,0 +1,61 @@
+.atoms-p {
+  font-size: 16px;
+}
+
+.atoms-P-grey {
+  color: #7d7d7d;
+}
+
+.atoms-input {
+  width: 80%;
+  display: inline-block;
+}
+
+.atoms-input-search {
+  width: 350px;
+  background: #f9f9f9;
+  padding-right: 35px;
+}
+
+.atoms-input-search:focus {
+  background: #f9f9f9;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.atoms-input-validate-error {
+  border-color: rgb(194, 68, 68) !important;
+}
+
+.atoms-input-validate-error:focus,
+.atoms-input-validate-error:active {
+  outline: none;
+  border: 1px solid rgb(194, 68, 68);
+}
+
+.file-select {
+  display: flex;
+  align-items: center;
+}
+
+.file-select .choose-btn {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #8c8c8c;
+  background-color: #efefef;
+  margin: 0 4px 0 0;
+  padding: 1px 6px;
+  min-width: 130px;
+  font-weight: lighter !important;
+}
+
+.atoms-select-fileName {
+  color: #717171;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+}

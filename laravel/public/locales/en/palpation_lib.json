@@ -1,0 +1,18 @@
+{
+  "Title": "Title",
+  "Auscultation sound type": "Auscultation sound type",
+  "Auscultation site": "Auscultation site",
+  "Normal abnormal": "Normal abnormal",
+  "status": "Status",
+  "Supervisor": "Supervisor",
+  "Public / Private": "Public / Private",
+  "Update date and time": "Update date and time",
+  "Update Date" : "Updated at",
+  "Author" : "Author",
+
+  "add_palpation_lib": "Add palpation Library",
+  "edit_palpation_lib": "Edit palpation Library",
+  "video_file": "Video File",
+  "sound_file": "Sound File",
+  "add_new": "Add New"
+}

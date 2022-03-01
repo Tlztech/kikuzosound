@@ -1,0 +1,17 @@
+.top {
+  display: flex;
+  /* align-items: center; */
+  justify-content: flex-end;
+  margin-bottom: 44px;
+  position: relative;
+}
+
+.top .btn-success {
+  position: absolute;
+  left: 0;
+}
+
+.top .download-image {
+  width: 40px !important;
+  height: 40px;
+}

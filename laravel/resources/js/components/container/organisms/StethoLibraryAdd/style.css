@@ -1,0 +1,110 @@
+.organism-add-stetho-library-container .organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-add-stetho-library-container .modal-body {
+  padding: 32px;
+}
+
+.organism-add-stetho-library-container .file-select {
+  width: 66%;
+  margin-left: 15px;
+}
+
+.organism-add-stetho-library-container .file-select-drag {
+  margin-left:-4px;
+}
+
+.organism-add-stetho-library-container audio {
+  width: 68%;
+  margin-left: 30%;
+  padding-left: 15px;
+}
+
+.organism-add-stetho-library-container .organism-modal-image {
+  width: 16px;
+}
+
+.organism-add-stetho-library-container .organism-add-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-add-modal-button {
+  width: 80px;
+  font-size: 12px;
+  margin: 6px 0px;
+}
+
+.organism-add-stetho-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 30%;
+}
+
+.organism-add-stetho-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-input {
+  width: 66%;
+}
+
+.organism-add-stetho-library-container .select-item {
+  margin-left: 0 !important;
+  border-radius: 0.25rem !important;
+  width: 97% !important;
+  margin-bottom: 4px;
+}
+
+.stetho-library-modal-item {
+  width: 30%;
+}
+
+.labelstyle {
+  font-weight: bold;
+}
+
+.organism-add-stetho-library-container .button-style {
+  margin-left: 8%;
+}
+
+.organism-add-stetho-library-container .dropdown-style {
+  margin-left: 0px;
+}
+
+.organism-add-stetho-library-container .grid-item {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+  align-items: center;
+}
+
+.organism-add-stetho-library-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 30%;
+  padding-left: 15px;
+}
+
+.organism-add-stetho-library-container .choose-style {
+  margin-left: 45px !important;
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  width: 120px;
+}
+
+.organism-add-stetho-library-container .sound_img {
+  width: 400px;
+  height: auto;
+  margin: 20px 0;
+}
+
+.organism-add-stetho-library-container video {
+  width: 283px;
+  height: 150px;
+  margin: 20px 0;
+}

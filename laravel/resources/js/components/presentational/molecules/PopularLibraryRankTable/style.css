@@ -1,0 +1,34 @@
+.molecules-PopularLibraryRankTable-wrapper {
+  box-shadow: 0px 5px 10px #00000017;
+  padding: 24px 40px;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+.molecules-PopularLibraryRankTable-wrapper .table thead th{
+  border-top: none;
+  border-bottom: 1px solid #efefef;
+}
+.molecules-PopularLibraryRankTable-wrapper .table td{
+  border-top: none;
+  border-bottom: 1px solid #efefef;
+  font-size: 14px;
+  font-family: normal;
+}
+.molecules-PopularLibraryRankTable-wrapper .popularLibraryTableHeader {
+  background-color: #ffffff !important;
+}
+
+.molecules-PopularLibraryRankTable-wrapper .table tr:nth-child(2n+1) {
+  background-color: #f6f8fa;
+}
+
+.molecules-PopularLibraryRankTable-wrapper thead tr th:first-child,
+.molecules-PopularLibraryRankTable-wrapper tbody tr td:first-child {
+  width: 10%;
+}
+
+.molecules-PopularLibraryRankTable-wrapper thead tr th,
+.molecules-PopularLibraryRankTable-wrapper tbody tr td{
+  width: 15%;
+}

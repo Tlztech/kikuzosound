@@ -1,0 +1,23 @@
+.molecules-homeList-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #707070;
+  margin-bottom: 16px;
+}
+
+.molecules-homeList-noBorder {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.molecules-homeList-wrapper .atoms-label {
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.47px;
+}
+
+.molecules-homeList-wrapper .atoms-p {
+  font-size: 14px;
+  letter-spacing: 0.47px;
+}

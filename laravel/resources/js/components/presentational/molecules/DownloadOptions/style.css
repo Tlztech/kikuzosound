@@ -1,0 +1,18 @@
+.molecules-DownloadOptions-wrapper .atoms-Image {
+  width: 30px;
+  margin-left: 25px;
+}
+
+.molecules-DownloadOptions-wrapper .atoms-button {
+  margin-left: 15px;
+}
+
+.download-image {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .molecules-DownloadOptions-wrapper .atoms-button {
+    margin-left: 14px;
+  }
+}

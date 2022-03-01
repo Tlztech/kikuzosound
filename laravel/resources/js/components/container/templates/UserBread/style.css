@@ -1,0 +1,61 @@
+.template-UserBread-wrapper {
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  max-height: 90%;
+  /* overflow-y: scroll; */
+}
+
+.template-UserBread-wrapper .molecules-SearchInput-wrapper {
+  position: relative;
+}
+
+.template-UserBread-wrapper .userbread-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 44px;
+}
+
+.template-UserBread-wrapper .SearchWithDownloadOption {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.template-UserBread-wrapper .molecules-DownloadOptions-wrapper {
+  margin-left: 30px;
+}
+
+.template-UserBread-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.template-UserBread-wrapper thead,
+.template-UserBread-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.template-UserBread-wrapper tbody {
+  display: block;
+  height: 50vh;
+  overflow-x: auto;
+  overflow-y: overlay;
+}
+
+.template-UserBread-wrapper .molecules-DownloadOptions-wrapper .atoms-Image {
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 1280px) {
+  .template-UserBread-wrapper .molecules-DownloadOptions-wrapper {
+    margin-left: 25px;
+  }
+}

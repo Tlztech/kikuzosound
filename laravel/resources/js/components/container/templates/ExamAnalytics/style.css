@@ -1,0 +1,78 @@
+.template-examAnalytics-wrapper {
+  position: relative;
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  max-height: 90%;
+  overflow-y: scroll;
+}
+
+.template-examAnalytics-wrapper::-webkit-scrollbar{
+  display:none;
+}
+
+.template-examAnalytics-wrapper .templates-dropdown {
+  display: flex;
+  justify-content: space-between;
+}
+
+.template-examAnalytics-wrapper .templates-dropdown-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.templates-dropdown-wrapper
+  .molecules-TitleWithDropDown-wrapper
+  .molecules-TitleBoxIcon-wrapper {
+  align-items: unset !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.template-examAnalytics-wrapper .organism-chart-type {
+  margin-right: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.template-examAnalytics-wrapper .molecule-radio-label-container .atoms-label {
+  font-weight: bold;
+  font-size: 12px;
+  margin-right: 20px;
+}
+
+.template-examAnalytics-wrapper .wide-dropdown 
+  .molecules-TitleWithDropDown-wrapper 
+  .molecules-dropdown-container {
+  min-width: 132px !important;
+ }
+
+.template-examAnalytics-wrapper .dateWithDownloadWrapper{
+  display: flex;
+}
+
+.template-examAnalytics-wrapper .template-datePicker {
+  display: flex;
+}
+
+.template-examAnalytics-wrapper .organisms-datePicker-wrapper .organisms-dropdown-container {
+  right: 0;
+}
+
+.template-examAnalytics-wrapper .molecules-DownloadOptions-wrapper .atoms-Image {
+  width: 30px;
+  height: 30px;
+}
+
+@media only screen and (max-width: 860px) {
+  .template-examAnalytics-wrapper .templates-dropdown {
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+  .organisms-customDatePicker-wrapper .organisms-dropdown-container {
+    left: 0;
+    right: unset;
+  }
+}

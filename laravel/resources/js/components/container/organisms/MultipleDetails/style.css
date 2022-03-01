@@ -1,0 +1,107 @@
+.organisms-multiple-details-container {
+  padding: 12px;
+  background-color: #47b8e8;
+  word-break: break-all;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+}
+
+.organisms-multiple-details-container .multipleDetails-quizTitle {
+  color: #ffffff;
+}
+
+.organisms-multipleDetails-wrapper {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 16px 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.multipleDetails-options-container {
+  margin: 24px 0;
+  padding: 16px;
+  border-radius: 6px;
+  border: 2px solid #ffcc12;
+  position: relative;
+}
+
+.organisms-multiple-details-container .organism-quizNumber {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.organisms-multiple-details-container  .organisms-quiz-question {
+  word-break: break-all;
+  margin-right: 64px;
+}
+
+.multipleDetails-options-container .multipleDetails-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 24px 16px;
+  justify-content: space-between;
+}
+
+.multipleDetails-options .atoms-Button-quiz-options {
+  background-color: #f1f3f4;
+  font-size: 16px;
+}
+
+.multipleDetails-options .options-button-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.multipleDetails-options .options-button-label .options-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.organisms-multipleDetails-dropdown {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.organisms-multipleDetails-dropdown .molecules-DropdownLabel-wrapper {
+  width: 100%;
+}
+
+.organisms-multipleDetails-dropdown .atoms-Select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.organisms-multipleDetails-wrapper .atoms-Button-quiz-options {
+  border-radius: 50px;
+}
+
+.organisms-multiple-details-container .organism-sound-timer {
+  background-color: #ffcc12;
+  position: absolute;
+  border-radius: 50%;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  right: -18px;
+  top: -18px;
+  letter-spacing: 1.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.organisms-multiple-details-container .organism-timer-text {
+  font-size: 32px;
+  color: #ffffff;
+  margin: 0;
+  overflow: scroll;
+}

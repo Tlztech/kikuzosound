@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\StethoSound;
+use Input;
+use DB;
+use Validator;
+use Intervention\Image\Facades\Image;
+
+
+// コンテンツ画面
+class ContentsController extends Controller
+{
+  /**
+   * Show the application dashboard.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index()
+  {
+    $rules = [
+      'sort'=>'in:asc,desc',
+      'filter'=>'in:1,2,3,9',
+      'keyword'=>'max:255',
+    ];
+    $validator = Validator::make(Input::all(), $rules);
+
+    if ($validator->fails()) {
+      $stetho_sounds = StethoSound::publicAll()
+        ->orderBy('created_at',"desc")
+        ->paginate(10);
+      return view('contents', compact('stetho_sounds'))->withErrors($validator);
+    }
+
+// DB::connection()->enableQueryLog();
+    $sort = Input::get('sort','desc');
+    $type = Input::get('filter','');
+    $keyword = Input::get('keyword','');
+    $keywords = preg_split('/\s+/', $keyword, -1, PREG_SPLIT_NO_EMPTY);
+
+    $stetho_sounds = StethoSound::publicAll()
+      ->type($type)
+      ->search($keywords)
+      ->orderBy('created_at',$sort)
+      ->paginate(10);
+// dd(DB::getQueryLog());
+    return view('contents', compact('stetho_sounds'));
+  }
+}

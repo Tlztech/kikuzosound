@@ -1,0 +1,61 @@
+.organism-AusculaidePreview-wrapper .modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-AusculaidePreview-wrapper .organism-modal-image {
+  width: 16px;
+}
+
+.organism-AusculaidePreview-wrapper .modal-body {
+  padding: 12px 32px;
+  word-break: break-all;
+}
+
+.organism-AusculaidePreview-wrapper .atoms-label {
+  font-size: 16px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.organism-AusculaidePreview-wrapper .organism-labelTitle {
+  font-weight: bold;
+}
+
+.organism-AusculaidePreview-wrapper .organism-explanation-sound-image {
+  width: 200px;
+  border: 1px solid #000;
+  margin: 4px 0px;
+}
+
+.organism-AusculaidePreview-wrapper .modal-dialog {
+  max-width: 680px;
+  margin: 25px auto;
+}
+
+.organism-AusculaidePreview-wrapper .organism-sound-point {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (max-width: 1280px) {
+  .organism-AusculaidePreview-wrapper .modal-dialog {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 600px) {
+  .organism-AusculaidePreview-wrapper .modal-dialog {
+    max-width: 400px;
+    margin: 25px auto;
+  }
+}
+
+.organism-AusculaidePreview-wrapper .groupLabel {
+  margin-right: 16px;
+}
+
+

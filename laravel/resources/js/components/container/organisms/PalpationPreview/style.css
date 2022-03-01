@@ -1,0 +1,63 @@
+.organism-palpationPreview-wrapper .modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-palpationPreview-wrapper .organism-modal-image {
+  width: 16px;
+}
+
+.organism-palpationPreview-wrapper .organism-labelTitle {
+  font-weight: bold !important;
+}
+
+.organism-palpationPreview-wrapper .modal-body {
+  padding: 12px 32px;
+}
+
+.organism-palpationPreview-wrapper audio {
+  height: 40px;
+}
+
+.organism-palpationPreview-wrapper .atoms-label {
+  font-size: 16px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.organism-palpationPreview-wrapper .organism_sound_img {
+  width: 150px;
+  height: 100px;
+  margin: 8px;
+}
+
+.organism-palpationPreview-wrapper .organism-audio-label {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 876px) {
+  .organism-palpationPreview-wrapper .modal-dialog {
+    max-width: 590px;
+    margin: 25px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .organism-palpationPreview-wrapper .modal-dialog {
+    max-width: 400px;
+    margin: 25px auto;
+  }
+}
+
+@media (min-width: 876px) {
+  .organism-palpationPreview-wrapper .modal-dialog {
+    max-width: 740px;
+    margin: 25px auto;
+  }
+}
+
+.organism-palpationPreview-wrapper .groupLabel {
+  margin-right: 14px;
+}

@@ -1,0 +1,25 @@
+<?php
+
+// resources/lang/en/messages.php
+
+return [
+    'title' => 'About us' ,
+    'p1' => 'With advancement in the digitalization of medical devices, diagnosis and treatment technologies are developing remarkably fast.    Most of the data is displayed on a PC screen, so in the consultation room it is easy to look only at the PC.   No matter how high the diagnostic accuracy, patient satisfaction cannot be obtained through medical care that only looks at PCs. We think that this is one of the causes of patients making many different clinical visits.',
+    'p2' => 'In response, we want to open up clues through auscultation.   When performing auscultation, the distance between the doctor and the patient is short.   We believe that the closer the physical distance is, the closer the distance of the mind is, and that trust is born.   We believe that trust reduces the number of visits to clinics and thus reduces the burden on doctors and medical staff.',
+    'p3' => 'On the kikuzosound.com (auscultation portal site), many sounds such as heart sounds and lung sounds are released.   All sound sources are processed in-house, but if you listen with an appropriate acoustic device, you can hear a realistic auscultation sound that is almost the same as the actual case.   Auscultation is better the more you listen.   Please listen to a lot of the sounds on this site and improve your auscultation technique.',
+    'p4' => 'The more you listen, the better your auscultation skills!',
+    'p5' => '',
+    'p6' => 'CEO Kiyoshi Fujiki <br/>
+    Telemedica Inc <br/>
+    9-1, Tsutsujigaoka, Aobaku, Yokohama, Japan <br/>
+    +8145-532-4613 <br/>
+    fujiki@telemedica.co.jp',
+    'div1' => 'Recruiting facility',
+    'div2' => '(The honorific name is slightly different.)',
+    'li1' =>'Shimane University Hospital Medical Skill Improvement Center, Tohoku University Hospital Nursing Department, Kanazawa University Hospital Career Development Center, Kanazawa University Hospital Pediatrics, Kyoto University Medical Hospital, Nagasaki University Hospital, Toyama University Hospital General Medical Care Department, Keio University University Medical School Clinical Simulation Lab, Keio University School of Nursing and Medical Care, Keio University Medical Education Supervision Center, Kanazawa Medical University Clinical Simulation Center, Nihon University Bioresource Sciences Veterinary Medicine Animal Hospital, Kyoto Prefectural Medical University, Fukushima Prefectural University Medical University, Toyama University, Juntendo University School of Medical Nursing, Himeji Dokkyo University Nursing Faculty of Nursing, Tokai University School of Nursing, Akita University Simulation Education Center, Kyushu University of Nutrition and Welfare Rehabilitation, Kitasato University, Kyushu Health and Welfare University, Hoshi Pharmaceutical University , Kitasato University Faculty of Nursing, Tohoku Bunka Gakuen University Graduate School of Health and Social Sciences, Department of Health and Welfare Nurse Practitioner Nursing Field (concurrent nursing department, medical and welfare department) , Tokyo Medical and Dental University Integrated Education Organization Business Promotion Division, Showa University School of Medicine Graduate School Clinical Training Center, University of Tokyo Graduate School of Medicine Graduate School of Medical Education International Research Center, Kinjo University Medical and Health Sciences, Tokyo Health and Medical University Osaka Medical University, St. Marianna Medical University Medical Simulation Center, Kansai Medical University, Nihon University School of Medicine, Okayama University Graduate School of Medical and Dental Sciences, etc., Academic Affairs Division Medical and Medical Education Center, Kobe University Clinical Basic Technology Training Center, Iwate Medical University Faculty of Pharmacy, Department of Clinical Pharmacology Kitadaigaku Graduate School of Medicine, School of Medicine Medical Education Promotion Center, Rakuno Gakuen University',
+    'li2' => 'Osaka Police Hospital, Ikedo Cardiology Internal Medicine Clinic, Showa Hospital, Yokkaichi Hazu Medical Center, Ehime Prefectural Niihama Hospital Nursing Department, Aozukai Group, Chugoku Rosai Hospital, Saiseikai Imabari Hospital, Ehime Prefectural Central Hospital Simulation Room, Kaga Medical Center Center, Fukushima Medical University Aizu Medical Center Hospital, Medical Corporation Tokushukai Fukuoka Tokushukai Hospital' ,
+    'li3' => 'Clinical Cardiology Educational Research Group, Japan Home Pharmaceutical Society Vital Sign Seminar, Caress Sapporo Simulation Center',
+    'li4' => 'Ain Holdings Co., Ltd., Maple Pharmacy, Sunrise Pharmacy, Saga Kita Pharmacy, Rinkai Pharmacy, Belclan Pharmaceutical Co., Ltd. Anzu Pharmacy Oarai',
+    'company_address' => 'Telemedica Inc <br> 
+    9-1, Tsutsujigaoka, Aobaku, Yokohama, Japan<br>'
+];

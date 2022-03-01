@@ -1,0 +1,258 @@
+﻿@charset "utf-8";
+
+/*********************
+オーディオ
+*********************/
+
+.audiojsZ audio {
+    position: absolute;
+    left: -1px;
+}
+
+.audiojsZ {
+    background: #47B8E8;
+    overflow: hidden;
+    font-family: monospace;
+    font-size: 12px;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 0 #368BB0;
+}
+
+
+/*サウンドリスト*/
+
+.sound_box .audiojsZ {
+    width: 250px;
+    height: 36px;
+}
+
+.audiojsZ .play-pauseZ {
+    width: 25px;
+    height: 40px;
+    background: url(line_white.png) no-repeat right top 8px;
+    padding: 4px 6px;
+    margin: 0px;
+    float: left;
+    overflow: hidden;
+    /*  border-right: 1px solid #fff;*/
+}
+
+.audiojsZ p {
+    display: none;
+    width: 25px;
+    height: 40px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.audiojsZ .playZ {
+    display: block;
+}
+
+.audiojsZ .scrubberZ {
+    position: relative;
+    float: left;
+    background: #fff;
+    height: 10px;
+    margin: 12px 4px 12px 12px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+
+/*サウンドリスト*/
+
+.sound_box .audiojsZ .scrubberZ {
+    width: 110px;
+}
+
+.audiojsZ .progressZ {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 14px;
+    width: 0px;
+    background: #FFCC12;
+    z-index: 1;
+}
+
+.audiojsZ .loadedZ {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 14px;
+    width: 0px;
+    background: #fff;
+}
+
+.audiojsZ .timeZ {
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    /*  margin: 0px 0px 0px 6px;
+  padding: 0px 6px 0px 12px;
+  border-left: 1px solid #fff;*/
+    color: #fff;
+}
+
+.audiojsZ .timeZ em {
+    padding: 0px 2px 0px 0px;
+    color: #fff;
+    font-style: normal;
+}
+
+.audiojsZ .timeZ strong {
+    padding: 0px 0px 0px 2px;
+    font-weight: normal;
+}
+
+.audiojsZ .error-messageZ {
+    float: left;
+    display: none;
+    margin: 0px 10px;
+    height: 36px;
+    width: 300px;
+    overflow: hidden;
+    line-height: 36px;
+    white-space: nowrap;
+    color: #fff;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -icab-text-overflow: ellipsis;
+    -khtml-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+}
+
+.audiojsZ .error-messageZ a {
+    color: #eee;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #999;
+    white-space: wrap;
+}
+
+.audiojsZ .playZ {
+    background: url("player-graphics.png") -2px -1px no-repeat;
+}
+
+.audiojsZ .loadingZ {
+    background: url("player-graphics.png") -2px -31px no-repeat;
+}
+
+.audiojsZ .errorZ {
+    background: url("player-graphics.png") -2px -61px no-repeat;
+}
+
+.audiojsZ .pauseZ {
+    background: url("player-graphics.png") -2px -91px no-repeat;
+}
+
+.audiojsZ .pauseZ_vid {
+    background: url("player-graphics.png") -2px -91px no-repeat;
+}
+
+.playingZ .playZ,
+.playingZ .loadingZ,
+.playingZ .errorZ {
+    display: none;
+}
+
+.playingZ .pauseZ {
+    display: block;
+}
+
+.playingZ .pauseZ_vid {
+    display: block;
+}
+
+.loadingZ .playZ,
+.loadingZ .pauseZ,
+.loadingZ .pauseZ_vid,
+.loadingZ .errorZ {
+    display: none;
+}
+
+.loadingZ .loadingZ {
+    display: block;
+}
+
+.errorZ .timeZ,
+.errorZ .playZ,
+.errorZ .pauseZ,
+.errorZ .pauseZ_vid,
+.errorZ .scrubberZ,
+.errorZ .loadingZ {
+    display: none;
+}
+
+.errorZ .errorZ {
+    display: block;
+}
+
+.errorZ .play-pauseZ p {
+    cursor: auto;
+}
+
+.errorZ .error-messageZ {
+    display: block;
+}
+
+@media only screen and (max-width: 720px) {
+    .sound_box .audiojsZ {
+        width: 99%;
+    }
+    .sound_box .audiojsZ .scrubberZ {
+        width: 67%;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .sound_box .audiojsZ {
+        width: 99%;
+    }
+    .sound_box .audiojsZ .scrubberZ {
+        width: 56%;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .sound_box .audiojsZ {
+        width: 99%;
+    }
+    .sound_box .audiojsZ .scrubberZ {
+        width: 46%;
+    }
+}
+
+
+/*Retina（高解像度）ディスプレイ用*/
+
+@media screen and (-webkit-min-device-pixel-ratio:2),
+(min-resolution: 2dppx) {
+    .audiojsZ .play-pauseZ {
+        background: url(line_white@2.png) no-repeat right top 8px;
+        background-size: 4px 20px;
+    }
+    .audiojsZ .playZ {
+        background: url("player-graphics@2.png") -2px -1px no-repeat;
+        background-size: 30px 120px;
+    }
+    .audiojsZ .loadingZ {
+        background: url("player-graphics@2.png") -2px -31px no-repeat;
+        background-size: 30px 120px;
+    }
+    .audiojsZ .errorZ {
+        background: url("player-graphics@2.png") -2px -61px no-repeat;
+        background-size: 30px 120px;
+    }
+    .audiojsZ .pauseZ {
+        background: url("player-graphics@2.png") -2px -91px no-repeat;
+        background-size: 30px 120px;
+    }
+    .audiojsZ .pauseZ_vid {
+        background: url("player-graphics@2.png") -2px -91px no-repeat;
+        background-size: 30px 120px;
+    }
+}

@@ -1,0 +1,12 @@
+.molecules-Chart-wrapper #center-axis-container > div {
+  z-index: 0 !important;
+}
+.molecules-Chart-wrapper {
+  margin-top: 30px;
+}
+
+@media (max-width: 876px) {
+  .molecules-Chart-wrapper {
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,6 @@
+.molecules-quizOptionButtons-wrapper {
+  background-color: #c4e9f9;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

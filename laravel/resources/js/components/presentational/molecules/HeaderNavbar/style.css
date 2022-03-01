@@ -1,0 +1,64 @@
+.molecules-top-nav {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 26px;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  align-items: center;
+  min-width: 86vw;
+}
+
+.molecules-top-nav .molecules-icon-nav {
+  cursor: pointer;
+}
+
+.molecules-top-nav .molecules-hamburger-icon {
+  margin-left: 32px;
+}
+
+.molecules-top-nav .buttons-group {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.molecules-top-nav .option-selector {
+  position: relative;
+  margin: 0 32px;
+}
+
+.molecules-top-nav .dropdown-list {
+  position: absolute;
+  transform: translate(-60%, 15%);
+}
+
+.molecules-top-nav .dropdown-list li {
+  list-style-type: none;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 2px 10px;
+  box-shadow: 1px 2px 6px 1px #888888;
+  font-size: 0.9em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.molecules-top-nav .molecules-navbar-text {
+  font-weight: bold;
+  margin-left: 26px;
+}
+
+.molecules-top-nav .logoutIcon {
+  border-radius: 4px;
+}
+
+.molecules-top-nav .default-img {
+  width: 20px;
+  height: 20px;
+}
+
+/* .molecules-top-nav-false{
+  width: 100vw;
+} */

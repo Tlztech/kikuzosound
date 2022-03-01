@@ -1,0 +1,108 @@
+<?php
+namespace App\Http\Middleware;
+
+use Closure;  
+use Illuminate\Contracts\Routing\TerminableMiddleware;  
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\FirePHPHandler;
+use Monolog\Formatter\LineFormatter;
+use \URL;
+
+class LogAfterRequest implements TerminableMiddleware {
+
+  public function handle($request, Closure $next)
+  {
+    return $next($request);
+  }
+
+  public function terminate($request, $response)
+  { 
+    date_default_timezone_set('Asia/Tokyo');
+    $datetime = "%datetime%";
+    // セッションID
+    $sessionId = \Session::getId();
+    // ユーザID（フェーズ１では実装しない）
+//    $user_id = "";
+//    $login_user = \Session::get('MEMBER_3SP_USER');
+    $login_user = $request->session()->get('MEMBER_3SP_USER');
+    if($login_user == '') {
+        $user_id = "";
+    } else {
+        $user_id = $login_user;
+    }
+
+    // 画面コード
+    $route_name = $request->route()->getName();
+    $name_to_code_map = [
+      'home'     =>'HOME',
+      'contents' =>'CONTENTS',
+      'quizpacks'=>'QUIZ_PACKS',
+      'speaker'  =>'SPEAKER',
+      'about'    =>'ABOUT',
+      'terms'    =>'TERMS',
+      'privacy'  =>'PRIVACY',
+      'news'     =>'NEWS',
+      'faq'      =>'FAQ',
+      'contact'  =>'CONTACT',
+      'contact_form'=>'CONTACT_FORM',
+      'contact_form_confirm' => 'CONTACT_FORM_CONFIRM',
+      'contact_form_send_mail' => 'CONTACT_FORM_CONFIRM',
+      'register'=>'REGISTER',
+      'register_form'=>'REGISTER_FORM',
+      'register_form_confirm'=>'REGISTER_FORM_CONFIRM',
+      'register_form_send_mail'=>'REGISTER_FORM_CONFIRM',
+      'vest'=>'VEST',
+      'use'=>'USE',
+      'member_login'=>'MEMBER_LOGIN',
+      'member_login_code'=>'MEMBER_LOGIN_CODE',
+      'member_login_post'=>'MEMBER_LOGIN_POST',
+      'member_logout'=>'MEMBER_LOGOUT',
+      'member_jump'=>'MEMBER_JUMP',
+      'casestudy'=>'CASESTUDY',
+    ];
+    $screen_cd = isset($name_to_code_map[$route_name]) ? $name_to_code_map[$route_name] : "";
+
+    // Referer
+    $referer = $request->headers->get('referer');
+    $from_screen_cd = "";
+
+    $event_cd = 'INIT';
+    // お問い合わせフォーム画面かつPOSTの場合は送信ボタン押下イベントとみなす
+    if ( $request->method() == 'POST' && $screen_cd == 'CONTACT_FORM_CONFIRM' && $route_name == 'contact_form_send_mail' ) {
+      $event_cd = 'SEND';
+    }
+    // 登録フォーム画面かつPOSTの場合は送信ボタン押下イベントとみなす
+    if ( $request->method() == 'POST' && $screen_cd == 'REGISTER_FORM_CONFIRM' && $route_name == 'register_form_send_mail') {
+      $event_cd = 'SEND';
+    }
+
+
+    // HTTP method
+    $http_method = $request->method();
+    // HTTP path
+    $http_path = $request->path();
+    // HTTP body
+    $http_body = $request->all();
+
+    // ログ出力内容
+    $log = [
+      'date'       => $datetime,
+      'ip'         => $request->ip(),
+      'user_agent' => $request->header('User-Agent'),
+      'session_id' => $sessionId,
+      'user_id'    => $user_id,
+      'from_screen_cd'=> $from_screen_cd,
+      'screen_cd'  => $screen_cd,
+      'event_cd'   => $event_cd,
+      'http_method'=> $http_method,
+      'http_path'  => $http_path,
+      'http_body'  => $http_body,
+      'referer'    => $referer
+    ];
+
+    // ログを出力
+    $tracking_logger = \App::make('tracking_logger');
+    $tracking_logger->info('',$log);
+  }
+}

@@ -1,0 +1,64 @@
+.organism-stethoPreview-wrapper .modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-stethoPreview-wrapper .organism-modal-image {
+  width: 16px;
+}
+
+.organism-stethoPreview-wrapper .modal-body {
+  padding: 12px 32px;
+  word-break: break-all;
+}
+
+.organism-stethoPreview-wrapper audio {
+  height: 40px;
+}
+
+.organism-stethoPreview-wrapper .atoms-label {
+  font-size: 14px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.organism-stethoPreview-wrapper .organism-labelTitle {
+  font-weight: bold;
+}
+
+.organism-stethoPreview-wrapper .organism_sound_img {
+  width: 200px;
+  height: auto;
+  margin: 4px 0px;
+}
+
+.organism-stethoPreview-wrapper .organism-audio-label {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 876px) {
+  .organism-stethoPreview-wrapper .modal-dialog {
+    max-width: 590px;
+    margin: 25px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .organism-stethoPreview-wrapper .modal-dialog {
+    max-width: 400px;
+    margin: 25px auto;
+  }
+}
+
+@media (min-width: 876px) {
+  .organism-stethoPreview-wrapper .modal-dialog {
+    max-width: 740px;
+    margin: 25px auto;
+  }
+}
+
+.organism-stethoPreview-wrapper .groupLabel {
+  margin-right: 14px;
+}

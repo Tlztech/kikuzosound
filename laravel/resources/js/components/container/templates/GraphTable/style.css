@@ -1,0 +1,66 @@
+.template-GraphTable-wrapper {
+  padding: 16px 36px;
+  background-color: #ffffff;
+  margin: 2%;
+  height: 86vh;
+  max-height: 90%;
+  overflow-y: scroll;
+}
+
+.graphTable-search,
+.graphTable-downloads {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.graphTable-downloads .atoms-button {
+  display: none;
+}
+.template-GraphTable-wrapper .molecules-SearchInput-wrapper {
+  position: relative;
+}
+
+.template-GraphTable-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.template-GraphTable-wrapper .TestAnalysis-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 44px;
+}
+
+.template-GraphTable-wrapper .SearchWithDownloadOption {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.template-GraphTable-wrapper .molecules-DownloadOptions-wrapper {
+  margin-left: 30px;
+}
+
+@media (max-width: 496px) {
+  .graphTable-search,
+  .graphTable-downloads {
+    justify-content: flex-end;
+  }
+
+  .graphTable-search {
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: 740px) {
+  .template-GraphTable-wrapper {
+    height: 100vh;
+    max-height: 100%;
+  }
+  .template-GraphTable-wrapper .Component-root-3 {
+    height: 400px !important;
+  }
+}

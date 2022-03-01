@@ -1,0 +1,98 @@
+.template-UcgLIbrary-wrapper {
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  display: grid;
+}
+
+.template-UcgLIbrary-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.ugc-library-bottom {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.template-UcgLIbrary-wrapper td,
+.template-UcgLIbrary-wrapper th {
+  text-align: center;
+  word-wrap: break-word;
+  width: auto;
+}
+
+.template-UcgLIbrary-wrapper tbody {
+  display: block;
+  overflow-x: auto;
+  overflow-y: overlay;
+  padding-right: 5px;
+}
+
+.template-UcgLIbrary-wrapper .table {
+  min-width: 800px;
+}
+
+
+.template-UcgLIbrary-wrapper thead,
+.template-UcgLIbrary-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.template-UcgLIbrary-wrapper tbody tr {
+  margin-bottom: 10px;
+}
+
+.template-UcgLIbrary-wrapper table td {
+  overflow-wrap: break-word;
+}
+
+.template-UcgLIbrary-wrapper td,
+.template-UcgLIbrary-wrapper th {
+  padding: 10px;
+  text-align: left;
+}
+
+.template-UcgLIbrary-wrapper .no-data {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.template-UcgLIbrary-wrapper .no-data td {
+  font-size: medium;
+  border-top: none;
+}
+
+@media (max-width: 1280px) {
+  .template-UcgLIbrary-wrapper tbody {
+    /* padding-right: 20px; */
+  }
+}
+
+@media (max-width: 876px) {
+  .template-UcgLIbrary-wrapper tbody {
+    padding: auto 0px;
+    text-align: center;
+  }
+  .template-UcgLIbrary-wrapper td,
+  .template-UcgLIbrary-wrapper th {
+    font-size: 0.7rem;
+  }
+  .template-UcgLIbrary-wrapper table td {
+    font-size: 0.7rem;
+  }
+}
+
+.template-StethoSosunds-wrapper{
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 84vh;
+}

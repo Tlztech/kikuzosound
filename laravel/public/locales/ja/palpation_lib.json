@@ -1,0 +1,19 @@
+{
+  "ID": "ID",
+  "Title": "タイトル",
+  "Auscultation sound type": "聴診 サウンドタイプ",
+  "Auscultation site": "聴診 地点",
+  "Normal abnormal": "正常/ 異常な",
+  "status": "状態",
+  "Supervisor": "監修者",
+  "Public / Private": "公開/非公開",
+  "Update date and time": "更新日時",
+  "Update Date" : "更新日",
+  "Author" : "著者",
+
+  "add_palpation_lib": "触診ライブラリ追加",
+  "edit_palpation_lib": "触診ライブラリ編集",
+  "video_file": "動画ファイル",
+  "sound_file": "音源ファイル",
+  "add_new": "追加"
+}

@@ -1,0 +1,74 @@
+.template-QuizList-wrapper {
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  display: grid;
+}
+
+.template-QuizList-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.template-QuizList-wrapper td,
+.template-QuizList-wrapper th {
+  text-align: center;
+  word-wrap: break-word;
+  width: auto;
+}
+
+.template-QuizList-wrapper .table {
+  min-width: 800px;
+}
+
+.template-QuizList-wrapper tbody {
+  display: block;
+  overflow-x: auto;
+  overflow-y: overlay;
+}
+
+.template-QuizList-wrapper thead,
+.template-QuizList-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.template-QuizList-wrapper table td {
+  overflow-wrap: break-word;
+}
+
+.template-QuizList-wrapper td,
+.template-QuizList-wrapper th {
+  padding: 10px;
+  text-align: left;
+}
+
+.template-QuizList-wrapper .no-data {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.template-QuizList-wrapper .no-data td {
+  font-size: medium;
+  border-top: none;
+}
+
+@media (max-width: 876px) {
+  .template-QuizList-wrapper tbody {
+    padding: auto 0px;
+    text-align: center;
+  }
+  .template-QuizList-wrapper td,
+  .template-QuizList-wrapper th {
+    font-size: 0.7rem;
+  }
+  .template-QuizList-wrappertable td {
+    font-size: 0.7rem;
+  }
+}

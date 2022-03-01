@@ -1,0 +1,97 @@
+.template-PalpationLibrary-wrapper {
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  display: grid;
+}
+
+/* .template-PalpationLibrary-wrapper .sortButton {
+  position: absolute;
+  right: 50%;
+  bottom: 10px;
+} */
+
+.template-PalpationLibrary-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.palpation-library-bottom {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.template-PalpationLibrary-wrapper td,
+.template-PalpationLibrary-wrapper th {
+  text-align: center;
+  word-wrap: break-word;
+  width: auto;
+}
+
+.template-PalpationLibrary-wrapper .table {
+  min-width: 800px;
+}
+
+.template-PalpationLibrary-wrapper tbody {
+  display: block;
+  overflow-x: auto;
+  overflow-y: overlay;
+  padding-right: 5px;
+}
+
+
+.template-PalpationLibrary-wrapper thead,
+.template-PalpationLibrary-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.template-PalpationLibrary-wrapper tbody tr {
+  margin-bottom: 10px;
+}
+
+.template-PalpationLibrary-wrapper table td {
+  overflow-wrap: break-word;
+}
+
+.template-PalpationLibrary-wrapper td,
+.template-PalpationLibrary-wrapper th {
+  padding: 10px;
+  text-align: left;
+}
+
+.template-PalpationLibrary-wrapper .no-data {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.template-PalpationLibrary-wrapper .no-data td {
+  font-size: medium;
+  border-top: none;
+}
+
+@media (max-width: 1280px) {
+  .template-PalpationLibrary-wrapper tbody {
+    /* padding-right: 20px; */
+  }
+}
+
+@media (max-width: 876px) {
+  .template-PalpationLibrary-wrapper tbody {
+    padding: auto 0px;
+    text-align: center;
+  }
+  .template-PalpationLibrary-wrapper td,
+  .template-PalpationLibrary-wrapper th {
+    font-size: 0.7rem;
+  }
+  .template-PalpationLibrary-wrapper table td {
+    font-size: 0.7rem;
+  }
+}

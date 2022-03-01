@@ -1,0 +1,10 @@
+.page-TestAnalytics-wrapper {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+@media (max-width: 596px) {
+  .page-TestAnalytics-wrapper {
+    display: block;
+  }
+}

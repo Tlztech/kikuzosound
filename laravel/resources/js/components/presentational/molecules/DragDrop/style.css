@@ -1,0 +1,99 @@
+.molecules-Drag-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 32px;
+}
+
+.molecules-Drag-wrapper .molecules-stepofexam {
+  position: absolute;
+  text-align: left;
+  margin-top: -28px;
+  right: 6px;
+}
+
+.molecules-Drag-wrapper .molecules-drag-label {
+  position: absolute;
+  margin: -26px 0px 0px -218px;
+}
+
+.molecules-Drag-wrapper .molecules-dragDrop-arrow-wrapper {
+  align-self: center !important;
+}
+
+.label-step {
+  display: block;
+  text-align: left;
+}
+
+.examSteps {
+  width: 100%;
+}
+
+.examSteps .draggable {
+  width: 100%;
+  border-left: 1px solid #000000;
+}
+
+.examLists .draggable {
+  margin: 10px auto;
+  padding: 0px 16px;
+}
+
+.molecules-stepExam-container {
+  min-height: 500px;
+  max-height: 500px;
+  background: #ffffff !important;
+  overflow: auto;
+  box-shadow: 0px 10px 20px #00000029;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+}
+
+.molecules-examList-container {
+  min-height: 500px;
+  max-height: 500px;
+  background: #ffffff !important;
+  box-shadow: 0px 10px 20px #00000029;
+  overflow: auto;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+}
+
+.molecules-examList-row,
+.molecules-stepExam-row {
+  overflow: auto;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+}
+
+@media (max-width: 960px) {
+  .molecules-Drag-wrapper {
+    flex-direction: column;
+  }
+  .molecules-Drag-wrapper .molecules-stepExam-container {
+    margin-top: 20px;
+    min-width: 300px;
+    margin: 0 auto;
+  }
+  .molecules-Drag-wrapper .molecules-examList-container {
+    min-width: 300px;
+    margin: 0 auto;
+  }
+  .molecules-Drag-wrapper .molecules-dragDrop-arrow {
+    transform: rotate(90deg);
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 740px) {
+  .molecules-Drag-wrapper .molecules-drag-label {
+    margin: -26px 0px 0px -135px;
+  }
+}
+
+span.atoms-span.molecules-drag-drop-steps {
+  padding: 0px 10%;
+  overflow-wrap: break-word;
+}

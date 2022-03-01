@@ -1,0 +1,6 @@
+audio {
+  width: 100%;
+}
+.atoms-audio:focus {
+  outline: none;
+}

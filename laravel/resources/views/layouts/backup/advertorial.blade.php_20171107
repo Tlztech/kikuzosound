@@ -1,0 +1,65 @@
+<!-- 聴診スピーカーとは？ -->
+<div class="side_speaker mB20">
+  <h3 class="side_title"><?php echo $params['init_title']; ?></h3>
+<!--
+  <div class="side_box_inner side_speaker_text clearfix">
+-->
+  <div class="side_box_inner notice_list" style="height:200px;text-align:left;">
+    <p><?php echo $params['init_text']; ?></p>
+  </div>
+  <div style="margin-top:10px;margin-bottom:10px;">
+<?php
+    if($params['init_img1'] !== 'false') {
+?>
+      <!-- イメージを表示 -->
+      <img src="<?php echo $params['init_img1']; ?>" alt="<?php echo $params['init_alt1']; ?>" width="230px">
+<?php
+    }
+?>
+  </div>
+<!-- 指定した音を表示 -->
+        @foreach($ad_sounds as $ad_sound)
+          <div class="sound_box" data-id="{{ $ad_sound->id }}">
+            <div class="sound_box_inner">
+              <!-- .sound_title -->
+              <div class="sound_accordion_open sound_title accordion_active">
+                <p class="name" title="{{ $ad_sound->title }}">{{ $ad_sound->title }}</p>
+              </div>
+              <!-- /.sound_title -->
+              <!-- .audio -->
+              <div class="audio">
+                <div class="audiojsZ">
+                  <audio src="{{ asset($ad_sound->sound_path).'?_='.date('YmdHis', strtotime($ad_sound->updated_at)) }}"></audio>
+                  <div class="play-pauseZ">
+                    <span class="line"></span>
+                    <p class="playZ"></p>
+                    <p class="pauseZ"></p>
+                    <p class="loadingZ"></p>
+                    <p class="errorZ"></p>
+                  </div>
+                  <div class="scrubberZ">
+                    <div class="progressZ"></div>
+                    <div class="loadedZ"></div>
+                  </div>
+                  <div class="timeZ">
+                    <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+                  </div>
+                  <div class="error-messageZ"></div>
+                </div>
+              </div>
+              <!-- /.audio -->
+            </div>
+          </div>
+            @endforeach
+<!-- 指定した音を表示 -->
+<?php
+    if($params['init_img2'] !== 'false') {
+?>
+      <!-- イメージを表示 -->
+      <div style="text-align: right;margin-top:10px;">
+        <img src="<?php echo $params['init_img2']; ?>" alt="<?php echo $params['init_alt2']; ?>" height="30px">
+      </div>
+<?php
+    }
+?>
+</div>

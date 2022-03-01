@@ -1,0 +1,22 @@
+.templates-reset-password-from-mail {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.templates-reset-password-from-mail .molecules-languageChangeButton-wrapper {
+  position: fixed;
+  top: 4px;
+  right: 20px;
+}
+
+.templates-reset-password-from-mail .templates-univ-text {
+  display: flex;
+  margin: 0 auto;
+  align-self: center;
+  letter-spacing: 0.94px;
+  color: #000000;
+  font-size: 30px;
+}

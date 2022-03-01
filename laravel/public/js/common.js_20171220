@@ -1,0 +1,40 @@
+﻿$(document).ready(function() {
+
+	var toggleAccordion = function($elm) {
+		$elm.closest(".sound_box").siblings(".sound_box").find(".sound_title .name").animate({color: '#000000'}, 300);
+		$elm.closest(".sound_box").siblings(".sound_box").find(".sound_accordion_open").removeClass("open_active");
+		$elm.closest(".sound_box").siblings(".sound_box").find(".sound_box_inner").removeClass("sound_conts_open",1000);
+
+		$elm.closest(".sound_box").find(".sound_box_inner").toggleClass("sound_conts_open", 1000);
+		$elm.toggleClass("open_active");
+
+		if ( $elm.hasClass('open_active') ) {
+			$elm.find('.name').animate({color: '#CCCCCC'}, 300);
+		}
+		else {
+			$elm.find('.name').animate({color: '#000000'}, 300);
+		}
+	}
+
+	$(".accordion .sound_accordion_open").on("click", function(e) {
+		toggleAccordion($(this));
+	});
+
+	//spメニュー
+	$(function spmenu(){
+		$("#gnavi_sp_btn").on("click", function() {
+			$("#gnavi_sp .menu_box").slideToggle();
+			$(this).toggleClass("gnavi_sp_btn_open");
+			$("#overlay").fadeToggle();
+		});
+	});
+
+	//通常アコーディオン
+	$(function accordion(){
+		$(".accordion_btn").on("click", function() {
+			$(this).next(".accordion_moreconts").slideToggle();
+			$(this).toggleClass("accordion_more");
+		});
+	});
+
+});

@@ -1,0 +1,111 @@
+.organism-add-palpation-library-container .organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-add-palpation-library-container .modal-body {
+  padding-top: 32px;
+}
+
+.organism-add-palpation-library-container .file-select {
+  width: 68%;
+  margin-left: 15px;
+}
+
+.organism-add-palpation-library-container audio {
+  width: 70%;
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-add-palpation-library-container video {
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-add-palpation-library-container .organism-modal-image {
+  width: 16px;
+}
+
+.organism-add-palpation-library-container
+  .palpation-library-organism-modal-body {
+  padding-left: 40px;
+}
+
+.organism-add-palpation-library-container .organism-add-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-add-palpation-library-container .organism-add-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-add-palpation-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 25%;
+  font-weight: bold;
+}
+
+.organism-add-palpation-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-input {
+  width: 68%;
+  margin-left: 14px;
+}
+
+.palpation-library-modal-item {
+  width: 27%;
+}
+
+.teast {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.px-no {
+  width: 35px;
+}
+
+.organism-add-palpation-library-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.palpation-library-organism-modal-body .select-item {
+  margin-left: 27%;
+}
+
+.palpation-library-organism-modal-body .labelstyle {
+  margin-right: 16px !important;
+  font-weight: bold;
+}
+.organism-add-palpation-library-container .organism-palpation-radio-container {
+  padding-left: 23px;
+}
+
+.organism-add-palpation-library-container .organism-palpation-status-wrapper {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.organism-add-palpation-library-container .select2-container {
+  min-width: 120px;
+  margin-right: 12px;
+}
+
+.organism-add-palpation-library-container .radio-select-margin {
+  margin-left: 6px;
+}
+
+.organism-add-palpation-library-container
+  .molecule-radio-label-container
+  .atoms-label {
+  width: 70px;
+}

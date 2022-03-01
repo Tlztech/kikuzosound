@@ -1,0 +1,29 @@
+.toast-style {
+  min-width: 250px;
+  height: 38px;
+}
+.toast-style-success {
+  background-color: #4fa845;
+}
+.toast-style-error {
+  height: 50px;
+  background-color: #dc4146;
+}
+.toast-style-warning {
+  background-color: #f5ad30;
+}
+.toast-style-info {
+  background-color: #4285ba;
+}
+.toast-body-style {
+  display: flex;
+  align-items: center;
+
+  padding: 8px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.toast-body-style .icon-style {
+  font-size: 1.3rem;
+  margin-right: 5px;
+}

@@ -1,0 +1,2550 @@
+@charset "UTF-8";
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background: url(../img/bg.png);
+}
+
+.pc_none {
+    display: none;
+}
+
+#gnavi_sp {
+    display: none;
+}
+
+.linktext {
+    color: #ff5f80;
+    text-decoration: underline;
+}
+
+.landscape-warning{
+    border-bottom: none !important;
+}
+
+.linktext:hover {
+    text-decoration: none;
+}
+
+input[type="submit"]{ 
+    -webkit-appearance: none !important; 
+}
+
+/*********************
+ヘッダ
+*********************/
+
+.header_explanation {
+    font-size: 14px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 15px;
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    padding: 4px;
+    position: relative;
+    top: 36px;
+    display: inline-block;
+}
+
+.header_explanation img {
+    margin-right: 8px;
+}
+
+#header {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+}
+
+.breadcrumb-container {
+    position: relative;
+    top: 131px;
+    z-index: 9;
+}
+
+.msg_area {
+    word-break: keep-all;
+}
+
+#header .headlogo {
+    text-align: center;
+    margin: auto;
+    margin-top: -10px;
+}
+
+.header_inner {
+    width: 98%;
+    height: 130px;
+    margin: auto;
+}
+
+
+/*gナビ*/
+
+.gnavi_pc {
+    margin-top: 36px;
+}
+
+.gnavi_pc ul {
+    display: table;
+    width: 100%;
+    background: url(../img/line_right.png) right no-repeat;
+}
+
+.gnavi_pc .active a {
+    margin: auto;
+    border-bottom: 4px solid #FFCC12;
+    background-repeat: no-repeat;
+    color: #666;
+}
+
+.gnavi_pc li {
+    font-weight: bold;
+    width: 20%;
+    /* width: 16.6%; */
+    text-align: center;
+    display: table-cell;
+    background-image: url(../img/line_right.png);
+    background-repeat: no-repeat;
+}
+
+.gnavi_pc li a {
+    color: #666;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.gnavi_pc li a:hover {
+    color: #666;
+    border-bottom: 4px solid #FFCC12;
+}
+.wp-image-1700 {
+    height: auto;
+}
+.text-center {
+    text-align: center;
+}
+
+/*********************
+コンテンツ
+*********************/
+
+
+/*ぱんくず*/
+
+.breadcrumb {
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+    height: 40px;
+    position: fixed;
+    width: 100%;
+    top: 131px;
+}
+
+.breadcrumb ul {
+    padding-left: 1%;
+}
+
+.breadcrumb li {
+    line-height: 40px;
+    float: left;
+    font-size: 14px;
+}
+
+.breadcrumb li span {
+    margin: 0 6px;
+    font-size: 10px;
+}
+
+.breadcrumb li a {
+    color: #ff5f80;
+}
+
+.breadcrumb li a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb li:first-child {
+    padding-left: 16px;
+    background-image: url(../img/icon_home.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.breadcrumb_inner {
+    width: 98%;
+}
+
+#container {
+    max-width: 1040px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+#container .container_inner {
+    width: calc(100% - 20px);
+    margin: 0px 10px auto 10px;
+}
+
+.contents {
+    /* side_columnのwidth:300pxとmargin-left:10pxを引く */
+    width: 710px;
+    max-width: 720px;
+    float: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.pl-40{
+    padding-left: 40px;
+}
+
+.btm_padding_contents{
+    /* width: calc(100% - 10px - 300px); */
+    width: 710px;
+    max-width: 720px;
+    /* text-align: center; */
+    /* margin: 0 auto; */
+    padding-bottom: 30%;
+}
+
+.mypage .sub_title {
+    margin-left: -24px;
+}
+
+@media (min-width:1040px){
+    .btm_padding_contents{
+        float: left;
+    }
+}
+
+@media (max-width:1040px){
+    .btm_padding_contents{
+        margin: 0 auto; 
+    }
+}
+
+.sub_title {
+    font-size: 20px;
+    margin: 10px 0 20px;
+    background-image: url(../img/line_orange.png);
+    background-position: center left 210px;
+    /*
+  background-position: center left 150px;
+*/
+    background-repeat: no-repeat;
+    font-weight: bold;
+}
+
+.sub_title span {
+    display: inline-block;
+    float: right;
+    padding: 0 8px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    background: rgba(255, 249, 245, 1.0);
+}
+
+.home_menu {
+    width: 100%;
+    margin-bottom: 20px;
+    /* telemedica 推奨追加の為、20pxに変更
+  margin-bottom: 40px;
+*/
+    /* text-align: center; */
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: space-evenly;
+}
+
+.home_menu li {
+    display: inline-block;
+    /* マージン2つ分を引いてから3等分する */
+    width: calc((100% - 14px) / 3 - 4px);
+    /* margin-right: 7px; */
+}
+
+.home_menu.home_menu_en li {
+    display: inline-block;
+    /* マージン2つ分を引いてから3等分する */
+    width: calc((100% - 14px) / 4 - 4px);
+    /* margin-right: 7px; */
+}
+
+.home_menu li.last {
+    margin-right: 0;
+}
+
+.home_menu li a {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+
+.home_menu li a img {
+    z-index: 5;
+    width: 100%;
+    max-width: 210px;
+}
+
+.home_mainvisual {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.home_mainvisual img {
+    width: 100%;
+    max-width: 720px;
+    background: #fff;
+}
+
+
+/*検索ボックス*/
+
+.home_mainvisual .search_box {
+    position: absolute;
+    bottom: 36px;
+    width: 70%;
+    max-width: 462px;
+    /* 左右位置をセンタリング */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.home_mainvisual .search_box_inner {
+    border: 6px solid #eee;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.home_mainvisual input[type="text"]
+textarea .search_keyword {
+    height: 50px;
+    /* search_btnの幅を引く */
+    width: calc(100% - 50px);
+    float: left;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 10px !important;
+    border-radius: 4px 0px 4px 4px / 4px 4px 0px 4px;
+    border: 1px solid #ccc;
+}
+
+.home_mainvisual .search_btn {
+    cursor: pointer;
+    display: block;
+    border-radius: 0px 4px 4px 0px / 4px 4px 4px 0px;
+    height: 50px;
+    width: 50px;
+    float: right;
+}
+.home_mainvisual .search_keyword {
+    height:30px;
+    width:400px;
+    text-indent: 8px;
+}
+.search_btn {
+    background: #47B8E8 url(../img/search.png) center no-repeat;
+}
+
+/*サウンドリスト*/
+
+.sound_list {
+    background: #fff;
+    width: 100%;
+    display: table;
+    overflow: auto;
+    /*コンテンツ開閉*/
+}
+
+.sound_list .sound_box {
+    height: auto;
+    border: 1px solid #ccc;
+    border-bottom: none;
+}
+
+.sound_list .sound_box:last-child {
+    border-bottom: 1px solid #ccc;
+}
+
+.sound_list .accordion_open {
+    position: relative;
+}
+
+.sound_list .tag {
+    background-image: url(../img/tag.png?v=1.1.7.20190523);
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    left: -8px;
+    top: 20px;
+    text-align: center;
+}
+
+.sound_list .tag span {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.container_inner.clearfix.contact .contents_box_inner ul li{
+    list-style:disc;
+    font-size:16px;
+}
+/* telemedica 20180314 */
+
+.sound_list .sub_description {
+    position: absolute;
+    font-size: 12px;
+    top: 42px;
+    left: 60px;
+    color: #000;
+    width: 290px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+}
+.sound_list .sub_description_aus{
+    position: relative;
+    font-size: 12px;
+    top:0;
+    margin-left: 60px;
+    color: #000;
+    width: 75%;
+}
+.sound_list .sub_description_aus p {
+    width: 100%;
+}
+.sound_list .sound_conts_open .sub_description_aus {
+    z-index: 1;
+}
+
+.sound_list .sound_title {
+    width: 100%;
+    display: table-cell;
+    position: relative;
+    height: 70px;
+    cursor: pointer;
+    background-image: url(../img/more.png?v=1.1.1);
+    background-repeat: no-repeat;
+    background-position: center right -4px;
+}
+
+.sound_list .sound_title .tag {
+    background-image: url(../img/tag.png?v=1.1.7.20190523);
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    left: -8px;
+    top: 18px;
+    text-align: center;
+}
+
+.sound_list .sound_title .tag span {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.sound_list .sound_title .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 60px;
+    line-height: 60px;
+    width:calc(720px - 430px);
+}
+.sound_accordion_open.sound_title.accordion_active.aus{
+    width:700px;
+} 
+.sound_list .sound_title.aus .name {
+    width:calc(700px - 150px);
+}
+
+.aus-body_img{
+    text-align: center !important;
+    margin: 6px;
+    position: relative;
+    display: inline-block;
+    width: 500px;
+}
+
+.aus-body_description{
+    width: 500px;
+    margin-left: 18px;
+    margin-top: 20px;
+}
+
+.sound_list .sound_title p {
+    display: inline-block;
+    /*************  修正  *****************/
+    text-decoration: none;
+    display: block;
+    float:left;
+    /* max-width: 186px; */
+    width:max-content;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    -o-text-overflow: clip;
+    /*************  修正  *****************/
+}
+
+.sound_list .open_active {
+    background-image: url(../img/close.png?v=1.1.1) !important;
+    background-position: center right -4px;
+}
+
+.sound_list .audio {
+    width: 40%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 10px;
+    z-index: 99;
+    box-sizing: border-box;
+}
+
+.sound_list .sound_conts {
+    width: 100%;
+    /* padding: 40px 0; */
+    background: #fff;
+    /*コンテンツ内スライダー*/
+}
+.sound_list .sound_conts p{
+    word-break: break-all;
+}
+.sound_list .sound_conts .sound_conts_inner {
+    max-width: 580px;
+    /* 左右12%ずつ空ける */
+    width: calc(100% - 24%);
+    /* padding: 0 12%; */
+    margin: 0 auto;
+}
+
+.sound_list .sound_conts .sound_conts_inner_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 1em 1em 1em;
+    text-align: center;
+    word-break: break-all;
+}
+
+.sound_list .sound_conts .img_slide {
+    width: 100%;
+    margin: 56px 0 0 0;
+    background: #eee;
+    position: relative;
+}
+
+.sound_list .sound_conts .img_slide_inner {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.sound_list .sound_conts .bx-viewport {
+    background: #eee;
+}
+
+.sound_list .sound_conts .bx-viewport li {
+    height: 440px;
+    display: flex;
+    align-items: center;
+}
+
+.sound_list .sound_conts .bx-viewport img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    max-height: 440px;
+    object-fit: scale-down;
+}
+
+.sound_list .sound_conts .text {
+    letter-spacing: 2px;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.sound_list .sound_conts .img_slider_text {
+    position: absolute;
+    width: 100%;
+    padding: 5px;
+    height: 56px;
+    bottom: 0;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    font-weight: bold;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+.sound_list .sound_box {
+    position: relative;
+}
+
+.sound_list .sound_box_inner {
+    height: 70px;
+    overflow: hidden;
+}
+
+.sound_list .sound_conts_open {
+    height: auto !important;
+    overflow: visible;
+}
+
+.desc_table {
+    margin: 30px 0;
+}
+
+.desc_table dl {
+    width: 100%;
+    display: table;
+}
+
+.desc_table dt {
+    width: 135px;
+    display: table-cell;
+    border-right: 2px dotted #eee;
+    padding: 6px 20px;
+}
+
+.desc_table dd {
+    display: table-cell;
+    padding: 6px 20px;
+    word-break: break-all;
+}
+
+.quiz_modal .quiz_titles{
+    word-break: break-all;
+}
+
+/***************修正 odd even***********************/
+
+.desc_table dl:nth-child(odd) {
+    background: #fff;
+}
+
+.desc_table dl:nth-child(even) {
+    background: #f0f8ff;
+}
+
+.desc_table dl:nth-child(odd) {
+    background: #f0f8ff;
+}
+
+.desc_table dl:nth-child(even) {
+    background: #fff;
+}
+
+
+/***************修正 odd even***********************/
+
+
+/*コンテンツページ*/
+
+.contents_title {
+    position: relative;
+    margin: 0 0 10px 0;
+}
+
+.contents_title h2 {
+    height: 30px;
+    font-size: 24px;
+    background-image: url(../img/bg.png);
+    float: left;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+
+.contents_title .title_line {
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-image: url(../img/line_orange.png);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.contents_search {
+    height: auto;
+    background: #eee;
+    margin-bottom: 20px;
+}
+
+.contents_search .total_number {
+    /*
+  font-size: 18px;
+*/
+    font-size: 12px;
+    float: left;
+    line-height: 50px;
+    margin: 0 10px;
+}
+
+.contents_search .select_sort {
+    line-height: 50px;
+    float: left;
+}
+
+.contents_search .palpation-filter{
+    display: flex;
+}
+
+.contents_search .select_sort select {
+    width: 130px;
+    /* width: 100px; */
+    height: 30px;
+    background-image: url(../img/select_icon.png);
+    background-repeat: no-repeat;
+    background-position: center right 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    /*
+  border-radius: 15px;
+*/
+    margin: 0px 1px 0px 0px;
+    padding: 0px 14px;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 0px 0px #ccc;
+    font-size: 10px;
+    color: #333333;
+}
+
+.contents_search .search_box {
+    float: right;
+    margin: 8px;
+}
+
+.contents_search input[type="text"],
+.contents_search button,
+.contents_search textarea .search_keyword {
+    height: 35px;
+    width: 135px;
+    /* width: 200px; */
+    float: left;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 10px !important;
+    border-radius: 4px 0px 4px 4px / 4px 4px 0px 4px;
+    border: 1px solid #ccc;
+}
+
+.contents_search .search_btn {
+    cursor: auto;
+    display: block;
+    border-radius: 0px 4px 4px 0px / 4px 4px 4px 0px;
+    height: 35px;
+    width: 40px;
+    float: left;
+}
+
+.aus-bookmark-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sup-text {
+    font-size: 28px;
+}
+
+/* 音声再生の説明 telemedica */
+
+.explain_audio {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+
+/* 推薦　telemedica */
+
+.rec_mat {
+    height: 280px;
+    text-align: left;
+}
+
+.rec_content {
+    float: left;
+    width: 35%;
+    margin-right: 10px;
+}
+
+.rec_content img {
+    height: 108px;
+    object-fit: cover;
+}
+
+.rec_title {
+    background-color: #47B8E8;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.rec_name {
+    text-align: center;
+    font-weight: bold;
+}
+
+.rec_atr {
+    font-size: 8px;
+}
+
+
+/* 推奨 telemedica */
+
+.offer_mat {
+    padding: 0px 10px;
+}
+
+
+/* 使い方 */
+
+.use_mat {
+    width: 100%;
+    color: #707070;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 10px 10px 8px 35px;
+    margin: 0px auto 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display: none;
+}
+
+.use_mat li {
+    list-style-type: circle;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.use_img {
+    width: auto;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.use_title {
+    width: 270px;
+    /*
+    background-color:#EF735B;
+*/
+    background-color: #47b8e8;
+    text-align: center;
+    padding-top: 2px;
+    margin: 2px auto 10px;
+    font-size: 1.3em;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+
+/* ケンツメディコ聴診器 */
+
+.kms {
+    width: 300px;
+    height: 125px;
+    padding: 16px 0px;
+    margin: 0px auto 20px;
+    background-color: #ffffff;
+    display: block;
+    background: url(../img/ks.png);
+    background-repeat: no-repeat;
+    background-position: -0px -118px;
+    border: 1px solid #F58345;
+    border-radius: 8px;
+}
+
+.eye-img img{
+    width: 16px;
+    position: relative;
+    top: 20px;
+    opacity: 0.3;
+    right: -5px;
+}
+
+.error-pass {
+    color: #FC261E;
+    margin-left: 10px;
+}
+
+.eye-img {
+    display: inline !important;
+    position: absolute;
+}
+/* ご購入手続きへ */
+
+.appliButton {
+    margin: 0px auto 20px;
+    border-radius: 8px;
+}
+.contact_form_inquiry{
+    margin-bottom:15px;
+    padding-left: 15px;
+}
+.contact_form_inquiry li{
+    font-size:16px;
+    list-style: disc;
+}
+
+.movie-lists {
+    margin: 50px 5px;
+}
+
+.movies-wrapper {
+    margin: auto 200px;
+    display: flex;
+    min-height: 50vh;
+}
+
+.movie-lists video {
+    width: 25%;
+    height: auto;    
+}
+.home-video {
+    height: 198px;
+    margin-bottom: 16px;
+}
+
+.home-video iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.wp-image-1795 {
+    width: 100%;
+    height: auto;
+}
+.wp-image-1780,
+.wp-image-316 {
+    height: auto;
+}
+#exam-report-table td{
+    word-break: break-all;
+}
+
+#exam-report-table .first-row {
+    width: 60%;
+}
+
+
+/*IE調整*/
+
+@media all and (-ms-high-contrast: none) {
+    .contents_search .total_number {
+        line-height: 60px;
+    }
+}
+
+
+/*ページャー*/
+
+
+/*******************************************/
+
+.pager {
+    margin: 20px auto;
+}
+
+.pager_list {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.pager_list li {
+    display: inline-block;
+    margin: 0 2px;
+    font-size: 13px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    line-height: 30px;
+}
+
+.pager_list li a {
+    display: block;
+    border-radius: 4px;
+}
+
+.pager_list .number a {
+    color: #666;
+    background: #fff;
+}
+
+.pager_list .number a:hover {
+    background: #FFCC12;
+    color: #fff;
+}
+
+.pager_list .active span {
+    display: block;
+    height: 30px;
+    width: 30px;
+    background: #FFCC12;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.pager_list .control {
+    margin: 0 20px;
+    background: #fff;
+}
+
+.pager_list .control a {
+    border: 2px solid #FFCC12;
+    color: #666;
+    height: 28px;
+    /*box-sizingだと位置がずれるので高さ指定*/
+    line-height: 28px;
+}
+
+.pager_list .control a:hover {
+    background: #FFCC12;
+    color: #fff;
+}
+
+.pager_list .disabled {
+    background: #FFCC12;
+    color: #fff;
+}
+
+
+/*********************
+faqページ
+*********************/
+
+.contents_box {
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    clear: both;
+    margin-top: 20px;
+}
+
+.contents_box p {
+    font-size: 16px;
+}
+
+.contents_box_inner {
+    width: 90%;
+    margin: auto;
+}
+
+.title_m {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.faq_list {
+    font-size: 16px;
+    border-bottom: 2px dotted #ccc;
+}
+
+.contents_box .faq_list:last-child {
+    border: none;
+}
+
+.faq_list.first {
+    border-top: 2px dotted #ccc;
+}
+
+.faq_Q span,
+.cs_bowel span,
+.cs_heart span,
+.cs_lungs span,
+.cs_medicine span {
+    display: block;
+    padding: 14px 0;
+    line-height: 1.2;
+    background-image: url(../img/faq_Q.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 40px;
+    padding-right: 20px;
+}
+
+.faq_A,
+.cs_url {
+    background-image: url(../img/faq_A.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding: 6px 20px 10px 40px;
+    line-height: 1.5;
+}
+
+.cs_bowel span {
+    background-image: url(../img/p_bowel.png);
+}
+
+.cs_heart span {
+    background-image: url(../img/p_heart.png);
+}
+
+.cs_lungs span {
+    background-image: url(../img/p_lungs.png);
+}
+
+.cs_medicine span {
+    background-image: url(../img/p_medicine.png);
+}
+
+.cs_url {
+    background-image: url(../img/p_void.png);
+}
+
+.link_text {
+    color: #ff5f80;
+    text-decoration: underline;
+}
+
+.accordion_btn {
+    cursor: pointer;
+    background-image: url(../img/arrow_right.png?v=1.1.2);
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+.accordion_more {
+    background-image: url(../img/arrow_bottom.png?v=1.1.2) !important;
+}
+
+.accordion_moreconts {
+    display: none;
+    word-break: break-all;
+}
+
+
+/* telemedica 20180517 */
+
+.accordion_btn2 {}
+
+
+/* アコーディオンボタン */
+
+.a_btn {
+    width: 238px;
+    margin: 0px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ef735b;
+    font-weight: bold;
+    background: #ffffff;
+    text-align: center;
+    border: 1px solid #ef735b;
+    cursor: pointer;
+}
+
+
+/* アコーディオンボタン */
+
+.a_btn2 {
+    width: 138px;
+    margin: 0px auto;
+    padding: 5px 10px;
+    font-size: 10px;
+    color: #ef735b;
+    font-weight: bold;
+    background: #ffffff;
+    text-align: center;
+    border: 1px solid #ef735b;
+    cursor: pointer;
+}
+
+
+/* タブ開始 */
+
+.table-ul,
+.table-ul2,
+.table-ulkzm {
+    position: relative;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.table-ul li,
+.table-ul2 li,
+.table-ulkzm li {
+    background-color: #47B8E8;
+    border-right: 1px solid #cccccc;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.table-ulkzm li {
+    background-color: #f58345;
+}
+
+.table-ul li:last-child {
+    border-right: 0;
+}
+
+.table-ul2 li:last-child {
+    border-right: 0;
+}
+
+.table-ulkzm li:last-child {
+    border-right: 0;
+}
+
+.table-ul li a,
+.table-ul2 li a,
+.table-ulkzm li a {
+    color: #666666;
+    display: block;
+    font-size: 1.5em;
+    text-decoration: none;
+    padding: 6px 0px 6px 0px;
+}
+
+.table-ulkzm li a {
+    color: #676c78;
+    font-size: 1.2em;
+}
+
+#tabBox1,
+#tabBox2,
+#tabBox3,
+#tabBox4,
+#tabBox5 {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* タブ終了 */
+
+
+/*********************
+お知らせ
+*********************/
+
+.info_title {
+    background-image: url(../img/under_line_blue.png);
+    background-position: bottom left;
+    background-repeat: no-repeat;
+}
+
+.info_history li:first-child {
+    border-top: 2px dotted #ccc;
+}
+
+.info_history li {
+    width: 100%;
+    font-size: 14px;
+    border-bottom: 2px dotted #ccc;
+    display: table;
+    padding: 12px 0;
+}
+
+.info_history li span {
+    background-image: url(../img/icon_pinksquare.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 10px;
+    display: table-cell;
+    font-weight: bold;
+    width: 100px;
+    vertical-align: middle;
+}
+
+.info_history li p {
+    display: table-cell;
+}
+
+.info_history.first {
+    border-top: 2px dotted #ccc;
+}
+
+
+/*********************
+お問い合わせ
+*********************/
+
+.blue_btn {
+    font-size: 16px;
+    background: #47B8E8;
+    display: inline-block;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/*********************
+お問い合わせフォーム
+*********************/
+
+#contact_form .contents_box_inner {
+    width: 90%;
+}
+
+#contact_form .title_m {
+    font-size: 18px;
+}
+
+.contact_form {
+    width: 90%;
+    margin: auto;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.contact_form li {
+    border-bottom: 1px dotted #ccc;
+}
+
+
+/* IE11でlabel内でclickイベントは伝播しない対応 */
+
+
+/* https://doda.jp/d-c-b/article/180130.html */
+
+.contact_form label,
+.insted_label {
+    width: 100%;
+    display: table;
+    margin: auto;
+}
+
+.contact_form .input_name {
+    font-size: 16px;
+    width: 30%;
+    display: table-cell;
+    background: #edfaff;
+    padding: 20px;
+    text-align: left;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+.contact_form label .input_name:first-child{
+    text-transform: capitalize;
+}
+
+.contact_form .must {
+    /* background-image: url(../img/contact_must.png); */
+    background-repeat: no-repeat;
+    background-position: top 16px right 10px;
+    /* telemedica 20180205 */
+    /*
+  background-position: top 16px right 20px;
+*/
+}
+
+.contact_form .must_img {
+    float: right;
+}
+
+.contact_form input {
+    font-size: 14px;
+    width: 350px;
+    padding: 6px 10px !important;
+    /* display: table-cell; */
+    margin: 14px 0 10px 10px;
+    border: 1px solid #ccc;
+}
+
+.contact_form input.numeric-password{
+    width:62px;
+    margin-left: 0px;
+}
+.contact_form input.numeric-password.first{
+    margin-left:10px;
+}
+.contact_form #phone_number {
+    -moz-appearance: textfield;
+}
+
+/* telemedica 20180205 */
+
+.contact_form select {
+    background-image: url(../img/select_icon.png);
+    background-repeat: no-repeat;
+    background-position: center right 12px;
+    background-color: #fff;
+    font-size: 14px;
+    width: 372px;
+    padding: 6px 30px 6px 10px!important;
+    display: table-cell;
+    margin: 14px 0 10px 10px;
+    border: 1px solid #ccc;
+}
+
+.contact_form textarea {
+    width: 350px;
+    padding: 6px 10px;
+    margin: 14px 0 10px 10px;
+    height: 100px;
+    border: 1px solid #ccc;
+}
+
+.upper_note {
+    margin-bottom: -10px;
+    font-size: 13px !important;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+.contact_submit {
+    text-align: center;
+}
+
+.submit_btn {
+    display: inline-block !important;
+    width: 37%;
+    max-width: 240px;
+    background: #47B8E8;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px !important;
+    padding: 14px 0 !important;
+    box-sizing: border-box !important;
+    font-weight: bold !important;
+    font-size: 16px;
+}
+.submit_btn:disabled {
+    background: #ccc;
+    border: none;
+}
+.submit_backbtn {
+    display: inline-block;
+    width: 30%;
+    max-width: 240px;
+    padding: 14px 0;
+    background: #ccc;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 6px;
+    text-align: center;
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+
+
+/* telemedica 20180207 動画1個 */
+
+.onevideo {
+    width: 80%;
+    min-width: 560px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+
+/*********************
+利用規約、プライバシーポリシー
+*********************/
+
+.description {
+    margin-bottom: 20px;
+}
+
+.desc_title {
+    font-size: 18px;
+    font-weight: bold;
+    background-image: url(../img/icon_bluesquare.png);
+    background-position: center left;
+    background-repeat: no-repeat;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.desc_cont {
+    font-size: 16px;
+}
+
+
+/*********************
+サブカラム
+*********************/
+
+.side_column {
+    width: 300px;
+    float: left;
+    margin-left: 10px;
+    /*お知らせ*/
+    /*トピックス*/
+}
+
+.side_column .side_title {
+    padding-bottom: 14px;
+    /*
+  background-image: url(../img/under_line.png);
+*/
+    background-image: url(../img/under_line_blue.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 18px;
+    color: #333333;
+    letter-spacing: -0.44px;
+    margin-bottom: 11px;
+    font-weight: bold;
+}
+
+.side_column .side_box {
+    background-color: #fff;
+    padding: 16px 20px 20px 20px;
+    /*
+  border: 1px solid #FFCC12;
+*/
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+.side_column .notice {
+    max-height: 300px;
+}
+
+.side_column .notice .notice_list {
+    width: 100%;
+    max-height: 220px;
+    margin: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.side_column .notice .notice_list li {
+    border-bottom: 1px dotted #ccc;
+    padding: 10px 0;
+}
+
+.side_column .notice .notice_list li .time {
+    display: block;
+    font-size: 16px;
+}
+
+.side_column .notice .notice_list li .text {
+    font-size: 14px;
+    margin-top: 8px;
+    letter-spacing: 2px;
+}
+
+.side_column .side_speaker {
+    background: #fff;
+    padding: 16px 20px 20px 20px;
+    border: 1px solid #cccccc;
+    /*
+  border: 1px solid #ff5f80;
+*/
+    border-radius: 8px;
+    text-align: center;
+    min-height: 280px;
+}
+
+.side_column .side_speaker_text {
+    margin: auto;
+    width: 230px;
+}
+
+.side_column .side_speaker_text img {
+    width: 230px;
+}
+
+.side_column .side_speaker_text p {
+    width: 230px;
+    letter-spacing: 2px;
+    font-size: 14px;
+    text-align: left;
+    padding-top: 10px;
+}
+
+.side_column .contents_list {
+    width: 240px;
+    margin: auto;
+    /*コンテンツリスト*/
+}
+
+table.dataTable thead td {
+    border-bottom: none !important;
+}
+
+.side_column .contents_list li a {
+    border-bottom: 1px dotted #ccc;
+    background-image: url(../img/icon_pinksquare.png);
+    background-position: center left 10px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    display: block;
+    height: 50px;
+    color: #666;
+    line-height: 50px;
+    font-size: 16px;
+}
+
+.side_column .contents_list li:hover {
+    background: #fff5d3;
+}
+
+.dr-img {
+    background-size: cover !important;
+    height: 107px;
+    background-repeat: no-repeat !important;
+    background-position: 50% 50% !important;
+}
+
+img {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-touch-callout:none;
+    -moz-user-select:none;
+    touch-callout:none;
+    user-select:none;
+}
+/*スクロールバー*/
+
+.notice_list {
+    /* overflow-y: scroll; */
+    scrollbar-color: rgb(71, 184, 232) rgb(255, 255, 255) !important;
+    scrollbar-width: thin;
+    scrollbar-base-color: #fff;
+    scrollbar-face-color: #47b8e8;
+    scrollbar-3dlight-color: #fff;
+    scrollbar-highlight-color: #fff;
+    scrollbar-track-color: #fff;
+    scrollbar-arrow-color: #fff;
+    scrollbar-shadow-color: #fff;
+    scrollbar-dark-shadow-color: #ffffff;
+}
+
+.notice_list::-webkit-scrollbar {
+    height: 6px;
+}
+
+.feature-title {
+    font-size: clamp(18px, 4vw, 40px);
+    font-family: arial black, sans-serif; 
+    color: #333333;
+}
+
+
+/*バーの太さ*/
+
+.notice_list::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+}
+
+.notice_list::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+
+/*バーの背景色*/
+
+.notice_list::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+
+
+/*バーの色*/
+
+.notice_list .scroll-box {
+    overflow-y: auto;
+}
+
+.notice_list::-webkit-scrollbar {
+    width: 5px;
+    background: #ccc;
+}
+
+.notice_list::-webkit-scrollbar-thumb {
+    /*
+  background: #4ccc;
+*/
+    background: #47b8e8;
+    border-radius: 6px;
+}
+
+.notice_list::-webkit-scrollbar-track-piece:start {
+    background: #fff;
+}
+
+.notice_list::-webkit-scrollbar-track-piece:end {
+    background: #fff;
+}
+
+.link_red {
+    text-align: right;
+    margin: 10px 0;
+}
+
+.link_red a {
+    color: #ff5f80;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.link_red a:hover {
+    text-decoration: underline;
+}
+
+
+/*********************
+フッター
+*********************/
+
+#footer {
+    clear: both;
+    padding-top: 30px;
+    box-sizing: border-box;
+    background: url(../img/footer_bg.png);
+    margin-top: 48px;
+    padding-bottom: 30px;
+}
+
+.page-wrapper {
+    min-height: calc(90vh - 70px);
+    margin-top: 190px;
+}
+
+.mypage-menu{
+    position: fixed;
+}
+
+.footer_inner {
+    width: 98%;
+    height: 120px;
+    text-align: center;
+    margin: auto;
+}
+
+.footer_navi {
+    width: 100%;
+    text-align: center;
+    display: flex;
+}
+
+.footer_navi .footer_link:first-child {
+    border-left: 1px solid #fff;
+}
+
+.footer_navi .footer_link {
+    /* width: 33.2%; */
+    /* width: 24.9%; */
+    /* width: 20%; */
+    width: 16.67%;
+    float: left;
+    display: table;
+}
+
+.footer_navi .footer_link li {
+    border-right: 1px solid #fff;
+    display: table-cell;
+}
+
+.footer_navi .footer_link li a {
+    color: #fff;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px #368BB0;
+}
+
+.footer_navi .footer_link li a:hover {
+    text-decoration: underline;
+}
+
+#footer .copyright {
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+    text-shadow: 1px 1px 1px #368BB0;
+}
+
+#footer .sns_link {
+    position: static;
+    margin: 20px 0;
+}
+
+#footer .sns_link a {
+    margin: 0 4px;
+}
+
+.news-container,
+.reapply_browser_container{
+    position: relative;
+    min-height: 65vh !important
+}
+
+.alert_container {
+    min-height: 67vh !important;
+}
+
+.img-slider-container {
+    height: 440px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.post-118 {
+    margin: 68px auto 0px;
+}
+/*********************
+その他設定
+*********************/
+
+#overlay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    /* background: rgba(0, 0, 0, 0.7); */
+}
+
+
+/*Retina（高解像度）ディスプレイ用*/
+
+.aus-body_img .body-img {
+    object-fit: scale-down;
+}
+
+.desc-container {
+    margin-right: 60px;
+}
+
+.features-ol {
+    font-size: 16px;
+    padding-left: 40px;
+    font-weight: bold;
+}
+
+.features-ol li {
+    font-size: 16px;
+    line-height: 2;
+}
+
+.features-ol li::marker {
+    font-size: 18px;
+}
+
+button.button_head.btn_mypage {
+    right: 0px;
+}
+button.button_head.buttonLogout {
+    right: 103px;
+}
+.slider-container {
+    height: 300px;
+}
+.slider-container #library_video{
+    height: 100%;
+}
+
+.chart_wrapper{
+    position: relative;
+    height: 500px !important;
+    width: 500px !important;
+}
+#usage_status_chart{
+    margin-top: -50px !important;
+}
+.chart-text-center{
+    clear: both;
+    position: absolute;
+    top: 223px;
+    width: 354px;
+    text-align: center;
+}
+.chart-center-p{
+    font-size: 18px !important;
+    color: #8c8c8c;
+}
+.chart-center-p.chart-day-count{
+    font-size: 14px !important;
+    margin-top: 10px;
+}
+.chart-details{
+    margin-top: -50px;
+    text-align: center;
+}
+.chart-details p{
+    color: #666666;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+.table-hover tbody tr:hover {
+background-color: rgba(0, 0, 0, 0.075);
+}
+
+.dataTable.no-footer thead th, 
+.dataTable.no-footer {
+    border-bottom: none !important;
+}
+
+#score-ranking-table tbody th, table.dataTable tbody td {
+    padding: 15px 10px !important;
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
+    background-color: #f0f8ff !important;
+}
+
+.score-ranking-wrapper{
+    width:250px;
+    margin: auto;
+}
+
+.exam-report-wrapper{
+    width:450px;
+    margin: auto;
+}
+
+.img-pager-link {
+    background: #000;
+    text-indent: -9999px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    outline: 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+.home_search_switch{
+    font-size: 32px;
+    position: absolute;
+    right: 56px;
+    color: #666666;
+    cursor: pointer;
+    background: #fff;
+}
+.home_search_switch:active{
+    color: #47B8E8;
+}
+.search_type_title{
+    color: #5f5a5a;
+    font-size: 14px;
+    padding: 6px;
+    width: fit-content;
+}
+.home_search_option{
+    margin-left: 10px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 1.5dppx) {
+    .gnavi_pc ul {
+        background: url(../img/line_right@2.png) right no-repeat;
+        background-size: 10px 20px;
+    }
+    .gnavi_pc li {
+        background-image: url(../img/line_right@2.png);
+        background-size: 10px 20px;
+    }
+    .sound_list .sound_title {
+        background-image: url(../img/more.png?v=1.1.1);
+        background-position: center right 8px;
+        background-size: 78px 24px;
+    }
+    .sound_list .open_active {
+        background-image: url(../img/close.png);
+        background-position: center right 8px;
+        background-size: 78px 24px;
+    }
+    .search_btn {
+        background: #47B8E8 url(../img/search@2.png) center no-repeat;
+        background-size: 20px 20px;
+    }
+    .sub_title {
+        background-image: url(../img/line_orange@2.png);
+        background-size: 542px 20px;
+    }
+    .side_column .side_title {
+        /*
+    background-image: url(../img/under_line@2.png);
+*/
+        background-image: url(../img/under_line_blue@2.png);
+        background-size: 238px 1px;
+        background-position: bottom;
+    }
+    .contents_search .select_sort select {
+        background-image: url(../img/select_icon@2.png);
+        background-size: 12px 10px;
+    }
+    /* telemedica 20180205 */
+    .contact_form select {
+        background-image: url(../img/select_icon@2.png);
+        background-size: 12px 10px;
+    }
+}
+
+
+/*retina*/
+
+
+/*--------------------------------------------------------
+解像度900px以下
+--------------------------------------------------------*/
+
+@media only screen and (max-width: 900px) {
+    .header_explanation {
+        font-size: 8px;
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 15px;
+        width: 26%;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        padding: 4px;
+        position: relative;
+        top: 20px;
+    }
+    /* 720px以下と同じ内容を必要な分だけコピーした */
+    .sound_list {
+        width: 100%;
+        /*コンテンツ開閉*/
+    }
+    .rec_content {
+        width: 90px;
+    }
+    .sound_list .tag {
+        position: absolute;
+        width: 50px;
+        height: 25px;
+        left: -8px;
+        top: 8px;
+        text-align: center;
+    }
+    .sound_list .tag span {
+        display: block;
+        color: #fff;
+        font-weight: bold;
+        margin-top: 4px;
+    }
+    .sound_list .sound_title {
+        width: 100%;
+        display: block;
+        height: 40px;
+        /*background-position: center right 20px;*/
+    }
+    .sound_list .sound_title p {
+        display: inline-block;
+    }
+    .sound_list .sound_title .name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-left: 60px;
+        line-height: 40px;
+    }
+    .sound_list .audio {
+        width: 100%;
+        display: block;
+        padding-left: 60px;
+    }
+    .sound_list .sound_conts {
+        padding: 50px 0;
+        overflow: hidden;
+        /*コンテンツ内スライダー*/
+    }
+    /*  .sound_list .sound_conts .sound_conts_inner {
+    width: 100%;
+    padding-left: 0px;
+    margin: 10px 0;
+  }
+  .sound_list .sound_conts .img_slide {
+    width: 100%;
+    margin: 20px 0 10px 0;
+    background: #eee;
+  }
+  .sound_list .sound_conts .img_slide_inner {
+    width: 70%;
+    margin: auto;
+  }*/
+    /*  .sound_list .sound_conts .bx-wrapper .bx-next {
+    right: -40px;
+  }
+  .sound_list .sound_conts .bx-wrapper .bx-prev {
+    left: -40px;
+  }*/
+    /*  .sound_list .sound_conts .bx-viewport img {
+    max-width: 224px;
+    max-height: 220px;
+  }
+  .sound_list .sound_conts .bx-viewport li {
+    height: 220px;
+  }
+  .sound_list .sound_conts .text {
+    margin: 0 10px;
+    letter-spacing: 2px;
+    font-size: 12px;
+  }*/
+    .sound_list .sound_box {
+        position: relative;
+    }
+    .sound_box.rec-ipax-tag {
+        position: absolute !important;
+    }
+    .sound_list .sound_box_inner {
+        height: 90px;
+        overflow: hidden;
+    }
+    .sound_list .sound_conts_open {
+        height: auto;
+        overflow: visible;
+    }
+    .sound_list .sound_conts .bx-viewport img {
+        max-width: 100%;
+    }
+    .sound_list .sound_conts .bx-wrapper:not(.iframe-recomeended-aus-slider) .bx-viewport img {
+        max-height: 220px;
+    }
+    .contents_search {
+        background: none;
+        margin-bottom: 0px;
+        padding: 0;
+    }
+    .contents_search .total_number {
+        /*
+    font-size: 18px;
+*/
+        font-size: 12px;
+        float: left;
+    }
+    .contents_search .total_result {
+        background: #eee;
+    }
+    .contents_search .select_sort {
+        float: left;
+        margin-right: 1px;
+        /*
+    float: right;
+    margin-right: 10px;
+*/
+    }
+    .contents_search .search_box {
+        width: 100%;
+        float: none;
+        margin: 0 0 10px 0;
+        display: table;
+    }
+    .contents_search .search_box_inner {
+        position: relative;
+        width: 90%;
+        margin: auto;
+    }
+    .contents_search input[type="text"],
+    .contents_search button,
+    .contents_search textarea .search_keyword {
+        height: 45px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+        padding: 10px !important;
+    }
+    .contents_search .search_btn {
+        height: 45px;
+        width: 45px;
+        float: left;
+        position: absolute;
+        right: 0;
+    }
+}
+
+.input_name span {
+    float: right;
+    background-color: #F45D62;
+    color: white;
+    padding: 5px;
+}
+
+span.anchor{
+    margin-top: -185px;
+    display: block;
+    height: 185px;
+    visibility: hidden;
+    position: relative;
+}
+
+
+/*900以下*/
+
+.reset_password_container {
+    padding-bottom: 20px;
+}
+
+@font-face {
+    font-family: "password-mask";
+    src: url(data:font/woff;charset:utf-8;base64,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) format("woff");
+}
+
+.password-mask {
+    font-family: password-mask;
+}
+
+.numeric-password::placeholder {
+    font-family: initial;
+}
+
+.eye-mark {
+    margin-left: 8px;
+    margin-bottom: 17px;
+}
+
+.feature-img {
+    padding-right: 32px;
+}
+
+.home-sort-btn{
+    background: #47B8E8;
+    color: #fff;
+    text-align: center;
+    border-color: #47B8E8;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 50px; 
+}
+.home-sort-wrapper{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.bx-viewport-insp {
+    background: #eee;
+    width: 100%;
+    overflow: hidden;
+    height: 440px;
+    display: flex;
+    align-items: center;
+}
+
+.sound_img {
+    margin: 0 auto;
+    height: 90%;
+}
+
+.bx-wrapper {
+    position: unset !important; 
+}
+
+.bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto {
+    width: unset;
+    left: 50%;
+}
+.bx-wrapper .bx-pager .bx-pager-item, .bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+    position: relative;
+    left: -50%;
+}
+
+#recommended_ausculaide{
+    height: 700px;
+}
+#data-recommended-aus .sound_conts_inner.ausc-img-container{
+    margin-bottom: 10px !important;
+}
+#data-recommended-aus .sound_box,
+#data-recommended-aus .sound_conts,
+#recommend .contents_box_inner{
+    padding-bottom: unset !important;
+}
+
+/* ipad ----------------------------------*/
+@media only screen 
+  and (min-width: 720px)
+  and (max-width:1024px) 
+   {
+       .sound_list{
+           display: block;
+       }
+       .side_column .side_box{
+        width: 281px;
+        margin: auto;
+      }
+      .side_box.ausculaide_list,
+      .side_box.contents_list{
+          width:auto;
+      }
+      .bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto {
+        width: 90% !important;
+     }
+
+   }
+/*----------------------------------------*/
+
+@media (max-width:768px){
+    .eye-img img{
+        top: 23px;
+        right: -2px;
+    }
+    input:read-only {
+        /* width: 100% !important; */
+        text-align: center !important;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    }
+    .login_form .input_name span {
+        float: unset !important;
+        position: relative;
+        top: 8px;
+        padding:4px;
+    }
+    .login_form input {
+        text-align: center !important;
+    }
+    .confirm_registration_form .eye-img img {
+        top: -36px !important;
+        right: -159px !important;
+    }
+    .wp-image-1420,
+    .wp-image-1785,
+    .wp-image-2009,
+    .wp-image-2010,
+    .wp-image-113,
+    .wp-image-316,
+    .wp-image-1673,
+    .wp-image-170{
+        height: auto;
+        width: 100%;
+    }
+    .post-118 iframe{
+        width: 100%;
+    }
+
+    .aa01 iframe,
+    .post-2402 iframe {
+        width: 100%;
+    }
+    .sound_list .aus-sound_box .body-img-container {
+        height: 50px;
+    }
+    .d-none {
+        display: none;
+    }
+    .pl-40{
+        padding-left: 0;
+    }
+    .feature-img {
+        padding-right: unset;
+    }
+    .page-wrapper {
+        margin-top: 41px;
+    }
+    .breadcrumb {
+        top: 41px;
+    }
+    .breadcrumb-container {
+        top: unset;
+        z-index: unset;
+    }
+    .sp-mypage-menu {
+        margin-top: 16px;
+    }
+    .sp-mypage-menu-container {
+        width: 100%;
+        position: fixed;
+        height: 70px;
+        top: 67px;
+        background: url(../img/bg.png);
+        z-index: 1;
+    }
+    div#recommend {
+        margin-top: 95px;
+    }
+    span#bookmarks {
+        margin-top: -120px;
+        height: 120px;
+    }
+    span#analysis {
+        margin-top: -120px;
+        height: 120px;
+    }
+    .bx-viewport-insp {
+        height: unset;
+        min-height: 15rem;
+    }
+    .msg_area {
+        word-break: unset;
+        width: 100% !important;
+    }
+    .img-slider-container {
+        height: 220px;
+        float: left;
+        list-style: none;
+        position: relative;
+    }
+    .single-img-pager-container {
+        width: 100%;
+    }
+    .exam-title {
+        margin-top: 42px;
+    }
+    .sound_img {
+        max-width: 100%;
+        max-height: 220px;
+        margin: 0 auto;
+    }
+    .post-2402 {
+        margin-top: 64px;
+    }
+    .alert-success {
+        margin-top: 66px;
+    }
+    #body_image_container{
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+}
+@media (max-width:420px){
+    .aa01 iframe,
+    .post-2402 iframe,
+    .post-118 iframe {
+        height: auto;
+    }
+    .wp-image-1674 {
+        height: auto;
+    }
+    .contents_title h2{
+        font-size: 18px;
+    }
+    p.recommendation {
+        text-align: center;
+    }
+    .aa01 p {
+        margin: auto 16px;
+    }
+    .finish_btn {
+        height: 64px;
+    }
+    .aus-body_img {
+        width: 90%;
+    }
+    .bx-wrapper {
+		margin: 0 auto !important;
+    }
+    .desc_table {
+        margin: 36px 0 !important;
+        width: 336px;
+    }
+    .img-slider-container .sound_img {
+        max-width: 100%;
+        max-height: 220px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: scale-down;
+    }
+    .services_select {
+        font-size: 12px !important;
+    }
+    .chart_wrapper {
+        height: 480px !important;
+        width: 480px !important;
+    }
+    .chart-text-center {
+        top: 212px;
+        width: 338px;
+    }
+    #exam-report-table .first-row {
+        width: 45%;
+    }
+    .recommended.pulse-modal{
+        padding-top: 160px;
+    }
+}
+
+@media only screen 
+  and (min-width: 769px)
+  and (max-width: 823px){
+    .breadcrumb {
+        top: 41px !important;
+    }
+    .page-wrapper {
+        margin-top: 66px !important;
+    }
+    .exam-title {
+        margin-top: 50px !important;
+    }
+}
+@media (min-width: 769px) and (max-width: 1023px) {
+    .breadcrumb {
+        top: 131px;
+    }
+    .page-wrapper {
+        margin-top: 190px;
+    }
+    .bx-viewport {
+        margin: 60px auto !important;
+        height: 302px !important;
+    }
+
+    .sound_list .sound_conts .bx-viewport li {
+        height: 302px !important;
+    }
+    body > div > img {
+        height: 80vh;
+        width: 95%;
+        object-fit: contain;
+    }
+    .sound_img {
+        width: 90%;
+        object-fit: contain;
+    }
+}
+@media (min-width: 421px) and (max-width: 768px) {
+    .aus-body_img  {
+        width: 85%;
+    }
+    .btn-switch-body {
+        top: 6px !important;
+    }
+    .offline_switch_wrapper {
+        bottom: 50px !important;
+    }
+}
+@media (max-width:420px){
+    .home_search_option{
+        margin-left: 2px !important;
+    }
+    .home_mainvisual .search_box{
+        width: 80%;
+    }
+}
+@media (max-width:360px){
+    .search_type_title {
+        font-size: 10px !important;
+    }
+}

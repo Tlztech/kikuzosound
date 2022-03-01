@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: ssh key generate
+      run: echo "$VERYAPP_SSH_PRIVATE_KEY" > key && chmod 600 key
+      env:
+        VERYAPP_SSH_PRIVATE_KEY: ${{ secrets.VERYAPP_SSH_PRIVATE_KEY }}
+    - name: Making tar for Deploy
+      run: bash ./prepare_staging.sh staging
+    - name: Deploying
+      run: bash ./exec_deploy_staging.sh key

@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "puppetlabs/centos-6.6-64-puppet"
+
+  #
+  config.vm.provision "shell", path: "provision.sh"
+
+  #
+  config.vm.network :forwarded_port, guest: 3306, host: 43306
+  config.vm.network :forwarded_port, guest: 80, host: 40080
+
+  # 初回起動時はコメントアウトする。「ユーザ:apache」が存在しないためエラーとなる
+  config.vm.synced_folder "../../3s_portal", "/var/www/laravel", owner: 'apache', group: 'apache', mount_options: ['dmode=755','fmode=755']
+
+  # VirtualBoxのUIで表示される名前を設定
+  config.vm.provider :virtualbox do |vbox|
+    vbox.name = "vagrant-3s_portal"
+  end
+
+  # vagrant upでhttpdが自動起動させる(chkconfig httpd onでもうまくいかない場合)
+  config.vm.provision :shell, run: "always", :inline => <<-EOT
+    sudo service httpd restart
+  EOT
+end

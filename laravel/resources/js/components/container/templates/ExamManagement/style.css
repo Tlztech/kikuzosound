@@ -1,0 +1,133 @@
+.template-ExamMangement-wrapper {
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  display: grid;
+}
+
+/* .template-ExamMangement-wrapper .sortButton {
+  position: absolute;
+  right: 50%;
+  bottom: 10px;
+} */
+
+.template-ExamMangement-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* add button */
+.template-ExamMangement-wrapper > .row > button {
+  margin-left: 16px;
+}
+
+.template-ExamMangement-wrapper tbody .atoms-Button-success {
+  margin: auto;
+}
+
+.template-ExamMangement-wrapper .row {
+  justify-content: flex-end;
+  padding-right: 16px;
+}
+
+.template-ExamMangement-wrapper
+  .molecules-DownloadOptions-wrapper
+  .atoms-button {
+  display: none;
+}
+
+.template-ExamMangement-wrapper .molecules-inputwithlabel-wrapper {
+  margin-bottom: 30px;
+}
+
+.exam-library-sort-button {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.template-ExamMangement-wrapper td,
+.template-ExamMangement-wrapper th {
+  text-align: center;
+  word-wrap: break-word;
+  width: auto;
+}
+
+.template-ExamMangement-wrapper .table {
+  min-width: 800px;
+}
+
+.template-ExamMangement-wrapper tbody {
+  display: block;
+  overflow-x: auto;
+  overflow-y: overlay;
+  /* padding-right: 20px; */
+}
+
+/* .template-ExamMangement-wrapper .withPaginationTable tbody {
+  height: 60vh;
+} */
+
+.template-ExamMangement-wrapper thead,
+.template-ExamMangement-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.template-ExamMangement-wrapper table thead th {
+  white-space: nowrap;
+}
+
+.template-ExamMangement-wrapper td,
+.template-ExamMangement-wrapper th {
+  padding: 10px;
+  text-align: left;
+}
+
+.template-ExamMangement-wrapper .no-data {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.template-ExamMangement-wrapper .no-data td {
+  font-size: medium;
+  border-top: none;
+}
+
+.template-ExamMangement-wrapper .action-btn {
+  padding-right: 0 !important;
+}
+
+.template-choiceSelection-wrapper {
+  height: 100%;
+}
+
+.template-ExamMangement-wrapper .molecules-EditDeletePreviewButton-wrapper {
+  margin-left: -28px;
+}
+
+@media (max-width: 1280px) {
+  .template-ExamMangement-wrapper tbody {
+    /* padding-right: 25px; */
+  }
+}
+
+@media (max-width: 876px) {
+  .template-ExamMangement-wrapper tbody {
+    padding: auto 0px;
+    text-align: center;
+  }
+  .template-ExamMangement-wrapper table td {
+    overflow-wrap: break-word;
+    font-size: 0.7rem;
+  }
+  .template-ExamMangement-wrapper td,
+  .template-ExamMangement-wrapper th {
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "title": "タイトル",
+  "auscultation_sound_type": "聴診音種別",
+  "ausculation_site": "聴診部位",
+  "status": "ステータス",
+  "supervisor": "監修者",
+  "public/private": "公開/非公開",
+  "update_date_and_time": "更新日時",
+  "normal/abnormal": "正常/異常",
+  "add_new": "追加"
+}

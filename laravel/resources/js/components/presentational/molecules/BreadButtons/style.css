@@ -1,0 +1,11 @@
+.molecules-BreadButtons-wrapper{
+  margin: 0px 0px 0px 5px;
+  /* width: 80px;  */
+  display: inline-flex;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 5px ;
+}
+
+.molecules-BreadButtons-wrapper>button{
+  margin-right: 5px;
+}

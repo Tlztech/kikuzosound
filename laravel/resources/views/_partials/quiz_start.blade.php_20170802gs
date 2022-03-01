@@ -1,0 +1,55 @@
+<!----------------------クイズスタート---------------------->
+<div class="quiz_box short_box" data-quiz-pack-id="{{ $quiz_pack_id }}" data-quiz-pack-title="{{ $title }}">
+  <div class="quiz_head">
+    <h2 class="quiz_title">{{$title}}</h2>
+    <p class="mfp-close close_btn">閉じる</p>
+  </div>
+
+  <!-- .quiz_cont -->
+  <div class="quiz_cont">
+    <!-- .quiz_cont_scrroll -->
+    <div class="quiz_cont_scroll">            
+
+     <!-- .quiz_cont_inner -->
+     <div class="quiz_cont_inner">
+      <div class="quiz_start">
+        <a id="quiz_start_btn" data-url="{{ route('quiz_answer_select',[$quiz_pack_id,$next_quiz_id]) }}" style="cursor: pointer;" >
+          <img src="{{asset('img/quiz_start.png?v=1.1.1')}}" alt="クイズスタート">
+        </a>
+      </div>
+      <div class="quiz_desc clearfix">
+        <p class="text mB10 fl-right_pc">
+          「スタート」ボタンをクリックすると、回答画面が表示され、カウントダウンが開始されます。<br><br>
+          問題の聴診音を聞いて、制限時間内に正しい回答をクリックしてください。
+        </p>
+        <img class="fl-left_pc mB10" src="{{asset('img/quiz_desc.png')}}" alt="クイズ回答説明" />
+      </div>
+    </div>
+    <!-- .quiz_cont_inner -->                
+    
+  </div>
+  <!-- /.quiz_cont_scroll -->                
+</div>
+<!-- /.quiz_cont -->
+</div>
+<script type="text/javascript">
+(function($){
+  $('.mfp-close.close_btn').logger({
+    url: '/log',
+    data: function(elm) {
+      $quiz_box = $('body').find('.quiz_box');
+      var data = {
+        screen_code: 'QUIZ_START',
+        event_code: 'CLOSE',
+        body: {
+          quiz_pack: {
+            id: $quiz_box.data('quiz-pack-id'),
+            title: $quiz_box.data('quiz-pack-title')
+          }
+        }
+      };
+      return data;
+    }
+  });
+})(jQuery);
+</script>

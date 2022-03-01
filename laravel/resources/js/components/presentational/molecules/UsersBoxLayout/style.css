@@ -1,0 +1,11 @@
+.molecules-UserBoxLayout-wrapper{
+  max-width:400px;
+}
+
+.molecules-UserBoxLayout-wrapper ol li{
+  list-style-type: none;
+}
+
+.molecules-UserBoxLayout-wrapper .atoms-ol{
+  padding: 0;
+}

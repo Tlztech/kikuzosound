@@ -1,0 +1,42 @@
+<!----------------------クイズ成績---------------------->
+<!-- .quiz_cont_inner -->
+<div id='quiz_score' class="quiz_cont_inner">
+  <div class="score_title mT20">SCORE</div>
+  <div class="score mB30"><span>{{$correct_count}}/{{count($scores)}}</span>問正解</div>    
+  <!-- .score_table -->
+  <ul class="score_table">
+    @foreach($scores as $s)
+      <a class="answer_confirm_btn" data-url="{{ route('quiz_answer_confirm',[$quiz_pack_id,$s['quiz_id']]) }}" 
+      data-quiz_number="{{$s['number']+1}}" style="cursor: pointer;">
+        <li class="score_cell {{$s['is_correct'] ? 'true' : 'false'}}">
+          <p>{{$s['number']+1}}問目<span class="sp_none" style="float:right; margin-right: 40px;">解説</span></p>
+        </li> 
+      </a>
+    @endforeach
+  </ul>
+  <p>ボタンをクリックすると解説をご覧になれます。</p>
+  <!-- /.score_table -->
+  <p class="close_btn_foot mTB20"><img class="mfp-close" src="{{ asset('img/close_btn@2.png?v=1.1.0') }}" alt="閉じる" width="150" style="cursor: pointer;"/></p>
+</div>
+<script type="text/javascript">
+(function($){
+  $('.mfp-close.close_btn').off('click');
+  $('.mfp-close.close_btn,img.mfp-close').logger({
+    url: '/log',
+    data: function(elm) {
+      $quizpack_box = $('body').find('.quiz_box');
+      var data = {
+        screen_code: 'QUIZ_SCORE',
+        event_code: 'CLOSE',
+        body: {
+          quiz_pack: {
+            id: $quizpack_box.data('quiz-pack-id'),
+            title: $quizpack_box.data('quiz-pack-title')
+          }
+        }
+      };
+      return data;
+    }
+  });
+})(jQuery);
+</script>

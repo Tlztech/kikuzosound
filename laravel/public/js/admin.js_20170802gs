@@ -1,0 +1,529 @@
+ $(function() {
+  // --------------------------------クイズパック--------------------------------
+  // クイズパック追加/変更画面でランダム/固定が変更されたときのイベント
+  $("#fixed_status").on('change', function() {
+    // 固定(0)の場合、「固定」なので出題数を読取専用にする。
+    // ランダム(1)の場合、「ランダム」なので出題数を書込可能にする。
+    var is_fixed = ( $("#fixed_status").val() === "0" );
+    $('#max_quiz_count-field').prop('readonly', is_fixed);
+    // 出題数を更新する
+    if ( is_fixed ) {
+      $('#max_quiz_count-field').val($('#quizzes__tbody').children('tr').length);
+    }
+  });
+
+  // クイズパックの表示順保存ボタンを押下されたときのイベント
+  $('#save_order_btn').click(function() {
+    // 並び替えれた後のクイズパックIDの配列を取得
+    var ids = $('#sortable_tbody>tr>td:first-child').map(function(i, e) { return $(e).text(); }).get();
+    var data = JSON.stringify({"quiz_packs": ids});
+    $.ajax({
+      url : '/admin/quiz_packs_orders',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data : data,
+      type : 'PATCH',
+      contentType : 'application/json',
+      success: function(msg){
+        alert( "クイズパックの表示順を変更しました。" );
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert( "表示順を変更に失敗しました : " + XMLHttpRequest );
+      },
+    });
+  });
+
+  // 追加ボタン押下イベント
+  $('#add_quiz__btn').on('click', function() {
+    // クイズのセレクトボックスの要素を取得
+    var selector_id = '#quiz_add__selector';
+    var selected_id = selector_id + ' option:selected';
+    // クイズのIDとタイトルを取得する
+    var selectedQuiz = {
+      id: $(selected_id).val(),
+      title: $(selected_id).text()
+    };
+    // クイズ一覧の行を作成
+    var row = "";
+    row += '<tr>';
+    row += '  <td>'+ selectedQuiz.title +'</td>';
+    row += '  <td class="text-right">';
+    row += '    <input type="hidden" name="quizzes[]" value="'+ selectedQuiz.id +'"/>'
+    row += '    <a id="remove_quiz__btn" class="btn btn-danger" data-id="'+ selectedQuiz.id +'" data-title="' + selectedQuiz.title + '">削除</a>';
+    row += '    <img src="/img/drag_and_drop.png" class="drag_and_drop__img" />';
+    row += '  </td>';
+    row += '</tr>';
+    // クイズ一覧の要素を取得
+    var $quiz_table = $('#quizzes__tbody');
+    // クイズ一覧に行を追加する
+    $quiz_table.append(row).on('click', '#remove_quiz__btn[data-id=' + selectedQuiz.id + ']', function(){
+      var id = $(this).data('id');
+      var title = $(this).data('title');
+      // クイズ一覧から要素を削除する
+      $(this).closest('tr').remove();
+      // クイズのセレクトボックスに要素を戻す
+      if ( $(selector_id + ' option[value=' + id + ']').length == 0)
+        $(selector_id).append($('<option>').val(id).text(title));
+      // valueでソートする
+      var $options = $(selector_id + ' option');
+      $options.sort(function(a, b) {
+        a = a.value;
+        b = b.value;
+        return a-b;
+      });
+      $(selector_id).html($options);
+      // 追加した要素を選択する
+      $(selector_id).val(id);
+      // 追加ボタンを押せるようにする
+      $('#add_quiz__btn').prop( 'disabled', false );
+      // 出題数を更新する
+      var is_fixed = ( $("#fixed_status").val() === "0" );
+      if ( is_fixed ) {
+        $('#max_quiz_count-field').val($quiz_table.children('tr').length);
+      }
+    });
+    // クイズのセレクトボックスから選択した要素を削除する
+    $(selector_id + ' option[value=' + selectedQuiz.id + ']').remove();
+    // セレクトボックスの選択肢がなくなったら追加ボタンを押せないようにする
+    if ( $(selector_id).children().length === 0 ) {
+      $(selector_id).val('');
+      $('#add_quiz__btn').prop( 'disabled', true );
+    }
+    // 出題数を更新する
+    var is_fixed = ( $("#fixed_status").val() === "0" );
+    if ( is_fixed ) {
+      $('#max_quiz_count-field').val($quiz_table.children('tr').length);
+    }
+  });
+
+  // クイズパック編集画面のクイズ削除ボタンのクリックイベント
+  $('#quizzes__tbody').on('click','#remove_quiz__btn',function(){
+    // TODO: 重複削除
+    var id = $(this).data('id');
+    var title = $(this).data('title');
+    // クイズ一覧から要素を削除する
+    $(this).closest('tr').remove();
+    // クイズのセレクトボックスに要素を戻す
+    if ( $('#quiz_add__selector' + ' option[value=' + id + ']').length == 0)
+      $('#quiz_add__selector').append($('<option>').val(id).text(title));
+    // valueでソートする
+    var $options = $('#quiz_add__selector' + ' option');
+    $options.sort(function(a, b) {
+      a = a.value;
+      b = b.value;
+      return a-b;
+    });
+    $('#quiz_add__selector').html($options);
+    // 追加した要素を選択する
+    $('#quiz_add__selector').val(id);
+    // 追加ボタンを押せるようにする
+    $('#add_quiz__btn').prop( 'disabled', false );
+    // 出題数を更新する
+    var is_fixed = ( $("#fixed_status").val() === "0" );
+    if ( is_fixed ) {
+      $('#max_quiz_count-field').val($('#quizzes__tbody').children('tr').length);
+    }
+  });
+
+  // クイズパックのアイコン画像を一時的にブラウザに表示する
+  $('#quiz_pack_image-file-input').on('change', function(e) {
+    console.log($(this));
+    $('#quiz_pack_image-img').fadeIn('fast').attr('src', URL.createObjectURL(e.target.files[0]));
+    $('#quiz_pack_image-img').show();
+    $('#quiz_pack_image_remove-btn').show();
+  });
+
+  // クイズパックの画像の削除ボタンを押したら、入力要素を空にし、表示要素を削除する
+  $('#quiz_pack_image_remove-btn').on('click', function(e) {
+    $('#quiz_pack_image-file-input').val('');
+    $('#quiz_pack_image-img').hide();
+    $('input[name=icon_path]').val('');
+    $(this).hide();
+  });
+
+  // 固定だったら出題数を読み取り専用にする
+  $(document).ready(function(){
+    var is_fixed = ( $("#fixed_status").val() === "0" );
+    $('#max_quiz_count-field').prop('readonly', is_fixed);
+    // 出題数を更新する
+    if ( is_fixed ) {
+      $('#max_quiz_count-field').val($('#quizzes__tbody').children('tr').length);
+    }
+  });
+  // --------------------------------クイズ--------------------------------
+  // クイズ追加/編集画面 回答D&D
+  $("#quiz_choice__tbody").sortable({
+    // 回答の表示順の変更イベント
+    update: function(event, ui) {
+      var $td = $('#quiz_choice__tbody>tr>td');
+      $td.children('input[type="text"]').each(function(i, e){
+        $(e).attr('name','quiz_choices[' + i + '][title]'); 
+      });
+      $td.children('input[type="radio"]').each(function(i, e){
+        $(e).attr('value',i); 
+      });
+    }
+  });
+  $('#quiz_choice__tbody').disableSelection();
+
+  // クイズ追加/編集画面 回答D&D
+  $("#stetho_sound__tbody").sortable({
+    // 回答の表示順の変更イベント
+    update: function(event, ui) {
+      var $td = $('#stetho_sound__tbody>tr>td');
+      $td.children('input[type="text"]').each(function(i, e){
+        $(e).attr('name','stetho_sounds[' + i + '][description]'); 
+      });
+      $td.children('#id__input').each(function(i, e){
+        $(e).attr('name','stetho_sounds[' + i + '][id]'); 
+      });
+      $td.children('#title__input').each(function(i, e){
+        $(e).attr('name','stetho_sounds[' + i + '][title]'); 
+      });
+    }
+  });
+  $('#stetho_sound__tbody').disableSelection();
+
+
+  // クイズ追加/変更画面 回答追加ボタン押下イベント
+  $('#add_quiz_choice__btn').click(function() {
+    $tbody = $("#quiz_choice__tbody");
+    var cnt = $tbody.children('tr').length;
+    var row = '';
+    row += '<tr>';
+    row += '  <td>';
+    row += '  </td>';
+    row += '  <td>';
+    row += '    <input type="radio" name="quiz_choices_correct_index" value="'+cnt+'" />';
+    row += '  </td>';
+    row += '  <td>';
+    row += '    <input type="text" name="quiz_choices['+cnt+'][title]" class="form-control" value="" />';
+    row += '  </td>';
+    row += '  <td class="text-right">';
+    row += '    <a id="remove_quiz_choice__btn" class="btn btn-danger">削除</a>';
+    row += '    <img src="/img/drag_and_drop.png" class="drag_and_drop__img" />'
+    row += '  </td>';
+    row += '</tr>';
+    $tbody.append(row);
+
+    // 回答削除ボタン押下イベント
+    $tbody.off('click','#remove_quiz_choice__btn');
+    $tbody.on('click','#remove_quiz_choice__btn',function(){
+      $(this).closest('tr').remove();
+    });
+  });
+  
+  $("#quiz_choice__tbody").on('click','#remove_quiz_choice__btn',function(){
+    $(this).closest('tr').remove();
+  });
+
+  // クイズのイラストアップロードボタンでブラウザ上に表示する
+  $('#quiz_image-field').on('change', function(e) {
+    // input type = file の次のタグは img 
+    $(this).next().fadeIn('fast').attr('src', URL.createObjectURL(e.target.files[0]));
+    $('#quiz_image_remove-btn').show();
+  });
+
+  // クイズの画像の削除ボタンを押したら、入力要素を空にし、表示要素を削除する
+  $('#quiz_image_remove-btn').on('click', function(e) {
+    $('#quiz_image-field').val('');
+    $('#quiz_image-img').hide();
+    $('input[name=image_path]').val('');
+    $(this).hide();
+  });
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+  // クイズ追加と編集画面の聴診音追加ボタン押下イベント
+  $('#add_stetho_sound＿btn').on('click', function() {
+
+    var selector_id = '#sound_add__selector';
+    var selected_id = selector_id + ' option:selected';
+    var description = $('.col-sm-8 input[name=stetho_sound]').val();
+    var selectedSound = {
+      id: $(selected_id).val(),
+      title: $(selected_id).text(),
+      description
+    };
+    var row = "";
+    var $sound_table = $('#stetho_sound__tbody');
+    var cnt = $sound_table.children('tr').length;
+
+    row += '<tr>';
+    row += '  <td>'+ selectedSound.title +'</td>';
+    row += '  <td>';
+    row += '    <input type="text" class="form-control" name="stetho_sounds['+cnt+'][description] value="' + selectedSound.description + '"/>';
+    row += '  </td>';
+    row += '  <td class="text-right" style="white-space: nowrap;">';
+    row += '    <input id="title__input" type="hidden" name="stetho_sounds['+cnt+'][title]" value="'+ selectedSound.title +'"/>';
+    row += '    <input id="id__input" type="hidden" name="stetho_sounds['+cnt+'][id]" value="'+ selectedSound.id +'"/>';
+    row += '    <a class="btn btn-default select_stetho_sound_description_btn" data-id="'+ selectedSound.id +'">この聴診音を解答説明にする</a>';
+    row += '    <a id="remove_stetho_sound＿btn" class="btn btn-danger" data-id="'+ selectedSound.id +'" data-title="' + selectedSound.title + '">削除</a>';
+    row += '    <img src="/img/drag_and_drop.png" class="drag_and_drop__img" />'
+    row += '  </td>';
+    row += '</tr>';
+
+    $sound_table.append(row).on('click', '#remove_stetho_sound＿btn[data-id=' + selectedSound.id + ']', function(){
+      var id = $(this).data('id');
+      var title = $(this).data('title');
+      $(this).closest('tr').remove();
+      // 超心音のセレクトボックスに要素を戻す
+      if ( $(selector_id + ' option[value=' + id + ']').length == 0)
+        $(selector_id).append($('<option>').val(id).text(title));
+      // valueでソートする
+      var $options = $(selector_id + ' option');
+      $options.sort(function(a, b) {
+        a = a.value;
+        b = b.value;
+        return a-b;
+      });
+      $(selector_id).html($options);
+      $(selector_id).val(id);
+      $('#add_stetho_sound＿btn').prop( 'disabled', false );
+    }).on('click', '.select_stetho_sound_description_btn[data-id=' +selectedSound.id+']', function(e){
+      // 回答説明を選択する
+      $('select[name=description_stetho_sound_id]').val($(this).data('id'));
+    });
+    // 聴診音のセレクトボックスから選択した要素を削除する
+    $(selector_id + ' option[value=' + selectedSound.id + ']').remove();
+    // セレクトボックスの選択肢がなくなったら追加ボタンを押せないようにする
+    if ( $(selector_id).children().length === 0 ) {
+      $(selector_id).val('');
+      $('#add_stetho_sound＿btn').prop( 'disabled', true );
+    }
+  });
+
+  // 回答説明を選択する
+  $('.select_stetho_sound_description_btn').on('click', function(e){
+    // 回答説明を選択する
+    $('select[name=description_stetho_sound_id]').val($(this).data('id'));
+  });
+
+  $('#remove_stetho_sound＿btn').on('click', function(){
+    // TODO: 重複削除
+    var id = $(this).data('id');
+    var title = $(this).data('title');
+    // 聴診音一覧から要素を削除する
+    $(this).closest('tr').remove();
+    // 超心音のセレクトボックスに要素を戻す
+    if ( $('#sound_add__selector' + ' option[value=' + id + ']').length == 0)
+      $('#sound_add__selector').append($('<option>').val(id).text(title));
+    // valueでソートする
+    var $options = $('#sound_add__selector' + ' option');
+    $options.sort(function(a, b) {
+      a = a.value;
+      b = b.value;
+      return a-b;
+    });
+    $('#sound_add__selector').html($options);
+    // 追加した要素を選択する
+    $('#sound_add__selector').val(id);
+    // 追加ボタンを押せるようにする
+    $('#add_stetho_sound＿btn').prop( 'disabled', false );
+  });
+
+  // --------------------------------コンテンツ--------------------------------
+  // コンテンツ追加・編集画面の音の説明（画像）の「画像を追加ボタン」
+  $('#stetho_sound_images_form #add_images__btn').on('click', function(){
+    var row  = '';
+        row += '<tr>';
+        row += '  <td>';
+        row += '    <input type="hidden" name="image_ids[]" value="" />';
+        row += '    <input type="hidden" name="image_paths[]" value="" />';
+        row += '    <input type="file" id="image_files-fields" name="image_files[]" value="" />';
+        row += '    <img src="" height="220" style="display:none;">';
+        row += '  </td>';
+        row += '  <td>';
+        row += '    <input type="text" class="form-control" name="image_titles[]" value="" />';
+        row += '  </td>';
+        row += '  <td class="pull-right">';
+        row += '    <a class="btn btn-sm btn-danger" id="remove_images__btn">削除</a>';
+        row += '    <img src="/img/drag_and_drop.png" class="drag_and_drop__img" />';
+        row += '  </td>';
+        row += '</tr>';
+    // 画像ファイルのInputフォームを追加
+    $('#stetho_sound_images_form #sortable_tbody').append(row).on('click', '#remove_images__btn', function(){
+      // コンテンツ追加・編集画面の音の説明（画像）の削除
+      var id = $(this).closest('tr').find('input[name="image_ids[]"]').val();
+      if ( id ) {
+        $(this).closest('tbody').append('<input type="hidden" name="remove_image_ids[]" value="'+id+'"/>');
+      }
+      $(this).parents('tr').remove();
+    }).on('change', '#image_files-fields', function(e){
+      // 一時的に画像を表示する
+      // input type = file の次のタグは img 
+      $(this).next().fadeIn('fast').attr('src', URL.createObjectURL(e.target.files[0]));
+    });
+  });
+
+  $('#stetho_sound_images_form #sortable_tbody').on('click', '#remove_images__btn', function(){
+    // コンテンツ追加・編集画面の音の説明（画像）の削除
+    var id = $(this).closest('tr').find('input[name="image_ids[]"]').val();
+    if ( id ) {
+      $(this).closest('tbody').append('<input type="hidden" name="remove_image_ids[]" value="'+id+'"/>');
+    }
+    $(this).parents('tr').remove();
+  }).on('change', '#image_files-fields', function(e){
+    // 一時的に画像を表示する
+    // input type = file の次のタグは img 
+    $(this).next().fadeIn('fast').attr('src', URL.createObjectURL(e.target.files[0]));
+  });
+
+  // 聴診音, 画像ファイルを一時的に表示する
+  $('#sound_file-field, #image-field').on('change', function(e) {
+    // input type = file の次のタグは audio 
+    $(this).next().fadeIn('fast').attr('src', URL.createObjectURL(e.target.files[0]));
+  });
+
+  // 監修コメントの追加ボタンを有効無効にする
+  $('#comments__textarea').on('change keyup paste', function(e) {
+    var len = $(this).val();
+    if ( len.length > 0 ) {
+      $('#add_comments__btn').prop("disabled", false);
+    }
+    else {
+      $('#add_comments__btn').prop("disabled", true);
+    }
+  });
+
+  // 監修コメントの編集ボタン押下でコメント入力を有効にする
+  var on_click_edit_comment_btn = function(e) {
+    // コメント項目の要素
+    var $item = $(this).closest('.comment_item');
+    // コメント項目表示欄
+    var $comment_text = $item.find('.comment_text');
+    // コメント入力欄
+    var $textarea = $item.find('textarea');
+    // 更新ボタン
+    var $update_btn = $item.find('.update_comment__btn');
+
+    // 表示切替
+    $comment_text.hide();
+    $textarea.show();
+    $update_btn.show();
+
+    var id = $item.data('id');
+    $update_btn.on('click', function(e) {
+      // 多重更新防止
+      $update_btn.off('click');
+      $update_btn.prop('disable');
+      // 更新処理
+      var text = $textarea.val();
+      if ( text.length > 0 ) {
+        var data = { "text": text };
+        var stetho_sound_id = $('#stetho_sound_id').val();
+        var url = '/admin/stetho_sounds/' + stetho_sound_id + '/comments/' + id;
+
+        $.ajax({
+          url: url,
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          dataType: 'json',
+          type: 'PUT',
+          success: function(data) {
+            console.log(data);
+            // 表示項目更新
+            $comment_text.text(data.text);
+            $textarea.val(data.text);
+            // 表示切替
+            $comment_text.show();
+            $textarea.hide();
+            $update_btn.hide();
+          },
+          error: function(xhr, statusText, errorThrown) {
+            $.error(xhr.responseText);
+          }
+        });
+      }
+    });
+  };
+
+  // 監修コメントの編集ボタン押下でコメント入力を有効にする
+  $('.edit_comment__btn').on('click', on_click_edit_comment_btn);
+
+  var on_click_remove_comment_btn = function(e) {
+    var ok = confirm('本当に削除しますか？');
+    if ( ok ) {
+      // 多重投稿防止
+      var $item = $(this).closest('.comment_item');
+      var $delete_btn = $(this).hide();
+      var $edit_btn = $item.find('.edit_comment__btn').hide();
+      var $comment_text = $item.find('.comment_text').show();
+      var $textarea = $item.find('textarea').hide();
+      var $update_btn = $item.find('.update_comment__btn').hide();
+
+      var stetho_sound_id = $('#stetho_sound_id').val();
+      var id = $item.data('id');
+      var url = '/admin/stetho_sounds/' + stetho_sound_id + '/comments/' + id;
+
+      // 暗くする
+      $item.css('opacity', '0.5');
+      // 削除処理
+      $.ajax({
+        url: url,
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        contentType: 'application/json',
+        dataType: 'json',
+        type: 'DELETE',
+        success: function(data) {
+          console.log(data);
+          // コメント項目表示欄を削除
+          $item.hide('fast', function(){ $item.remove(); });
+        },
+        error: function(xhr, statusText, errorThrown) {
+          $.error(xhr.responseText);
+          $delete_btn.show();
+          $edit_btn.show();
+          $comment_text.show();
+          $textarea.hide();
+          $update_btn.hide();
+          $item.css('opacity', '1');
+        }
+      });
+    }
+  };
+
+  // 監修コメントの削除ボタン押下
+  $('.remove_comment__btn').on('click', on_click_remove_comment_btn);
+
+  // 監修コメント追加ボタン押下
+  $('#add_comments__btn').on('click', function(e) {
+    var text = $('#comments__textarea').val()
+    if ( text.length > 0 ) {
+      var data = {"text": text};
+      var id = $('#stetho_sound_id').val();
+      $.ajax({
+        url : '/admin/stetho_sounds/' + id + '/comments',
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data : JSON.stringify(data),
+        type : 'POST',
+        contentType : 'application/json',
+        success: function(data) {
+          console.log(data); 
+          var html = ''; 
+              html +='<div class="comment_item" style="padding-bottom: 1em; margin-bottom: 1em; border-bottom: 1px solid gray;" data-id="'+ data.id +'">';
+              html +='    <div style="float:left;">'+data.created_at.date.replace('.000000','')+'&nbsp;&nbsp;<strong>'+ data.name +'</strong></div>';
+              html +='    <div style="float:right;"><a class="btn btn-sm btn-default edit_comment__btn">編集</a>&nbsp;<a class="btn btn-sm btn-danger remove_comment__btn">削除</a></div>';
+              html +='    <div style="clear: both;"></div>';
+              html +='  <p class="comment_text" data-id="'+ data.id +'">'+ data.text +'</p>';
+              html +='  </p>';
+              html +='  <textarea name="comment" class="form-control" style="display: none;">'+ data.text +'</textarea>';
+              html +='  <button type="button" class="btn btn-sm btn-primary update_comment__btn" style="margin-top: 4px; display: none;">更新</button>';
+              html +='</div>';
+          console.log(html);
+          $item = $('#comments_area').append(html).find('.comment_item:last-child');
+          $item.find('.edit_comment__btn').on('click', on_click_edit_comment_btn)
+          $item.find('.remove_comment__btn').on('click', on_click_remove_comment_btn);
+          $('#comments__textarea').val('');
+        }
+      });
+    }
+  });
+});

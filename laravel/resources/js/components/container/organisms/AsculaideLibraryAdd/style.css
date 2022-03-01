@@ -1,0 +1,232 @@
+.organism-add-ausculaide-library-container .organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-add-ausculaide-library-container .organism-modal-image {
+  width: 16px;
+}
+
+.organism-add-ausculaide-library-container .organism-add-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-add-modal-button {
+  width: 90px !important;
+  font-size: 12px;
+}
+
+.organism-add-ausculaide-library-container .modal-body {
+  padding: 32px;
+}
+
+.organism-add-ausculaide-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 25%;
+  font-weight: bold;
+}
+
+.organism-add-ausculaide-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-input {
+  width: 75%;
+}
+
+.organism-add-ausculaide-library-container .organism-labelwithselect {
+  display: flex;
+  align-items: center;
+}
+
+.organism-add-ausculaide-library-container .organism-select-style {
+  width: 300px;
+  height: 38px;
+  border-radius: 4px !important;
+  margin-left: 15px;
+}
+
+.organism-add-ausculaide-library-container .organism-labelstyle {
+  width: 25%;
+  font-weight: bold;
+}
+
+.organism-add-ausculaide-library-container .organism-input-style .atoms-input {
+  width: 300px !important;
+}
+
+.ausculaide-library-modal-item {
+  width: 24%;
+}
+
+.organism-add-ausculaide-library-container .px-no {
+  width: 78%;
+}
+
+.organism-add-ausculaide-library-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-add-ausculaide-library-container .molecules-inputwithlabel-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.organism-add-ausculaide-library-container .organism-labelTitle {
+  width: 25%;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.ausculaide-library-organism-modal-body .select-item {
+  margin-left: 27%;
+}
+
+.organism-add-ausculaide-library-container .group-attr {
+  margin-left: 5px;
+}
+
+.organism-add-ausculaide-library-container .select2-container {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.organism-add-ausculaide-library-container .input-sound {
+  display: grid;
+  grid-template-columns: minmax(10px, auto) repeat(3, 30%);
+  gap: 5px;
+}
+
+.organism-add-ausculaide-library-container .input-sound label {
+  margin: 10px 0;
+}
+
+.organism-add-ausculaide-library-container .MuiDropzonePreviewList-image {
+  height: auto;
+  max-height: 190px;
+}
+
+.organism-add-ausculaide-library-container .col-9.flx {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.organism-add-ausculaide-library-container .col-9.flx label {
+  font-weight: 700;
+}
+
+.organism-add-ausculaide-library-container
+  span.atoms-span.input-item.explain-img-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.organism-add-ausculaide-library-container
+  span.atoms-span.input-item.explain-img-row
+  .drag-icon {
+  width: 30px;
+}
+
+.organism-add-ausculaide-library-container
+  .explain-img-row
+  .MuiDropzonePreviewList-imageContainer {
+  position: absolute;
+  top: 10%;
+}
+
+.organism-add-ausculaide-library-container .flex-choose {
+  display: grid;
+  grid-template-columns: 1fr 6fr 3fr;
+  margin-top: 5px;
+}
+
+.organism-add-ausculaide-library-container .flex-choose .form-control {
+  border: none;
+}
+
+.organism-add-ausculaide-library-container .atoms-select-fileName {
+  font-weight: normal !important;
+  width: 14vw;
+}
+
+.organism-add-ausculaide-library-container .sound-choose {
+  margin-left: 10px;
+}
+
+.organism-add-ausculaide-library-container .sound-choose .form-control {
+  border: none;
+  margin-left: 34px;
+}
+
+.organism-add-ausculaide-library-container .frontback-text {
+  margin-left: -10%;
+}
+
+.organism-add-ausculaide-library-container .atoms-Button-danger {
+  width: 80px;
+  margin: 0 5px;
+}
+
+.organism-add-ausculaide-library-container .input-item img {
+  height: auto;
+  width: initial;
+  margin: 15px 15px 25px;
+  max-height: 175px;
+  max-width: 311.11px;
+}
+
+.organism-add-ausculaide-library-container .explain-img-row img {
+  margin: 0;
+}
+
+.organism-add-ausculaide-library-container .MuiDropzonePreviewList-image {
+  max-width: none;
+}
+
+.organism-add-ausculaide-library-container
+  .explain-img-row
+  .MuiDropzonePreviewList-image {
+  position: absolute;
+  left: 30%;
+}
+
+.organism-add-ausculaide-library-container .configuration-item {
+  padding-left: 22px;
+}
+
+.organism-add-ausculaide-library-container .organism-stetho-group-attribute-item {
+  margin-left: 25%;
+  max-width: 75%;
+}
+
+.organism-add-ausculaide-library-container .configuration-item {
+  padding-left: 22px;
+}
+
+.organism-add-ausculaide-library-container .select-body-image{
+  display: flex;
+  gap: 6%
+}
+
+.organism-add-ausculaide-library-container .select-body-image .file-select {
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .organism-add-ausculaide-library-container .input-item img {
+    width: 190px;
+  }
+  .organism-add-ausculaide-library-container .atoms-Button-danger {
+    margin-left: 50px;
+  }
+}

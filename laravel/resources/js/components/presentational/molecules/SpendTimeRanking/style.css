@@ -1,0 +1,11 @@
+.molecules-spendTime-ranking-wrapper .table tr:nth-last-child(1) {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.molecules-spendTime-ranking-wrapper .atoms-label {
+  /* margin-left: 16px; */
+}
+
+.molecules-spendTime-ranking-wrapper .molecules-spendTime-rank-points {
+  text-align: right;
+}

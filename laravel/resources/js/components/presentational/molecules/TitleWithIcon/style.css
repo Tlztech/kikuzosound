@@ -1,0 +1,15 @@
+.molecules-TitleWithIconContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+.molecules-TitleWithIconContainer .atoms-Image {
+  width: 32px;
+  height: 32px;
+}
+
+.molecules-TitleWithIconContainer .atoms-label {
+  font-size: 18px;
+  font-weight: bold;
+}

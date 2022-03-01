@@ -1,0 +1,103 @@
+.organism-edit-ecg-library-container .organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-edit-ecg-library-container .ecg-library-organism-modal-body {
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.organism-edit-ecg-library-container .organism-modal-image {
+  width: 16px;
+}
+
+.organism-edit-ecg-library-container .labelstyle {
+  font-weight: bold;
+  margin-right: 24px !important;
+}
+
+.organism-edit-ecg-library-container .MuiDropzoneArea-root {
+  min-height: 213px;
+}
+
+.organism-edit-ecg-library-container .MuiDropzoneArea-textContainer {
+  white-space: pre-wrap;
+}
+
+.organism-edit-ecg-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-input {
+  width: 100%;
+}
+
+.organism-edit-ecg-library-container .organism-edit-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-edit-ecg-library-container .organism-edit-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-edit-ecg-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 40%;
+  font-weight: bold;
+}
+
+.organism-edit-ecg-library-container .organism-radio-wrapper {
+  display: flex;
+}
+
+.organism-edit-ecg-library-container .organism-radio-label {
+  width: 40%;
+  font-weight: bold;
+}
+
+.organism-edit-ecg-library-container .organism-radio-button {
+  width: 100%;
+  margin-left: 15px;
+}
+
+.organism-edit-ecg-library-container .icon-img {
+  position: relative;
+  width: 177px;
+  height: 100px;
+  margin: 10px 0;
+}
+
+.organism-edit-ecg-library-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 30%;
+}
+
+.organism-edit-modal-footer .atoms-button {
+  width: 90px;
+}
+
+.organism-edit-ecg-library-container .input-label-style .labelstyle {
+  margin-right: 0;
+}
+
+.organism-edit-ecg-library-container .organism-ecg-radio-container {
+  padding-left: 42px;
+}
+
+.organism-edit-ecg-library-container .MuiTypography-h5 {
+  font-size: 14px;
+}
+
+.organism-edit-ecg-library-container .edit-thumbnail-image {
+  padding-top: 5px;
+  width: 50%;
+  height: auto;
+}
+
+.organism-edit-ecg-library-container .file-select {
+  width: 93%;
+}

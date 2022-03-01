@@ -1,0 +1,13 @@
+.atoms-textarea {
+  font-family: "sans-serif";
+  border-color: #d1d1d1;
+  width: 100%;
+}
+
+.atoms-textarea:focus {
+  outline: none;
+}
+
+.form-control::-webkit-input-placeholder {
+  font-size: 14px;
+}

@@ -1,0 +1,14 @@
+.molecules-dragDrop-list-container {
+  padding: 8px;
+  border-bottom: 1px solid #A2A2A2;
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.molecules-dragDrop-list-container .atoms-label {
+  margin: 0;
+  /* width: 50%; */
+  overflow: scroll;
+}

@@ -1,0 +1,37 @@
+.molecules-inputwithlabel-wrapper {
+  display: flex;
+}
+
+.molecules-inputwithlabel-wrapper .atoms-label {
+  text-align: left;
+  font-weight: bold;
+}
+.molecules-inputwithlabel-wrapper .atoms-input {
+  width: 300px;
+  margin-left: 15px;
+}
+.molecules-inputwithlabel-wrapper .tox-tinymce{
+  width: 68%;
+  margin-left: 15px;
+}
+.ausculaide-library-organism-modal-body .molecules-inputwithlabel-wrapper .tox-tinymce{
+  width: 75%;
+}
+.ecg-library-organism-modal-body .molecules-inputwithlabel-wrapper .tox-tinymce{
+  width: 100%;
+}
+.molecules-inputwithlabel-wrapper .tox-statusbar__text-container{
+  display: none !important;
+}
+
+.justify-left-inputwithlabel {
+  float: left;
+}
+.justify-right-inputwithlabel {
+  float: right;
+}
+@media (max-width: 740px) {
+  .molecules-inputwithlabel-wrapper .atoms-input {
+    margin: 0px;
+  }
+}

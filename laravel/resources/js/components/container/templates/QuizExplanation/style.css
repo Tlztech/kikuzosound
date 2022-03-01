@@ -1,0 +1,55 @@
+.template-quizMultipleExplanation-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: #47b8e8;
+  word-break: break-all;
+}
+
+.template-quizMultipleExplanation-wrapper .template-explain-image-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.template-quizMultipleExplanation-wrapper
+  .template-explain-image-wrapper
+  .atoms-Image {
+  height: 120px;
+}
+
+.template-quizMultipleExplanation-wrapper .template-soundOption-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 16px 24px;
+}
+
+.template-quizMultipleExplanation-wrapper .template-quizTitle {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.template-quizMultipleExplanation-wrapper .template-button-title-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 16px;
+}
+
+.template-quizMultipleExplanation-wrapper
+  .template-button-title-wrapper
+  .atoms-label {
+  font-size: 24px;
+  color: #5c5c5c;
+  margin: 0;
+}
+
+.template-quizMultipleExplanation-wrapper .atoms-Button-cancel {
+  border-radius: 50px;
+  padding: 8px 24px;
+  max-width: 80px;
+}

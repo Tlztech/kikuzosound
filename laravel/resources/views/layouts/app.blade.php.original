@@ -1,0 +1,275 @@
+<?php
+$strDebug = '';
+if (env('APP_DEBUG')) {
+//if (App::environment('local')) {
+//if (App::environment('local', 'staging')) {
+    $Debug = true;
+    $strDebug .= 'local=' . App::environment('local') . '<br>';
+    $strDebug .= 'staging=' . App::environment('staging') . '<br>';
+} else {
+    $Debug = false;    
+}
+
+//define('USER_DS_SP', 'daiichisankyo.co.jp-1001');     //自動ログイン用の第一三共特別アカウント
+$login_user = Session::get('MEMBER_3SP_USER');
+$login_at = Session::get('MEMBER_3SP_LOGIN_AT');
+//$route_name = 'login';
+$route_name = \Request::route()->getName();
+if ($route_name === 'member_login') {
+    $strBtnLogin = '';   //何も表示しない
+} else {
+    $display_none = '';
+    if ($login_user == '') {
+        $str_label = 'ログイン';
+        $str_href = "'member_login'";
+    } else {
+        $str_label = 'ログアウト';
+        //if ($login_user === 'daiichisankyo.co.jp-1001') {       //★この値は.envへ
+        if ($login_user === env('MEMBER_3SP_USER_DS_SP')) {       //DS特別アカウントなら
+            if ($Debug) {       //★デバッグ中はログアウトボタンを表示
+                $str_label .= '★';   //★テスト用ログアウト
+            } else {        //★デバッグ中でなければボタンは表示しない
+                $display_none = ' style="display:none;"';
+            }
+        }
+        $str_href = "'member_logout'";
+    }
+    //ボタン
+    $strBtnLogin = '<button' . $display_none . ' type = "button" name = "btn_login" value = "btn_login" class = "button_head" onclick = "location.href=' . $str_href . '"><span>' . $str_label . '</span></button>';
+}
+if ($Debug) {
+    $session_lifetime = Config::get('session.lifetime');       //★テスト有効時間を取得
+    $strDebug .= 'session_lifetime=' . $session_lifetime . '<br>';            
+
+    $strDebug .= '★' . $login_user . '★ LoginAt=' . $login_at . ' Now=' . date('Y-m-d H:i:s') . '<br>';
+
+    logger($strDebug);
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta property="og:description" content="聴診音が学べる！ポータルサイト 3S" />
+        <title>聴診音が学べる！ポータルサイト 3S TELEMEDICA | @yield('title')</title>
+
+        <script src="{{asset('js/jquery.min.js')}}"></script>
+        <script src="{{asset('js/common.js')}}"></script>
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="stylesheet" href="{{asset('css/common.css?v=1.2.0.20170410')}}">
+        <link rel="stylesheet" href="{{asset('css/style.css?v=1.2.0.20170710')}}">
+        <link rel="stylesheet" href="{{asset('css/style2.css?v=1.2.0.20170410')}}">
+        <link rel="stylesheet" href="{{asset('css/quiz.css?v=1.2.0.20170706')}}">
+        <link rel="stylesheet" href="{{asset('js/audiojs/audio.css')}}">
+        <link rel="stylesheet" href="{{asset('css/respons.css?v=1.2.0.20170710')}}">
+        <!-- bxSlider Javascript file -->
+        <script src="{{asset('js/bxslider/jquery.bxslider.js')}}"></script>
+        <!-- bxSlider CSS file -->
+        <link href="{{asset('js/bxslider/jquery.bxslider.css')}}" rel="stylesheet" />
+        <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
+        <script src="{{asset('js/jquery-ui.js')}}"></script>
+        <script src="{{asset('js/audiojs/audio.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/js/jquery.logger.js?v=1.1.7')}}"></script>
+        <script src="{{asset('/js/magnific-popup/jquery.magnific-popup.js')}}"></script>
+        <link href="{{asset('/js/magnific-popup/magnific-popup.css')}}" rel="stylesheet" />
+
+        <link rel="stylesheet" href="{{asset('css/add.css')}}"><!-- 20170531 hyono@cori.com ログイン画面用に追加 -->
+
+        <script>
+audiojs.events.ready(function () {
+    var audios = document.getElementsByTagName('audio');
+    if (audios.length > 0) {
+        var a1 = audiojs.create(audios, {
+            css: false,
+            createPlayer: {
+                markup: false,
+                playPauseClass: 'play-pauseZ',
+                scrubberClass: 'scrubberZ',
+                progressClass: 'progressZ',
+                loaderClass: 'loadedZ',
+                timeClass: 'timeZ',
+                durationClass: 'durationZ',
+                playedClass: 'playedZ',
+                errorMessageClass: 'error-messageZ',
+                playingClass: 'playingZ',
+                loadingClass: 'loadingZ',
+                errorClass: 'errorZ'
+            }
+        });
+    }
+});
+
+$(document).ready(function () {
+    $('.bxslider').bxSlider({
+        // 要素に対してbxsliderの準備が整うと呼ばれる
+        onSliderLoad: function (currentIndex) {
+            // 0件の場合スライド機能をOFFにする
+            if (this.getSlideCount() == 1) {
+                // jquery.bxslider.js によって生成された操作UI要素を削除する
+                this.find('.bx-prev').remove();
+                this.find('.bx-next').remove();
+                this.closest('.bx-wrapper').find('.bx-pager').remove();
+                // Bxsliderの下の余白を削減する
+                this.closest('.bx-wrapper').css('margin-bottom', '30px');
+            }
+        },
+        /**
+         * ※引数$slideElement：スライドするjQuery要素
+         * ※引数oldIndex：前のスライドの要素のインデックス（遷移前）
+         * ※引数newIndex：先のスライドの要素インデックス（遷移後）
+         */
+        onSlideAfter: function ($slideElement, oldIndex, newIndex) {
+            // 先のスライドのタイトルを取得する
+            var image_title = $slideElement.find("#sl_image_title").text();
+            var titleElement = $slideElement.closest(".img_slide").find("#image_title");
+            titleElement.text(image_title);
+            if (image_title) {
+                titleElement.show();
+                $("#image_title").text(image_title);
+            } else {
+                titleElement.hide();
+            }
+        }
+    });
+});
+        </script>
+    </head>
+    <body>
+{!! $strDebug !!}
+
+        @include('_partials.ga')
+        <!--*********************************** #header ***********************************-->
+        <div id="header">
+            <!-- .header_inner -->
+            <div class="header_inner">
+                <!-- .title_h1 -->
+                <h1 class="header_explanation sp_none"><img src="img/icon.png" alt="">聴診音が学べる！ポータルサイト</h1>
+                <!-- /.title_h1 -->
+                <!-- .headlogo -->
+                <div class="headlogo">
+                    <img src="img/logo.png" alt="">
+
+                    <!-- .btn_login -->
+                    <?php echo $strBtnLogin ?>                    
+                    <!--<button type="button" name="btn_login" value="btn_login" class="button_head" onclick="location.href = 'login'">-->
+                    <!-- /.btn_login -->
+                </div>
+                <!-- /.headlogo -->
+                <!-- .gnavi_pc -->
+                <div class="gnavi_pc">
+                    <!-- .menu -->
+                    <ul class="menu">
+                        <?php $route_name = \Request::route()->getName() ?>
+                        <li class="@if( in_array($route_name ,['home','']) ) active @endif"><a href="{{ route('home')      }}">Home</a></li>
+                        <li class="@if( $route_name=='contents'            ) active @endif"><a href="{{ route('contents')  }}">聴診音ライブラリ</a></li>
+                        <li class="@if( $route_name=='quizpacks'           ) active @endif"><a href="{{ route('quizpacks') }}">聴診クイズ</a></li>
+                        <li class="@if( $route_name=='speaker'             ) active @endif"><a href="{{ route('speaker')   }}">聴診専用スピーカ</a></li>
+                    </ul>
+                    <!-- /.menu -->
+                </div>
+                <!-- /.gnavi_pc -->
+
+                <!-- .gnavi_sp -->
+                <div id="gnavi_sp">
+                    <p id="gnavi_sp_btn"><img src="img/sp_ginavi_btn.png" height="50" width="50" alt="MENU"></p> 
+                    <div class="menu_box">
+                        <!-- .menu_ -->
+                        <ul class="menu">
+                            <li class="@if( in_array($route_name ,['home','']) ) active @endif"><a href="{{ route('home')      }}">Home</a></li>
+                            <li class="@if( $route_name=='contents'            ) active @endif"><a href="{{ route('contents')  }}">聴診音ライブラリ</a></li>
+                            <li class="@if( $route_name=='quizpacks'           ) active @endif"><a href="{{ route('quizpacks') }}">聴診クイズ</a></li>
+                            <li class="@if( $route_name=='speaker'             ) active @endif"><a href="{{ route('speaker')   }}">聴診専用スピーカ</a></li>
+                        </ul>
+                        <!-- /.menu_ -->
+                        <!-- .submenu -->
+                        <ul class="submenu">
+                            <li class="@if( $route_name=='about'   ) active @endif"><a href="{{route('about')}}">サイトについて</a></li>
+                            <li class="@if( $route_name=='terms'   ) active @endif"><a href="{{route('terms')}}">利用規約</a></li>
+                            <li class="@if( $route_name=='privacy' ) active @endif"><a href="{{route('privacy')}}">プライバシーポリシー</a></li>
+                            <li class="@if( $route_name=='news'    ) active @endif"><a href="{{route('news')}}">お知らせ</a></li>
+                            <li class="@if( $route_name=='faq'     ) active @endif"><a href="{{route('faq')}}">よくある質問</a></li>
+                            <li class="@if( $route_name=='contact' ) active @endif"><a href="{{route('contact')}}">お問い合わせ</a></li> 
+                        </ul>
+                        <!-- /.submenu -->
+                    </div>
+                    <!-- /.menu_box -->
+                </div>
+                <!-- /.gnavi_sp -->
+
+            </div>
+            <!-- /.header_inner -->
+        </div>
+
+        <!-- パンくずリスト -->
+        <div>
+            @yield('breadcrumb')
+        </div>
+
+        <div class="container">
+            @yield('content')
+        </div>
+
+        <!--*********************************** #footer ***********************************-->
+        <div id="footer">
+            <!-- .footer_inner -->
+            <div class="footer_inner">
+                <!-- .footer_navi -->
+                <div class="footer_navi clearfix">
+                    <ul class="footer_link">
+                        <li><a href="{{route('about')}}">サイトについて</a></li>
+                        <li><a href="{{route('terms')}}">利用規約</a></li>
+                    </ul>
+                    <ul class="footer_link">
+                        <li><a href="{{route('privacy')}}">プライバシーポリシー</a></li>
+                        <li><a href="{{route('news')}}">お知らせ</a></li>
+                    </ul>
+                    <ul class="footer_link">
+                        <li><a href="{{route('faq')}}">よくある質問</a></li>
+                        <li><a href="{{route('contact')}}">お問合わせ</a></li>
+                    </ul>
+                </div>
+                <!-- /.footer_navi -->
+                <!-- .sns_link -->
+                <div class="sns_link">
+                    {{-- Twitter --}}
+                    {{-- Twitterのweb page 表示 --}}
+                    <a href="https://twitter.com/share?url=https%3A%2F%2F3sportal.telemedica.co.jp&hashtags=聴診%2C聴診音%2C心音%2C肺音%2C腸音%2Cフィジカルアセスメント」&text=「聴診音が学べる！ポータルサイト" class="twitter-share-button" target="_blank"><img src="img/snsicon_t@2.png" alt="twitter" width="43"></a>
+                    {{-- Twitterのpopup 表示 --}}
+                    {{-- 
+            <a href="https://twitter.com/share?url=https%3A%2F%2F3sportal.telemedica.co.jp&hashtags=聴診%2C聴診音%2C心音%2C肺音%2C腸音%2Cフィジカルアセスメント」&text=「聴診音が学べる！ポータルサイト" class="twitter-share-button" target="_blank" onclick="window.open(this.href, 'tweetwindow', 'width = 550, height = 450, personalbar = 0, toolbar = 0, scrollbars = 1, resizable = 1'); return false;"><img src="img/snsicon_t@2.png" alt="twitter" width="43"></a>
+             --}}
+
+                    {{-- Facebook --}}
+                    {{-- Facebookのweb page 表示 --}}
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://3sportal.telemedica.co.jp&s=「聴診音が学べる！ポータルサイト」" target="_blank"><img src="img/snsicon_f@2.png" alt="facebook" width="43"></a>
+                    {{-- Facebookのpopup 表示 --}}
+                    {{-- 
+            <a href="http://www.facebook.com/share.php?u=https://3sportal.telemedica.co.jp" onclick="window.open(this.href, 'FBwindow', 'width = 650, height = 450, menubar = no, toolbar = no, scrollbars = yes'); return false;"><img src="img/snsicon_f@2.png" alt="facebook" width="43"></a>
+             --}}
+
+                    {{-- Line --}}
+                    <!-- 「聴診音が学べる！ポータルサイト https://3sportal.telemedica.co.jp」 -->
+                    <a href="https://timeline.line.me/social-plugin/share?url=https%3A%2F%2F3sportal.telemedica.co.jp" target="_blank"><img src="img/snsicon_l@2.png" width="43" height="43"/></a>
+
+                    {{-- Line dynamic取得今のurl( popup表示 ) --}}
+                    {{--  
+            <div class="line-it-button" style="display: none;" data-type="share-a" data-lang="ja"></div>
+            <script src="//scdn.line-apps.com/n/line_it/thirdparty/loader.min.js" async="async" defer="defer"></script>
+              --}}
+                </div>
+                <!-- /.sns_link -->
+                <!-- .copyright -->
+                <p class="copyright">Copyright © 2017 TELEMEDICA Inc.. 株式会社テレメディカ All Rights Reserved.</p>
+                <!-- /.copyright -->
+            </div>
+            <!-- /.footer_inner -->
+        </div>
+        <!--*********************************** /#footer ***********************************-->
+
+        <div id="overlay"></div><!-- /#overlay -->
+    </body>
+</html>

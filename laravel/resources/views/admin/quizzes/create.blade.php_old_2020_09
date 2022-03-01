@@ -1,0 +1,207 @@
+@extends('admin.layouts.app')
+
+@section('content')
+<div class="page-header">
+  <h1>クイズ追加</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    @include('admin.common.form_errors')
+
+    <form class="form-horizontal" action="{{ route('admin.quizzes.store') }}" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">全体設定</h3>
+        </div>
+        <div class="panel-body">
+          {{-- <div class="form-group @if($errors->has('title')) has-error @endif">
+           <label for="title-field" class="col-sm-2 control-label">タイトル</label>
+           <div class="col-sm-10">
+             <input type="text" id="title-field" name="title" class="form-control" value="{{ old('title') }}" placeholder="心音問題A-１" />
+             @if($errors->has("title"))
+             <span class="help-block">{{ $errors->first("title") }}</span>
+             @endif
+           </div>
+         </div> --}}
+         <div class="form-group @if($errors->has('title_en')) has-error @endif">
+           <label for="title-field" class="col-sm-2 control-label">タイトル</label>
+           <div class="col-sm-10">
+             <input type="text" id="title-field" name="title_en" class="form-control" value="{{ old('title_en') }}" placeholder="Heart sound problem A-１" />
+             @if($errors->has("title_en"))
+             <span class="help-block">{{ $errors->first("title_en") }}</span>
+             @endif
+           </div>
+         </div>
+         {{-- <div class="form-group @if($errors->has('question')) has-error @endif">
+           <label for="question-field" class="col-sm-2 control-label">設問</label>
+           <div class="col-sm-10">
+             <input type="text" id="question-field" name="question" class="form-control" value="{{ old('question') }}" placeholder="クイズの設問を入力してください。" />
+             @if($errors->has("question"))
+             <span class="help-block">{{ $errors->first("question") }}</span>
+             @endif
+           </div>
+         </div> --}}
+         <div class="form-group @if($errors->has('question_en')) has-error @endif">
+           <label for="question-field" class="col-sm-2 control-label">設問</label>
+           <div class="col-sm-10">
+             <input type="text" id="question-field" name="question_en" class="form-control" value="{{ old('question_en') }}" placeholder="Please Enter the quiz question." />
+             @if($errors->has("question_en"))
+             <span class="help-block">{{ $errors->first("question_en") }}</span>
+             @endif
+           </div>
+         </div>
+
+        <div class="form-group @if($errors->has('image')) has-error @endif">
+          <label for="image-field" class="col-sm-2 control-label">イラスト</label>
+          <div class="col-sm-10">
+            <table>
+              <tr>
+                <td>
+                  <?php
+                    $quiz_image_path = \Session::has('quiz_image_path') ? \Session::get('quiz_image_path') : old('image_path');
+                    \Session::forget('quiz_image_path');
+                  ?>
+                  <input type="file" class="well well-sm" id="quiz_image-field" name="image" accept=".jpg,.png,image/jpeg,image/png" value=""/>
+                  <img src="@if(!is_null($quiz_image_path)){{ $quiz_image_path }}@endif" style="@if(!is_null($quiz_image_path))height:220px;@endif @if(is_null($quiz_image_path))diplay:none;@endif"/>
+                  <input type="hidden" name="image_path" value="@if(!is_null($quiz_image_path)){{ $quiz_image_path }}@endif" />
+                  @if($errors->has("image"))
+                    <span class="help-block">{{ $errors->first("image") }}</span>
+                  @endif
+                  @if($errors->has("quiz_image_path"))
+                    <span class="help-block">{{ $errors->first("quiz_image_path") }}</span>
+                  @endif
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="form-group @if($errors->has('limit_seconds')) has-error @endif">
+          <label for="limit_seconds-field" class="col-sm-2 control-label" >制限時間</label>
+          <div class="col-sm-10">
+            <input type="number" id="limit_seconds-field" name="limit_seconds" class="form-control" value="{{ old('limit_seconds') }}" placeholder="30"/>
+            <p style="color:#B8B7B7;font-family:inherit;">※無制限を指定する場合は0を入力して下さい</p>
+            @if($errors->has("limit_seconds"))
+            <span class="help-block">{{ $errors->first("limit_seconds") }}</span>
+            @endif
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">聴診音・選択肢設定</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group @if($errors->has('stetho_sounds')) has-error @endif">
+          <label for="stetho_sound-field" class="col-sm-2 control-label">聴診音</label>
+          <div class="col-sm-10">
+            <table class="table">
+              <tbody id="stetho_sound__tbody">
+
+
+                @for ($i = 0; $i < count((array)old('stetho_sounds')); $i++)
+                <tr>
+                  <td>{{$stetho_sounds[$i]->title}}</td>
+                  <td>
+                    <input type="text" class="form-control" name="stetho_sounds[{{$i}}][description] value="{{$stetho_sounds[$i]->description}}"/>
+                  </td>
+                  <td class="text-right" style="white-space: nowrap;">
+                    <input type="hidden" name="stetho_sounds[{{$i}}][id]" value="{{$stetho_sounds[$i]->id}}"/>
+                    <a class="btn btn-default select_stetho_sound_description_btn" data-id="{{$stetho_sounds[$i]->id}}">この聴診音を解答説明にする</a>
+                    <a id="remove_stetho_sound＿btn" class="btn btn-danger" data-id="{{$stetho_sounds[$i]->id}}" data-title="{{$stetho_sounds[$i]->title}}">削除</a>
+                    <img src="/img/drag_and_drop.png" class="drag_and_drop__img" />
+                  </td>
+                </tr>
+                @endfor
+              </tbody>
+            </table>
+            <div class="col-sm-offset-8 col-sm-4">
+              <div class="col-sm-8">
+                <select id="sound_add__selector" class="form-control">
+                  @foreach($stetho_sounds as $stetho_sound)
+                    <option id="sound_add__opt" value="{{$stetho_sound->id}}" data-description="{{$stetho_sound->description}}">{{$stetho_sound->title_en}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <button id="add_stetho_sound＿btn" class="btn btn-success" type="button" >聴診音を追加</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="form-group">
+          <label for="quiz_choice-field" class="col-sm-2 control-label">選択肢</label>
+          <div class="col-sm-10">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>正解</th>
+                  <th>選択肢</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody id="quiz_choice__tbody" class="form-group">
+                @for ($i = 0; $i < count((array)old('quiz_choices')); $i++)
+                <tr>
+                  <td>
+                  </td>
+                  <td>
+                    <input type="radio" name="quiz_choices_correct_index" value="{{$i}}" />
+                  </td>
+                  <td>
+                    <input type="text" name="quiz_choices[{{$i}}][title]" class="form-control" value="{{old( 'quiz_choices.' . $i . '.title')}}" />
+                  </td>
+                  <td class="text-right">
+                    <a id="remove_quiz_choice__btn" class="btn btn-danger">削除</a>
+                    <img src="/img/drag_and_drop.png" class="drag_and_drop__img" />
+                  </td>
+                </tr>
+                @endfor
+              </tbody>
+            </table>
+            <button id="add_quiz_choice__btn" class="btn btn-success pull-right" type="button" >選択肢を追加</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">解答説明</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group @if($errors->has('answer_description')) has-error @endif">
+          <label for="title-field" class="col-sm-2 control-label">解答説明</label>
+          <div class="col-sm-10">
+            <select name="description_stetho_sound_id" class="form-control">
+              <option id="description_stetho_sound_none__opt"></option>
+              @foreach($stetho_sounds as $stetho_sound)
+                <option id="description_stetho_sound_{{$stetho_sound->id}}__opt" value="{{$stetho_sound->id}}"
+                  @if(old('description_stetho_sound_id') == $stetho_sound->id) selected @endif>
+                  {{$stetho_sound->title_en}}
+                </option>
+              @endforeach
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-5 col-sm-7">
+        <a class="btn btn-default" href="{{ route('admin.quizzes.index') }}">キャンセル</a>
+        <button class="btn btn-primary" type="submit">保存</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+
+
+@endsection

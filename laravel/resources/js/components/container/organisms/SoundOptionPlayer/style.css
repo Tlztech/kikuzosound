@@ -1,0 +1,72 @@
+.organism-soundOptionPlayer-wrapper {
+  padding: 12px;
+  background-color: #47b8e8;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+}
+
+.organism-soundOptionPlayer-wrapper .organism-soundOptionPlayer-container {
+  margin: 24px 0;
+  padding: 16px;
+  border-radius: 6px;
+  border: 2px solid #ffcc12;
+  position: relative;
+}
+
+.organism-soundOptionPlayer-wrapper .organism-quiz-question-text {
+  margin-right: 60px;
+}
+
+.organism-soundOptionPlayer-wrapper .organism-soundOptionPlayer-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 16px;
+  word-break: break-all;
+}
+
+.organism-soundOptionPlayer-wrapper .audio-label-molecules {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 4px;
+}
+
+.organism-soundOptionPlayer-wrapper .organism-sound-timer {
+  background-color: #ffcc12;
+  position: absolute;
+  border-radius: 50%;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  right: -18px;
+  top: -18px;
+  letter-spacing: 1.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.organism-soundOptionPlayer-wrapper .organism-timer-text {
+  font-size: 32px;
+  color: #ffffff;
+  margin: 0;
+  overflow: auto;
+}
+
+.organism-soundOptionPlayer-wrapper .organism-soundOption-wrapper {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 16px 24px;
+  height: 100%;
+}
+
+.organism-soundOptionPlayer-wrapper .organism-quizTitle {
+  color: #ffffff;
+}
+
+.organism-soundOptionPlayer-wrapper .organism-quizNumber {
+  font-size: 24px;
+  font-weight: bold;
+}

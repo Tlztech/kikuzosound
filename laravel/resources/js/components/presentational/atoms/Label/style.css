@@ -1,0 +1,41 @@
+.atoms-label {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+}
+
+/********** atoms-Label-form ***************/
+
+.atoms-Label-form {
+  color: #949090;
+  font-size: 18px;
+  margin-bottom: 0 !important;
+}
+
+/********** atoms-Label-error ***************/
+
+.atoms-Label-error {
+  color: red !important;
+  font-size: 12px;
+  margin-bottom: 0 !important;
+}
+
+/********** atoms-Label-success ***************/
+
+.atoms-Label-success {
+  color: #28a745 !important;
+  font-size: 12px;
+}
+
+
+/********** atoms-Label-validation ***************/
+.atoms-Label-validate-error {
+  color: rgb(194, 68, 68) !important;
+}
+
+.atoms-Label-textAlign-left{
+ text-align: left; 
+}
+
+.atoms-Label-textAlign-center{
+ text-align: center; 
+}

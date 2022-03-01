@@ -1,0 +1,11 @@
+.molecules-UserRankUni-wrapper .table > tbody > tr:nth-child(1){
+  height: 10vh;
+}
+
+.molecules-UserRankUni-wrapper .table > tbody > tr:nth-child(2){
+  height: 20vh;
+}
+
+.molecules-UserRankUni-wrapper .table td {
+  vertical-align: middle;
+}

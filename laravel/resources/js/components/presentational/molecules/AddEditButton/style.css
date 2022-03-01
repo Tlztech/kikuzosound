@@ -1,0 +1,7 @@
+.molecules-AddEditButton-wrapper{
+  min-height: 10px;
+  width: 80px; 
+  display: grid;
+  grid-template-rows: repeat(2,1fr);
+  grid-gap: 5px ;
+}

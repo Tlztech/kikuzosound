@@ -1,0 +1,41 @@
+.atoms-Div-grey {
+  background: #eeeeee;
+  padding: 20px 10px;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-left: 10px;
+}
+
+.down-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid grey;
+}
+
+.up-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 6px solid grey;
+}
+
+.up-arrow.active{
+  border-bottom: 8px solid black;
+}
+
+.down-arrow.active{
+  border-top: 8px solid black;
+}
+
+@media only screen and (max-width: 1280px) {
+  .arrows {
+    gap: 2px;
+  }
+}

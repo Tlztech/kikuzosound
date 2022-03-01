@@ -1,0 +1,205 @@
+button.button_head {
+	position: absolute;
+	width: 96px;
+	height: 28px;
+	top: 20px;
+	left: auto;
+	right: 0px;
+	margin: 16px 16px 0 0;
+	padding: 2px 4px !important;
+	font-size: 1.2em;
+	font-weight: bold;
+	background-color: #FFF;
+	color: #369;
+	border-style: solid, 1px, #369;
+	border:1px solid rgb(192, 192, 192);
+	
+	/* 角丸の指定 */
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	z-index: 100;
+}
+
+.lang_switcher {
+	position: absolute;
+	top: 0;
+	right: 20px;
+	font-size: 14px;
+	margin-top: 8px;
+	display: flex;
+}
+
+.lang_switcher select {
+	-webkit-appearance: button;
+	background-color: transparent;
+	color: #808080;
+}
+@-moz-document url-prefix() {
+	.lang_switcher select {
+		-webkit-appearance: none;
+	}
+}
+
+.lang_switcher img {
+	margin-right: 4px;
+}
+
+.lang_switcher .down_arrow_png{
+	padding-top:6px;
+}
+
+.lang_switcher select{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.msg_area {
+	position: relative;
+	margin: auto;
+	width: 50%;
+	text-align: center;
+}
+
+.msg {
+	font-size: 1.2em;
+	color: #000;
+}
+
+.msg_err , .byte_err  {
+	font-size: 1.0em;
+	color: #f00;
+	margin-left: 9px;
+}
+
+.pass_err {
+	font-size: 1.0em;
+	margin-left: 9px;
+}
+
+.digits_err{
+	font-size: 1.0em;
+	color: #f00;
+	margin-left: 9px;
+}
+
+.digits_err_jp{
+	font-size: 1.0em;
+	color: #f00;
+	margin-left: 9px;
+}
+
+.applitop {
+    position:absolute;
+    top:20px;
+    right:115px;
+    width:96px;
+    height:28px;
+    font-size:1.0em;
+    color:#ffffff;
+    line-height:28px;
+    text-align:center;
+    background-color:#e8383d;
+		border-radius:8px;
+		margin-top: 10px;
+}
+
+.estimate {
+    position:absolute;
+    top:20px;
+    right:214px;
+    width:68px;
+    height:28px;
+    font-size:1.0em;
+    color:#ffffff;
+    line-height:28px;
+    text-align:center;
+    background-color:#ffc712;
+		border-radius:8px;
+		margin-top: 10px;
+}
+
+/*--------------------------------------------------------
+解像度900px以下
+--------------------------------------------------------*/
+@media only screen and (max-width: 823px) {
+
+.applitop {
+	top: 16px;
+    right:122px;
+    width:76px;
+    font-size:8px;
+}
+
+.estimate {
+	top: 16px;
+    right:200px;
+    width:56px;
+    font-size:8px;
+}
+
+button.button_head {
+	top: 1px;
+	right: 40px;
+	width: 45px;
+	padding: 2px 0px !important;
+	margin-right: 0px;
+	font-size: 0.7em;
+	height: 24px !important;
+}
+
+button.button_head.btn_mypage {
+	right: 41px;
+}
+
+.logo {
+	height: 28px !important;
+    width: auto !important;
+	margin-right: 25px;
+	margin-top: 15px !important;
+}
+.lang_switcher{
+	left: 12px;
+	top: 2px;
+	width: max-content;
+}
+.globe {
+	height: 15px !important;
+}
+.lang_switcher select{
+	margin-top: 10px;
+	background-image:url("../../img/down_arrow.png");
+	background-size: 6px 6px;
+	background-repeat: no-repeat;
+	background-position: right center;
+	width:55px;
+}
+.lang_switcher img{
+	margin-right:0px;
+}
+.lang_switcher img.down_arrow_png{
+	display: none;
+}
+#header .headlogo {
+    margin-left: 4px;
+    text-align: center;
+}
+
+#header .headlogo img {
+  width: auto;
+  margin-top: 12px;
+}
+
+}
+/* iphone 5 */
+@media only screen and (max-width: 320px) {
+	button.button_head {
+		width: 35px;
+		font-size: 0.6em;
+	}
+	button.button_head.btn_mypage {
+		right: 48px;
+	}
+}

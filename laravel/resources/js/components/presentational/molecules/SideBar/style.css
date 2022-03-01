@@ -1,0 +1,212 @@
+.sidebar-show {
+  height: 100vh;
+  width: 14vw;
+  background-color: #525a65;
+  overflow-x: hidden;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.sidebar-hide {
+  height: 100vh;
+  width: 0;
+  background-color: #525a65;
+  overflow-x: hidden;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.molecules-sidebar .atoms-Div {
+  display: flex;
+}
+
+.molecules-sidebar .molecules-appname {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.molecules-sidebar .molecules-user {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.molecules-sidebar .molecules-sidebar-group {
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.molecules-sidebar .molecules-sidebar-user {
+  padding:  0px 0px 38px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 
+.brandlogo {
+  font-weight: 800;
+  justify-content: center;
+}
+
+.sidebar a {
+  display: flex;
+  color: #ffffff;
+  justify-content: flex-start;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px;
+}
+.sidebar a:hover{
+  color: #ffffff;
+  cursor: pointer;
+}
+.sidebar a.atoms-a {
+  padding: 10px;
+}
+
+.active {
+  background-color: #5c6879;  
+}
+.img {
+  padding-bottom: 5px;
+}
+
+.sidebar > div > a > span {
+  padding-left: 5px;
+}
+
+.sidebar > div > a > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
+
+/* 3sp univ admin text or logo*/
+/* .sidebar .siderbar-header {
+  cursor: default;
+  text-align: center;
+  padding: 30px 10px 30px 10px; 
+}
+
+.sidebar .siderbar-header span {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.sidebar > div > a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar .siderbar-header .atoms-span .default-img {
+  display: none;
+} */
+
+.molecules-sidebar .molecules-sidebar-header {
+  padding: 30px 10px 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.molecules-sidebar .atoms-span {
+  font-size: 0.9vw; 
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 0.36px;
+}
+
+.molecules-sidebar .molecules-dropdown-items .atoms-span {
+  font-weight: normal;
+}
+
+.molecules-sidebar .active {
+  background-color: #5c6879;
+}
+
+.molecules-sidebar a {
+  padding: 14px 20px;
+  width: 100%;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.molecules-sidebar .molecules-dropdown-wrapper {
+  color: #ffffff;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.molecules-sidebar .molecules-dropdown-items a {
+  padding: 8px 20px 8px 40px;
+  text-decoration: none;
+}
+
+/* 
+@media (max-width: 1280px) {
+  .sidebar span {
+    font-size: 14px;
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 740px) {
+  .sidebar span {
+    font-size: 12px;
+    color: #ffffff;
+  }
+  .sidebar div { 
+    padding: 5px 0px 0px 0px !important; 
+  }
+  .sidebar div a {
+    margin-left: 5%;
+  }
+  .sidebar a .atoms-span {
+    font-size: 12px;
+  }
+  .sidebar a .default-img {
+    height: 20px;
+    width: 20px;
+  }
+  .sidebar .siderbar-header .atoms-span .default-img {
+    display: block;
+    position: absolute;
+    margin-left: 60%;
+    margin-top: -65px;
+  }
+} */
+
+@media screen and (min-width: 1200px) {
+  .molecules-sidebar .atoms-span {
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .molecules-sidebar .atoms-span {
+    font-size: 0.8vw;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .molecules-sidebar .molecules-sidebar-beta {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 1290px) {
+  .molecules-sidebar .molecules-appname{
+    font-size:1rem;
+  }
+  .molecules-sidebar .molecules-sidebar-beta {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,23 @@
+.molecules-languageChangeButton-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.molecules-languageChangeButton-wrapper .japaneseText .atoms-Select {
+  max-width: 66px;
+  border: none;
+  padding-left: 3px;
+}
+
+.molecules-languageChangeButton-wrapper .englishText .atoms-Select {
+  max-width: 60px;
+  border: none;
+  padding-left: 14px;
+}
+
+@media (max-width: 1280px) {
+  .molecules-languageChangeButton-wrapper .japaneseText .atoms-Select {
+    padding-right: 2px;
+  }
+}

@@ -1,0 +1,366 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Input;
+//use DB;
+use Validator;
+use Closure;
+//use Cookie;
+use Config;
+use Session;
+use Log;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use App\Http\Requests\MemberLoginRequest;
+use App\Account;
+use App\Product;
+use App\AccountsProduct;
+use App\StethoSound;        //★home呼び出し用
+use App\Lib\Member;    /* telemedica 20170829 */
+
+//DS自動ログイン用の固定値（アカウント、製造番号など）
+//define('USER_DS_SP', 'test');     //自動ログイン用の第一三共特別アカウント★テスト
+//define('USER_DS_SP', 'USER_DS_SP');     //自動ログイン用の第一三共特別アカウント
+define('USER_DS_SP', 'daiichisankyo.co.jp-1001');     //自動ログイン用の第一三共特別アカウント
+define('PASSWORD_DS_SP', '141-1000-t8w0sj');     //自動ログイン用の第一三共特別アカウント
+define('PRODUCT_NO_DS_SP', '141');     //第一三共特別アカウントの製造番号
+//define('PRODUCT_NO_DS1', '21');     //★仮にtestアカウントの製造番号（21-23）の1つめ
+define('LOGIN_AUTO_RETURN_URL', env('TMN_URL') . '');     //自動ログイン後の戻り先＝テレメディカネット（.envに記述）
+
+class MemberController extends Controller {
+
+    function __construct() {
+        date_default_timezone_set('Asia/Tokyo');
+    }
+
+
+    /**
+     * ログイン認証
+     * @param $user		ユーザーアカウント
+     * @param $password	パスワード
+     * @param $product_no	製造番号
+     *
+     */
+    //    public function member_login_chk($request, $user, $password, $product_no) {
+    public function member_login_chk($user, $password, $product_no) {
+
+        // 現在日時
+        $dt_now = Carbon::now();
+        //$now = Carbon::now();
+		//$dt_now = new Carbon(Carbon::now());
+
+        $account_user = $user;    //通常は入力されたユーザー名でログイン
+
+        $msg = '';
+        $msg .= 'user=[' . $user . ']<br>';
+        $msg .= 'password=[' . $password . ']<br>';
+
+        $auth = 0;  // 0:NG 1:OK
+
+        $account = Account::where('user', $account_user)->where('deleted_at', NULL)->first();       //ユーザーアカウントでアカウントデータを取得
+        if ($account) {
+            //ユーザーアカウントOK
+            $account_id = $account->id;
+            $password_hash = $account->password;
+            $account_auth = $account->auth;        //重複の可否（0=非許可,1=許可）
+            $msg .= 'account_id=[' . $account_id . ']<br>';
+            $msg .= 'password_verify=[' . password_verify($password, $password_hash) . '], password_hash=[' . $password_hash . ']<br>';
+            $msg .= 'account_auth=[' . $account_auth . ']<br>';
+            if (password_verify($password, $password_hash)) {
+                //パスワードOK
+                //ユーザーアカウントとパスワードの認証はOK
+                $int_product_no = intval($product_no);      //シリアル番号
+                $product = Product::where('product_no', $product_no)->where('deleted_at', NULL)->first();
+                if ($product) {
+                	//シリアル番号OK
+                    $product_id = $product->id;      //製品ID
+                    $msg .= 'product_id=[' . $product_id . ']<br>';
+
+                    //AccountsProductsで、アカウントIDと製品IDが一致するデータを調べて
+                    $ap1 = \App\AccountsProduct::where('account_id', $account_id)->where('product_id', $product_id)->where('deleted_at', NULL)->first();
+//                    $ap1 = \App\AccountsProduct::where('account_id', $account_id)->where('product_id', $product_id)->first();
+                    if (!$ap1) {     //存在しなければNG
+                        $auth = 0;  // 0:NG 1:OK                            
+                        
+                    } else {
+						//存在すればOK
+
+						//$account_auth = 1;        //★テスト　重複の可否（0=非許可,1=許可）
+                        if ($account_auth === 1) {
+                            //重複許可なら
+                            //認証OK（重複チェックは行わない）
+                            $auth = 1;  // 0:NG 1:OK
+                        } else {
+/* 後勝ち確認 telemedica 20170829 */
+/*
+$login_id = $ap1->login_id;      //ログインID（UUID）
+$login_at = $ap1->login_at;      //最終ログイン日時
+// Session有効時間の設定と取得 20170829 telemedica
+$slt = Member::member_lifetime();
+// 有効期間確認 0:有効期間外 1:有効期間内 telemedica 20170829
+$duration = Member::member_check_time($login_at,$slt);
+
+// *** 引数に「ログインOK」があった場合、下記のifはせずに$auth=1とする処理 ***
+
+if($login_id != NULL && $duration == 1) { // ログイン中で有効期間内
+    $msg_err = 1;
+    return $msg_err;
+}
+*/
+/* 後勝ち確認 telemedica 20170829 */
+
+$auth = 1;  // 0:NG 1:OK
+/***
+ ★後勝ちにしたので、以下の判定は不要。
+                            //重複チェック
+                            //$valid_time = 12;   //有効時間（単位：時間）
+                            //$valid_time = 12;
+                            $valid_time = env('MEMBER_3SP_LOGIN_VALID_TIME');
+                            $session_lifetime = $valid_time * 60;       //時間を分に変換
+                            $login_id = $ap1->login_id;      //ログインID（UUID）
+                            $login_at = $ap1->login_at;      //最終ログイン日時
+                            $dt_login_at = Carbon::parse($login_at);
+                            $dt_valid = $dt_login_at->addMinute($session_lifetime);
+                            //$dt_valid = $dt_login_at->addHour($valid_time);
+
+                            $msg .= 'now=[' . $dt_now . ']<br>';
+                            $msg .= 'login_at=[' . $login_at . ']<br>';
+                            $msg .= 'valid=[' . $dt_valid . ']<br>';
+
+                            if ($login_at === null) {       //最終ログイン日時がNULL
+                                //認証OK
+                                $auth = 1;  // 0:NG 1:OK                            
+                            } elseif ($dt_now > $dt_valid) {      //最終ログイン日時から指定時間（12時間）以上経過していれば、
+                                //認証OK
+                                $auth = 1;  // 0:NG 1:OK
+                            } else {
+                                $auth = 0;  // 0:NG 1:OK                            
+                            }
+***/
+                        }
+                    }
+                }
+            }
+        }
+
+        $msg .= 'auth=[' . $auth . ']<br>';
+
+        if ($auth === 0) {
+            //NG
+            $msg_err = $msg;
+        } else {
+            $msg_err = '';
+            //ログイン成功
+            //sessionにUSERを保存して  20170829 telemedica
+            $session_lifetime = Member::member_lifetime();
+            
+            Session::forget('MEMBER_3SP_USER');
+            Session::forget('MEMBER_3SP_LOGIN_ID');
+            Session::forget('MEMBER_3SP_LOGIN_AT');
+            Session::forget('MEMBER_3SP_ACCOUNT_ID');
+            Session::forget('MEMBER_3SP_PRODUCT_ID');
+
+            //DB の login_id と login_at を更新
+
+            // SessionからUUIDを取得(Libへ統合) 20170829 telemedica
+            $uuid = Member::member_uuid();
+			//$uuid = $this->member_uuid();
+
+	        AccountsProduct::where('account_id', $account_id)->where('product_id', $product_id)->where('deleted_at', NULL)->update(['login_id' => $uuid, 'login_at' => $dt_now]);
+//            AccountsProduct::where('product_id', $product_id)->update(['login_id' => $uuid, 'login_at' => $dt_now]);
+//            AccountsProduct::where('product_id', $product_id)->update(['login_id' => $uuid],['login_at' => $dt_now]);
+
+            Session::put('MEMBER_3SP_USER', $user);
+            Session::put('MEMBER_3SP_LOGIN_ID', $uuid);
+            Session::put('MEMBER_3SP_LOGIN_AT', $dt_now);
+            Session::put('MEMBER_3SP_ACCOUNT_ID', $account_id);
+            Session::put('MEMBER_3SP_PRODUCT_ID', $product_id);
+        }
+
+        return $msg_err;
+//        return $auth;
+    }
+
+    /**
+     * ログインコードで認証する（ログイン画面を表示しない）
+     *
+     */
+    //public function getMemberLoginCode($hash) {
+    public function getMemberLoginCode($code) {
+
+        $msg_err = '';
+
+        //★ここでデコード処理
+        //$code = str_replace('/', '／', $hash);        //TMN側での処理
+        $hash = str_replace('／', '/', $code);      //元のhash値に戻す
+        $today = date("Ymd");
+        $text = 'USER_DS_SP,' . date("Ymd");        //認証文字列（同日は有効）
+        //$hash =  password_hash($code, PASSWORD_DEFAULT);
+        if (password_verify($text, $hash)) {
+            //if ($login_code === $code) {
+            $user = USER_DS_SP;
+            $password = PASSWORD_DS_SP;
+            $product_no = PRODUCT_NO_DS_SP;
+            //$product_no = 1;
+        } else {
+            $user = '';
+            $password = '';
+            $product_no = 0;
+        }
+
+        $msg_err = MemberController::member_login_chk($user, $password, $product_no);       //認証
+        // もし自動ログインで第一三共アカウントなら
+        if ($msg_err !== '') {        //認証NG 
+            $msg = '認証情報を入力してください。<br>';
+            //$msg .= 'login_code=' . $login_code . '<br>';
+            $msg_err .= 'code=' . $code . '<br>';
+            $msg_err .= 'hash=' . $hash . '<br>';
+            $view = 'member_login';    // NGならログイン画面へ
+            return view($view, compact('msg', 'msg_err'));
+        } else {
+            // 自動ログインOK
+            if ($user === USER_DS_SP) {     //第一三共なら
+                // ログイン画面を表示せずテレメディカネットにリダイレクト
+                //              header('Location: ' . LOGIN_AUTO_RETURN_URL);
+                //              exit;
+                $view = 'member_jump';    // ★jump画面へ
+                return view($view, compact('msg', 'msg_err'));
+            } else {
+                // telemedica 20170615
+                return redirect()->action('HomeController@index');
+
+                //3SPのホーム画面へ
+                // 新着の聴診音
+/*
+                $stetho_sounds = StethoSound::publicNewAll()->orderBy('created_at', 'desc')->get();
+                return view('home', compact('stetho_sounds'));
+*/
+            }
+        }
+        exit;
+    }
+
+    /**
+     * ログイン画面を表示する
+     *
+     */
+    public function getMemberLogin() {
+
+        $msg = '';
+        $msg_err = '';
+        $login_user = Session::get('MEMBER_3SP_USER');
+        if ($login_user == '') {
+            $msg = '';
+        } else {
+            $msg_err = '★' . $login_user . '★でログインしています';
+        }
+
+        $view = 'member_login';    // ログイン画面
+        return view($view, compact('msg', 'msg_err'));
+    }
+
+    //public function postMemberLogin(MemberLoginRequest $request, Closure $next) {
+    public function postMemberLogin(MemberLoginRequest $request) {
+
+        $msg_err = '';
+
+        //入力されたリクエスト値を取得
+        $user = $request->input('user');
+        $password = $request->input('password');
+        $product_no = $request->input('product_no');
+
+        // ★認証処理
+        $msg_err = MemberController::member_login_chk($user, $password, $product_no);
+//        $auth = MemberController::member_login_chk($user, $password, $product_no);
+
+        $login_user = $request->session()->get('MEMBER_3SP_USER');
+
+        if ($msg_err != '') {    // NGなら
+//        if ($auth === 0) {    // NGなら
+            /* 後勝ち確認 telemedica 20170829 */
+/*
+            if($msg_err == 1) {
+// *** 「ログインOK」を渡す処理 $msg_err==1以外の場合も必要? 他のcall箇所は? ***
+                $msg = '他で使用していますが、OKならログインして下さい。';
+                $msg_err = '';
+                $view = 'member_login';    // NGならログイン画面へ
+                $request->flash();
+                return view($view, compact('msg', 'msg_err'));
+            }
+*/
+            /* 後勝ち確認 telemedica 20170829 */
+            $msg = 'ログインに失敗しました。';
+            $view = 'member_login';    // NGならログイン画面へ
+            return view($view, compact('msg', 'msg_err'));
+//            return view($view, compact('user', 'password', 'product_no', 'msg'));
+        } else {
+            // telemedica 20170615
+            return redirect()->action('HomeController@index');
+
+            //3SPのホーム画面へ
+            // 新着の聴診音
+/*
+            $stetho_sounds = StethoSound::publicNewAll()->orderBy('created_at', 'desc')->get();
+            return view('home', compact('stetho_sounds'));
+*/
+//            return $next($request);   //★ページ遷移を継承　エラーになるため調査中★
+//            ★リダイレクトだとSessionが保存されない？
+//            $url = route('home');
+//            header('Location: '.$url);
+//            exit;
+        }
+//        return view($view, compact('msg',, 'msg_err'));
+    }
+
+    /**
+     * ログアウト
+     *
+     */
+    //    public function getLogout(Request $request) {
+    public function getMemberLogout() {
+
+        $msg = '';
+        $msg_err = '';
+
+        //認証関連のsessionを取得
+        $login_user = Session::get('MEMBER_3SP_USER');
+        $account_id = Session::get('MEMBER_3SP_ACCOUNT_ID');
+        $product_id = Session::get('MEMBER_3SP_PRODUCT_ID');
+
+        // 認証確認 20170829 telemedica
+/*
+ログインしている「正規ユーザ」の場合はlogin_idをNULLにupdateし、ログインしていない「元・ログインユーザ」の場合はupdateを行わない。また、ログインしてもしていなくてもセッション関連はクリアする。
+
+要は「ログインしている場合は正規ユーザとしてDBの処理をし、ログインに関係なく、ログアウトに来た場合はセッションはブラウザ毎なのでクリアする」という仕様。
+*/
+        $auth = Member::member_auth();
+
+        //login_userが空でも以下のクリア処理は実行する
+        //対象product_idのUUIDとログイン日時をクリア
+        if($auth == 1) {    //認証OK(ログインしている正規ユーザ)の場合 20170829 telemedica
+            AccountsProduct::where('account_id', $account_id)->where('product_id', $product_id)->where('deleted_at', NULL)->update(['login_id'=>NULL]);
+//        AccountsProduct::where('account_id', $account_id)->where('product_id', $product_id)->where('deleted_at', NULL)->update(['login_id'=>NULL, 'login_at'=>NULL]);
+
+//        AccountsProduct::where('product_id', $product_id)->update(['login_id' => NULL, 'login_at' => NULL]);
+//        //対象product_idのログイン日時をクリア
+//        AccountsProduct::where('product_id', $product_id)->update(['login_at' => NULL]);
+        }
+
+        //認証関連のsessionをクリア
+        Session::forget('MEMBER_3SP_USER');
+        Session::forget('MEMBER_3SP_LOGIN_ID');
+        Session::forget('MEMBER_3SP_LOGIN_AT');
+        Session::forget('MEMBER_3SP_ACCOUNT_ID');
+        Session::forget('MEMBER_3SP_PRODUCT_ID');
+
+        if ($login_user == '') {
+            $msg = 'ログインしていません。';
+        } else {
+            $msg_err = $login_user . 'をログアウトしました。';
+        }
+        $view = 'member_login';    // ログイン画面を表示
+        return view($view, compact('msg', 'msg_err'));
+    }
+
+}

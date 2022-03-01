@@ -1,0 +1,86 @@
+.template-XrayLibrary-wrapper {
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  display: grid;
+}
+
+.template-XrayLibrary-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.template-XrayLibrary-wrapper tbody {
+  display: block;
+  overflow-x: auto;
+  overflow-y: overlay;
+  padding-right: 5px;
+}
+
+.template-XrayLibrary-wrapper td,
+.template-XrayLibrary-wrapper th {
+  text-align: center;
+  word-wrap: break-word;
+  width: auto;
+}
+
+.template-XrayLibrary-wrapper .table {
+  min-width: 800px;
+}
+
+
+.template-XrayLibrary-wrapper thead,
+.template-XrayLibrary-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.template-XrayLibrary-wrapper tbody tr {
+  margin-bottom: 10px;
+}
+
+.template-XrayLibrary-wrapper table td {
+  overflow-wrap: break-word;
+}
+
+.template-XrayLibrary-wrapper td,
+.template-XrayLibrary-wrapper th {
+  padding: 10px;
+  text-align: left;
+}
+
+.template-XrayLibrary-wrapper .no-data {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.template-XrayLibrary-wrapper .no-data td {
+  font-size: medium;
+  border-top: none;
+}
+
+@media (max-width: 1280px) {
+  .template-XrayLibrary-wrapper tbody {
+    /* padding-right: 15px; */
+  }
+}
+
+@media (max-width: 876px) {
+  .template-XrayLibrary-wrapper tbody {
+    padding: auto 0px;
+    text-align: center;
+  }
+  .template-XrayLibrary-wrapper td,
+  .template-XrayLibrary-wrapper th {
+    font-size: 0.7rem;
+  }
+  .template-XrayLibrary-wrapper table td {
+    font-size: 0.7rem;
+  }
+}

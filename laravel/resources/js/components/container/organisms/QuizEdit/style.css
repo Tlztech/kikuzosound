@@ -1,0 +1,104 @@
+.quiz-edit-organism-modal-body img {
+  height: 220px;
+  width: 400px;
+  object-fit: scale-down;
+}
+.select-item {
+  margin-left: 5px !important;
+  width: 120px !important;
+  height: 38px;
+  border-radius: 0.25rem !important;
+}
+
+.quiz-edit-organism-modal-body .molecules-inputwithlabel-wrapper .atoms-input {
+  width: 68%;
+}
+
+.quiz-edit-organism-modal-body .molecules-inputwithlabel-wrapper.desc-field {
+  display: flex;
+}
+
+.quiz-edit-organism-modal-body .MuiDropzoneArea-root {
+  max-width: 522px;
+  margin-left: 8px;
+  width: 100%;
+}
+
+.quiz-edit-organism-modal-body .MuiDropzonePreviewList-image {
+  max-width: none;
+}
+
+.quiz-edit-organism-modal-body .case-gender .molecules-inputwithlabel-wrapper,
+.quiz-edit-organism-modal-body .case-gender select {
+  display: inline;
+}
+
+.quiz-edit-organism-modal-body .case-gender .atoms-input {
+  width: 50%;
+  margin-right: 14px;
+}
+
+.organism-add-quiz-add-container .preview-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.organism-add-quiz-add-container .remove-preview-image {
+  display: none;
+  position: absolute;
+}
+
+.organism-add-quiz-add-container .preview-image:hover .remove-preview-image {
+  display: block;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+}
+
+.table-added-library img.atoms-Image,
+.library-items img.atoms-Image {
+  width: 25px;
+  height: auto;
+}
+
+.quiz-edit-organism-modal-body .atoms-Button-danger {
+  width: max-content;
+  margin: 0px 20px;
+}
+
+.quiz-edit-organism-modal-body .table-added-library input {
+  width: 150px;
+}
+
+.quiz-edit-organism-modal-body .fill-in-box input {
+  width: 100%;
+}
+
+.quiz-edit-organism-modal-body .table-added-library td {
+  position: relative;
+}
+
+.quiz-edit-organism-modal-body .table-added-library tr {
+  height: 150px;
+}
+
+.quiz-edit-organism-modal-body .table-added-library .buttons {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  border-top: none;
+}
+
+.organism-add-quiz-add-container .choice-correct-answer {
+  width: 125px;
+}
+
+.organism-add-quiz-add-container .list-center td {
+  vertical-align: middle;
+}
+
+.quiz-edit-organism-modal-body .MuiTypography-h5 {
+  font-size: 14px;
+}

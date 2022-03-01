@@ -1,0 +1,64 @@
+@extends('layouts.app')
+
+@section('title', 'クイズパック')
+
+@section('breadcrumb')
+{!! Breadcrumbs::render('quizpacks') !!}
+@endsection
+
+@section('content')
+
+<div id="container" class="container-quizpack">
+  <div class="container_inner clearfix">
+    <!----------------------------------- .contents ----------------------------------->
+    <!-- クイズパック一覧 -->
+    <ul class="quiz_select clearfix">
+      @foreach($quiz_packs as $quiz_pack)
+      <li class="quiz_selectbox" data-quiz-pack-url="{{ route('quiz_start',$quiz_pack->id) }}" style="cursor: pointer;">
+        <a class="quiz_modal">
+        <p class="quiz_title" style="color:{{$quiz_pack->title_color}} !important">{{$quiz_pack->title}}</p>
+        <div class="quiz_pack_icon_image">
+          @if(!empty($quiz_pack->icon_path))
+          <img src="{{ asset($quiz_pack->icon_path).'?_='.date('YmdHis', strtotime($quiz_pack->updated_at)) }}" alt="クイズパック">
+          @endif
+        </div>
+          <div class="textbox">
+            <p class="title">{{$quiz_pack->description}}</p>
+            <p class="date" style="display:none;">{{ date('Y/n/j h:m', strtotime($quiz_pack->created_at))}}</p>
+          </div>
+        </a>
+      </li>
+      @endforeach
+    </ul>
+    <!-- /#container -->
+
+  </div>
+
+</div>
+<!-- /#container_inner -->
+<!-- <script src="js/quiz.js?v=1.1.2"></script> -->
+<script type="text/javascript" src="js/jquery.sss_portal.quiz.js?v=1.2.3.20170731"></script>
+<script type="text/javascript" src="js/jquery.valign.js?v=1.1.6.20170322"></script>
+<script type="text/javascript">
+
+(function($){
+  $(window).load(function(){
+    // クイズパックの表示位置変更
+    $('.quiz_selectbox').valign({
+      targetClasses: [             // 項目内でY軸を揃えたいセレクタ
+        '.quiz_title',
+        '.textbox .title'
+      ],
+      middleAlignmentClasses: [
+        '.quiz_title'              // 項目内で縦中央に揃えたいセレクタ
+      ],
+      deviceWidth: 600,
+      minCols: 2,
+      maxCols: 3
+    });
+    // クイズ機能への遷移
+    $('.container').sss_portal.quiz();
+  });
+})(jQuery);
+</script>
+@endsection

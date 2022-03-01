@@ -1,0 +1,626 @@
+
+/* ベンダープレフィックス付きで */
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h1 {
+    width:auto;
+    padding:6px 8px 6px 8px;
+    margin: 0px 0px 0px 0px;
+    background-color:#f9f8ef;
+    color: #FEBD69;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* フォーム */
+.contact_form {
+  width: 90%;
+  margin: 0px auto 20px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+.contact_form li {
+  border-bottom: 1px dotted #ccc;
+}
+.contact_form label {
+  width: 100%;
+  display: table;
+  margin: auto;
+}
+.contact_form .input_name {
+  font-size: 16px;
+  width: 30%;
+  display: table-cell;
+  background: #edfaff;
+  padding: 20px;
+  text-align: left;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.contact_form input {
+  font-size: 14px;
+  width: 350px;
+  padding: 6px 10px;
+  display: table-cell;
+  margin: 14px 0 10px 10px;
+  border: 1px solid #ccc;
+}
+.contact_form textarea {
+  width: 350px;
+  padding: 6px 10px;
+  margin: 14px 0 10px 10px;
+  height: 100px;
+  border: 1px solid #ccc;
+}
+.contact_form select {
+  font-size: 14px;
+  width: 350px;
+  padding: 6px 10px;
+  display: table-cell;
+  margin: 14px 0 10px 10px;
+  border: 1px solid #ccc;
+}
+.contact_form select#university_id {
+  background-color: transparent;
+}
+.contact_submit {
+  margin-top:0px;
+  text-align: center;
+}
+
+/* DLボタン */
+.dl_button {
+  display: inline-block;
+  width: 200px;
+  background: #47B8E8;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 14px 0;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 16px;
+  cursor:pointer;
+  outline:none;
+}
+
+/* コミットボタン */
+.submit_btn, .link_btn, .non_link_btn {
+  display: inline-block;
+  width: 30%;
+  max-width: 240px;
+  background: #47B8E8;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 14px 0;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 16px;
+  cursor:pointer;
+  outline:none;
+}
+
+/* リンク用ボタン */
+.link_btn ,.non_link_btn {
+  position:relative;
+  width:300px;
+  max-width: 300px;
+  margin-bottom:10px;
+  background:#47B8E8;
+  padding: 8px;
+  text-align: left;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+/* リンクしないボタン */
+.non_link_btn {
+    cursor:default;
+    color: #000000;
+    background:#ffffff;
+    border: 1px solid #cccccc;
+}
+
+/* 検索用ボタン */
+.search_btn {
+    width: 34px;
+    height: 34px;
+    margin:0px;
+    padding:0px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #f9f8ef;
+    outline:none;
+    border: 1px solid #846A29;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+/* 状態表示 */
+.ultable {
+    display:table;
+    table-layout:fixed;
+    width:90%;
+    margin:0px auto;
+}
+
+.ultable li {
+    display:table-cell;
+    padding:2px 0px 2px 2px;
+    vertical-align:middle;
+    word-break: break-all;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.ultable li:first-child {
+    border-left: 1px solid #000;
+}
+
+.ultable li.first {
+    font-weight:bold;
+    text-align: center;
+    border-top:1px solid #000;
+}
+
+.column_gender {
+    width:32px;
+    text-align: center;
+}
+
+.column_tno {
+    width:50px;
+}
+
+.column_no {
+    width:70px;
+}
+
+.column_name {
+    width:100px;
+}
+
+/* 1つの単位 */
+.mat {
+  width: 100%;
+  min-width:316px;
+  margin: 20px auto;
+  padding:20px 0px;
+  border: 1px solid #ccc;
+}
+
+/* 中タイトル */
+.title_m {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom:10px;
+}
+
+/* 小タイトル */
+.title_step {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  margin-bottom:10px;
+}
+
+/* ステップ */
+.step {
+  display: block;
+  max-width:380px;
+  min-width:310px;
+  width: 40%;
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  margin: 10px auto;
+  padding: 10px 0px 0px 0px;
+  box-sizing: border-box;
+  border: 1px solid #846A29;
+}
+
+/* 説明 */
+.explain {
+  display: block;
+  position:relative;
+  text-align: left;
+}
+
+/* リンク用 */
+.link-ul {
+    margin:0px auto;
+    padding:5px 0px;
+    max-width:800px;
+    min-width:300px;
+    width: 60%;
+}
+
+.link-ul li {
+    margin:0px;
+    padding:0px 0px 4px 4px;
+    text-align: left;
+}
+
+/* タイトルと削除リンク */
+.info {
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    margin-bottom:10px;
+    padding:0px;
+    width: 100%;
+}
+
+.info li {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* トピックス */
+.topic {
+    width:auto;
+    color:#000000;
+    list-style-type:none;
+    margin: 0em;
+    padding: 0em 0.5em;
+}
+
+.topic li {
+    padding: 2px 0px 2px 0px;
+    text-align: right;
+    display: block;
+}
+
+/* グローバルメニュー */
+.table-ul {
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    margin:0;
+    padding:0;
+    width: 100%;
+}
+
+.table-ul li {
+    background-color:#FEBD69;
+    border-right: 1px solid #846A29;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.table-ul li:last-child {
+    border-right: 0;
+}
+
+.table-ul li a {
+    color: #f9f8ef;
+    font-weight:bold;
+    display: block;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 6px 0px 6px 0px;
+}
+
+.table-ul li a:hover {
+    color: #ffffff;
+    font-weight:bold;
+}
+
+/* ヘッダー */
+.header {
+    background-color:#f9f8ef;
+    margin:auto;
+}
+
+/* フッター */
+.footer {
+    width: 100%;
+    background-color: #f9f8ef;
+    text-align:center;
+    margin: 0px auto;
+    position: relative;
+    bottom: 0;
+    height: 2.5rem; 
+    margin-top: 38px;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+/* パンくずリスト */
+#breadcrumb {
+    width:auto;
+    display: table;
+    padding:0px 0px 4px 0px;
+    margin-left:4px;
+}
+
+#breadcrumb li {
+    display: table-cell;
+    font-size:1em;
+}
+
+/* 下矢印 */
+.down_arrow {
+    position:relative;
+    margin:0px auto;
+    width:100px;
+    height:25px;
+    background-color:#ffffff;
+    text-align:center;
+}
+
+.down_arrow:before {
+    content:"";
+    position:absolute;
+    top:0px;
+    left:0px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 25px 50px 0px 50px;
+    border-color: #FEBD69 transparent transparent transparent;
+}
+
+/* 検索窓 */
+#search1,#search2,#search3,#search4,#search5,#search_in {
+    box-sizing: border-box;
+    width: 262px;
+    font-size: 14px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* 簡易日時設定 */
+.easyButton {
+    font-size:14px;
+    margin:5px;
+    padding: 6px 10px;
+    background-color:#eee;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+}
+
+/* 削除 */
+.c_delete {
+  background: #ffffff;
+  cursor:pointer;
+}
+.c_delete:hover {
+  color:#ffffff;
+  background-color: #ff0000;
+}
+
+/* 聴診音入力補助 */
+.linkbutton {
+  font-size: 10px;
+  cursor: pointer;
+  color: #ff552e;
+}
+.linkbutton:hover {
+  color: #47b8e8;
+}
+
+/* おまけ　アバターがニュースを提供 */
+.hito {
+    display: block;
+    margin: 8px auto 0px;
+}
+
+.words1 {
+    position:relative;
+    width:300px;
+    color: #000000;
+    background: #ffffff;
+    margin:20px auto 0px;
+    padding: 10px;
+    border-radius:20px;
+    box-shadow: 8px 8px 8px rgba(0,0,0,0.4);
+    border: 1px solid #ccc;
+}
+.words1:after {
+    content:"";
+    position:absolute;
+    bottom:-11px;
+    left:40%;
+    height:0;
+    width:0;
+    border-top: 12px solid #ffffff;
+    border-right: 0px solid transparent;
+    border-left: 14px solid transparent;
+}
+.customer-admin-tophead h1{
+  font-size: 2.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  color:#FEBD69;
+  text-decoration: none;
+}
+.customer-admin-tophead:hover{
+  text-decoration: none;
+}
+.customer-admin{
+  width:150px;
+  border-radius:8px;
+  height:40px;
+  background-color:#16B6EA;
+  color:white;
+  margin-right:10px;
+  font-weight: 600;
+}
+.customer-admin-tophead .button_head {
+  position: absolute;
+  width: 96px;
+  height: 28px;
+  top: 20px;
+  left: auto;
+  right: 85px;
+  margin-right: 16px;
+  padding: 2px 4px !important;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #FFF;
+  color: #369;
+  margin-top: 10px;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 8px;
+}
+.customer-circle{
+  width:50px;
+  height: 50px;
+  border-radius: 50%;
+  border:1px solid black;
+  text-align: center;
+  vertical-align: middle;
+}
+.customer-top{
+  width:max-content;
+  margin:auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top:40px;
+}
+.customer-top .search-input{
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 50%;
+  vertical-align: middle;
+  font-size: 14px;
+}
+.customer-top input{
+  height: 40px;
+  border-radius: 8px;
+  border:1px solid black;
+  outline:none !important;
+  width:230px;
+  padding-left:5px;
+  margin-right:10px;
+}
+
+.customer-top input.submit-btn{
+  padding-left:0;
+  background: #fff;
+}
+
+.customer-top input::placeholder{
+  opacity: 0.5;
+}
+.customer-bottom{
+  margin-top:35px !important;
+  width: 85%;
+  margin:auto;
+  outline:1px solid darkgrey;
+  padding-bottom: 75px;
+}
+.customer-bottom h2{
+  font-size:30px;
+  font-weight: 600;
+  text-align: center;
+  padding:25px;
+}
+
+.customer-bottom table{
+  border: 2px solid gray;
+    width: 95% !important;
+    margin: auto;
+}
+
+.customer-bottom table th,
+.customer-bottom table td{
+  text-align: center;
+  border: 2px solid gray;
+  padding: 5px;
+}
+
+.customer-updown{
+  width:12px;
+  height: auto;
+  /* float: right;
+  margin-right: 5px; */
+}
+
+.customer-bottom input{
+  vertical-align: middle;
+}
+
+.for-pagination {
+  text-align: center;
+}
+
+.contact_form input[type="checkmark"] {
+  margin-left:15px;
+}
+/* custom made radio - new_onetime_issue */
+.management-create{
+  display: inline !important;
+  margin-left: 35px !important;
+}
+.management-create input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  width:auto;
+}
+
+.checkmark {
+  position: absolute;
+  margin-top: 20px;
+  /* left: 0; */
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border:1px solid #000;
+  border-radius: 50%;
+  margin-left:-50px;
+  /* z-index: -1; */
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.management-create input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.management-create input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.management-create .checkmark:after {
+  top: 4px;
+  left: 4px;
+  /* margin:auto; */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #000;
+}
+.update_note {
+  width: 85%;
+  margin: 24px auto;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{ 
+  .management-create select{
+    display: inline;
+  }
+}
+/* end of custom made radio */

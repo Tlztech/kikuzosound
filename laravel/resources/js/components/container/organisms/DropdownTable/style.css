@@ -1,0 +1,133 @@
+.organisms-DropdownTable-wrapper .atoms-label {
+  padding: 10px 10px 0px 0px;
+  font-size: small;
+}
+
+.organisms-DropdownTable-wrapper .atoms-Select {
+  width: 175px !important;
+  padding-right: 30px;
+}
+
+.organisms-DropdownTable-wrapper .col {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.organisms-DropdownTable-wrapper label {
+  text-align: center;
+  width: max-content;
+}
+
+.dropdown-box {
+  height: 40px;
+  flex: 1;
+}
+
+.organisms-DropdownTable-wrapper .molecules-SearchInput-wrapper {
+  position: relative;
+}
+
+.organisms-DropdownTable-wrapper table {
+  min-width: 800px;
+}
+
+.organisms-DropdownTable-wrapper tbody {
+  display: block;
+  height: 400px;
+  overflow: overlay;
+}
+
+.organisms-DropdownTable-wrapper thead,
+.organisms-DropdownTable-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.organisms-DropdownTable-wrapper tbody tr {
+  margin-bottom: 20px;
+}
+
+.organisms-DropdownTable-wrapper table td {
+  overflow-wrap: break-word;
+}
+
+.organisms-DropdownTable-wrapper td,
+.organisms-DropdownTable-wrapper th {
+  padding: 10px;
+  text-align: left;
+}
+
+.organisms-DropdownTable-wrapper .empty-result {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+}
+
+@media (max-width: 876px) {
+  .organisms-DropdownTable-wrapper tbody {
+    padding: auto 0px;
+    text-align: center;
+  }
+  .organisms-DropdownTable-wrapper td,
+  .organisms-DropdownTable-wrapper th {
+    font-size: 0.7rem;
+  }
+  .organisms-DropdownTable-wrapper table td {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 740px) {
+  .organisms-DropdownTable-wrapper {
+    overflow-x: scroll;
+  }
+  .organisms-DropdownTable-wrapper .atoms-label {
+    font-size: 12px;
+    padding: 10px 0px 0px 0px;
+  }
+  .organisms-DropdownTable-wrapper .atoms-Select {
+    width: 80px;
+  }
+  .organisms-DropdownTable-wrapper label {
+    width: auto;
+    max-width: 65px;
+  }
+  .dropdown-box {
+    flex: 1;
+    flex-direction: space-between;
+  }
+}
+
+@media (max-width: 596px) {
+  .organisms-DropdownTable-wrapper .atoms-Select {
+    width: 80px;
+  }
+}
+
+@media (max-width: 375px) {
+  .organisms-DropdownTable-wrapper .atoms-Select {
+    width: 65px;
+  }
+}
+
+@media (max-width: 868px) {
+  .organisms-DropdownTable-wrapper .row {
+    flex-direction: column;
+  }
+  .organisms-DropdownTable-wrapper .col {
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+  .organisms-DropdownTable-wrapper label {
+    text-align: center;
+    min-width: 80px;
+    font-size: small;
+  }
+  .organisms-DropdownTable-wrapper .atoms-Select {
+    width: 175px;
+  }
+}

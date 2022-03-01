@@ -1,0 +1,200 @@
+<!----------------------クイズ回答選択---------------------->
+<!-- .quiz_cont_inner -->
+<div class="quiz_cont_inner">
+  <p class="quiz_number"><span>{{count($old_choices)+1}}/{{$quiz_pack->max_quiz_count}}</span>問</p>
+  <input type="hidden" id="is_correct_number" value="{{count($old_choices)+1}}/{{$quiz_pack->max_quiz_count}}"/>
+    @if( !empty($quiz->image_path) )
+    <div class="quiz_question_img">
+      <img src="{{ asset($quiz->image_path).'?_='.date('YmdHis', strtotime($quiz->updated_at)) }}" alt="問題" style="cursor: pointer;">
+    </div>
+    @else
+      <div style="height: 16px;">&nbsp;</div>
+    @endif
+
+  <!-- .question_box -->
+  <div class="question_box" data-quiz-id="{{ $quiz->id }}" data-quiz-title="{{ $quiz->title }}" data-quiz-question="{{ $quiz->question }}">
+
+    @if($quiz->limit_seconds != 0)
+      <p class="question_number" data-seconds="{{$quiz->limit_seconds}}"><span>{{$quiz->limit_seconds}}</span></p>
+    @endif
+
+    <!-- .question_text -->
+    <p class="question_text sp_none" @if($quiz->limit_seconds != 0)style="width:calc(100% - 90px);"@endif >{{$quiz->question}}</p>
+    <p class="question_text pc_none" @if($quiz->limit_seconds != 0)style="width:calc(100% - 40px);"@endif >{{$quiz->question}}</p>
+    <!-- /.question_text -->
+    <!-- .question_sound only one-->
+    @if($quiz->stetho_sounds->count() == 1)
+    <?php $s = $quiz->stetho_sounds()->get()[0]; ?>
+      <div class="question_sound_list_only_one" data-stetho-sound-id="{{ $s->id }}" data-data-stetho-sound-title="{{ $s->title }}">
+        <div class="audio">
+          <div class="audiojsZ">
+            <audio src="{{ asset($s->sound_path).'?_='.date('YmdHis', strtotime($s->updated_at)) }}" preload="auto"></audio>
+            <div class="play-pauseZ">
+              <span class="line"></span>
+              <p class="playZ"></p>
+              <p class="pauseZ"></p>
+              <p class="loadingZ"></p>
+              <p class="errorZ"></p>
+            </div>
+            <div class="scrubberZ">
+              <div class="progressZ"></div>
+              <div class="loadedZ"></div>
+            </div>
+            <div class="timeZ">
+              <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+            </div>
+            <div class="error-messageZ"></div>
+          </div>
+         <?php $quiz_stetho_description = $quiz->quiz_stetho_description()->where('stetho_sound_id',$s->id)->first(); ?>
+          @if(!empty($quiz_stetho_description->description))
+          <p class="fukidashi">{{$quiz_stetho_description->description}}</p>
+          @endif
+        </div>
+      </div>
+    @else
+      <!-- .question_sound -->
+      <ul class="question_sound_box">
+      @foreach($quiz->stetho_sounds()->get() as $s)
+        <!-- .question_sound_list -->
+        <li class="question_sound_list" data-stetho-sound-id="{{ $s->id }}" data-stetho-sound-title="{{ $s->title }}">
+          <!-- .audio -->
+          <div class="audio">
+            <div class="audiojsZ">
+              <audio src="{{ asset($s->sound_path).'?_='.date('YmdHis', strtotime($s->updated_at)) }}" preload="auto"></audio>
+              <div class="play-pauseZ">
+                <span class="line"></span>
+                <p class="playZ"></p>
+                <p class="pauseZ"></p>
+                <p class="loadingZ"></p>
+                <p class="errorZ"></p>
+              </div>
+              <div class="scrubberZ">
+                <div class="progressZ"></div>
+                <div class="loadedZ"></div>
+              </div>
+              <div class="timeZ">
+                <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+              </div>
+              <div class="error-messageZ"></div>
+            </div>
+           <?php $quiz_stetho_description = $quiz->quiz_stetho_description()->where('stetho_sound_id',$s->id)->first();
+          ?>
+            @if(!empty($quiz_stetho_description->description))
+            <p class="fukidashi">{{$quiz_stetho_description->description}}</p>
+            @endif
+          </div>
+          <!-- /.audio -->
+        </li>
+        <!-- /.question_sound_list -->
+      @endforeach
+      </ul>
+      <!-- /.question_sound -->
+    @endif
+  </div>
+  <!-- /.question_box -->
+
+  <!-- .quiz_answer_box -->
+  <div class="quiz_answer_box">
+    <!-- .answer_select -->
+    <ul class="answer_select">
+      @foreach($quiz->quiz_choices()->get() as $c)
+        <li>
+          <a class="quiz_choice_btn" data-url="{{ route('quiz_answer_choice',[$quiz_pack->id, $quiz->id]) }}" data-data="{{json_encode($old_choices)}}" data-choice_id="{{$c->id}}" data-is_correct="{{$c->is_correct}}" style="cursor: pointer;">{{$c->title}}</a>
+        </li>
+      @endforeach
+    </ul>
+    <!-- /.answer_select -->
+  </div>
+  <!-- /.quiz_answer_box -->
+</div>
+<!-- .quiz_cont_inner -->
+<script type="text/javascript" src="/js/jquery.sss_portal.audio.js?v=1.1.6.20170323"></script>
+<script type="text/javascript">
+audiojs.events.ready(function() {
+  var audios = document.getElementsByTagName('audio');
+  if (audios.length > 0) {
+    var a1 = audiojs.create(audios, {
+      css: false,
+      createPlayer: {
+        markup: false,
+        playPauseClass: 'play-pauseZ',
+        scrubberClass: 'scrubberZ',
+        progressClass: 'progressZ',
+        loaderClass: 'loadedZ',
+        timeClass: 'timeZ',
+        durationClass: 'durationZ',
+        playedClass: 'playedZ',
+        errorMessageClass: 'error-messageZ',
+        playingClass: 'playingZ',
+        loadingClass: 'loadingZ',
+        errorClass: 'errorZ'
+      }
+    });
+  }
+  $({}).sss_portal.audio({
+    audioJsObj: a1
+  });
+});
+</script>
+<script type="text/javascript" src="/js/jquery.imagebox.js?v=1.1.6.20170323"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.quiz_box img').imagebox();
+});
+</script>
+<script type="text/javascript">
+(function($){
+  $('.question_sound_list .playZ').logger({
+    url: '/log',
+    data: function(elm) {
+      var $quizpack_box = $(elm).find('.quiz_box');
+      var $question_box = $(elm).closest('.question_box');
+      var $question_sound = $(elm).closest('.question_sound_list');
+      var data = {
+        screen_code: 'QUIZ',
+        event_code: 'PLAY',
+        body: {
+          quiz_pack: {
+            id: $quizpack_box.data('quiz-pack-id'),
+            title: $quizpack_box.data('quiz-pack-title')
+          },
+          quiz: {
+            id: $question_box.data('quiz-id'),
+            title: $question_box.data('quiz-title'),
+            question: $question_box.data('quiz-question')
+          },
+          stetho_sound: {
+            id: $question_sound.data('stetho-sound-id'),
+            title: $question_sound.data('stetho-sound-title')
+          }
+        }
+      };
+      return data;
+    }
+  });
+  $('.mfp-close.close_btn').off('click');
+  $('.mfp-close.close_btn').logger({
+    url: '/log',
+    data: function(elm) {
+      var $quizpack_box = $('body').find('.quiz_box');
+      var $question_box = $('body').find('.question_box');
+      var data = {
+        screen_code: 'QUIZ',
+        event_code: 'CLOSE',
+        body: {
+          quiz_pack: {
+            id: $quizpack_box.data('quiz-pack-id'),
+            title: $quizpack_box.data('quiz-pack-title')
+          },
+          quiz: {
+            id: $question_box.data('quiz-id'),
+            title: $question_box.data('quiz-title'),
+            question: $question_box.data('quiz-question')
+          }
+        }
+      };
+      return data;
+    }
+  });
+})(jQuery);
+</script>

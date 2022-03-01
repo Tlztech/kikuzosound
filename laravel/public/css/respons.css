@@ -1,0 +1,1763 @@
+@charset "UTF-8";
+/*--------------------------------------------------------
+解像度1024px以下
+--------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  /* telemedica 20180306 */
+  /* ニュースレター */
+  .nl {
+    background: #fff;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    max-width: 1024px;
+    min-width: 300px;
+    margin: 20px auto;
+  }
+
+  /* 横並び */
+  .c_container {
+    width:720px;
+    margin: 0 auto;
+    padding: 0;
+    overflow:hidden;
+    position:relative;
+  }
+
+}
+
+/*--------------------------------------------------------
+解像度900px以下
+--------------------------------------------------------*/
+@media only screen and (max-width: 900px) {
+/* telemedica 20180314 */
+/* 音源提供者情報 */
+  .sound_list .sub_description {
+    position: absolute;
+    font-size:12px;
+    top:30px;
+    left:60px;
+    color:#000;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    width: calc(100% - 150px);
+  }
+  .sound_list .audio {
+    width: 100%;
+    display: block;
+    padding-left: 60px;
+    padding-top:6px;
+  }
+  .sound_list .sound_title .name {
+    width:calc(720px - 154px);
+  }
+  button.button_head {
+    right: 103px;
+  }
+}
+
+
+/*--------------------------------------------------------
+解像度720px以下
+--------------------------------------------------------*/
+@media only screen and (max-width: 823px) {
+  button.button_head {
+    right: 0px;
+  }
+  button.buttonLogout {
+    display: none;
+  }
+  button.buttonLogin {
+    right: 103px;
+  }
+  .sound_list .aus-sound_box .body-img-container{
+    width: unset !important;
+  }
+  .sp_none,
+  .gnavi_pc {
+    display: none;
+  }
+  .digits_err_jp{
+    margin-left: 10px !important;
+  }
+  .pc_none {
+    display: block;
+  }
+  .ullist {
+    padding-left: 48px;
+
+  }
+  .list-table {
+    width: 100%;
+    margin: 20px 48px;
+  }
+
+  .list-table table {
+    width: 82%;
+  }
+
+  .list-table table tr td:last-child {
+    width: 10%;
+    word-break: inherit;
+  }
+  .list-table table tr td {
+    width: 55%;
+    padding: 8px;
+    word-break: break-word;
+  }
+
+  .customer_registration_form input[type="submit"] {
+    width: 132px !important;
+  }
+  .checkbox {
+    position: absolute;
+    display: table;
+    width: 100%;
+    top: 14px;
+  }
+  .btn_wrapper {
+    height: 15px;
+    position: relative;
+  }
+
+  .gender_test {
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+    background: #fff !important;
+  }
+
+  .gender_test input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+    color: #fff !important;
+    background-color: #fff !important;
+  }
+  
+  /* #header {
+    position: relative;
+    margin-bottom: 0;
+    z-index: 2;
+  } */
+  #header .header_inner {
+    width: 100%;
+    height: 50px;
+    position: relative;
+  }
+  #header .headlogo img {
+    width: 130px;
+    margin-top: 20px;
+  }
+
+  .vid_open video {
+    width: 100% !important;
+    height: 100%;
+  }
+  #library_video{
+    height: inherit !important;
+    object-fit: scale-down;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  /*gナビ*/
+  #gnavi_sp_btn {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+
+  .gnavi_sp_btn_open img {
+    background: #eee;
+  }
+
+  #gnavi_sp {
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    background: #fff;
+  }
+  #gnavi_sp .menu_box {
+    position: absolute;
+    background: #fff !important;
+    z-index: 99;
+    width: 260px;
+    right: 0px;
+    top: 50px;
+    display: none;
+    border-top: 1px solid #ccc;
+    height: 465px;
+  }
+  #gnavi_sp .menu_box .active a {
+    border-bottom: 2px solid #FFCC12;
+  }
+  #gnavi_sp .menu_box li {
+    text-align: center;
+    background-repeat: no-repeat;
+    text-align: left;
+    margin-bottom: 14px;
+  }
+  #gnavi_sp .menu_box li a {
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  #gnavi_sp .menu_box li a:hover {
+    border-bottom: 2px solid #FFCC12;
+  }
+  #gnavi_sp .menu_box .menu {
+    margin: 30px 0 20px 30px;
+    border-bottom: 2px solid #eee;
+  }
+  #gnavi_sp .menu_box .submenu {
+    margin: 30px 0 40px 30px;
+  }
+  #gnavi_sp .menu_box .submenu li:first-child {
+    padding-left: 0;
+  }
+  #gnavi_sp .menu_box .submenu li {
+    padding-left: 20px;
+  }
+
+  /*********************
+  コンテンツ
+  *********************/
+  /*ぱんくず*/
+  .breadcrumb {
+    height: 25px;
+    z-index: 999;
+  }
+  .breadcrumb ul {
+    padding-left: 10px;
+    box-sizing: border-box;
+  }
+  .breadcrumb li {
+    font-size: 10px;
+    line-height: 25px;
+  }
+  .breadcrumb li:first-child {
+    padding-left: 10px;
+    background-image: url(../img/icon_home.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 8px 8px;
+  }
+
+  .breadcrumb_inner {
+    width: 100%;
+    margin: auto;
+  }
+
+  #container {
+    width: 100%;
+    margin: auto;
+  }
+  .btm_padding_contents{
+    width:100%;
+  }
+  #container .home_mainvisual img {
+    width: 100%;
+  }
+  #container .container_inner {
+    width: 100%;
+    /* 左右のマージンをなくす */
+    margin: auto;
+  }
+  #r-mail-form input[type="password"]{
+    border: 1px solid #cccccc;
+    width: 80% !important;
+  }
+  .contents {
+    width: 100%;
+    float: none;
+  }
+  .contents .mainvisual {
+    width: 100%;
+  }
+
+  .contents_box p {
+    font-size: 14px !important;
+    /* text-align: left; */
+  }
+  
+  .newsound {
+    margin-bottom: 20px;
+  }
+  .newsound .link_red {
+    margin-right: 10px;
+  }
+  .youtube {
+    width: 100%;
+  }
+  .sub_title {
+    font-size: 18px;
+    margin: 10px;
+    background-position: center left 190px;
+    background-size: 70% 20px !important;
+/*
+    background-position: center left 140px;
+*/
+  }
+
+  .home_mainvisual {
+    position: relative;
+    margin-bottom: 0px;
+  }
+  .home_mainvisual img {
+    width: 100%;
+  }
+
+  /* 聴診会員ライブラリ利用登録　横並びのレスポンシブ */
+  .rowitem {
+    width:300px;
+    margin:0px auto;
+  }
+  .rowitem_birth {
+    width:320px;
+    margin:0px auto;
+    margin-left: auto;
+  }
+
+  /*********************サイトについて*****************************/
+  .about{
+    border-right: none;
+    border-left: none;
+    border-radius: 0px;
+    width: 100%;
+  }
+  .about_title{
+    width: 100%;
+    font-size: 20px;
+  }
+  .about_text{
+    /* paddingを引く */
+    width: calc(100% - 80px);
+    font-size: 14px;
+    margin: auto;
+  }
+  .news_title{
+    width: 100%;
+    background-size:90% 4%;
+  }
+  .news_list{
+    width: 90%;
+  }
+  .news_list li {
+    line-height: 2;
+    background-position: top 20px left 10px;
+    padding-top: 10px;
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+  .news_list li span{
+    word-break: break-all;
+  }
+  .news_list time {
+    font-size: 14px;
+    display: block;
+  }
+  .contents_box{
+    border-right: none;
+    border-left: none;
+    border-radius: 0px;
+    width: 100%;
+    padding-bottom: 50px;
+  }
+  #recommend .contents_box{
+    padding-bottom: unset !important;
+  }
+  .contact_form {
+    width: 100%;
+    text-align: center;
+  }
+  #loginForm .contact_form p {
+    text-align: center ;
+    margin-left: 0px !important;
+    width:100% !important;
+  }
+  .confirm_registration_form .input_name {
+    text-align: center !important;
+  }
+/* IE11でlabel内でclickイベントは伝播しない対応 */
+/* https://doda.jp/d-c-b/article/180130.html */
+  .contact_form label, .insted_label {
+    display: block;
+  }
+  .contact_form input.numeric-password{
+    width:14%;
+  }
+  .contact_form input.numeric-password.first{
+    margin-left:0px;
+}
+  .contact_form .input_name {
+    display: block;
+    width: 100% !important;
+    text-align: center;
+  }
+  .customer_registration .input_name {
+    display: grid !important;
+  }
+  .customer_registration .input_name span {
+    width: 30%;
+    margin: 4px auto 0;
+    font-size: 12px;
+  }
+
+  .customer_registration input {
+    text-align: center;
+  }
+
+  .customer_registration .upper_note,
+  .customer_registration .invalid_email,
+  .customer_registration .pass_err,
+  .customer_registration .msg_err{
+    text-align: center;
+  }
+
+  .submit_backbtn {
+    margin-right: 10px !important;
+    width: 37% !important;
+  }
+
+  .contents_box_inner .contact_submit {
+    display: flex;
+    justify-content: center;
+  }
+
+  .login-page .contact_submit.sp_none {
+    display: none !important;
+  }
+
+  .contact_form input {
+    margin: 1em auto;
+    width: 80%;
+  }
+/* ご本人確認方法 */
+  .identification {
+    width: 305px;
+    margin:14px auto 10px;
+    padding:10px 0px 10px;
+    text-align: left;
+    border: 1px solid #cccccc;
+  }
+/* 画像表示 */
+#file-preview {
+    margin:5px 0px 5px 0px;
+}
+
+/* telemedica 20180205 */
+  .contact_form select {
+    margin: 1em auto;
+    width: 80%;
+  }
+  .contact_form .yearSelect_input{
+    width:136px;
+  }
+  .yearSelect_en {
+    width: 74px !important;
+  }
+  .contact_form textarea {
+    margin: 1em auto;
+    width: 80%;
+  }
+  .submit_backbtn {
+    margin-right: 0px;
+  }
+  .little_title {
+    font-size: 16px;
+  }
+  .title_m {
+  font-size: 18px;
+  }
+  .faq_list {
+    font-size: 14px;
+  }
+  /*********************サイトについて*****************************/
+  /*検索ボックス*/
+  .home_mainvisual .search_box {
+    bottom: 20px;
+    /* 左右位置をセンタリング */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  .search_type_title{
+    font-size: 12px;
+  }
+
+  .home_mainvisual input[type="text"], button, textarea .search_keyword {
+    height: 45px;
+    /* 検索ボタンの幅を引く */
+    width: calc(100% - 50px);
+  }
+  .home_mainvisual input[type="text"]{
+    height: 28px;
+  }
+  .home_search_switch{
+    right: 52px;
+    height: 45px;
+}
+
+  .search_box_inner.clearfix .search_keyword::placeholder{
+    font-size: 13px;
+  }
+
+  .home_mainvisual .search_btn {
+    height: 45px;
+  }
+
+  .home_mainvisual .search_box_inner {
+    border: 2px solid #eee;
+  }
+
+  .home_menu {
+    width: 100%;
+    margin-bottom: 20px;
+    display: inline-flex;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .home_menu li {
+    border-right: 1px solid #ccc;
+    display: table-cell;
+    margin: 0;
+    width: auto !important;
+  }
+  .home_menu li.last {
+    border-right: none;
+  }
+  .home_menu li a {
+    width: 100%;
+    border: none;
+    border-radius: 0px;
+    /* レスポンシブの時はmarginをリセット */
+    margin: auto;
+  }
+  .home_menu li a img {
+    width: 100%;
+    z-index: 5;
+  }
+
+  .sound_list {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    /*コンテンツ開閉*/
+  }
+  .sound_list.ui-sortable{
+    position: relative;
+    overflow: auto !important;
+  }
+  .sound_list .tag {
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    left: 8px !important;
+    top: 8px;
+    text-align: center;
+  }
+  .sound_list .tag span {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 4px;
+  }
+  .sound_list li {
+    width: 100%;
+  }
+  .sound_list .sound_title {
+    width: 100%;
+    display: block;
+    height: 40px;
+    /*background-position: center right 20px;*/
+  }
+  .sound_list .sound_title p {
+    display: inline-block;
+  }
+  .sound_accordion_open.sound_title.accordion_active.aus{
+    width:100%;
+  }
+  .sound_list .sound_title.aus .name{
+    width:calc(100% - 150px);
+    padding-bottom:19px;
+  }
+  .sound_list .sound_title .name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 60px;
+    line-height: 40px;
+    width:calc(100% - 150px);
+  }
+  .sound_list .audio {
+    width: 100%;
+    display: block;
+    padding-left: 60px;
+    /* telemedica 20180314 */
+    padding-top:6px;
+  }
+  .sound_list .sound_conts {
+    padding: 40px 0;
+    overflow: hidden;
+    /*コンテンツ内スライダー*/
+  }
+  .sound_list .sound_conts .sound_conts_inner {
+    width: 90%;
+    padding-left: 0px;
+    margin: 34px auto;
+  }
+  .sound_list .sound_conts .home-page{
+    height:270px;
+  }
+  .sound_list .sound_conts .home-page .bx-viewport {
+    height: 265px !important;
+  }
+  .sound_list .aus-sound_box .sound_conts .sound_conts_inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .sound_list .aus-sound_box .sound_conts .sound_conts_inner .recommended_ipax_cont {
+    width: 100% !important;
+  }
+  .sound_list .sound_conts .sound_conts_inner_title {
+    font-size: 16px;
+    margin: 0px 35px;
+    text-align: center !important;
+    margin-top: 10px !important;
+  }
+  .sound_list .sound_conts .img_slide {
+    width: 100%;
+    margin: 20px 0 10px 0;
+    background: #eee;
+  }
+  .sound_list .sound_conts .img_slide_inner {
+    width: 90%;
+    margin: auto;
+  }
+  .sound_list .sound_conts .bx-wrapper .bx-next {
+    right: -9px;
+  }
+  .sound_list .sound_conts .bx-wrapper .bx-prev {
+    left: -9px;
+  }
+  .sound_list .sound_conts .bx-wrapper:not(.iframe-recomeended-aus-slider) .bx-viewport img {
+    max-width: 100%;
+    max-height: 220px;
+  }
+  .sound_list .sound_conts .bx-wrapper:not(.iframe-recomeended-aus-slider) .bx-viewport li {
+    height: 220px;
+  }
+  .sound_list .sound_conts .text {
+    margin: 0 35px;
+    letter-spacing: 1px;
+    font-size: 12px;
+    /* text-align: justify; */
+    word-break: break-word;
+  }
+  .sound_list .sound_conts .sound_conts_inner p{
+    margin: 0;
+  }
+  .sound_list .aus-sound_box .sound_conts .sound_conts_inner p{
+    margin:0 10px 0 10px;
+    width: 100%;
+    /* text-align: justify; */
+  }
+  .sound_list .sound_box {
+    position: relative;
+    border-right: none;
+    border-left: none;
+  }
+  .sound_list .sound_box_inner {
+    height: 90px;
+    overflow: hidden;
+  }
+  .sound_list .sound_conts_open {
+    height: auto;
+    overflow: visible;
+  }
+
+  /*コンテンツページ*/
+  .contents_title {
+    margin: 36px 10px 10px 10px;
+  }
+
+  .contents_search {
+    background: none;
+    margin-bottom: 0px;
+    padding: 0;
+  }
+  .contents_search .total_number {
+/*
+    font-size: 18px;
+*/
+    font-size: 12px;
+    float: left;
+  }
+  .contents_search .total_result {
+    background: #eee;
+  }
+  .contents_search .select_sort {
+    float: left;
+    margin-right: 1px;
+/*
+    float: right;
+    margin-right: 10px;
+*/
+  }
+  .contents_search .search_box {
+    width: 100%;
+    float: none;
+    margin: 0 0 10px 0;
+    display: table;
+  }
+  .contents_search .search_box_inner {
+    position: relative;
+    width: 90%;
+    margin: auto;
+  }
+  .contents_search input[type="text"], .contents_search button, .contents_search textarea .search_keyword {
+    height: 45px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 10px !important;
+  }
+  .contents_search .search_btn {
+    height: 45px;
+    width: 45px;
+    float: left;
+    position: absolute;
+    right: 0;
+  }
+  .aus-body_description {
+    margin-top: 38px !important;
+  }
+  .select_tag {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .select_tag li {
+    width: 30%;
+    display: inline-block;
+  }
+  .select_tag li a {
+    display: block;
+    height: 30px;
+    color: #666;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background: #fff;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .select_tag li .active {
+    background: #FFCC12;
+    color: #fff;
+    border: 1px solid #FFCC12;
+  }
+  .select_tag li a:hover {
+    background: #FFCC12;
+    color: #fff;
+  }
+
+  .desc_table dl {
+    width: 100%;
+    display: table;
+  }
+  .desc_table dt {
+    width: 133px;
+    padding: 6px 10px 6px 20px;
+  }
+  .desc_table dd {
+    padding: 6px 10px;
+  }
+
+  /*ページャー*/
+  .pager {
+    text-align: center;
+    /* background: #fff5d3; */
+    height: 40px;
+    padding: 10px 10px 0 10px;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .pager_inner {
+    position: relative;
+    width: 100%;
+    margin: auto;
+  }
+
+  .pager_list {
+    width: 100%;
+  }
+  .pager_list .control {
+    margin: 0 4px;
+  }
+
+  /******************************************
+  クイズpak
+  ******************************************/
+  .quiz_select {
+    margin: 20px auto;
+    width: 100%;
+  }
+
+  .quiz_selectbox {
+    /* 左右のmargin:5pxを引く */
+    width: calc(50% - 10px);
+    border: 2px solid #47B8E8;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 5px;
+    overflow: hidden;
+    background-color: #fff;
+    height:228px;
+  }
+  .quiz-overlay img {
+    width: 116px;
+  }
+  
+  /************************************************************************
+  クイズパック高さ修正
+  *************************************************************************/
+  .quiz_selectbox a {
+    background-image: url(../img/quiz_pak_bg.png);
+    background-repeat: no-repeat;
+    background-position: right top;
+    box-sizing: border-box;
+    border: 6px solid #f8fdff;
+    height: 100%;
+  }
+  .quiz_selectbox .quiz_pack_icon_image {
+    width: 100%;
+    height: 100px;
+  }
+  .quiz_selectbox .quiz_pack_icon_image img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .quiz_selectbox a img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quiz_selectbox .quiz_title {
+    font-size: 17px;
+    line-height: 19px;
+  }
+
+  .quiz_selectbox .textbox {
+    width: calc(100% - 8px);
+    /* height: 38px; */
+    margin: 4px 4px 20px 4px;
+  }
+  .quiz_selectbox .title {
+    font-size: 12px;
+    line-height: 14px;
+    /* height: 24px; */
+  }
+  .quiz_selectbox .date {
+    /* margin-top: 4px; */
+    font-size: 10px;
+    /* line-height: 10px; */
+    /* height: 10px; */
+  }
+
+  /*モーダル表示制御*/
+  .modal_content {
+    width: 96%;
+    height: 96%;
+  }
+
+  .back_btn {
+    width: 70px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+  }
+
+  /*クローズボタン*/
+  .close_btn {
+    top: 4px;
+    right: 4px;
+    color: #b29c33;
+    line-height: 35px;
+    text-decoration: none;
+    cursor: pointer;
+    width: 70px;
+    height: 35px;
+  }
+
+  /*クイズパック*/
+  /*モーダル表示位置設定*/
+  .quiz_box {
+    margin: 13px auto 0 auto;
+    width: 96%;
+    height: 96%;
+  }
+
+  .quiz_head {
+    min-height: 28px;
+  }
+
+  .quiz_title {
+    font-size: 16px;
+    line-height: 18px;
+    width: calc(100% - 100px);
+    font-family: initial;
+  }
+
+  .quiz_modal .quiz_titles{
+    font-size: 16px !important;
+    word-break: break-all;
+    max-height:60px;
+    overflow: hidden;
+  }
+  .quiz_cont {
+    position: absolute;
+    /* width: 96%; */
+    /* height: 90%; */
+    /* margin: 0 auto 10px auto; */
+    background: #FFFFFF;
+    border-radius: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .quiz_cont_inner {
+    width: 90%;
+  }
+
+  .quiz_start {
+    padding: 20px 0;
+  }
+  .quiz_start img {
+    width: 150px;
+    margin: 20px 0;
+  }
+
+  .quiz_start:before {
+    display: block;
+    content: "";
+    height: 20px;
+  }
+
+  .quiz_start:after {
+    display: block;
+    content: "";
+    height: 20px;
+  }
+
+  .quiz_desc {
+    margin: auto;
+  }
+  .quiz_desc img {
+    width: 220px;
+  }
+  .quiz_desc .text {
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+  }
+
+  /*クイズ回答画面*/
+  .quiz_number {
+    top: 10px;
+    left: 0px;
+    font-size: 18px;
+  }
+  .quiz_number span {
+    font-size: 26px;
+  }
+
+  .quiz_question_img {
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 250px;
+    max-height: 270px;
+    margin: auto;
+  }
+
+  .quiz_question_img img {
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  .question_box {
+    position: relative;
+    top: 10px;
+    border-radius: 6px;
+    border: 2px solid #FFCC12;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+  }
+
+  .question_number {
+    position: absolute;
+    background: #FFCC12;
+    border-radius: 50%;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    right: -12px;
+    top: -45px;
+    letter-spacing: 1.5px;
+    line-height: 60px;
+  }
+  .question_number span {
+    font-size: 26px;
+    color: #fff;
+  }
+
+  .question_text {
+    font-size: 15px;
+    line-height: 19px;
+    text-align: left;
+    margin: 0px 0 10px 0;
+    width: 100% !important;
+  }
+  .question_text_confirm {
+    font-size: 15px;
+    color: #000000;
+    text-align: left;
+    margin: 0 0 10px 0;
+  }
+
+  .answer_select {
+    width: 100%;
+    text-align: center;
+  }
+  .answer_select li {
+    width: calc(50% - 8px);
+    margin: 4px;
+  }
+  .answer_select li a {
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    border-radius: 4px;
+    display: block;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    background: #fff;
+    /* line-height: 70px; */
+    word-break: break-all;
+  }
+  .answer_select .touch_answer a {
+    background: #ff5f80;
+    color: #fff;
+  }
+
+  /*クイズ回答サウンド*/
+  .question_sound_list {
+    width: 48%;
+    margin: 0px 0 5px 0;
+  }
+  .question_sound_list_only_one {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 10px auto;
+  }
+  .question_sound_list_only_one video{
+    width:100%;
+    height:100%;
+  }
+  .question_sound_list .audiojsZ,
+  .question_sound_list_only_one .audiojsZ
+  {
+    width: 100%;
+  }
+
+  .question_sound_list .audiojsZ .scrubberZ,
+  .question_sound_list_only_one .audiojsZ .scrubberZ
+  {
+    width: 50%;
+  }
+  .question_sound_list_only_one .fukidashi
+  {
+    width: inherit;
+    font-size: 12px;
+    word-break: break-all;
+    border: solid 1px #CCCCCC;
+    padding: 2px;
+    border-radius: 2px;
+    margin-top: 2px;
+    text-align: left;
+  }
+
+  /*クイズ回答確認*/
+  .question_title {
+    font-size: 18px;
+    color: #333333;
+    margin: 10px auto;
+  }
+
+  .answers_selected {
+    margin: 10px 0 !important;
+    justify-content: space-between;
+  }
+  .answers_selected li {
+    margin: 0 2px 8px 0;
+    width: 42% !important;
+    word-break: break-word !important;
+  }
+
+  .awnser {
+    text-align: left;
+    background: #f8fdff;
+    padding: 10px;
+  }
+  .awnser span {
+    color: #FF6080;
+  }
+
+  .awnser_explanation {
+    text-align: left;
+    font-size: 16px;
+  }
+
+  /*クイズ成績画面*/
+  .score_table {
+    width: 100%;
+    text-align: left;
+  }
+  .score_table .score_cell {
+    width: 46%;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .score_table .score_cell p {
+    width: 100%;
+    font-size: 16px;
+    color: #333333;
+    line-height: 60px;
+    height: 60px;
+    background-position: center right 10px;
+    padding-left: 40px;
+  }
+  .score_table .false {
+    background-position: center left 10px;
+  }
+  .score_table .true {
+    background-position: center left 10px;
+  }
+
+  .score_cell:nth-child(odd) {
+    margin-right: 8px;
+  }
+
+  .score_title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .score {
+    color: #ff5f80;
+    font-size: 20px;
+  }
+  .score span {
+    font-size: 32px;
+  }
+
+  .score:before {
+    display: block;
+    content: "";
+    width: 90%;
+    height: 20px;
+    background-image: url(../img/line_orange.png);
+    background-repeat: repeat-x;
+    margin: auto;
+  }
+
+  .score:after {
+    display: block;
+    content: "";
+    width: 90%;
+    height: 20px;
+    background-image: url(../img/line_orange.png);
+    background-repeat: repeat-x;
+    margin: auto;
+  }
+
+  /*スライダー*/
+  .quiz_box .img_slide_inner {
+    width: 100%;
+    margin: auto;
+  }
+  .quiz_box .text {
+    letter-spacing: 2px;
+    font-size: 15px;
+  }
+  .quiz_box .bx-wrapper .bx-next {
+    right: 10px;
+  }
+  .quiz_box .bx-wrapper .bx-prev {
+    left: 10px;
+  }
+
+  /*回答結果*/
+  .quiz_result_box {
+    display: table;
+    height: 350px;
+    width: 100%;
+  }
+  /*回答結果*/
+  .quiz_result img {
+    width: 200px;
+  }
+
+  .quiz_box ul.bxslider li {
+    width: 252px;
+    height: 252px;
+    position: relative;
+  }
+  .container{
+    padding-bottom: 0px;
+  }
+  /*********************
+  サブカラム
+  *********************/
+  .side_column {
+    width: 100%;
+    float: none;
+    /* レスポンシブの時はmarginをリセット */
+    margin: auto;
+    /*お知らせ*/
+    /*トピックス*/
+  }
+  .side_column .side_box {
+    border-right: none;
+    border-left: none;
+    border-radius: 0px;
+  }
+  .side_column .notice .notice_list {
+    /* 左右のpadding:20pxずつを引く */
+    width: calc(300px - 40px);
+    margin: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .side_column .notice .notice_list li {
+    border-bottom: 1px dotted #ccc;
+    padding: 10px 0;
+  }
+  .side_column .notice .notice_list li .time {
+    display: block;
+    font-size: 16px;
+  }
+  .side_column .notice .notice_list li .text {
+    font-size: 14px;
+    margin-top: 8px;
+    letter-spacing: 2px;
+  }
+  .side_column .side_speaker {
+    border-right: none;
+    border-left: none;
+    border-radius: 0px;
+    text-align: center;
+  }
+  .side_column .side_speaker_text{
+    width: 230px;
+    text-align: center;
+  }
+  .side_column .side_speaker_text img {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .side_column .side_speaker_text p {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  /********************speaker********************************/
+  .side_column .side_advertisement {
+    border-radius: 0px;
+    margin: auto;
+  }
+
+  /********************speaker********************************/
+
+  /*********************
+  フッター
+  *********************/
+  #footer {
+    margin-top: 20px;
+  }
+
+  .footer_inner {
+    width: 90%;
+    height: auto;
+  }
+  .footer_inner .sns_link {
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  .footer_navi {
+    width: 100%;
+    display: block;
+  }
+  .footer_navi .footer_link:first-child {
+    border-left: none;
+  }
+  .footer_navi .footer_link {
+    display: table;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .footer_navi .footer_link li {
+    width: 50%;
+    border-right: none;
+  }
+
+  #footer .sns_link {
+    position: static;
+    margin: 20px 0;
+  }
+  #footer .sns_link a {
+    margin: 0 4px;
+  }
+
+  /* 横並び */
+  .c_container {
+    width:300px;
+    margin: 0 auto;
+    padding: 0;
+    overflow:hidden;
+    position:relative;
+  }
+
+  .mat1, .mat2, .mat3, .mat4, .mat5 {
+    display: block;
+    margin: 0px auto 0px;
+    padding: 10px 0px;
+    width: 300px;
+    height:auto;
+    border-radius: none;
+    box-shadow: none;
+    border: none;
+    overflow:hidden;
+    position:relative;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  .mat4 {
+    padding: 0px 0px;
+  }
+  .mat5 {
+    padding: 0px 0px;
+  }
+
+/* telemedica 20180207 動画1個 */
+  .onevideo {
+    width: 98%;
+    max-width:560px;
+    min-width:300px;
+  }
+
+.contact_form_inquiry{
+    margin-bottom:15px;
+    padding-left: 0px;
+}
+.contact_form_inquiry li{
+    font-size:12px;
+    list-style: disc;
+}
+.contact_form .services_li1 {
+  display:table-cell;
+  padding:0px;
+  width:inherit;
+}
+.contact_form .services_ul{
+  margin:0px;
+}
+/* aa01 */
+.aligncenter.size-full.wp-image-2071{
+  width:60%;
+  height: auto;
+}
+}
+
+@media only screen and (max-width: 700px) {
+  .sound_list .sound_conts .rec-page .bx-viewport {
+    height: 265px !important;
+  }
+  .sound_list .sound_conts .bx-viewport img {
+    max-width: 100%;
+    max-height: 220px;
+  }
+  .sound_list .sound_conts .bx-viewport li {
+    height: 220px;
+  }
+}
+/*解像度720px以下*/
+
+@media only screen and (max-width: 502px) {
+  .body-img {
+    width: 258px !important;
+    height: 200px !important;
+  }
+  .aus_controller_wrapper {
+    width: 190px !important;
+    margin: auto;
+  }
+  .btn-point {
+    height: 28px;
+    width: 40px !important;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  .btn-vol {
+    width: 10px !important;
+    margin: 2px !important;
+    padding: 0px !important;
+  }
+  .vol-label.min {
+    margin-right: 64px !important;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .vol-label.max {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 90px !important;
+  }
+  .stethoscope{
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .exam-report-wrapper{
+    width:auto !important;
+  }
+}
+/*--------------------------------------------------------
+解像度400px以下
+--------------------------------------------------------*/
+@media only screen and (max-width: 400px) {
+  /*クイズ回答サウンド*/
+  .question_sound_list .audiojsZ .scrubberZ {
+    width: 37%;
+  }
+
+  .search_box_inner.clearfix .search_keyword::placeholder{
+    font-size: 12px;
+  }
+
+  .contents_search .select_sort select{
+    width:117px;
+  }
+  .contact_form input.numeric-password{
+    width:13.5%;
+  }
+  .sub_title {
+    background-size: 64% 20px !important;
+  }
+  .recommended.pulse-modal{
+    padding-top: 100px;
+  }
+
+}
+/*400以下*/
+
+/*--------------------------------------------------------
+解像度300px以下
+--------------------------------------------------------*/
+@media only screen and (max-width: 300px) {
+  .side_column .side_advertisement {
+    border-right: none;
+    border-left: none;
+  }
+}
+/*300以下*/
+@media only screen and (max-width:360px){
+  .answers_selected li{
+    width:41% !important;
+  }
+  .contents_search .select_sort select{
+    width:112px;
+  }
+
+}
+/*320px*/
+@media only screen and (max-width:320px){
+  .contents_search .select_sort select{
+    width:100px;
+    padding:5px;
+  }
+  .select_tag li a{
+    font-size:10px;
+  }
+  .sub_title {
+    background-size: 60% 20px !important;
+  }
+  .contact_form input.numeric-password{
+    width: 12%;
+  }
+  .yearSelect1_li #yearSelect {
+    width:95px !important;
+  }
+  .rowitem_birth{
+    width:305px;
+  }
+  .sound_list .sound_title .name{
+    width:calc(100% - 150px);
+  }
+  .quiz_type label{
+    font-size: 18px;
+  }
+  .sound_accordion_open.sound_title.accordion_active.aus{
+    width:100%;
+  }
+  .sound_list .sound_title.aus .name{
+    width:calc(100% - 150px);
+  }
+}
+
+
+/*--------------------------------------------------------
+  ipad
+--------------------------------------------------------*/
+@media only screen 
+  and (min-width: 721px)
+  and (max-width:1042px) {
+    #footer{
+      margin-top: 261px;
+    }
+    #container .contents{
+      margin:auto;
+      float: none;
+    }
+    .side_column{
+      width: 300px;
+    }
+    .home-video {
+      width: 320px;
+    }
+    .side_speaker.mB20{
+      width: 94%;
+    }
+    .side_box.about_box{
+      width:max-content;
+    }
+    .header_explanation{
+      font-size: 15px;
+    }
+    .quiz-overlay{
+      height: 193px;
+      width: 283px;
+    }
+    .contact_form.login_form .input_name{
+      width:35%;
+    }
+    .contents_search input[type="text"]{
+      padding-right:55px !important;
+    }
+    .sound_list .sound_conts .sound_conts_inner_title {
+      margin-top:15px;
+    }
+    .login_form input {
+      text-align: left !important;
+    }
+    .login_form .input_name span{
+      float:right !important;
+      top:0px;
+    }
+    .dr-img {
+      background-size: contain !important;
+      height: 143px;
+      background-repeat: no-repeat !important;
+      background-position: 0% 50% !important;
+    }
+   }
+
+/*--------------------------------------------------------
+  android tablet
+--------------------------------------------------------*/
+@media only screen 
+  and (min-width: 800px)
+  and (max-width:1200px) {
+    .reset_password_container{
+      padding-bottom: 196px;
+    }
+ }
+
+@media (max-width:767px){
+    .quiz_selectbox{
+      height:228px;
+    }
+    .quiz_selectbox a{
+      height: 227px;
+    }
+}
+
+@media only screen and (min-width: 721px) and (max-width:767px) {
+    .quiz-overlay{
+      height: 190px;
+      width:281px;
+    }
+    
+}
+
+@media only screen 
+  and (min-width: 701px)
+  and (max-width:720px) {
+    .quiz-overlay{
+      width:298px;
+    }
+  }
+  /*--------------------------------------------------------
+  iphone X
+--------------------------------------------------------*/
+@media (max-width: 768px) {
+  .contact_form.login_form {
+    width: 80%;
+    margin: auto;
+  }
+
+  .notice_list {
+    margin: auto !important;
+    margin-right: auto;
+  }
+  .wp-image-1700 {
+    height: auto;
+    width: 100%;
+  }
+  .wp-image-1677 {
+    width: 100%;
+    object-fit: scale-down;
+  }
+  .btn_finish {
+    height: 60px !important;
+  }
+  /* .ausc-img-container {
+    display: block !important;
+  } */
+  .list-table table {
+    width: 85%;
+  }
+
+  .gnavi_pc li a {
+    font-size: 15px;
+  }
+  .mypage .sub_title {
+    font-size: 14px;
+    margin-left: -10px;
+    background-size: 64% 14px !important;
+    margin-top: 16px
+  }
+  .mypage .sub_title label{
+    padding-right: 10px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  html {
+    height: 100%;
+  }
+  body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+  }
+  .wp-image-1673,
+  .wp-image-170 {
+    width: 100%;    
+    height: auto;
+  }
+
+  .img-wrapper {
+    width: 740px;
+    margin: 0 auto;
+  }
+  .pc_none {
+    display: block;
+  }
+  .select_tag li {
+    width: 30%;
+    display: inline-block;
+  }
+  .select_tag li a {
+    display: block;
+    height: 30px;
+    color: #666;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background: #fff;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .select_tag {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .sp-mypage-menu-container {
+    margin-top: 24px;
+  }
+  #library_video {
+    width: 98% !important;
+    margin: 0 auto;
+  }
+
+}
+
+@media only screen 
+  and (min-width: 721px)
+  and (max-width:823px) {
+    .quiz-overlay{
+      height: 188px;
+      width: 300px;
+    }
+    .single-img-pager-container {
+      width: 100%;
+    }
+}
+
+
+@media only screen 
+  and (min-width: 768px)
+  and (max-width: 1366px)
+  and (orientation: landscape)  {
+  .gnavi_pc {
+    margin-top: 16px;
+  }
+  .header_inner {
+    height: 104px;
+  }
+  .page-wrapper {
+    margin-top: 168px;
+  }
+  .breadcrumb {
+    top: 104px;
+  }
+  .container-quizpack {
+    margin-top: 180px !important;
+  }
+}

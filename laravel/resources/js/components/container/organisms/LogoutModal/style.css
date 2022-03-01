@@ -1,0 +1,44 @@
+.organism-LogoutModal .modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-LogoutModal .atoms-p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.organism-LogoutModal.modal-static .modal-dialog {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.organism-LogoutModal .modal-body {
+  padding: 16px 0 0 0;
+}
+
+.organism-LogoutModal .modal-footer {
+  border-top: none;
+  padding: 0 0 4px 0;
+}
+
+.organism-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+a {
+  color: inherit;
+}
+
+@media (max-width: 596px) {
+  .organism-LogoutModal {
+    width: 60%;
+    margin-left: 120px;
+  }
+  .organism-modal-button {
+    width: 60px;
+    font-size: 10px;
+  }
+}

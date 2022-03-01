@@ -1,0 +1,13 @@
+.atoms-Hr {
+  margin-top: 0px;
+  border-top: 1px solid #bdbdbd;
+}
+
+.atoms-Hr-dotted {
+  border-top: 1px dashed #bdbdbd;
+  margin-top: 16px !important;
+}
+
+.atoms-Hr-divider {
+  margin: 23px 0 23px !important;
+}

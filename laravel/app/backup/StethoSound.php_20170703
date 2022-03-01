@@ -1,0 +1,139 @@
+<?php
+
+namespace App;
+
+use App\Model;
+use \File;
+use \Log;
+
+class StethoSound extends Model
+{
+  protected $dates = ['created_at', 'updated_at'];
+
+  // 0:監修中
+  public static $STATUS_SUPERVISING = 0;
+  // 1:監修済
+  public static $STATUS_SUPERVISED = 1;
+  // 2:公開中
+  public static $STATUS_PUBLIC     = 2;
+  // 3:公開中（New）
+  public static $STATUS_PUBLIC_NEW = 3;
+
+  protected $fillable = [
+    'sound_path', 
+    'title', 
+    'type',
+    'area',
+    'conversion_type',
+    'is_normal',
+    'disease',
+    'description',
+    'status',
+    'image_name',
+    'is_public',
+    'disip_order',
+    'user_id',
+    'updated_at',
+  ];
+
+  /**
+   * 聴診音に紐付いたユーザ（監修者）を取得します
+   */
+  public function user()
+  {
+    return $this->belongsTo('App\User');
+  }
+
+  /**
+  * 聴診音に紐付いたクイズ一覧を取得します
+  */
+  public function quizzes()
+  {
+    return $this->belongsToMany('App\Quiz');
+  }
+
+  /**
+   * ステータスが『公開』の聴診音を取得します
+   */
+  public function scopePublicAll($query)
+  {  
+    return $query->where('is_public', '=', true);//
+  }
+
+  /**
+   * ステータスが『公開（New）』の聴診音を取得します
+   */
+  public function scopePublicNewAll($query)
+  {  
+    return $query->where('status', '=', StethoSound::$STATUS_PUBLIC_NEW);
+  }
+
+  public function scopeSearch($query,$keywords)
+  {
+    if (empty($keywords)) return $query;
+    return $query->where(function ($q) use ($keywords) {
+      foreach ($keywords as $v) {
+        $q->orWhere('title', 'like', "%{$v}%");
+      }
+      foreach ($keywords as $v) {
+        $q->orWhere('description', 'like', "%{$v}%");
+      }
+      foreach ($keywords as $v) {
+        $q->orWhere('disease', 'like', "%{$v}%");
+      }
+      foreach ($keywords as $v) {
+        $q->orWhere('area', 'like', "%{$v}%");
+      }
+      foreach ($keywords as $v) {
+        if( $v=="肺音" ) {
+          $q->orWhere('type',1);
+        } elseif ( $v=="心音" ) {
+          $q->orWhere('type',2);
+        }elseif ( $v=="腸音" ) {
+          $q->orWhere('type',3);
+        }elseif ( $v=="その他" || $v=="そのた") {
+          $q->orWhere('type',9);
+        }
+      }
+      foreach ($keywords as $v) {
+        if( $v=="正常音" || $v=="正常") {
+          $q->orWhere('is_normal',1);
+        } elseif ( $v=="異常音" || $v=="異常") {
+          $q->orWhere('is_normal',0);
+        }
+      }
+    });
+  }
+
+  public function scopeType($query, $type)
+  {
+    if (empty($type)) return $query;
+    return $query->where('type', '=', $type);
+  }
+  
+  public function images()
+  {
+    return $this->hasMany('App\StethoSoundImage')->orderBy('disp_order');
+  }
+
+  public function comments() 
+  {
+    return $this->hasMany('App\Comment');
+  }
+
+  /**
+   * レコードを削除する際に聴診音ファイルも削除します。 
+   */
+  public function delete() {
+    if($this->attributes['sound_path']){
+      $path = $this->attributes['sound_path'];
+      $full_path = public_path($path);
+      if(File::isFile($full_path) && File::delete($full_path)){
+        Log::info("聴診音を削除しました　path=".$full_path);
+      } else {
+        Log::error("聴診音の削除に失敗しました　path=".$full_path);
+      }
+    }
+    parent::delete();
+  }
+}

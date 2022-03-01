@@ -1,0 +1,33 @@
+.organism-rankingModal-wrapper .modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.organism-rankingModal-wrapper .atoms-p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.organism-rankingModal-wrapper .organism-modal-image {
+  width: 16px;
+}
+
+.organism-rankingModal-wrapper .modal-body {
+  padding: 0 60px 60px 60px;
+}
+
+.organism-rankingModal-wrapper .modal-header label {
+  margin: 0;
+}
+
+.organism-rankingModal-wrapper .modal-dialog{
+  min-width: 72%;
+  margin: 25px auto;
+}
+
+.organism-rankingModal-wrapper .loading-indicator {
+  text-align: center;
+}

@@ -1,0 +1,228 @@
+@extends('layouts.app')
+
+@section('title', 'Home')
+
+@section('content')
+
+<!-- メイン聴診音ライブラリ（左） -->
+  <div id="container">
+    <div class="container_inner clearfix">
+
+    <!--*********************************** .contents ***********************************-->
+    <div class="contents">
+      <!-- .home_mainvisual -->
+      <div class="home_mainvisual">
+        <img src="img/mainvisual.jpg" alt="">
+        <div class="search_box">
+          <form action="{{route('contents')}}" method="get">
+            <p class="search_box_inner clearfix">
+              <input class="search_keyword" placeholder="聴診音を探す" type="text" name="keyword" />
+              <button class="search_btn"></button>
+            </p>
+          </form>
+        </div>
+        <!-- /.search_keyword -->
+      </div>
+      <!-- /.home_mainvisual -->
+      <!-- .home_menu -->
+      <ul class="home_menu">
+        <li><a href="{{route('contents')}}"><img src="img/home_menu_1.png" alt="コンテンツ"></a></li>
+        <li><a href="{{route('quizpacks')}}"><img src="img/home_menu_2.png" alt="聴診クイズ"></a></li>
+        <li class="last"><a href="{{route('use')}}"><img src="img/home_menu_3.png" alt="サイトについて"></a></li>
+      </ul>
+      <!-- /.home_menu -->
+      <div class="offer_mat">
+          <p style="color:#ff0000;">当サイトの音源は「聴くゾウ」で聴くとリアルに再生されます。</p>
+          <p>音源トータル数：<?php echo $params['count_public']; ?>件</p>
+      </div>
+      <!-- .newsound -->
+      <div class="newsound">
+        <?php $latest = $stetho_sounds->sortByDesc('updated_at')->first(); ?>
+        <h2 class="sub_title">　試聴音 @if(!is_null($latest))<span style="display:none;">{{ $latest->updated_at->format('Y-m-d') }} 更新</span>@endif</h2>
+
+        <!-- .sound_list -->
+        <ul class="sound_list mB20 accordion">
+
+        <!--*********************************************************-->
+        @foreach($stetho_sounds as $stetho_sound)
+          <!-- .sound_box -->
+          <?php $type_strings = [ 1 => '肺音', 2 => '心音', 3 => '腸音', 9 => 'その他' ]; ?>
+          <li class="sound_box" data-id="{{ $stetho_sound->id }}">
+            <p class="tag">
+              <span>{{$type_strings[$stetho_sound->type]}}</span>
+            </p>
+
+            <div class="sound_box_inner">
+              <!-- .sound_title -->
+              <div class="sound_accordion_open sound_title accordion_active">
+                <p class="name" title="{{ $stetho_sound->title }}">{{ $stetho_sound->title }}</p>
+              </div>
+              <!-- /.sound_title -->
+              <!-- .audio -->
+              <div class="audio">
+                <div class="audiojsZ">
+                  <audio src="{{ asset($stetho_sound->sound_path).'?_='.date('YmdHis', strtotime($stetho_sound->updated_at)) }}"></audio>
+                  <div class="play-pauseZ">
+                    <span class="line"></span>
+                    <p class="playZ"></p>
+                    <p class="pauseZ"></p>
+                    <p class="loadingZ"></p>
+                    <p class="errorZ"></p>
+                  </div>
+                  <div class="scrubberZ">
+                    <div class="progressZ"></div>
+                    <div class="loadedZ"></div>
+                  </div>
+                  <div class="timeZ">
+                    <em class="playedZ">00:00</em>/<strong class="durationZ">00:00</strong>
+                  </div>
+                  <div class="error-messageZ"></div>
+                </div>
+              </div>
+              <!-- /.audio -->
+              <!-- .sound_conts -->
+              <div class="sound_conts accordion_conts">
+                <div class="sound_conts_inner">
+                  <p class="sound_conts_inner_title">{{ $stetho_sound->title }}</p>
+                  <p class="text">{{$stetho_sound->description}}</p>
+                  <!-- .img_slide -->
+                  @if($stetho_sound->images->count())
+                  <div class="img_slide">
+                    <div class="img_slide_inner">
+                      <ul class="bxslider">
+                        @foreach($stetho_sound->images()->get() as $image)
+                        <li>
+                          <img src="{{ $image->image_path.'?_='.date('YmdHis', strtotime($image->updated_at)) }}" style="cursor: pointer;"/>
+                          <p hidden="" id="sl_image_title">{{$image->title}}</p>
+                        </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    <p class="img_slider_text" @if(!$stetho_sound->images->first()->title) hidden @endif id="image_title">{{$stetho_sound->images->first()->title}}</p>
+                  </div>
+                  @endif
+                  <!-- /.img_slide -->
+                  <!-- table -->
+                  <?php $conversion_type_strings = [ 0 => '採取オリジナル ', 1 => '加工音 ', 2 => '人工作音' ]; ?>
+                  <?php $is_normal_strings = [ 1 => '正常音', 0 => '異常音']; ?>
+                  <div class="desc_table">
+                    <dl><dt>聴診音名：</dt><dd>{{ $stetho_sound->title }}</dd></dl>
+                    <dl><dt>聴診音種別：</dt><dd>{{$is_normal_strings[$stetho_sound->is_normal]}}</dd></dl>
+                    <dl><dt>代表疾患：</dt><dd>{{$stetho_sound->disease}}</dd></dl>
+                    <dl><dt>聴診部位：</dt><dd>{{$stetho_sound->area}}</dd></dl>
+                  </div>
+                  <!-- .sound_conts_inner -->
+                </div>
+                <!-- /.sound_conts -->
+
+              </li>
+              <!-- /.sound_box -->
+            @endforeach
+
+            <!--*********************************************************-->
+          </ul>
+          <!-- /.sound_list -->
+          <p class="link_red"><a href="{{route('contents')}}">→続きを見る</a></p>
+
+        </div>
+        <!-- /.newsound -->
+<!-- .use -->
+<div class="about" style="display:none;">
+  <div class="about_text">
+        <ul class="">
+          <li><span class="explain_audio">を押すと聴診音が再生されます</span></li>
+          <li><img src="{{{asset('img/more@2.png')}}}" style="width:auto;height:24px;vertical-align:middle;"><span class="explain_audio">を押すと「詳細情報」が表示されます</span></li>
+          <li><span>「詳細情報」内でを押すとスライドが切り替わります</span></li>
+          <li><span>「詳細情報」内でスライドを押すと拡大表示されます</span></li>
+        </ul>
+  </div>
+</div>
+<!-- /.use -->
+      </div>
+      <!--*********************************** /.contents ***********************************-->
+
+
+      <!--*********************************** .side_column ***********************************-->
+      <div class="side_column">
+        <!-- 推薦文 -->
+        @include('layouts.recommend')
+<?php
+ if($params['init_disp'] === 'true') {
+?>
+        <!-- 聴診音付き広告 -->
+        @include('layouts.advertorial')
+<?php
+ }
+?>
+        <!-- お知らせ -->
+        @include('layouts.news')
+        <!-- 聴診スピーカーについて -->
+        @include('layouts.whatspeaker')
+        <!-- スポンサーリンク -->
+        @include('layouts.advertisement')
+
+      </div>
+      <!--*********************************** /.side_column ***********************************-->
+
+    </div>
+    <!-- /#container_inner -->
+  </div>
+  <!-- /#container -->
+</div>
+
+<script type="text/javascript" src="/js/jquery.sss_portal.audio.js"></script>
+<script type="text/javascript">
+audiojs.events.ready(function() {
+  var audios = document.getElementsByTagName('audio');
+  if (audios.length > 0) {
+    var a1 = audiojs.create(audios, {
+      css: false,
+      createPlayer: {
+        markup: false,
+        playPauseClass: 'play-pauseZ',
+        scrubberClass: 'scrubberZ',
+        progressClass: 'progressZ',
+        loaderClass: 'loadedZ',
+        timeClass: 'timeZ',
+        durationClass: 'durationZ',
+        playedClass: 'playedZ',
+        errorMessageClass: 'error-messageZ',
+        playingClass: 'playingZ',
+        loadingClass: 'loadingZ',
+        errorClass: 'errorZ'
+      }
+    });
+  }
+
+  $({}).sss_portal.audio({
+    audioJsObj: a1
+  });
+});
+</script>
+<script type="text/javascript" src="/js/jquery.imagebox.js?v=1.1.7"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.sound_box img').imagebox();
+});
+</script>
+<script type="text/javascript">
+(function($){
+  $('.sound_box .playZ').logger({
+    url: '/log',
+    data: function(elm) {
+      var $sound_box = $(elm).closest('.sound_box');
+      var data = {
+        screen_code: 'HOME',
+        event_code: 'PLAY',
+        body: {
+          id: $sound_box.data('id'),
+          type: $.trim($sound_box.find('.tag').text()),
+          title: $sound_box.find('.sound_title .name').attr('title')
+        }
+      };
+      return data;
+    }
+  });
+})(jQuery);
+</script>
+@endsection

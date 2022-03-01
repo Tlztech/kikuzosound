@@ -1,0 +1,56 @@
+.organism-logAnalyticsTable-wrapper {
+  padding: 24px 60px;
+  box-shadow: 0px 5px 10px #00000017;
+  border-radius: 8px;
+  opacity: 1;
+  margin-bottom: 24px;
+}
+
+.organism-logAnalyticsDropdown-wrapper
+  .molecules-TitleWithDropDown-wrapper:nth-of-type(3)
+  .molecules-dropdown-container {
+  left: 45%;
+}
+
+.organism-logAnalyticsTable-wrapper tbody {
+  display: block;
+  height: 400px;
+  overflow-x: auto;
+  overflow-y: overlay;
+}
+
+.organism-logAnalyticsTable-wrapper td,
+.organism-logAnalyticsTable-wrapper th {
+  word-wrap: break-word;
+  width: auto;
+  border-top: none;
+  border-bottom: 1px solid #efefef;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.organism-logAnalyticsTable-wrapper .table {
+  min-width: 800px;
+}
+
+.organism-logAnalyticsTable-wrapper thead,
+.organism-logAnalyticsTable-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.organism-logAnalyticsTable-wrapper
+  .molecules-textWithIcon-wrapper
+  .atoms-label {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+@media (max-width: 1280px) {
+  .organism-logAnalyticsTable-wrapper
+    .molecules-textWithIcon-wrapper
+    .atoms-label {
+    font-size: 10px;
+  }
+}

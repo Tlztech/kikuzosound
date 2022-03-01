@@ -1,0 +1,174 @@
+.enable-wrapper {
+  padding-left: 32px;
+  padding-right: 3px;
+}
+
+.organism-add-modal-container .atoms-checkbox {
+  margin-left: 15px;
+}
+
+.organism-add-modal-container .modal-dialog {
+  max-width: 60%;
+}
+
+.organism-add-modal-container .textInput-wrapper form > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.organism-add-modal-container .textInput-wrapper .inputStyle {
+  width: 100%;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  outline: none !important;
+  height: 40px !important;
+}
+
+.organism-add-modal-container .textInput-wrapper .radioStyle {
+  padding-right: 3px;
+}
+.organism-add-modal-container .textInput-wrapper .form-item {
+  position: relative;
+  grid-template-columns: 22% 78% !important;
+}
+.organism-add-modal-container .textInput-wrapper .icon-wrapper {
+  grid-template-columns: 50% 50% !important;
+}
+
+.organism-add-modal-container .inputStyle .background {
+  background: black;
+}
+.organism-add-modal-container .textInput-wrapper .labelStyle {
+  text-align: right;
+  padding-right: 25px;
+  margin-bottom: 0px !important;
+  font-weight: bold;
+}
+.organism-add-modal-container .textInput-wrapper .radioStyle {
+  padding-left: 5px;
+  padding-right: 15px !important;
+  margin-bottom: 0px !important;
+}
+.organism-add-modal-container-col {
+  margin: 0px 0px 0px 15px;
+  padding: 0px;
+  text-align: left;
+}
+
+.organism-add-modal-container-col .atoms-input {
+  width: 60%;
+  margin-left: 15px;
+}
+
+.organism-add-modal-container-col .atoms-label {
+  margin-left: 0px;
+  font-size: 14px;
+  min-width: 70px;
+}
+
+.organism-add-modal-container-col.examTitle .molecules-inputwithlabel-wrapper {
+  margin-left: 15px;
+}
+
+.organism-add-modal-container-col .molecules-inputwithlabel-wrapper {
+  float: left;
+  display: block;
+}
+
+.organism-add-modal-footer {
+  margin: auto;
+}
+
+.organism-add-modal-container .add-button {
+  display: flex !important;
+  justify-content: center;
+}
+
+.organism-add-modal-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 100%;
+  width: max-content;
+}
+
+@media (max-width: 1048px) {
+  .organism-add-modal-container .labelstyle {
+    word-wrap: break-word;
+    text-align: right;
+  }
+}
+
+@media (max-width: 740px) {
+  .organism-add-modal-container .modal-dialog {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    text-align: center;
+  }
+  .organism-add-modal-container-col .atoms-label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .organism-add-modal-container .input-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .organism-add-modal-container-col.examTitle {
+    margin-left: 0;
+  }
+
+  .organism-add-modal-container-col .molecules-inputwithlabel-wrapper {
+    display: grid !important;
+    grid-template-columns: minmax(60px, auto) auto;
+    align-items: baseline;
+  }
+
+  .organism-add-modal-container-col
+    .molecules-inputwithlabel-wrapper
+    .atoms-input {
+    width: 80%;
+    min-width: 100px;
+  }
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  width: 120px;
+}
+
+.organism-add-modal-container .MuiDropzonePreviewList-image {
+  height: auto;
+}
+
+.organism-add-modal-container .quiz-item {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  margin: 10px 0;
+}
+
+.group_attr_wrapper .select2-container{
+  width:85% !important
+}
+
+.MuiGrid-spacing-xs-8{
+  margin-bottom:32px !important;
+}
+
+.organism-QuizPackAdd-quiz_pack_dropdown{
+  width: 100% !important;
+  margin-left: 0px !important;
+  margin-bottom: 5px !important;
+}
+
+.teacher-group_attr_wrapper .select2-container{
+  width:100% !important
+}

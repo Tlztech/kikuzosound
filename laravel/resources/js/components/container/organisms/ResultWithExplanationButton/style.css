@@ -1,0 +1,57 @@
+.organism-ResultWithExplanationButton-container {
+  padding: 20px;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 6px;
+}
+
+.organism-ResultWithExplanationButton-container .organism-score-text {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Quicksand;
+  color: #333333;
+}
+
+.organism-ResultWithExplanationButton-container .organism-right-answer {
+  color: #ff7992;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+.organism-ResultWithExplanationButton-container .organism-explanation-text {
+  font-size: 14px;
+}
+
+.organism-ResultWithExplanationButton-container .organism-orange-line {
+  display: block;
+  width: 100%;
+  height: 20px;
+  background-repeat: repeat-x;
+  margin: auto;
+}
+
+.organism-ExplanationButton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.organism-ResultWithExplanationButton-container
+  .molecules-explanationbutton-container {
+  width: 46%;
+  margin: 8px;
+}
+
+.organism-ResultWithExplanationButton-container .organism-explanation-button {
+  margin: 20px 0;
+  cursor: pointer;
+  min-width: 120px;
+  min-height: 40px;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+}

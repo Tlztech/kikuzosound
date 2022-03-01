@@ -1,0 +1,35 @@
+.molecules-explanationbutton-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-height: 60px;
+}
+
+.molecules-explanationbutton-container .molecules-explanationbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.molecules-explanationbutton-container .atoms-p {
+  letter-spacing: 1px;
+  font-size: 18px;
+  color: #5c5c5c;
+  line-height: 60px;
+  margin: 0px;
+  text-align: center;
+}
+
+.molecules-explanationbutton-container .atoms-Image {
+  height: auto;
+  width: 15px;
+  margin: 0px 20px;
+  object-fit: cover;
+}
+
+.molecules-explanationbutton-container
+  .molecules-explanationbutton-image-score {
+  width: 22px !important;
+}

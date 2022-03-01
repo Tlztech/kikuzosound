@@ -1,0 +1,8 @@
+.organisms-SpendTimeAnalytics-wrapper .chart-wrapper {
+  display: flex;
+  align-content: center;
+}
+
+.chart-wrapper .molecules-spendTime-ranking-wrapper {
+  margin-top: 30px;
+}

@@ -1,0 +1,97 @@
+@extends('layouts.app')
+
+@section('title', 'speaker')
+
+@section('breadcrumb')
+{!! Breadcrumbs::render('speaker') !!}
+@endsection
+
+@section('content')
+
+<!-- メイン聴診音ライブラリ（左） -->
+  <div id="container">
+    <div class="container_inner">
+      <div class="youtube_contents">
+        <?php $SPEAKER_YOUTUBE_URL = env('SPEAKER_YOUTUBE_URL'); ?>
+        <iframe src="{{ $SPEAKER_YOUTUBE_URL }}" frameborder="0" allowfullscreen class="sp_none"></iframe>
+        <iframe src="{{ $SPEAKER_YOUTUBE_URL }}" frameborder="0" allowfullscreen class="pc_none"></iframe>
+
+        <!--  <p class="link_red"><a href="pdf/3s.pdf" target="_blank">資料はこちらです>>></a></p>
+        <p class="link_red"><a href="https://telemedica.jp/kikuzou" target="_blank">ご注文はこちらです>>></a></p> -->
+      </div>
+
+      <div class="contents_box_inner pTB20" style="margin-top:30px;">
+        <p class="contact_submit mB20 sp_none">
+          <a href="pdf/3s.pdf" target="_blank" class="submit_backbtn" style="background: #47B8E8;">資料はこちら</a>
+          <a class="submit_backbtn" href="https://telemedica.jp/kikuzou" target="_blank" style="background: #47B8E8;width: cursor:pointer;">ご注文はこちら</a>
+          <a class="submit_btn" href="http://api.telemedica.jp/download/vest.docx" target="_blank" style="cursor:pointer;">聴くゾウベスト(Word)</a>
+        </p>
+
+        <p class="contact_submit mB20 pc_none" style="text-align: center;">
+          <a href="pdf/3s.pdf" target="_blank" class="submit_backbtn" style="background: #47B8E8;width: 240px;">資料はこちら</a><br><br>
+          <a class="submit_backbtn" href="https://telemedica.jp/kikuzou" target="_blank" style="background: #47B8E8;cursor:pointer;width: 240px;">ご注文はこちら</a><br><br>
+          <a class="submit_btn" href="http://api.telemedica.jp/download/vest.docx" target="_blank" style="cursor:pointer;width: 240px;">聴くゾウベスト(Word)</a>
+        </p>
+      </div>
+    </div>
+    <!-- /#container_inner -->
+  </div>
+  <!-- /#container -->
+
+  <div class="vest">
+    <div class="vest_title">「聴くゾウベスト」出張貸出サービス</div>
+    <div class="vest_text">
+      <p>
+        SP（模擬患者）研修で聴くゾウを利用して、肺音聴診するための専用ベストの貸出プランをご用意いたしました。
+      </p>
+      <p>
+        SP着用インナーベストに聴くゾウをセット（写真１）して、アウターを着れば完成です（写真２）。
+      </p>
+    </div>
+    <div class="c_container">
+      <div class="oneline">
+        <ul>
+          <li>
+            <div class="mat1">
+              <img src="{{{asset('img/vest1.jpg')}}}" style="width:100%;height:auto;">
+              <p>写真1</p>
+            </div>
+          </li>
+          <li>
+            <div class="mat2">
+              <img src="{{{asset('img/vest2.jpg')}}}" style="width:100%;height:auto;">
+              <p>写真2</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="vest_text">
+      <p style="text-align: center;font-weight:bold;">
+        聴くゾウベストセット内容
+      </p>
+      <p>
+        ・聴診音は、肺音の正常音/異常音（fine crackles, coarse crackles, wheezes etc.）が利用できます。
+      </p>
+      <p>
+        ・心音や腸音をご希望される場合はカスタマーセンター（3sp@telemedica.co.jp）にお問合せください。
+      </p>
+      <br>
+      <p style="text-align: center;">
+        <img src="{{{asset('img/vest3.png')}}}" style="width:80%;height:auto;">
+      </p>
+      <br>
+      <p>
+        ※基本料金・見積り依頼書は上記「聴くゾウベスト(Word)」からWordファイルをダウンロードしてください。
+      </p>
+      <p>
+        ※ダウンロードが行えない場合は「<a href="http://api.telemedica.jp/download/vest.pdf" target="_blank">基本料金・貸出申込書(PDFファイル)</a>」からダウンロードを行ってください。
+      </p>
+      <p>
+        ※その他、お問い合わせ等は<a href="{{route('contact')}}">「お問合わせ」</a>よりお気軽にお問合わせください。
+      </p>
+    </div>
+  </div>
+
+</div>
+@endsection

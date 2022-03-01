@@ -1,0 +1,109 @@
+.organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-add-inspection-library-container .modal-body {
+  padding: 32px;
+}
+
+.organism-add-inspection-library-container .file-select {
+  width: 68%;
+  margin-left: 15px;
+}
+
+.organism-add-inspection-library-container audio {
+  width: 70%;
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-add-inspection-library-container video {
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-modal-image {
+  width: 16px;
+}
+
+.organism-add-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-add-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-add-inspection-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-input {
+  width: 68%;
+}
+
+.organism-add-inspection-library-container .labelstyle {
+  font-weight: bold;
+}
+
+.organism-add-inspection-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 25%;
+}
+
+.inspection-library-modal-item {
+  width: 27%;
+}
+
+.organism-add-inspection-library-container .teast {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.organism-add-inspection-library-container .px-no {
+  width: 35px;
+}
+
+.organism-add-inspection-library-container .select-second {
+  padding-left: 240px;
+}
+
+.organism-add-inspection-library-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.inspection-library-organism-modal-body .select-item {
+  margin-left: 27%;
+}
+
+.organism-add-inspection-library-container
+  .organism-inspection-radio-container {
+  padding-left: 25px;
+}
+
+.organism-add-inspection-library-container
+  .organism-inspection-group-attribute-item {
+  padding-left: 0px;
+}
+
+.organism-add-inspection-library-container .select2-container {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 10px;
+  min-width: 120px;
+}
+
+.organism-add-inspection-library-container .organism-inspection-status-wrapper {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}

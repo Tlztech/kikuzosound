@@ -1,0 +1,7 @@
+.page-ExamManagePage-wrapper {
+  @media (max-width: 1160px) {
+    .organisms-ExamTable-wrapper {
+      overflow-x: scroll;
+    }
+  }
+}

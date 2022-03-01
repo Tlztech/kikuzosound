@@ -1,0 +1,26 @@
+.templates-home-wrapper {
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  display: grid;
+}
+
+.templates-home-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.templates-home-wrapper .templates-home-title {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.templates-home-wrapper .organisms-homelist-wrapper{
+  overflow-y: overlay;
+}

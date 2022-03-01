@@ -1,0 +1,67 @@
+.template-QuizPacks-wrapper td,
+.template-QuizPacks-wrapper th {
+  text-align: center;
+  word-wrap: break-word;
+  width: auto;
+}
+
+.template-QuizPacks-wrapper .table {
+  min-width: 800px;
+  /* overflow-y: scroll; */
+}
+
+.template-QuizPacks-wrapper tbody {
+  display: block;
+  height: 400px;
+  overflow: auto;
+}
+
+.template-QuizPacks-wrapper thead,
+.template-QuizPacks-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* even columns width , fix width of table too*/
+}
+
+.template-QuizPacks-wrapper tbody tr {
+  margin-bottom: 20px;
+}
+
+.template-QuizPacks-wrapper table td {
+  overflow-wrap: break-word;
+}
+
+.template-QuizPacks-wrapper td,
+.template-QuizPacks-wrapper th {
+  padding: 10px;
+  text-align: left;
+}
+
+.template-QuizPacks-wrapper .no-data {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+}
+
+/* @media (max-width: 1476px) {
+  .template-QuizPacks-wrapper td,
+  .template-QuizPacks-wrapper th {
+    padding: 10px 0px;
+    text-align: left;
+  }
+} */
+@media (max-width: 876px) {
+  .template-QuizPacks-wrapper tbody {
+    padding: auto 0px;
+    text-align: center;
+  }
+  .template-QuizPacks-wrapper td,
+  .template-QuizPacks-wrapper th {
+    font-size: 0.7rem;
+  }
+  .template-QuizPacks-wrapper table td {
+    font-size: 0.7rem;
+  }
+}

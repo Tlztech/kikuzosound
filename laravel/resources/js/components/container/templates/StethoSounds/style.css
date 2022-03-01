@@ -1,0 +1,92 @@
+.template-Stethosounds-wrapper {
+  background-color: #ffffff;
+  padding: 16px 36px;
+  margin: 2%;
+  height: 87vh;
+  display: grid;
+}
+
+
+.template-Stethosounds-wrapper .toast-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.stetho-sounds-bottom {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.template-Stethosounds-wrapper td,
+.template-Stethosounds-wrapper th {
+  text-align: center;
+  word-wrap: break-word;
+  width: auto;
+}
+
+.template-Stethosounds-wrapper .table {
+  min-width: 800px;
+}
+
+.template-Stethosounds-wrapper tbody {
+  display: block;
+  overflow-x: auto;
+  overflow-y: overlay;
+  padding-right: 5px;
+}
+
+
+.template-Stethosounds-wrapper thead,
+.template-Stethosounds-wrapper tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.template-Stethosounds-wrapper tbody tr {
+  margin-bottom: 10px;
+}
+
+.template-Stethosounds-wrapper table td {
+  overflow-wrap: break-word;
+}
+
+.template-Stethosounds-wrapper td,
+.template-Stethosounds-wrapper th {
+  padding: 10px;
+  text-align: left;
+}
+
+.template-Stethosounds-wrapper .no-data {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.template-Stethosounds-wrapper .no-data td {
+  font-size: medium;
+  border-top: none;
+}
+
+@media (max-width: 1280px) {
+  .template-Stethosounds-wrapper tbody {
+    /* padding-right: 20px; */
+  }
+}
+
+@media (max-width: 876px) {
+  .template-Stethosounds-wrapper tbody {
+    padding: auto 0px;
+    text-align: center;
+  }
+  .template-Stethosounds-wrapper td,
+  .template-Stethosounds-wrapper th {
+    font-size: 0.7rem;
+  }
+  .template-Stethosounds-wrapper table td {
+    font-size: 0.7rem;
+  }
+}

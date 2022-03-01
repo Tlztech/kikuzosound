@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: ssh key generate
+      run: echo "$STG_DEV_TELEMEDICA_RSA_PRIVATE_KEY" > key && chmod 600 key
+      env:
+        STG_DEV_TELEMEDICA_RSA_PRIVATE_KEY: ${{ secrets.STG_DEV_TELEMEDICA_RSA_PRIVATE_KEY }}
+    - name: check file
+      run: ls -al
+    - name: Making tar for Deploy
+      run: bash ./prepare_development.sh -e development -l "3sportal_ld/" -v "laravel/" -p "--build" -f true
+    - name: Deploying
+      run: bash ./exec_deploy_development.sh -i key -u projects@dev.3sp.sys4tr.com -d 3sportal -p "--build" -f false

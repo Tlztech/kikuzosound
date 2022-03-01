@@ -1,0 +1,82 @@
+.organism-add-ecg-library-container .organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-add-ecg-library-container .organism-modal-image {
+  width: 16px;
+}
+
+.organism-add-ecg-library-container .labelstyle {
+  font-weight: bold;
+}
+
+.organism-add-ecg-library-container .MuiDropzoneArea-root {
+  min-height: 213px;
+}
+
+.organism-add-ecg-library-container .MuiDropzoneArea-textContainer {
+  white-space: pre-wrap;
+}
+
+.organism-add-ecg-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-input {
+  width: 100%;
+}
+
+.organism-add-ecg-library-container .ecg-library-organism-modal-body {
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.organism-add-ecg-library-container .organism-add-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-add-ecg-library-container .organism-add-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-add-ecg-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 40%;
+  font-weight: bold;
+}
+
+.organism-add-ecg-library-container .organism-radio-wrapper {
+  display: flex;
+}
+
+.organism-add-ecg-library-container .organism-radio-label {
+  width: 40%;
+  font-weight: bold;
+}
+
+.organism-add-ecg-library-container .organism-radio-button {
+  width: 100%;
+  margin-left: 14px;
+}
+
+.organism-add-ecg-library-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 30%;
+}
+
+.organism-add-ecg-library-container
+  .organism-ecg-radio-container {
+  padding-left: 42px;
+}
+
+.organism-add-ecg-library-container .MuiTypography-h5{
+  font-size: 14px;
+}
+
+.organism-add-ecg-library-container .file-select {
+  width: 93%
+}

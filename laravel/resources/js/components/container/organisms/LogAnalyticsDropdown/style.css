@@ -1,0 +1,30 @@
+.organism-logAnalyticsDropdown-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.organism-logAnalyticsDropdown-wrapper 
+  .wide-dropdown 
+  .molecules-TitleWithDropDown-wrapper 
+  .molecules-dropdown-container {
+  min-width: 132px !important;
+ }
+
+.organism-logAnalyticsDropdown-wrapper 
+  .molecules-TitleWithDropDown-wrapper 
+  .molecules-TitleBoxIcon-wrapper {
+    align-items: unset;
+  } 
+
+@media (max-width: 980px) {
+  .organism-logAnalyticsDropdown-wrapper {
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr); */
+    margin-bottom: 12px;
+  }
+
+  .organism-logAnalyticsDropdown-wrapper 
+    .molecules-TitleWithDropDown-wrapper {
+    margin-bottom: 8px;
+  }
+}

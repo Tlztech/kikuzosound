@@ -1,0 +1,12 @@
+/node_modules
+/storage/*.key
+/vendor
+/.idea
+/public/storage
+/public/tmp
+# /public/img/quiz_packs
+# /public/img/quizzes
+# /public/img/stetho_sound_images
+# /public/audio/stetho_sounds
+.vagrant
+.php_cs.cache

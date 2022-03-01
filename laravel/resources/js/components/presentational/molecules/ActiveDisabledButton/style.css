@@ -1,0 +1,21 @@
+.molecules-activeDisabledButton-wrapper .atoms-button {
+  min-width: 80px;
+}
+
+.molecules-activeDisabledButton-wrapper .molecules-active-button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+
+.molecules-activeDisabledButton-wrapper .molecules-disabled-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+}
+
+.molecules-activeDisabledButton-wrapper .molecules-selected-button {
+  background-color: #39b0f2;
+  color: #ffffff;
+  border-color: #39b0f2;
+}

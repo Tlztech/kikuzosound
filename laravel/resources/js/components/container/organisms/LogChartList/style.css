@@ -1,0 +1,32 @@
+.organisms-log-chart-wrapper {
+  padding: 8px;
+}
+
+.organisms-log-chart-wrapper .organisms-rank-list {
+  padding: 0px 16px;
+  margin: auto;
+}
+
+.organisms-log-chart-wrapper .list-wrapper .table-responsive {
+  height: 400px;
+  overflow-y: scroll;
+}
+
+@media (max-width: 876px) {
+  .organisms-log-chart-wrapper {
+    display: block;
+  }
+  .chart-style {
+    display: block;
+    text-align: center;
+  }
+}
+@media (max-width: 876px) {
+  .chart-style .col-md-7 {
+    flex: 0 0 58.333333%;
+    max-width: 100%;
+  }
+  .organisms-rank-list .mt-3 {
+    text-align: center;
+  }
+}

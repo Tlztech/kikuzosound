@@ -1,0 +1,40 @@
+.help-block{
+    color: red;
+    font-size: 12px;
+}
+.input_name{
+    width:35%;
+}
+.mat{
+    width: 100%;
+}
+.msg_err {
+    color: #FF0000 !important;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    display: none;
+}
+.submit_btn:disabled {
+    background: #ddd;
+}
+.main-wrapper {
+    min-height: 80vh;
+    position: relative;
+}
+#exam_name_dropdown:disabled {
+    background: #ccc !important;
+    color: #ccc;
+}
+.error_wrapper span {
+    color: #FF0000 !important;
+    margin-left: 10px;
+}
+/* .exam-groups .exam_group_table {
+    width: 370px !important;
+} */
+
+.main-wrapper.customer_admin .container{
+    margin-top: unset;
+}

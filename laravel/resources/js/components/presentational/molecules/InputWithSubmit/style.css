@@ -1,0 +1,15 @@
+.molecules-input-submit {
+}
+
+.molecules-input-submit .atoms-button {
+  width: 80px;
+  margin-left: 15px;
+}
+
+.input-with-button {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin: auto;
+  width: 90%;
+  text-align: center;
+}

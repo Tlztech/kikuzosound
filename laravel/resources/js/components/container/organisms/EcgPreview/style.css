@@ -1,0 +1,61 @@
+.organism-EcgPreview-wrapper .modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-EcgPreview-wrapper .organism-modal-image {
+  width: 16px;
+}
+
+.organism-EcgPreview-wrapper .modal-body {
+  padding: 12px 32px;
+  word-break: break-all;
+}
+
+.organism-EcgPreview-wrapper .atoms-label {
+  font-size: 16px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.organism-EcgPreview-wrapper .organism-labelTitle {
+  font-weight: bold;
+}
+
+.organism-EcgPreview-wrapper .organism-explanation-sound-image {
+  width: 200px;
+  border: 1px solid #000;
+}
+
+.organism-EcgPreview-wrapper .organism-audio-label {
+  display: flex;
+  align-items: center;
+}
+
+.organism-EcgPreview-wrapper audio {
+  height: 40px;
+}
+
+.organism-EcgPreview-wrapper .modal-dialog {
+  max-width: 740px;
+  margin: 25px auto;
+}
+
+@media (max-width: 876px) {
+  .organism-EcgPreview-wrapper .modal-dialog {
+    max-width: 660px;
+    margin: 25px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .organism-EcgPreview-wrapper .modal-dialog {
+    max-width: 400px;
+    margin: 25px auto;
+  }
+}
+
+.organism-EcgPreview-wrapper .groupLabel {
+  margin-right: 14px;
+}

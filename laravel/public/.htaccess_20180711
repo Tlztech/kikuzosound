@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+<Files ~ "\.(mp4)$">
+#    SetEnvIf Referer "dev\.telemedica\.co\.jp" allowref
+#    SetEnvIfNoCase Host "dev\.telemedica\.co\.jp" allowhost
+    SetEnvIf Cookie "video=accessok" allowcookie
+    Order deny,allow
+    Deny from all
+#    Allow from env=allowref
+#    Allow from env=allowhost
+    Allow from env=allowcookie
+</Files>

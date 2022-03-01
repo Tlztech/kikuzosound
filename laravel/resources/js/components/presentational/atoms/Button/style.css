@@ -1,0 +1,98 @@
+.atoms-button {
+  border: none;
+  font-size: 12px;
+  font-family: "Arial", sans-serif;
+}
+
+.atoms-Button-active {
+  background-color: #39b0f2;
+}
+
+.atoms-Button-active:hover {
+  background-color: #39b0f2;
+}
+
+.atoms-Button-active:focus {
+  background-color: #39b0f2;
+}
+
+.atoms-Button-danger:focus {
+  background-color: #dc3545;
+}
+
+.atoms-Button-preview,
+.atoms-Button-preview:focus {
+  background-color: #e7a72e;
+  color: white !important;
+}
+
+.disabled-button {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+.atoms-Button-submit,
+.atoms-Button-submit:focus {
+  background-color: #ffc108;
+  border-radius: 50px;
+  color: white !important;
+}
+
+.atoms-Button-success:focus {
+  background-color: #28a745;
+}
+
+.atoms-Button-library {
+  background-color: #eeeeee;
+  border-radius: 50px;
+  color: rgb(51, 51, 51);
+}
+
+.atoms-Button-cancel {
+  border: 1px solid #c5c5c5;
+}
+
+.atoms-Button-edit,
+.atoms-Button-addTo {
+  font-size: 14px;
+  padding: 4px;
+  width: 64px;
+}
+
+.atoms-Button-finish,
+.atoms-Button-finish:focus {
+  background-color: #ff7992;
+  color: white !important;
+}
+
+.atoms-Button-quiz-options,
+.atoms-Button-quiz-options:focus {
+  background-color: #ffffff;
+  color: rgb(51, 51, 51);
+  font-size: 20px;
+  margin: 8px 16px;
+}
+
+.atoms-Button-quiz-options:active {
+  background-color: #ff7992;
+}
+
+.atoms-Button-quiz-options-selected,
+.atoms-Button-quiz-options-selected:hover {
+  background-color: #ff7992;
+  color: #ffffff;
+  font-size: 20px;
+  margin: 8px 16px;
+}
+
+.atoms-Div-correct {
+  background-color: #edfaff !important;
+}
+
+.atoms-choice-button {
+  margin: 8px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 200;
+  width: 168px;
+}

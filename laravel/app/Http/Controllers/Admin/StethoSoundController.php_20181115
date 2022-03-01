@@ -1,0 +1,526 @@
+<?php
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Requests;
+use App\Http\Requests\StethoSoundRequest;
+use App\Http\Controllers\Controller;
+
+use App\StethoSound;
+use App\StethoSoundImage;
+use App\QuizStethoSound;
+use App\Comment;
+use App\User;
+use DB;
+use Log;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Carbon\Carbon;
+
+
+class StethoSoundController extends Controller {
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
+  public function index()
+  {
+    $stetho_sounds = [];
+    // システム管理者はコンテンツをすべて表示する
+    if (\Auth::user()->role == User::$ROLE_ADMIN)
+      $stetho_sounds = StethoSound::orderBy('id', 'asc')->paginate(20);
+    // 監修者は自分が担当するコンテンツをすべて表示する
+    else if (\Auth::user()->role == User::$ROLE_SUPERINTENDENT)
+      $stetho_sounds = StethoSound::where('user_id', \Auth::user()->id)->orderBy('id', 'asc')->paginate(20);
+
+    return view('admin.stetho_sounds.index', compact('stetho_sounds'));
+  }
+
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return Response
+   */
+  public function create()
+  {
+    // 監修者の一覧を取得する
+    $superintendents = User::superintendents();
+    return view('admin.stetho_sounds.create')->with('superintendents', $superintendents->get());
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param StethoSoundRequest $request
+   * @return Response
+   */
+  public function store(StethoSoundRequest $request)
+  {
+    DB::beginTransaction();
+    $stetho_sound = $this->assignRequestToStethoSound(new StethoSound(), $request);
+    $success = $stetho_sound->save();
+
+    if ( !$success ) {
+      DB::rollback();
+      Log::error('データを登録できませんでした。');
+      return view('admin.stetho_sounds.create', compact('stetho_sound'))
+           ->with('superintendents', User::superintendents()->get())
+           ->withErrors(['sound_file'=>'データを登録できませんでした。']);
+    }
+
+    // ID取得
+    $last_id = $stetho_sound->id;
+
+    // TODO: 重複削除
+    // TODO: サウンドファイルOKが画像ファイルNGの場合に、
+    //       サウンドファイルのsound_pathがセッションから削除される問題への対応 
+
+    // サウンドファイルを保存する
+    if ( $request->hasFile('sound_file') || $request->has('sound_path') ) {
+      $sound_path = $this->moveSoundFile($stetho_sound, $request);
+      if ( is_null($sound_path) ) {
+        DB::rollback();
+        Log::error('サウンドファイルの移動に失敗しました: 元ファイルのパス: ' . public_path() . $sound_path);
+        return view('admin.stetho_sounds.create', compact('stetho_sound'))
+             ->with('superintendents', User::superintendents()->get())
+             ->withErrors(['sound_file'=>'サウンドファイルの移動に失敗しました。']);
+      }
+      $stetho_sound->sound_path = $sound_path;
+      $stetho_sound->save();
+      // セッションにパスがある場合、ファイルとSessionも消す
+      $this->removeTmpFile($request->input('sound_path'));
+      \Session::forget('sound_path');
+    }
+    // else {
+    //   DB::rollback();
+    //   return $this->create('admin.stetho_sounds.create', compact('stetho_sound'))
+    //               ->with('superintendents', User::superintendents()->get())
+    //               ->withErrors(['sound_file'=>'サウンドファイルは必須項目です']);
+    // }
+
+    // 画像を保存する
+    if ( $request->hasFile('image_files') || $request->input('image_paths') ) {
+      $images = $this->initStethoSoundImages($last_id, $request);
+
+      // 聴診音画像レコード登録
+      // $images配列から新しいコレクションインスタンスを作成し、さらにkey[data]のみの配列を作成する
+      $success = $stetho_sound->images()->saveMany( collect($images)->lists('data') );
+      if ( !$success ) {
+        DB::rollback();
+        Log::error('聴診音画像データを登録できませんでした。');
+        return view('admin.stetho_sounds.create', compact('stetho_sound'))
+             ->with('superintendents', User::superintendents()->get())
+             ->withErrors(['sound_file'=>'データを登録できませんでした。']);
+      }
+
+      // 画像ファイル保存
+      foreach ($images as $image) {
+        $image_path = $this->moveStethoSoundImageFile($image);
+        if ( is_null($image_path) ) {
+          DB::rollback();
+          Log::error('画像ファイルの移動に失敗しました: 元ファイルのパス: ' . public_path() . $image_path);
+          return view('admin.stetho_sounds.create', compact('stetho_sound'))
+               ->with('superintendents', User::superintendents()->get())
+               ->withErrors(['image_files'=>'画像ファイルの移動に失敗しました。']);
+        }
+
+        list($w,$t) = getimagesize(public_path($image_path));
+        if($t > 440){
+           // リサイズ
+          $img = Image::make(public_path($image_path))->resize(null,440,function ($constraint) {
+            $constraint->aspectRatio();
+          });
+          // 上書き保存
+          $img->save(public_path($image_path));
+        }
+
+
+        $image['data']->image_path = $image_path;
+        $image['data']->save();
+        // セッションにパスがある場合、ファイルとSessionも消す
+        $this->removeTmpFile($image['path']);
+      }
+      \Session::forget('stetho_sound_images');
+    }
+
+    DB::commit();
+
+    return redirect()->route('admin.stetho_sounds.index')->with('message', 'Item created successfully.');
+  }
+
+  /**
+   * Display the specified resource.
+   *
+   * @param  int  $id
+   * @return Response
+   */
+  public function show($id)
+  {
+    $stetho_sound = StethoSound::findOrFail($id);
+
+    return view('admin.stetho_sounds.show', compact('stetho_sound'));
+  }
+
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   * @param  Request $request
+   * @return Response
+   */
+  public function edit(Request $request, $id)
+  {
+    $stetho_sound = StethoSound::findOrFail($id);
+    // 監修者の一覧を取得する
+    $superintendents = User::superintendents()->get();
+
+    $page = $request->query('page');
+
+    return view('admin.stetho_sounds.edit', compact(['stetho_sound','superintendents', 'page']));
+  }
+
+  /**
+   * 監修ステータス変更用API
+   */
+  public function update_status(Request $request, $id)
+  {
+    DB::beginTransaction();
+    try {
+      $stetho_sound = StethoSound::findOrFail($id);
+      $stetho_sound->status = $request->input('status');
+      $stetho_sound->save();
+      Log::info("監修ステータスの変更に成功しました");
+      DB::commit();
+    } catch (Exception $e) {
+      Log::error("監修ステータスの変更に失敗しました");
+      DB::rollback();
+      return redirect()->route('admin.stetho_sounds.show', $id)
+                 ->withErrors(['image_files'=>'聴診音画像ファイルを移動できませんでした。']);
+    }
+    return redirect()->route('admin.stetho_sounds.show', $id);
+  }
+
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  int  $id
+   * @param StethoSoundRequest $request
+   * @return Response
+   */
+  public function update(StethoSoundRequest $request, $id)
+  {
+    $page = $request->input('page');
+    // 排他制御処理
+    $stetho_sound = StethoSound::findOrFail($id);
+    $is_force_update = $request->input('is_force_update',false);
+    if (!$is_force_update) {
+      $client_up_at = Carbon::parse($request->input('updated_at'));
+      $sever_up_at  = $stetho_sound->updated_at;
+      if ($client_up_at->lt($sever_up_at)) {
+        return redirect()
+          ->route('admin.stetho_sounds.edit', $id)
+          ->withInput()
+          ->withErrors(['is_force_update'=>'編集中に他のユーザが更新しました。強制的に変更を行う場合は『強制更新』にチェックを入れ、保存ボタンを押してください。']);
+      }
+    }
+
+    DB::beginTransaction();
+    $stetho_sound = $this->assignRequestToStethoSound(StethoSound::findOrFail($id), $request);
+    $success = $stetho_sound->save();
+
+    if ( !$success ) {
+      DB::rollback();
+      // DBに登録できなかった旨を500と共に返す
+      return view('admin.stetho_sounds.create', compact('stetho_sound'))->with('errors', 'データを登録できませんでした。');
+    }
+
+    // サウンドファイルを保存する
+    if ( $request->hasFile('sound_file') || $request->has('sound_path') ) {
+      $sound_path = $this->moveSoundFile($stetho_sound, $request);
+      if ( is_null($sound_path) ) {
+        DB::rollback();
+        // ココを通ると　ErrorException in StethoSoundController.php line 187:  Undefined variable: base_dir
+        // TODO: ファイルを移動できなかった旨を500と共に返す
+        Log::debug('サウンドファイルの移動に失敗: ' . public_path() . $request->input('sound_path').':'.$base_dir . $filename);
+        return $this->edit($id);
+      }
+      $stetho_sound->sound_path = $sound_path;
+      $stetho_sound->save();
+      // セッションにパスがある場合、ファイルとSessionも消す
+      $this->removeTmpFile($request->input('sound_path'));
+      \Session::forget('sound_path');
+    }
+
+    // 画像を保存する
+    if ( $request->hasFile('image_files') || $request->input('image_paths') ) {
+      $images = $this->initStethoSoundImages($stetho_sound->id, $request);
+
+      // 聴診音画像レコード登録
+      $image_models = $stetho_sound->images()->saveMany( collect($images)->lists('data') );
+
+      if ( !$success ) {
+        DB::rollback();
+        Log::error('聴診音画像データを登録できませんでした。');
+        return view('admin.stetho_sounds.edit', $id, compact('stetho_sound'))
+             ->with('superintendents', User::superintendents()->get())
+             ->withErrors(['image_files'=>'データを登録できませんでした。']);
+      }
+
+      // 画像ファイル保存
+      foreach ($images as $image) {
+        $image_path = $this->moveStethoSoundImageFile($image);
+        if ( is_null($image_path) ) {
+          DB::rollback();
+          Log::error('聴診音画像ファイルを移動できませんでした:' . $image['path']);
+          return redirect()->route('admin.stetho_sounds.edit', $id)
+               ->with('stetho_sound', $stetho_sound)
+               ->withErrors(['image_files'=>'聴診音画像ファイルを移動できませんでした。']);
+        }
+        // リサイズ
+        $img = Image::make(public_path($image_path))->resize(null,440,function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        // 上書き保存
+        $img->save(public_path($image_path));
+        
+        $image['data']->image_path = $image_path;
+        $image['data']->save();
+        // セッションにパスがある場合、ファイルとSessionも消す
+        $this->removeTmpFile($image['path']);
+      }
+      \Session::forget('stetho_sound_images');
+    }
+    // 画像ファイルを削除する（削除の指定のあるなしは関数内にある）
+    $this->removeStethoSoundImages($request);
+
+    DB::commit();
+
+    $url = \URL::route('admin.stetho_sounds.index') . '?page=' . $page;
+    return \Redirect::to($url)->with('message', 'Item updated successfully.');
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return Response
+   */
+  public function destroy($id)
+  {
+    DB::beginTransaction();
+    try {
+      // クイズが聴診音（コンテンツ）を使用しているか確認する
+       $quiz_stetho_sound = QuizStethoSound::where('stetho_sound_id',$id)->get();
+      if($quiz_stetho_sound->count())
+      {
+        // クイズが聴診音（コンテンツ）を使用している場合は、エラー
+        Log::error('クイズがコンテツを使用しているため、削除できません');
+        return redirect()->route('admin.stetho_sounds.index')
+             ->withErrors(['delete_error'=>'クイズがコンテツを使用しているため、削除できませんでした']);
+      }
+      $stetho_sound = StethoSound::findOrFail($id);
+      // 聴診音画像の削除
+      foreach ($stetho_sound->images()->get() as $img) {
+        $img->delete();
+      }
+      
+      // コンテツ画像の削除
+      $stetho_sound->delete();
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error('コンテンツの削除に失敗しました');
+      return redirect()->route('admin.stetho_sounds.index')
+           ->withErrors(['delete_error'=>'エラーが発生したため、削除できませんでした']);
+    }
+    
+    return redirect()->route('admin.stetho_sounds.index')->with('messages',['コンテンツを削除しました']);
+  }
+
+  /**
+   * 監修コメントを追加する（API）
+   *
+   */
+  public function add_comment(Request $request, $id)
+  {
+    $stetho_sound = StethoSound::findOrFail($id);
+    $comment = new Comment([
+      'text' => $request->input('text'),
+      'user_id' => \Auth::user()->id
+    ]);
+    $stetho_sound->comments()->save($comment);
+
+    return response()->json([
+      'name'       => $comment->user->name,
+      'text'       => $comment->text,
+      'created_at' => $comment->created_at
+    ]);
+  }
+
+  /**
+   * sound_path以外を保存する
+   *
+   * @param StethoSound $stetho_sound
+   * @param Request $request
+   * @return StethoSound
+   */
+  private function assignRequestToStethoSound($stetho_sound, $request)
+  {
+    $stetho_sound->user_id = $request->input("user_id");
+    $stetho_sound->title = $request->input("title");
+    $stetho_sound->type = $request->input("type");
+    $stetho_sound->area = $request->input("area");
+    $stetho_sound->sound_path = '';
+    $stetho_sound->conversion_type = $request->input("conversion_type");
+    $stetho_sound->is_normal = $request->input("is_normal");
+    $stetho_sound->disease = $request->input("disease");
+    $stetho_sound->description = $request->input("description");
+    $stetho_sound->sub_description = $request->input("sub_description");
+    $stetho_sound->status = $request->input("status");
+    $stetho_sound->is_public = ($request->input("status") == 2 || $request->input("status") == 3) ? 1 : 0;
+    $stetho_sound->disp_order = 0;
+    return $stetho_sound;
+  }
+
+  /**
+   * サウンドファイルを移動する
+   *
+   * @param StethoSound $stetho_sound
+   * @param Request $request
+   * @return string サウンドファイルへの相対URLパス（失敗時はnull）
+   */
+  private function moveSoundFile($stetho_sound, $request)
+  {
+    $base_url = '/audio/stetho_sounds/';
+    $base_dir = public_path() . $base_url;
+
+    $filename = '';
+    $last_id = $stetho_sound->id;
+    $success = false;
+    // アップロードファイルがある場合、そのファイルを優先する。
+    if ( $request->hasFile('sound_file') ) {
+      $file = $request->file('sound_file');
+      $ext  = $file->getClientOriginalExtension();
+      $filename = $last_id . '.' . $ext;
+      $success = $file->move($base_dir, $filename);
+    }
+    // パスだけがある場合
+    else if ( $request->has('sound_path') && \File::exists(public_path() . $request->input('sound_path')) ) {
+      $src_filepath = public_path() . $request->input('sound_path');
+      $ext = \File::extension($src_filepath);
+      $filename = $last_id . '.' . $ext;
+      $success = \File::move($src_filepath, $base_dir . $filename);
+    }
+    if ( $success ) {
+      return $base_url . $filename;
+    }
+    else {
+      return null;
+    }
+  }
+
+  private function moveStethoSoundImageFile($image)
+  {
+    $base_url = '/img/stetho_sound_images/';
+    $base_dir = public_path() . $base_url;
+
+    $filename = '';
+    $success = false;
+    $last_id = $image['data']->id;
+
+    if ( !empty($image['file']) ) {
+      $file = $image['file'];
+      $ext  = $file->getClientOriginalExtension();
+      $filename = $last_id . '.' . $ext;
+      $success = $file->move($base_dir, $filename);
+    }
+    else if ( !empty($image['path']) && \File::exists(public_path() . $image['path'])) {
+      $src_filepath = public_path() . $image['path'];
+      $ext = \File::extension($src_filepath);
+      $filename = $last_id . '.' . $ext;
+      $success = \File::move($src_filepath, $base_dir . $filename);
+    }
+    if ( $success ) {
+      return $base_url . $filename;
+    }
+    else {
+      return null;
+    }
+  }
+
+  /**
+   * 画像ファイルのリストを初期化する
+   *
+   * @param int $stetho_sound_id
+   * @param Request $request
+   * @return Array
+   */
+  private function initStethoSoundImages($stetho_sound_id, $request)
+  {
+    $files  = $request->file('image_files');
+    $paths  = $request->input('image_paths');
+    $ids    = $request->input('image_ids');
+    $titles = $request->input('image_titles');
+
+    // image_filesとimage_pathsとimage_titlesは同じ個数で順番もセットで入力される
+    $count = count($files);
+    $images = []; // レコード、ファイル、パスをまとめる配列
+    for ( $i = 0; $i < $count; $i++ ) { 
+      $file  = $files[$i];
+      $path  = $paths[$i];
+      $id    = $ids[$i];
+      $title = $titles[$i];
+      $data = StethoSoundImage::findOrNew($id);
+      $data->stetho_sound_id = $stetho_sound_id;
+      $data->title = $title;
+      $data->image_path = '';
+      $data->disp_order = $i;
+
+      $images[] = [
+        'data' => $data,
+        'file' => $file,
+        'path' => $path
+      ];
+    }
+
+    $remove_ids = $request->input('remove_image_ids');
+    if ( empty($remove_ids) ) return $images;
+    // 削除処理
+    foreach ($remove_ids as $index => $remove_id) {
+      \Log::debug('$remove_id');
+      \Log::debug($remove_id);
+      $data = StethoSoundImage::findOrNew($remove_id);
+      if ( !empty($data) ) {
+        $data->delete();
+      }
+    }
+    return $images;
+  }
+
+  /**
+   * リクエストから削除する画像のID配列を受け取って削除します。
+   * 
+   * @param Request $request
+   * @return void
+   */
+  private function removeStethoSoundImages($request) {
+    // 引数がなければ終了
+    if ( empty($request) ) 
+      return;
+    // 削除する画像のIDを取得
+    $remove_ids = $request->input('remove_image_ids');
+    // 削除する画像のIDがなければ終了
+    if ( empty($remove_ids) ) 
+      return;
+    // 画像を削除
+    foreach ($remove_ids as $index => $remove_id) {
+      $data = StethoSoundImage::find($remove_id);
+      if ( !empty($data) ) {
+        // 削除する（モデル内で画像ファイルも削除される）
+        $data->delete();
+      }
+    }
+  }
+}

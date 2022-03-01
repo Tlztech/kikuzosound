@@ -1,0 +1,121 @@
+.organism-edit-palpation-library-container .organism-modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-edit-palpation-library-container .modal-body {
+  padding-top: 32px;
+}
+
+.organism-edit-palpation-library-container .file-select {
+  width: 68%;
+  margin-left: 15px;
+}
+
+.organism-edit-palpation-library-container audio {
+  width: 70%;
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-edit-palpation-library-container video {
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.organism-edit-palpation-library-container .organism-modal-image {
+  width: 16px;
+}
+
+.organism-edit-palpation-library-container
+  .palpation-library-organism-modal-body {
+  padding-left: 40px;
+}
+
+.organism-edit-palpation-library-container .organism-edit-modal-footer {
+  border-top: none;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.organism-edit-palpation-library-container .organism-edit-modal-button {
+  width: 80px;
+  font-size: 12px;
+}
+
+.organism-edit-palpation-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-label {
+  width: 25%;
+  font-weight: bold;
+}
+
+.organism-edit-palpation-library-container
+  .molecules-inputwithlabel-wrapper
+  .atoms-input {
+  width: 68%;
+  margin: 4px 0px 0px 14px;
+}
+
+.organism-edit-palpation-library-container audio {
+  margin-bottom: 20px;
+}
+
+.organism-edit-palpation-library-container .labelstyle {
+  padding-right: 40px !important;
+}
+
+.organism-edit-palpation-library-container .organism-palpation-radio-container {
+  padding-left: 23px;
+}
+
+.palpation-library-modal-item {
+  width: 24%;
+}
+
+.teast {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.select-style {
+  margin-left: 8px;
+  width: 300px;
+  height: 38px;
+}
+
+.px-no {
+  width: 35px;
+}
+
+.organism-edit-palpation-library-container .error {
+  color: rgb(194, 68, 68);
+  margin-left: 25%;
+  padding-left: 15px;
+}
+
+.palpation-library-organism-modal-body .select-item {
+  margin-left: 27%;
+}
+.palpation-library-organism-modal-body .labelstyle {
+  margin-right: 16px !important;
+}
+.organism-edit-palpation-library-container .labelstyle {
+  padding-right: 50px;
+}
+
+.organism-edit-palpation-library-container .labelstyle2 {
+  padding-right: 130px;
+}
+
+.organism-edit-palpation-library-container .radio-select-margin {
+  margin-left: 6px;
+}
+
+.organism-edit-palpation-library-container
+  .molecule-radio-label-container
+  .atoms-label {
+  width: 70px;
+}

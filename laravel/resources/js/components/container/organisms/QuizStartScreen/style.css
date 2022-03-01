@@ -1,0 +1,73 @@
+.organism-quizStartScreen-wrapper {
+  padding: 0 12px 12px 12px; 
+  background-color: #47b8e8;
+  border-radius: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.organism-quizStartScreen-wrapper .organism-topbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.organism-quizStartScreen-wrapper .organism-quizTitle {
+  color: #ffffff;
+  font-size: 24px;
+  margin: 0;
+  word-break: break-all;
+}
+
+.organism-quizStartScreen-wrapper .organism-quizStartScreen-container {
+  padding: 20px;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.organism-quizStartScreen-wrapper .organism-close-button {
+  border-radius: 20px;
+  padding: 4px 24px;
+  font-weight: 200;
+  font-size: 16px;
+}
+
+.organism-quizStartScreen-wrapper .organism-orange-line {
+  display: block;
+  width: 100%;
+  height: 20px;
+  background-repeat: repeat-x;
+  margin: auto;
+}
+
+.organism-quizStartScreen-wrapper .organism-image-button-container {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.organism-quizStartScreen-wrapper .organism-start-button-image {
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.organism-quizStartScreen-wrapper .organism-image-text-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 8px;
+}
+
+.organism-quizStartScreen-wrapper .organism-description-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.organism-quizStartScreen-wrapper .atoms-p {
+  letter-spacing: 2px;
+  font-size: 18px;
+}

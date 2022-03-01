@@ -1,0 +1,37 @@
+<?php
+
+// resources/lang/en/appli_confirmation.phpp
+
+return [
+    'title' => 'Confirmation of inquiry form',
+    'msg_confirmation' => 'Submit the following application details. Is it OK?',
+    'name' => 'Name',
+    'facility_name' => 'Facility Name',
+    'affiliation' => 'Affiliation',
+    'postal_code' => 'Postal Code',
+    'address' => 'Address',
+    'phone_number' => 'Phone Number',
+    'email_address' => 'Email Address',
+    'sales_company' => 'Sales Company Name',
+    'branch_office' => 'Branch / Sales Office',
+    'sales_person' => 'Sales Person Name',
+    'company_number' => 'Sales Company Telephone Number',
+    'business_email' => 'Business Email Address',
+    'plan_number' => 'Plan & Number',
+    '1year_payment' => '1 year / monthly payment',
+    '1year_lumpsum' => '1 year / lump-sum payment',
+    '3years_payment' => '3 years / monthly payment',
+    '3years_lumpsum' => 'lump-sum payment every 3 years',
+    'number' => 'Number',
+    'elephant_purchase' => 'Kikuzo to Purchase',
+    'guidance_method' => 'Update Guidance Method',
+    'phone' => 'Phone',
+    'email' => 'Email',
+    'email_guide' => 'We will guide you by email.',
+    'coupon_code' => 'Coupon Code',
+    'payment_price' => 'The payment of the price will be issued by the management company or sales company.',
+    'opinion' => 'Opinion',
+    'button_return' => 'Return',
+    'button_purchase' => 'Purchase',
+    'none' => 'None',
+];

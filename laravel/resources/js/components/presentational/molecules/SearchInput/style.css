@@ -1,0 +1,39 @@
+.molecules-SearchInput-wrapper .atoms-Image-search {
+  margin-left: -35px;
+  width: 25px;
+  height: 25px;
+}
+
+.molecules-SearchInput-wrapper .atoms-input-search {
+  width: 280px;
+  border-radius: 3px;
+  border: 1px solid #e4e4e4;
+  background-color: #f8f8f8;
+  height: 32px;
+}
+.molecules-SearchInput {
+  width: 80%;
+  display: inline-block;
+}
+
+.molecules-SearchInput-search {
+  width: 350px;
+  background: #f9f9f9;
+  padding-right: 35px;
+}
+
+.molecules-SearchInput-search:focus {
+  background: #f9f9f9;
+}
+
+@media (max-width: 740px) {
+  .molecules-SearchInput-wrapper .atoms-input-search {
+    width: 200px;
+  }
+}
+
+@media (max-width: 400px) {
+  .molecules-SearchInput-wrapper .atoms-input-search {
+    width: 150px;
+  }
+}

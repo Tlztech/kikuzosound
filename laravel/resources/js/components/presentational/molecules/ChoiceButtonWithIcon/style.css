@@ -1,0 +1,20 @@
+.molecules-ChoiceButtonWithIcon-wrapper {
+}
+
+.molecules-ChoiceButtonWithIcon-wrapper .molecules-ChoiceButtonWithIcon {
+  background-color: #eeeeee;
+  color: #3b3b3b;
+}
+
+.molecules-ChoiceButtonWithIcon-wrapper
+  .molecules-ChoiceButtonWithIcon-selected {
+  background-color: #118032 !important;
+  color: #ffffff;
+}
+
+.molecules-ChoiceButtonWithIcon-wrapper
+  .molecules-ChoiceButtonWithIcon-submited {
+  background-color: #337ab7;
+  color: #fff;
+  font-size: 16px;
+}

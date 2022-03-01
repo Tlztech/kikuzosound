@@ -1,0 +1,14 @@
+.template-soundOptionPlayer-wrapper {
+  padding: 12px;
+  background-color: #47b8e8;
+}
+
+.template-soundOptionPlayer-wrapper .template-soundOption-wrapper {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 16px 24px;
+}
+
+.template-soundOptionPlayer-wrapper .template-quizTitle {
+  color: #ffffff;
+}

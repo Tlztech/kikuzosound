@@ -1,0 +1,45 @@
+.organism-XrayPreview-wrapper .modal-header {
+  padding: 8px 16px;
+  background-color: #304156;
+  color: #ffffff;
+}
+
+.organism-XrayPreview-wrapper .organism-modal-image {
+  width: 16px;
+}
+
+.organism-XrayPreview-wrapper .organism-labelTitle {
+  font-weight: bold !important;
+}
+
+.organism-XrayPreview-wrapper .modal-body {
+  padding: 12px 32px;
+  word-break: break-all;
+}
+
+.organism-XrayPreview-wrapper .atoms-label {
+  font-size: 16px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.organism-XrayPreview-wrapper .organism-explanation-sound-image {
+  width: 200px;
+  border: 1px solid #000;
+}
+
+.organism-XrayPreview-wrapper .modal-dialog {
+  max-width: 640px;
+  margin: 25px auto;
+}
+
+@media (max-width: 600px) {
+  .organism-XrayPreview-wrapper .modal-dialog {
+    max-width: 400px;
+    margin: 25px auto;
+  }
+}
+
+.organism-XrayPreview-wrapper .groupLabel {
+  margin-right: 14px;
+}

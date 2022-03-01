@@ -1,0 +1,29 @@
+.organism-add-xray-library-container .xray-edit-modal-item {
+  width: 100%;
+  font-weight: bold;
+}
+
+.organism-add-xray-library-container
+  .atoms-label.labelstyle.xray-edit-modal-item.null.undefined {
+  width: 24%;
+}
+
+.organism-add-xray-library-container .select-style {
+  margin-left: 0px;
+}
+
+.organism-add-xray-library-container img.icon-img,
+.organism-add-xray-library-container.MuiDropzonePreviewList-image {
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+}
+
+.organism-add-xray-library-container .MuiTypography-h5 {
+  font-size: 14px;
+}
+
+.organism-add-xray-library-container .edit-thumbnail-image {
+  padding-top: 5px;
+  width: 50%;
+  height: auto;
+}

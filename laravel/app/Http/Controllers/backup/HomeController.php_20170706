@@ -1,0 +1,61 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\StethoSound;
+use App\Lib\IniFile;    /* telemedica 20170615 */
+
+// ホーム画面のコントローラ
+class HomeController extends Controller
+{
+  /**
+   * Show the application dashboard.
+   *
+   * @return \Illuminate\Http\Response
+   */
+
+  /* telemedica 20170615 */
+  /* iniファイルを読み取り、設定 */
+  private $adIni;
+
+  // telemedica 20170615
+  public function __construct()
+  {
+    /* iniファイルを読み取り、設定 */
+    $this->adIni = new IniFile();
+  }
+
+  public function index()
+  {
+    // 広告の有効(表示)・無効(非表示)
+    $params['init_disp'] = $this->adIni->getConfig('init_disp','advertorial','false');
+
+    // 広告の有効(表示)・無効(非表示)の判断
+    if($params['init_disp'] === 'true') {
+      // 広告のタイトル
+      $params['init_title'] = $this->adIni->getConfig('init_title','advertorial','false');
+
+      // 聴診音のID。カンマで複数個の記述可能
+      $init_id = $this->adIni->getConfig('init_id','advertorial','false');
+      $ids = explode(",",$init_id);
+
+      $params['init_text'] = $this->adIni->getConfig('init_text','advertorial','false');
+      $params['init_img1'] = $this->adIni->getConfig('init_img1','advertorial','false');
+      $params['init_alt1'] = $this->adIni->getConfig('init_alt1','advertorial','false');
+      $params['init_img2'] = $this->adIni->getConfig('init_img2','advertorial','false');
+      $params['init_alt2'] = $this->adIni->getConfig('init_alt2','advertorial','false');
+    }
+
+    // 新着の聴診音
+    $stetho_sounds = StethoSound::publicNewAll()->orderBy('created_at','desc')->get();
+
+    // 広告の有効(表示)・無効(非表示)の判断
+    if($params['init_disp'] === 'true') {
+      // 聴診音の順番はこのorderByによる
+      $ad_sounds = StethoSound::SelectID($ids)->orderBy('created_at','desc')->get();
+    }
+
+    return view('home', compact('stetho_sounds','ad_sounds','params'));
+  }
+}

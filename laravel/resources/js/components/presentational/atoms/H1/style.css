@@ -1,0 +1,12 @@
+.atoms-h1 {
+  font-family: sans-serif;
+}
+
+.atoms-H1-primary {
+  color: #000000;
+}
+
+.atoms-H1-white {
+  color: #ffffff;
+  background-color: #000000;
+}

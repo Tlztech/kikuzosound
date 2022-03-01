@@ -1,0 +1,11 @@
+.atoms-ol-number {
+  list-style-type: decimal;
+}
+
+.atoms-ol-alphabet {
+  list-style-type: lower-alpha;
+}
+
+.atoms-ol-none {
+  list-style-type: none;
+}

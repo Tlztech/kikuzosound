@@ -1,0 +1,14 @@
+{
+  "title": "Title",
+  "auscultation_sound_type": "Auscultation Sound Type",
+  "status": "Status",
+  "supervisor": "Supervisor",
+  "public/private": "Public/Private",
+  "ausculation_site": "Ausculation Site",
+  "update_date_and_time": "Update Date and Time",
+  "normal/abnormal": "Normal/Abnormal",
+  "add_new": "Add New",
+  "actions": "Actions",
+  "updated_data_time": "Updated at",
+  "author": "Author"
+}

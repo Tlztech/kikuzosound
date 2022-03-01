@@ -1,0 +1,15 @@
+.molecules-EditDeleteButton-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.molecules-EditDeleteButton-wrapper .atoms-button {
+  width: 70px;
+  height: 30px;
+}
+
+.molecules-EditDeleteButton-wrapper .atoms-Button-danger {
+  margin-right: 6px;
+  margin-left: 6px;
+}

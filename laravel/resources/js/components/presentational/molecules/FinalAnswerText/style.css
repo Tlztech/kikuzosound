@@ -1,0 +1,19 @@
+.molecules-rightAnswer-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #ECF9FF;
+  padding: 8px 16px;
+  word-break: break-all;
+}
+
+.molecules-rightAnswer-container .molecules-rightAnswer {
+  margin-right: 16px;
+}
+
+.molecules-rightAnswer-container .atoms-label {
+  margin: 0;
+}
+
+.molecules-rightAnswer-container .molecules-rightAnswer-description {
+  color: #FF6080;
+}

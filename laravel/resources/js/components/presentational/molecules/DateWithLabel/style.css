@@ -1,0 +1,31 @@
+.molecules-dateWithLabel-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.molecules-dateWithLabel-wrapper .atoms-p {
+  font-weight: bold;
+  font-size: 12px;
+  margin-right: 12px;
+}
+
+.molecules-dateWithLabel-wrapper .molecules-rangeValue {
+  padding: 4px 8px;
+  font-weight: normal;
+  font-size: 10px;
+}
+
+.molecules-dateWithLabel-wrapper .molecules-TitleBoxIcon-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  width: 72px;
+  position: relative;
+  height: 24px;
+  padding-right: 8px;
+  overflow: hidden;
+}

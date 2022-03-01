@@ -1,0 +1,14 @@
+<!-- 広告 -->
+<div class="side_advertisement">
+  <div class="side_box_inner side_advertisement_text clearfix">
+     <a href="http://pbl.telemedica.jp/" target="_blank"><img src="/img/bnr_pbl_maker.png"></a>
+  </div>
+  <div class="side_box_inner side_advertisement_text clearfix">
+    <!-- <p>広告表示枠</p> -->
+    <a href="https://telemedica.jp/" target="_blank"><img src="/img/TMN_BNR.png"></a>
+  </div>
+  <div class="side_box_inner side_advertisement_text clearfix">
+     <a href="http://telemedica.co.jp/" target="_blank"><img src="/img/bnr_telemedica_co_jp.png"></a>
+  </div>
+ 
+</div>

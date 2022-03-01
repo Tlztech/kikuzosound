@@ -1,0 +1,77 @@
+<?php
+
+// Home
+Breadcrumbs::register('home', function($breadcrumbs)
+{
+    $breadcrumbs->push('Home', route('home'));
+});
+
+// Home > 聴診音ライブラリ
+Breadcrumbs::register('contents', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('聴診音ライブラリ', route('contents'));
+});
+
+// Home > クイズ
+Breadcrumbs::register('quizpacks', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('クイズ', route('quizpacks'));
+});
+
+// Home > 聴診専用スピーカ
+Breadcrumbs::register('speaker', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('聴診専用スピーカ', route('speaker'));
+});
+
+// Home > サイトについて
+Breadcrumbs::register('about', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('サイトについて', route('about'));
+});
+
+// Home > 利用規約
+Breadcrumbs::register('terms', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('利用規約', route('terms'));
+});
+
+// Home > プライバシーポリシー
+Breadcrumbs::register('privacy', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('プライバシーポリシー', route('privacy'));
+});
+
+// Home > お知らせ
+Breadcrumbs::register('news', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('お知らせ', route('news'));
+});
+
+// Home > よくある質問
+Breadcrumbs::register('faq', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('よくある質問', route('faq'));
+});
+
+// Home > お問合わせ
+Breadcrumbs::register('contact', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('お問合わせ', route('contact'));
+});
+
+// Home > お問い合わせ入力フォーム
+Breadcrumbs::register('contact_form', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('お問合わせ入力フォーム', route('contact_form'));
+});

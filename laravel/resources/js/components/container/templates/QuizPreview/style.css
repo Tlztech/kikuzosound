@@ -1,0 +1,24 @@
+.template-quizPreview-wrapper .modal-content {
+  border-radius: 12px;
+  height: 680px;
+}
+
+.template-quizPreview-wrapper .modal-body {
+  padding: 0;
+}
+
+.template-quizPreview-wrapper .template-QuizResults-wrapper {
+  padding: 12px;
+  background-color: #47b8e8;
+  word-break: break-all;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+}
+
+.template-quizPreview-wrapper
+  .template-QuizResults-wrapper
+  .organism-quizTitle {
+  color: #ffffff;
+}

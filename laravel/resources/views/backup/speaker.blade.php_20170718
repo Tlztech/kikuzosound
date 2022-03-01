@@ -1,0 +1,58 @@
+@extends('layouts.app')
+
+@section('title', 'speaker')
+
+@section('breadcrumb')
+{!! Breadcrumbs::render('speaker') !!}
+@endsection
+
+@section('content')
+
+<!-- メイン聴診音ライブラリ（左） -->
+  <div id="container">
+
+    <div class="vest">
+        <div class="vest_title">ご購入頂いた「聴くゾウ」の登録</div>
+        <div class="vest_text">
+            <p>本サイトのコンテンツご利用にはご購入頂いた「聴くゾウ」の登録が必要となります。下記「登録のページへ」から登録をお願い致します。</p>
+        </div>
+        <div class="contents_box_inner pTB20">
+            <p class="contact_submit mB20 sp_none">
+                <a class="submit_btn" href="{{route('register')}}" style="cursor:pointer;margin-bottom:0px;">登録のページへ</a>
+            </p>
+
+            <p class="contact_submit mB20 pc_none" style="text-align:center;">
+                <a class="submit_btn" href="{{route('register')}}" style="cursor:pointer;width: 240px;">登録のページへ</a>
+            </p>
+        </div>
+        <div class="vest_text">
+            <p>※「聴くゾウ」のご購入等につきましてサイト下部の「お問合わせ」からお問合わせください。</p>
+        </div>
+    </div>
+
+    <div class="container_inner">
+      <div class="youtube_contents">
+        <?php $SPEAKER_YOUTUBE_URL = env('SPEAKER_YOUTUBE_URL'); ?>
+        <iframe src="{{ $SPEAKER_YOUTUBE_URL }}" frameborder="0" allowfullscreen class="sp_none"></iframe>
+        <iframe src="{{ $SPEAKER_YOUTUBE_URL }}" frameborder="0" allowfullscreen class="pc_none"></iframe>
+
+        <!--  <p class="link_red"><a href="pdf/3s.pdf" target="_blank">資料はこちらです>>></a></p>
+        <p class="link_red"><a href="https://telemedica.jp/kikuzou" target="_blank">ご注文はこちらです>>></a></p> -->
+      </div>
+
+      <div class="contents_box_inner pTB20">
+        <p class="contact_submit mB20 sp_none">
+          <a href="pdf/3s.pdf" target="_blank" class="submit_backbtn" style="background: #47B8E8;">資料はこちら</a>
+        </p>
+
+        <p class="contact_submit mB20 pc_none" style="text-align: center;margin-top:10px;">
+          <a href="pdf/3s.pdf" target="_blank" class="submit_backbtn" style="background: #47B8E8;width: 240px;">資料はこちら</a><br><br>
+        </p>
+      </div>
+    </div>
+    <!-- /#container_inner -->
+  </div>
+  <!-- /#container -->
+
+</div>
+@endsection

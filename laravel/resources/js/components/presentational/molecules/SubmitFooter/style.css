@@ -1,0 +1,13 @@
+.molecules-submit-footer {
+  display: inline-grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-gap: 15px;
+}
+
+.molecules-submit-footer .atoms-Select {
+  width: 100%;
+}
+
+.molecules-submit-footer label {
+  margin-top: 10px;
+}

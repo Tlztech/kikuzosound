@@ -1,0 +1,61 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+// ログ出力用のコントローラ
+class LogController extends Controller
+{
+  /**
+   * Show the application dashboard.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function store(Request $request)
+  {
+    date_default_timezone_set('Asia/Tokyo');
+    $datetime = "%datetime%";
+    // セッションID
+    $sessionId = \Session::getId();
+    // ユーザID（フェーズ１では実装しない）
+    $user_id = '';
+
+    $screen_cd = $request->input('screen_code');
+    // 同一画面でのイベントなので同一の画面コードを設定
+    $from_screen_cd = $request->input('screen_code');
+
+    $event_cd = $request->input('event_code');
+
+    // HTTP method()
+    $http_method = '';
+    // HTTP path
+    $http_path = '';
+    // HTTP body
+    $http_body = $request->input('body');
+    // Referer
+    $referer = $request->headers->get('referer');
+
+    // ログ出力内容
+    $log = [
+      'date'       => $datetime,
+      'ip'         => $request->ip(),
+      'user_agent' => $request->header('User-Agent'),
+      'session_id' => $sessionId,
+      'user_id'    => $user_id,
+      'from_screen_cd'=> $from_screen_cd,
+      'screen_cd'  => $screen_cd,
+      'event_cd'   => $event_cd,
+      'http_method'=> $http_method,
+      'http_path'  => $http_path,
+      'http_body'  => $http_body,
+      'referer'    => $referer
+    ];
+
+    // ログを出力する
+    $tracking_logger = \App::make('tracking_logger');
+    $tracking_logger->info('', $log);
+
+    return \Response::json([]);
+  }
+}

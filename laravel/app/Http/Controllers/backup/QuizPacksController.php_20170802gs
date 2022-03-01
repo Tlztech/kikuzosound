@@ -1,0 +1,109 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\QuizPack;
+use App\Quiz;
+use App\QuizChoice;
+
+// クイズパック画面
+class QuizPacksController extends Controller
+{
+  /**
+   * Show the application dashboard.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index() 
+  {
+    // クイズパック一覧を取得する
+    $quiz_packs = QuizPack::publicAll()->orderby("disp_order")->get();
+    return view('quiz_packs',compact('quiz_packs'));
+  }
+
+  // クイズ回答画面
+  public function quiz($id) 
+  {
+    $quiz_packs = QuizPack::publicAll()->orderby("disp_order")->get();
+    return view('_partials.quiz',['action'=>'GET']);
+  }
+
+  // クイズスタート画面
+  public function quiz_start($quiz_pack_id) 
+  {
+    // 1問目のクイズを取得する
+    $quiz_pack = QuizPack::findOrFail($quiz_pack_id);
+    $first_quiz = null;
+    // ランダムの場合
+    if ($quiz_pack->quiz_order_type == QuizPack::$ORDER_RANDOM) {
+      $first_quiz = $quiz_pack->quizzes()->get()->random();
+    }
+    // 固定の場合
+    else {
+      $first_quiz = $quiz_pack->quizzes()->first();
+    }
+
+    $next_quiz_id = $first_quiz->id;
+    $title = $quiz_pack->title;
+    $old_choices = \Session::get("old_choices",[]);
+    return view('_partials.quiz_start',compact('quiz_pack_id','next_quiz_id','title'));
+  }
+
+  // クイズ回答選択画面
+  public function quiz_answer_select($quiz_pack_id,$quize_id) {
+    $old_choices = \Session::get("old_choices",[]);
+    $quiz_pack = QuizPack::findOrFail($quiz_pack_id);
+    $quiz = Quiz::findOrFail($quize_id);
+    return view('_partials.quiz_answer_select',compact('quiz','quiz_pack'))->with('old_choices',$old_choices);
+  }
+
+  // クイズ回答判定
+  public function quiz_answer_choice(Request $request, $quiz_pack_id,$quize_id)
+  {
+    $quiz_choice_id = $request->input("quiz_choice_id");
+    $old_choices = $request->has("old_choices") ? $request->input("old_choices") : [];
+
+    // タイムオーバの場合、quiz_choice_idが-1
+    $old_choices[] = ['quiz_id'=>$quize_id, 'quiz_choice_id'=>$quiz_choice_id];
+    $quiz_pack = QuizPack::findOrFail($quiz_pack_id);
+    if (count($old_choices) < $quiz_pack->max_quiz_count) {
+      // 次のクイズを取得する
+      $exclude_ids = array_map(function($q) { return $q['quiz_id'];}, $old_choices);
+      $next_quiz = $quiz_pack->nextQuiz($exclude_ids);
+      $quize_id = $next_quiz->id;
+      // 次の問題に遷移させる
+      return redirect()->route('quiz_answer_select', [$quiz_pack_id,$quize_id])->with('old_choices',$old_choices);
+    } else {  // 最終問題の場合はクイズ結果一覧画面に遷移する
+      return redirect()->route('quiz_score', $quiz_pack_id)->with('old_choices',$old_choices);
+    }
+  }
+
+  // クイズ成績画面
+  public function quiz_score($quiz_pack_id)
+  {
+    $old_choices = \Session::get("old_choices",[]);
+    $scores = [];
+    $correct_count = 0;
+    foreach ($old_choices as $key => $c) {
+      // タイムオーバーで不正解になった場合はquiz_choice_idが-1になる
+      $is_correct = false;
+      if ($c['quiz_choice_id'] >= 0) {
+        $choice = QuizChoice::findOrFail($c['quiz_choice_id']);
+        $is_correct = $choice->is_correct;
+      }
+
+      $scores[] = ['is_correct' => $is_correct,'number'=>$key,'quiz_id'=>$c['quiz_id']];
+      if ($is_correct) $correct_count++;
+    }
+    return view('_partials.quiz_score',compact('scores','quiz_pack_id','correct_count'));
+  }
+
+  // クイズ回答確認画面
+  public function quiz_answer_confirm($quiz_pack_id,$quiz_id) {
+    $quiz_pack = QuizPack::findOrFail($quiz_pack_id);
+    $quiz = Quiz::findOrFail($quiz_id);
+
+    return view('_partials.quiz_answer_confirm',compact('quiz_pack','quiz','correct_count',$quiz_pack_id));
+  }
+}
