@@ -21,7 +21,7 @@ echo $SSH_KEY
 DEPLOY_DIR=/home/projects/
 
 # SSH_USER
-SSH_USER=projects@kikuzosound.cn
+SSH_USER=projects@kikuzosound.xyz
 
 # laradock dir
 LARADOCK_DIR=3sportal_ld
